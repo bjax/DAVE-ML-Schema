@@ -1,0 +1,570 @@
+
+
+
+
+
+
+<!ENTITY % mathml2 PUBLIC "-//W3C//DTD MathML 2.0//EN"
+        "http://www.w3.org/Math/DTD/mathml2/mathml2.dtd">
+%mathml2;
+
+
+
+
+
+
+
+
+<!ELEMENT DAVEfunc (
+      fileHeader, 
+      variableDef+, 
+      breakpointDef*, 
+      griddedTableDef*, 
+      ungriddedTableDef*, 
+      function*, 
+      checkData?
+    )
+>
+<!ATTLIST DAVEfunc
+     xmlns	CDATA	#FIXED	'http://daveml.org/2010/DAVEML'
+>
+
+
+
+
+
+
+
+
+<!ELEMENT fileHeader (
+      author+, 
+      (creationDate | fileCreationDate), 
+      fileVersion?, 
+      description?, 
+      reference*, 
+      modificationRecord*, 
+      provenance*
+    )
+>
+<!ATTLIST fileHeader
+     name	CDATA	#IMPLIED
+>
+
+
+
+<!ELEMENT variableDef (
+      description?, 
+      (provenance | provenanceRef)?, 
+      calculation?, 
+      (isInput | isControl | isDisturbance)?, 
+      isState?, 
+      isStateDeriv?, 
+      isOutput?, 
+      isStdAIAA?, 
+      uncertainty?
+    )
+>
+<!ATTLIST variableDef
+     name	CDATA	#REQUIRED
+     varID	ID	#REQUIRED
+     units	CDATA	#REQUIRED
+     axisSystem	CDATA	#IMPLIED
+     sign	CDATA	#IMPLIED
+     alias	CDATA	#IMPLIED
+     symbol	CDATA	#IMPLIED
+     initialValue	CDATA	#IMPLIED
+>
+
+<!ELEMENT variableRef EMPTY>
+<!ATTLIST variableRef
+     varID	IDREF	#REQUIRED
+>
+
+
+
+<!ELEMENT breakpointDef (
+      description?, 
+      bpVals
+    )
+>
+<!ATTLIST breakpointDef
+     name	CDATA	#IMPLIED
+     bpID	ID	#REQUIRED
+     units	CDATA	#IMPLIED
+>
+
+
+
+<!ELEMENT bpVals (#PCDATA)>
+
+
+
+
+<!ELEMENT griddedTableDef (
+      description?, 
+      (provenance | provenanceRef)?, 
+      breakpointRefs, 
+      uncertainty?, 
+      dataTable
+    )
+>
+<!ATTLIST griddedTableDef
+     name	CDATA	#IMPLIED
+     gtID	ID	#REQUIRED
+     units	CDATA	#IMPLIED
+>
+
+
+
+<!ELEMENT ungriddedTableDef (
+      description?, 
+      (provenance | provenanceRef)?, 
+      uncertainty?, 
+      dataPoint+
+    )
+>
+<!ATTLIST ungriddedTableDef
+     name	CDATA	#IMPLIED
+     utID	ID	#REQUIRED
+     units	CDATA	#IMPLIED
+>
+
+
+
+<!ELEMENT function (
+      description?, 
+      (provenance | provenanceRef)?, 
+      ((
+        independentVarPts+, 
+        dependentVarPts
+      ) | (
+        independentVarRef+, 
+        dependentVarRef, 
+        functionDefn
+      ))
+    )
+>
+<!ATTLIST function
+     name	CDATA	#REQUIRED
+>
+
+
+
+<!ELEMENT checkData (
+      (provenance | provenanceRef)?, 
+      staticShot+
+    )
+>
+
+
+
+
+
+
+
+
+
+<!ELEMENT author (address* | contactInfo*)>
+<!ATTLIST author
+     name	CDATA	#REQUIRED
+     org	CDATA	#REQUIRED
+     xns	CDATA	#IMPLIED
+     email	CDATA	#IMPLIED
+>
+
+
+
+<!ELEMENT creationDate EMPTY>
+<!ATTLIST creationDate
+     date	CDATA	#REQUIRED
+>
+
+
+
+<!ELEMENT fileCreationDate EMPTY>
+<!ATTLIST fileCreationDate
+     date	CDATA	#REQUIRED
+>
+
+
+
+<!ELEMENT fileVersion (#PCDATA)>
+
+
+
+
+<!ELEMENT description (#PCDATA)>
+
+
+
+
+<!ELEMENT isOutput EMPTY>
+
+
+
+
+<!ELEMENT isState EMPTY>
+
+
+
+
+<!ELEMENT isStateDeriv EMPTY>
+
+
+
+
+<!ELEMENT isInput EMPTY>
+
+
+
+
+<!ELEMENT isControl EMPTY>
+
+
+
+
+<!ELEMENT isDisturbance EMPTY>
+
+
+
+
+<!ELEMENT isStdAIAA EMPTY>
+
+
+
+
+<!ELEMENT calculation (math)>
+
+
+
+
+<!ELEMENT reference (description?)>
+<!ATTLIST reference
+     xmlns:xlink	CDATA	#FIXED	'http://www.w3.org/1999/xlink'
+     xlink:type	(simple)	#FIXED	'simple'
+     refID	ID	#REQUIRED
+     author	CDATA	#REQUIRED
+     title	CDATA	#REQUIRED
+     classification	CDATA	#IMPLIED
+     accession	CDATA	#IMPLIED
+     date	CDATA	#REQUIRED
+     xlink:href	CDATA	#IMPLIED
+>
+
+
+
+<!ELEMENT modificationRecord (
+      author+, 
+      description?, 
+      extraDocRef*
+    )
+>
+<!ATTLIST modificationRecord
+     modID	ID	#REQUIRED
+     date	CDATA	#REQUIRED
+     refID	IDREF	#IMPLIED
+>
+
+
+
+<!ELEMENT extraDocRef EMPTY>
+<!ATTLIST extraDocRef
+     refID	IDREF	#REQUIRED
+>
+
+
+
+<!ELEMENT provenance (
+      author+, 
+      (creationDate | functionCreationDate), 
+      documentRef*, 
+      modificationRef*, 
+      description?
+    )
+>
+<!ATTLIST provenance
+     provID	ID	#IMPLIED
+>
+
+
+
+<!ELEMENT provenanceRef EMPTY>
+<!ATTLIST provenanceRef
+     provID	IDREF	#REQUIRED
+>
+
+
+
+<!ELEMENT independentVarPts (#PCDATA)>
+<!ATTLIST independentVarPts
+     varID	IDREF	#REQUIRED
+     name	CDATA	#IMPLIED
+     units	CDATA	#IMPLIED
+     sign	CDATA	#IMPLIED
+     extrapolate	(neither | min | max | both) #IMPLIED
+     interpolate	(discrete | floor | ceiling | linear | quadraticSpline | cubicSpline) #IMPLIED
+>
+
+
+
+<!ELEMENT dependentVarPts (#PCDATA)>
+<!ATTLIST dependentVarPts
+     varID	IDREF	#REQUIRED
+     name	CDATA	#IMPLIED
+     units	CDATA	#IMPLIED
+     sign	CDATA	#IMPLIED
+>
+
+
+
+<!ELEMENT independentVarRef EMPTY>
+<!ATTLIST independentVarRef
+     varID	IDREF	#REQUIRED
+     min	CDATA	#IMPLIED
+     max	CDATA	#IMPLIED
+     extrapolate	(neither | min | max | both) #IMPLIED
+     interpolate	(discrete | floor | ceiling | linear | quadraticSpline | cubicSpline) #IMPLIED
+>
+
+
+
+<!ELEMENT dependentVarRef EMPTY>
+<!ATTLIST dependentVarRef
+     varID	IDREF	#REQUIRED
+>
+
+
+
+<!ELEMENT functionDefn (griddedTableRef | griddedTableDef | griddedTable | ungriddedTableRef | ungriddedTableDef | ungriddedTable)>
+<!ATTLIST functionDefn
+     name	CDATA	#IMPLIED
+>
+
+
+
+
+
+
+<!ELEMENT address (#PCDATA)>
+
+
+
+
+<!ELEMENT contactInfo (#PCDATA)>
+<!ATTLIST contactInfo
+     contactInfoType	(address | phone | fax | email | iname | web) #IMPLIED
+     contactLocation	(professional | personal | mobile) #IMPLIED
+>
+
+
+
+<!ELEMENT functionCreationDate EMPTY>
+<!ATTLIST functionCreationDate
+     date	CDATA	#REQUIRED
+>
+
+<!ELEMENT documentRef EMPTY>
+<!ATTLIST documentRef
+     docID	IDREF	#IMPLIED
+     refID	IDREF	#REQUIRED
+>
+
+<!ELEMENT modificationRef EMPTY>
+<!ATTLIST modificationRef
+     modID	IDREF	#REQUIRED
+>
+
+<!ELEMENT griddedTableRef EMPTY>
+<!ATTLIST griddedTableRef
+     gtID	IDREF	#REQUIRED
+>
+
+<!ELEMENT griddedTable (
+      breakpointRefs, 
+      confidenceBound?, 
+      dataTable
+    )
+>
+<!ATTLIST griddedTable
+     name	CDATA	#IMPLIED
+>
+
+<!ELEMENT ungriddedTableRef EMPTY>
+<!ATTLIST ungriddedTableRef
+     utID	IDREF	#REQUIRED
+>
+
+<!ELEMENT ungriddedTable (
+      confidenceBound?, 
+      dataPoint+
+    )
+>
+<!ATTLIST ungriddedTable
+     name	CDATA	#IMPLIED
+>
+
+
+
+<!ELEMENT staticShot (
+      description?, 
+      (provenance | provenanceRef)?, 
+      checkInputs?, 
+      internalValues?, 
+      checkOutputs
+    )
+>
+<!ATTLIST staticShot
+     name	CDATA	#REQUIRED
+     refID	IDREF	#IMPLIED
+>
+
+
+
+
+
+
+
+
+<!ELEMENT breakpointRefs (bpRef+)>
+
+
+
+
+<!ELEMENT confidenceBound EMPTY>
+<!ATTLIST confidenceBound
+     value	CDATA	#REQUIRED
+>
+
+
+
+<!ELEMENT uncertainty (normalPDF | uniformPDF)>
+<!ATTLIST uncertainty
+     effect	(additive | multiplicative | percentage | absolute) #REQUIRED
+>
+
+
+
+<!ELEMENT dataTable (#PCDATA)>
+
+
+
+
+<!ELEMENT dataPoint (#PCDATA)>
+<!ATTLIST dataPoint
+     modID	IDREF	#IMPLIED
+>
+
+
+
+<!ELEMENT checkInputs (signal+)>
+
+
+
+
+<!ELEMENT internalValues (signal+)>
+
+
+
+
+<!ELEMENT checkOutputs (signal+)>
+
+
+
+
+
+
+
+
+
+<!ELEMENT bpRef EMPTY>
+<!ATTLIST bpRef
+     bpID	IDREF	#REQUIRED
+>
+
+
+
+<!ELEMENT normalPDF (
+      bounds, 
+      correlatesWith*, 
+      correlation*
+    )
+>
+<!ATTLIST normalPDF
+     numSigmas	CDATA	#REQUIRED
+>
+
+
+
+<!ELEMENT uniformPDF (bounds+)>
+
+
+
+
+<!ELEMENT bounds (#PCDATA | dataTable | variableDef | variableRef)*>
+
+
+
+
+<!ELEMENT correlatesWith EMPTY>
+<!ATTLIST correlatesWith
+     varID	IDREF	#REQUIRED
+>
+
+
+
+<!ELEMENT correlation EMPTY>
+<!ATTLIST correlation
+     varID	IDREF	#REQUIRED
+     corrCoef	CDATA	#REQUIRED
+>
+
+
+
+<!ELEMENT signal (
+      ((
+        signalName, 
+        signalUnits
+      ) | (
+        (varID | signalID)
+      )), 
+      signalValue, 
+      tol?
+    )
+>
+
+
+
+
+
+
+
+
+
+<!ELEMENT signalName (#PCDATA)>
+
+
+
+
+<!ELEMENT signalID (#PCDATA)>
+
+
+
+
+<!ELEMENT varID (#PCDATA)>
+
+
+
+
+<!ELEMENT signalUnits (#PCDATA)>
+
+
+
+
+<!ELEMENT signalValue (#PCDATA)>
+
+
+
+
+<!ELEMENT tol (#PCDATA)>
+
+

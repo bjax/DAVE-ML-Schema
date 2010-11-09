@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><style xmlns="" type="text/css">
+div.added    { background-color: #ffff99; }
+div.deleted  { text-decoration: line-through;
+               background-color: #FF7F7F; }
+div.changed  { background-color: #99ff99; }
+div.off      {  }
+
+span.added   { background-color: #ffff99; }
+span.deleted { text-decoration: line-through;
+               background-color: #FF7F7F; }
+span.changed { background-color: #99ff99; }
+span.off     {  }
+</style><title>6.2. Schematic overview of DAVEfunc</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="top-element.html" title="6. Major elements"/><link rel="prev" href="top-element-davefunc.html" title="6.1. The DAVEfunc major element"/><link rel="next" href="fileHeader_overview.html" title="6.2.1. The file header element"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="top-element-davefunc.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="fileHeader_overview.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="top-element.html">Major elements</a></span> &gt; <span class="breadcrumb-node"><code xmlns="http://www.w3.org/1999/xhtml" class="sgmltag-element">DAVEfunc</code> overview</span></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="davefunc_overview"/>6.2. Schematic overview of <code class="sgmltag-element">DAVEfunc</code></h3></div></div></div><p>
+	Shown below are schematic overviews of the various elements currently available in
+	<code class="sgmltag-element">DAVEfunc</code>. Each element is described in detail in <a href="elementRefs.html" title="8. Element references and descriptions">Section 8, “Element references and descriptions”</a> later in this document. The following key is used to describe the
+	elements and associated attributes.
+	<a id="d0e2265" class="indexterm"/>
+      </p><pre class="programlisting">
+Key:
+    elementname : mandatory_attributes, [optional_attributes]
+            mandatory_single_sub-element
+            optional_single_sub-element?                     {editorial comment}
+            ( choice_1_sub-element | choice_2_sub-element )
+            zero_or_more_sub-elements*     
+            one_or_more_sub-elements+
+            (character data) implies UNICODE text information
+      </pre><p> The <a href="DAVEfunc.html" title="DAVEfunc">
+          <code class="sgmltag-element">DAVEfunc</code>
+        </a> element has six possible sub-elements: </p><pre class="programlisting">
+    DAVEfunc :
+        <a href="fileHeader_overview.html" title="6.2.1. The file header element">fileHeader</a>
+        <a href="variableDef_overview.html" title="6.2.2. The variable definition element">variableDef</a>+
+        <a href="breakpointDef_overview.html" title="6.2.3. The breakpoint set definition element">breakpointDef</a>*
+        <a href="griddedTableDef_overview.html" title="6.2.4. The gridded table definition element">griddedTableDef</a>*
+        <a href="ungriddedTableDef_overview.html" title="6.2.5. The ungridded table definition element">ungriddedTableDef</a>*
+        <a href="function_overview.html" title="6.2.6. The function definition element">function</a>*
+        <a href="checkData_overview.html" title="6.2.7. The checkData element">checkData</a>?
+      </pre><div class="variablelist"><p class="title"><b><code class="sgmltag-element">DAVEfunc</code> sub-elements:</b></p><dl><dt><span class="term">
+	    <a id="d0e2312" class="indexterm"/>
+            <a href="fileHeader_overview.html" title="6.2.1. The file header element">
+              <code class="sgmltag-element">fileHeader</code>
+            </a>
+          </span></dt><dd><p> This mandatory element contains information about the origin and development of
+              this model. </p></dd><dt><span class="term">
+	    <a id="d0e2330" class="indexterm"/>
+            <a href="variableDef_overview.html" title="6.2.2. The variable definition element">
+              <code class="sgmltag-element">variableDef</code>
+            </a>
+          </span></dt><dd><p> 
+	      Each <code class="sgmltag-element">DAVEfunc</code> model must contain at least one signal path (such as
+	      a constant output value). Each input, output or internal signal used by the model must
+	      be specified in a separate <a href="variableDef_overview.html" title="6.2.2. The variable definition element"><code class="sgmltag-element">variableDef</code></a>.
+	    </p><p> A signal can have only a single origin (an input block, a calculation, or a
+              function output) but can be used (referenced) more than once as an input to one or
+              more functions, signal calculations, and/or as a model output.
+	    </p><p>
+	      In DAVE-ML 2.0, all signals are real and scalar.
+	    </p><p> 
+	      The <a href="variableDef.html" title="variableDef"><code class="sgmltag-element">variableDef</code></a>s should appear
+	      in calculation order; that is, a <code class="sgmltag-element">variableDef</code> should not appear
+	      before the definitions of variables upon which it is dependent. This is good practice
+	      since doing so avoids a circular reference. If a variable depends upon the output
+	      (<code class="sgmltag-element">dependentVar</code>) of a <code class="sgmltag-element">function</code> it can be assumed
+	      that dependence has been met, since function definitions appear later in the
+	      <code class="sgmltag-element">DAVEfunc</code> element.
+	    <a id="d0e2374" class="indexterm"/>
+	    </p></dd><dt><span class="term">
+	    <a id="d0e2383" class="indexterm"/>
+            <a href="breakpointDef_overview.html" title="6.2.3. The breakpoint set definition element">
+              <code class="sgmltag-element">breakpointDef</code>
+            </a>
+          </span></dt><dd><p> A <code class="sgmltag-element">DAVEfunc</code> model can contain zero, one, or more breakpoint set
+              definitions. These definitions can be shared among several gridded function tables.
+              Breakpoint definitions can appear in any order. </p></dd><dt><span class="term">
+            <a href="griddedTableDef_overview.html" title="6.2.4. The gridded table definition element">
+              <code class="sgmltag-element">griddedTableDef</code>
+            </a>
+          </span></dt><dd><p> 
+	      A <code class="sgmltag-element">DAVEfunc</code> model can contain zero, one, or more gridded nonlinear
+	      function table definitions. Each table must be used by multiple <a href="function.html" title="function"><code class="sgmltag-element">function</code></a> definition if desired for
+	      efficiency. Alternatively, some or all <a href="function_overview.html" title="6.2.6. The function definition element">
+	      <code class="sgmltag-element">function</code></a>s in a model can specify their tables internally
+	      with an embedded <a href="griddedTableDef.html" title="griddedTableDef"><code class="sgmltag-element">griddedTableDef</code>
+	      </a> element.
+	      <a id="d0e2430" class="indexterm"/>
+	      <a id="d0e2436" class="indexterm"/>
+	      <a id="d0e2442" class="indexterm"/>
+	      <a id="d0e2448" class="indexterm"/>
+	    </p><p> A gridded function table contains dependent values, or data points, corresponding
+              to the value of a function at the intersection of one or more breakpoint sets (one for
+              each dimension of the table). The independent values (coordinates or breakpoint sets)
+              are not stored within the gridded table definition but are referenced by the parent
+              function. This allows a function table to be supported by more than one set of
+              breakpoint values (such as left- and right-aileron deflections). 
+	      <a id="d0e2456" class="indexterm"/>
+	    </p></dd><dt><span class="term">
+            <a href="ungriddedTableDef_overview.html" title="6.2.5. The ungridded table definition element">
+              <code class="sgmltag-element">ungriddedTableDef</code>
+            </a>
+          </span></dt><dd><p> 
+	      A DAVEfunc model can contain zero, one, or more ungridded nonlinear function table
+	      definitions. <a id="d0e2474" class="indexterm"/><a id="d0e2479" class="indexterm"/>
+	      Unlike a rectangularly gridded table, an ungridded table specifies data
+	      points as individual sets of independent and dependent values. Each table must be used
+	      by at least one but can be used by multiple <a href="function.html" title="function"><code class="sgmltag-element">function</code></a> definitions if necessary
+	      for efficiency. Alternatively, <code class="sgmltag-element">function</code>s can retain their tables
+	      internally with a ungriddedTable element without sharing the table values with other
+	      functions.
+	      <a id="d0e2492" class="indexterm"/>
+	    </p><p> 
+	      Ungridded table values are specified as a single (unsorted) list of independent
+	      variable (input) values and associated dependent variable (output) values. While the
+	      list is not sorted, the order of the independent variable inputs is important and must
+	      match the order given in the parent <a href="function.html" title="function"><code class="sgmltag-element">function</code></a>. Thus, functions that
+	      share an ungridded table definition must have the same ordering of independent variables.
+	    </p><p>
+	      The method of interpolating the ungridded data is not specified. 
+	      <a id="d0e2506" class="indexterm"/>
+	    </p></dd><dt><span class="term">
+	    <a id="d0e2515" class="indexterm"/>
+            <a href="function_overview.html" title="6.2.6. The function definition element">
+              <code class="sgmltag-element">function</code>
+            </a>
+          </span></dt><dd><p> 
+	      A <a href="function.html" title="function"><code class="sgmltag-element">function</code></a> ties together breakpoint
+	      sets (for gridded-table nonlinear functions), function values (either internally or by
+	      reference to table definitions), and the input- and output-variable signal
+	      definitions, as shown in <a href="top-element-davefunc.html#daveml_file_excerpt_fig" title="Figure 1.  Excerpts from an example DAVE-ML file ">Figure 1</a>. Functions also include provenance, or background history, of the function data
+	      such as wind tunnel test or other source information.
+	    </p></dd><dt><span class="term">
+	    <a id="d0e2539" class="indexterm"/>
+            <a href="checkData_overview.html" title="6.2.7. The checkData element">
+              <code class="sgmltag-element">checkData</code>
+            </a>
+          </span></dt><dd><p> This optional element contains information allowing the model to be automatically
+              verified after implementation by the receiving party. </p></dd></dl></div><p> An example of each of these sub-elements is given below. Complete descriptions of each
+        element in detail are found in <a href="elementRefs.html" title="8. Element references and descriptions">Section 8, “Element references and descriptions”</a>. </p></div><P xmlns="" class="CVSinfo">2010-11-08</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="top-element-davefunc.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="top-element.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="fileHeader_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><style xmlns="" type="text/css">
+div.added    { background-color: #ffff99; }
+div.deleted  { text-decoration: line-through;
+               background-color: #FF7F7F; }
+div.changed  { background-color: #99ff99; }
+div.off      {  }
+
+span.added   { background-color: #ffff99; }
+span.deleted { text-decoration: line-through;
+               background-color: #FF7F7F; }
+span.changed { background-color: #99ff99; }
+span.off     {  }
+</style><title>6.2.4. The gridded table definition element</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="davefunc_overview.html" title="6.2. Schematic overview of DAVEfunc"/><link rel="prev" href="breakpointDef_overview.html" title="6.2.3. The breakpoint set definition element"/><link rel="next" href="ungriddedTableDef_overview.html" title="6.2.5. The ungridded table definition element"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="breakpointDef_overview.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="ungriddedTableDef_overview.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="top-element.html">Major elements</a></span> &gt; <span class="breadcrumb-link"><a href="davefunc_overview.html"><code xmlns="http://www.w3.org/1999/xhtml" class="sgmltag-element">DAVEfunc</code> overview</a></span> &gt; <span class="breadcrumb-node"><code xmlns="http://www.w3.org/1999/xhtml" class="sgmltag-element">griddedTableDef</code> overview</span></div><div class="sect3" lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="griddedTableDef_overview"/>6.2.4. The gridded table definition element</h4></div></div></div><p> 
+	  The <a href="griddedTableDef.html" title="griddedTableDef"><code class="sgmltag-element">griddedTableDef</code></a> element
+	  defines a multi-dimensional table of values corresponding with the value of an arbitrary
+	  function at each intersection of a set of specified independent input values. The
+	  coordinates along each dimension are defined in separate <a href="breakpointDef.html" title="breakpointDef"><code class="sgmltag-element">breakpointDef</code></a> elements that are
+	  referenced within this element by <a href="bpRef.html" title="bpRef"><code class="sgmltag-element">bpRef</code></a>s,
+	  one for each dimension.
+	  <a id="d0e4014" class="indexterm"/>
+	</p><p> 
+	  The data contained within the data table definition are a comma- or white space-separated
+	  set of floating-point values. This list of values represents a multi-dimensional array
+	  whose size is inferred from the length of each breakpoint vector. For example, a 2D table
+	  that is a function of an eight-element Mach breakpoint set and a ten-element
+	  angle-of-attack breakpoint set is expected to contain 80 (8 x 10) comma- or
+	  white space-separated values.
+	</p><p> By convention, the <a href="breakpointRefs.html" title="breakpointRefs">
+            <code class="sgmltag-element">breakpointRefs</code>
+          </a> are listed in order such that the last breakpoint set varies most rapidly in the
+          associated data table listing. See <a href="point_order.html" title="6.5.1. Ordering of points">Section 6.5.1, “Point order”</a> below. </p><p> An optional <a href="uncertainty.html" title="uncertainty">
+            <code class="sgmltag-element">uncertainty</code>
+          </a> element may be provided that represents the statistical variation in the values
+          presented. See <a href="statistics.html" title="6.4. Statistical information encoding">Section 6.4</a> for more
+          information about this element. </p><pre class="programlisting">
+    <a href="griddedTableDef.html" title="griddedTableDef">griddedTableDef</a> : [name, gtID, units]
+        <a href="description.html" title="description">description</a>?
+          {description of table in character data}
+        EITHER
+            <a href="provenanceRef.html" title="provenanceRef">provenanceRef</a>? : provID
+        OR
+            <a href="provenance.html" title="provenance">provenance</a>? : [provID]
+                <a href="author.html" title="author">author</a>+ : name, org, [email]
+                    <a href="contactInfo.html" title="contactInfo">contactInfo</a>* : [contactInfoType, contactLocation]
+                        {text describing contact information}
+                <a href="creationDate.html" title="creationDate">creationDate</a> : date {in YYYY-MM-DD format}
+                <a href="documentRef.html" title="documentRef">documentRef</a>* : [docID,] refID
+                <a href="modificationRef.html" title="modificationRef">modificationRef</a>* : modID
+                <a href="description.html" title="description">description</a>?
+        <a href="breakpointRefs.html" title="breakpointRefs">breakpointRefs</a> :
+            <a href="bpRef.html" title="bpRef">bpRef</a>+ : bpID
+        <a href="uncertainty.html" title="uncertainty">uncertainty</a>? : effect
+            (<a href="normalPDF.html" title="normalPDF">normalPDF</a> : numSigmas | <a href="uniformPDF.html" title="uniformPDF">uniformPDF</a>)
+        <a href="dataTable.html" title="dataTable">dataTable</a>
+            {character data of comma- or white space-separated table values}
+
+        </pre><div class="variablelist"><p class="title"><b><a href="griddedTableDef.html" title="griddedTableDef">
+              <code class="sgmltag-element">griddedTableDef</code>
+            </a> attributes:</b></p><dl><dt><span class="term">
+	      <a id="d0e4103" class="indexterm"/>
+              <code class="sgmltag-element">gtID</code>
+            </span></dt><dd><p>An internal reference that is unique within the file.</p></dd><dt><span class="term">
+	      <a id="d0e4118" class="indexterm"/>
+              <code class="sgmltag-element">name</code>
+            </span></dt><dd><p>A UNICODE name for the table (may be the same string as
+                <code class="sgmltag-element">gtID</code>).</p></dd><dt><span class="term">
+	      <a id="d0e4136" class="indexterm"/>
+              <code class="sgmltag-element">units</code>
+            </span></dt><dd><p> The units-of-measure of the table's output signal. See <a href="uofm.html" title="6.5.6. Units-of-measure abbreviation">Section 6.5.6, “Units”</a>
+                below. </p></dd></dl></div><div class="variablelist"><p class="title"><b><a href="griddedTableDef.html" title="griddedTableDef">
+              <code class="sgmltag-element">griddedTableDef</code>
+            </a> sub-elements:</b></p><dl><dt><span class="term">
+	      <a id="d0e4161" class="indexterm"/>
+              <a href="description.html" title="description">
+                <code class="sgmltag-element">description</code>
+              </a>
+            </span></dt><dd><p>The optional <a href="description.html" title="description">description</a> element allows the
+                author to describe the data contained within this
+                <code class="sgmltag-element">griddedTable</code>.</p></dd><dt><span class="term">
+	      <a id="d0e4185" class="indexterm"/>
+              <a href="provenance.html" title="provenance">
+                <code class="sgmltag-element">provenance</code>
+              </a>
+            </span></dt><dd><p>The optional <a href="provenance.html" title="provenance">provenance</a> element allows the
+                author to describe the source and history of the data within this
+                  <code class="sgmltag-element">griddedTable</code>. Alternatively, a <a href="provenanceRef.html" title="provenanceRef">
+                  <code class="sgmltag-element">provenanceRef</code>
+                </a> reference can be made to a previously defined
+                <code class="sgmltag-element">provenance</code>.</p></dd><dt><span class="term">
+	      <a id="d0e4218" class="indexterm"/>
+              <a href="breakpointRefs.html" title="breakpointRefs">
+                <code class="sgmltag-element">breakpointRefs</code>
+              </a>
+            </span></dt><dd><p> The mandatory <a href="breakpointRefs.html" title="breakpointRefs">
+                  <code class="sgmltag-element">breakpointRefs</code></a> element contains separate <a href="bpRef.html" title="bpRef"><code class="sgmltag-element">bpRef</code></a> elements, each pointing to a
+                  separately defined <a href="breakpointDef.html" title="breakpointDef"><code class="sgmltag-element">breakpointDef</code></a>. Thus, the
+                  independent coordinates associated with this function table are defined elsewhere
+                  and only a reference is given here. The order of appearance of the <a href="bpRef.html" title="bpRef"><code class="sgmltag-element">bpRef</code></a>s is important; see the text
+                  above. </p></dd><dt><span class="term">
+	      <a id="d0e4253" class="indexterm"/>
+              <a href="uncertainty.html" title="uncertainty">
+                <code class="sgmltag-element">uncertainty</code>
+              </a>
+            </span></dt><dd><p> 
+		This optional element, if present, describes the uncertainty of this parameter.  See
+		<a href="statistics.html" title="6.4. Statistical information encoding">Section 6.4</a> for more information
+		about this element.
+	      </p></dd><dt><span class="term">
+	      <a id="d0e4273" class="indexterm"/>
+              <a href="dataTable.html" title="dataTable">
+                <code class="sgmltag-element">dataTable</code>
+              </a>
+            </span></dt><dd><p>
+		The numeric values of the function at the function vertices specified by the
+		breakpoint sets are contained within this element, in a single comma- or
+		white space-separated list, representing an unraveled multi-dimensional table.
+		Parsing this list and storing it in the appropriate array representation is up to
+		the implementer. By convention, the last breakpoint value increases most rapidly.
+	      </p></dd></dl></div><div class="example"><a id="griddedTableDef_example"/><p class="title"><b>Example 8. 
+	    An excerpt showing an example of a <code class="sgmltag-element">griddedTableDef</code> element
+	  </b></p><div class="example-contents"><p> 
+	    This nonlinear function table<a id="d0e4297" class="indexterm"/> is used by a subsequent
+	    <code class="sgmltag-element">function</code> in <a href="function_overview.html#function_example_1" title="Example 11. &#xA;&#x9;    An excerpt giving the example of a function which refers to a previously defined&#xA;&#x9;    griddedTableDef&#xA;&#x9;  ">Example 11</a> to specify an output value based on two input values:
+	    body flap deflection and Mach number. This table is defined outside of a <a href="function.html" title="function"><code class="sgmltag-element">function</code></a> element because this particular
+	    function table is used by two functions: one for the left-lower body flap and one for
+	    the lower-right body flap; thus, their actual independent (input) variable values might
+	    be different.
+	  </p><pre class="programlisting">
+        &lt;!-- ==================================== --&gt;     <a id="gtd-note-1-co" href="griddedTableDef_overview.html#gtd-note-1"><img src="images/callouts/1.png" alt="1" border="0"/></a>
+        &lt;!-- Lower Body Flap Tables (definitions) --&gt;
+        &lt;!-- ==================================== --&gt;
+
+  &lt;griddedTableDef name="CLBFL0" gtID="CLBFL0_table"&gt;     <a id="gtd-note-2-co" href="griddedTableDef_overview.html#gtd-note-2"><img src="images/callouts/2.png" alt="2" border="0"/></a>
+    &lt;<a href="description.html" title="description">description</a>&gt;      <a id="gtd-note-3-co" href="griddedTableDef_overview.html#gtd-note-3"><img src="images/callouts/3.png" alt="3" border="0"/></a>
+        Lower body flap contribution to lift coefficient,
+        polynomial constant term
+    &lt;/description&gt;
+    &lt;<a href="provenance.html" title="provenance">provenance</a>&gt;        <a id="gtd-note-4-co" href="griddedTableDef_overview.html#gtd-note-4"><img src="images/callouts/4.png" alt="4" border="0"/></a>
+      &lt;<a href="author.html" title="author">author</a> name="Bruce Jackson" org="NASA Langley Research Center" email="e.b.jackson@larc.nasa.gov"/&gt;
+      &lt;<a href="creationDate.html" title="creationDate">creationDate</a> date="2003-01-31"/&gt;
+      &lt;<a href="documentRef.html" title="documentRef">documentRef</a> docID="REF01"/&gt;
+    &lt;/provenance&gt;
+    &lt;<a href="breakpointRefs.html" title="breakpointRefs">breakpointRefs</a>&gt; <a id="gtd-note-5-co" href="griddedTableDef_overview.html#gtd-note-5"><img src="images/callouts/5.png" alt="5" border="0"/></a>
+      &lt;<a href="bpRef.html" title="bpRef">bpRef</a> bpID="DBFL_PTS"/&gt;
+      &lt;<a href="bpRef.html" title="bpRef">bpRef</a> bpID="XMACH1_PTS"/&gt;
+    &lt;/breakpointRefs&gt;
+    &lt;<a href="dataTable.html" title="dataTable">dataTable</a>&gt; &lt;!-- last breakpoint (XMACH) changes most rapidly --&gt; <a id="gtd-note-6-co" href="griddedTableDef_overview.html#gtd-note-6"><img src="images/callouts/6.png" alt="6" border="0"/></a>
+&lt;!-- CLBFL0 POINTS  --&gt;
+&lt;!-- DBFL =        0.0       --&gt;
+ 0.00000E+00 , 0.00000E+00 , 0.00000E+00 , 0.00000E+00 , 0.00000E+00 ,
+ 0.00000E+00 , 0.00000E+00 , 0.00000E+00 , 0.00000E+00 , 0.00000E+00 ,
+ 0.00000E+00 , 0.00000E+00 , 0.00000E+00 ,
+&lt;!-- DBFL =       15.0       --&gt; <a id="gtd-note-7-co" href="griddedTableDef_overview.html#gtd-note-7"><img src="images/callouts/7.png" alt="7" border="0"/></a>
+-0.86429E-02 ,-0.10256E-01 ,-0.11189E-01 ,-0.12121E-01 ,-0.13520E-01 ,
+-0.86299E-02 ,-0.53679E-02 , 0.76757E-02 , 0.11300E-01 , 0.62992E-02 ,
+ 0.51902E-02 , 0.38813E-02 , 0.37366E-02 ,
+&lt;!-- DBFL =       30.0       --&gt;
+ 0.22251E-01 , 0.26405E-01 , 0.28805E-01 , 0.31206E-01 , 0.34806E-01 ,
+ 0.31321E-01 , 0.28996E-01 , 0.19698E-01 , 0.18808E-01 , 0.12755E-01 ,
+ 0.10804E-01 , 0.98493E-02 , 0.83719E-02 ,
+&lt;!-- DBFL =       45.0       --&gt;
+   .
+   . [other points in table]
+   .
+    &lt;/dataTable&gt;
+  &lt;/griddedTableDef&gt;
+          </pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a id="gtd-note-1"/><a href="#gtd-note-1-co"><img src="images/callouts/1.png" alt="1" border="0"/></a> </td><td valign="top" align="left"><p>Comments are good practice for human readers</p></td></tr><tr><td width="5%" valign="top" align="left"><a id="gtd-note-2"/><a href="#gtd-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p>
+                <code class="sgmltag-element">name</code> is used for documentation purposes; <code class="sgmltag-element">gtID</code>
+                is intended for automatic wiring (autocode) tools. </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="gtd-note-3"/><a href="#gtd-note-3-co"><img src="images/callouts/3.png" alt="3" border="0"/></a> </td><td valign="top" align="left"><p>
+		Descriptions make for good practice whenever possible. Here we explain the contents
+		of the function represented by the data points.
+	      </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="gtd-note-4"/><a href="#gtd-note-4-co"><img src="images/callouts/4.png" alt="4" border="0"/></a> </td><td valign="top" align="left"><p><code class="sgmltag-element">provenance</code> is the story of the origin of the data.</p></td></tr><tr><td width="5%" valign="top" align="left"><a id="gtd-note-5"/><a href="#gtd-note-5-co"><img src="images/callouts/5.png" alt="5" border="0"/></a> </td><td valign="top" align="left"><p> These <code class="sgmltag-element">bpRef</code>s are in the same order as the table is wrapped
+                (see text above) and must be reflected in the referencing function in the same
+                order. In this excerpt, the referencing function must list the
+                  <code class="sgmltag-element">independentVarRefs</code> such that the signal that represents delta
+                body flap (<code class="varname">DBFL</code>) must precede the reference to the signal that
+                represents Mach number (<code class="varname">XMACH</code>). </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="gtd-note-6"/><a href="#gtd-note-6-co"><img src="images/callouts/6.png" alt="6" border="0"/></a> </td><td valign="top" align="left"><p>The points listed within the <code class="sgmltag-element">dataTable</code> element are given as
+                if the last <code class="sgmltag-element">bpRef</code> varies most rapidly. See the discussion
+                above.</p></td></tr><tr><td width="5%" valign="top" align="left"><a id="gtd-note-7"/><a href="#gtd-note-7-co"><img src="images/callouts/7.png" alt="7" border="0"/></a> </td><td valign="top" align="left"><p>Embedded comments are a good practice.</p></td></tr></table></div></div></div><br class="example-break"/></div><P xmlns="" class="CVSinfo">2010-11-08</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="breakpointDef_overview.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="davefunc_overview.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ungriddedTableDef_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

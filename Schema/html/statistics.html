@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><style xmlns="" type="text/css">
+div.added    { background-color: #ffff99; }
+div.deleted  { text-decoration: line-through;
+               background-color: #FF7F7F; }
+div.changed  { background-color: #99ff99; }
+div.off      {  }
+
+span.added   { background-color: #ffff99; }
+span.deleted { text-decoration: line-through;
+               background-color: #FF7F7F; }
+span.changed { background-color: #99ff99; }
+span.off     {  }
+</style><title>6.4. Statistical information encoding</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="top-element.html" title="6. Major elements"/><link rel="prev" href="interpolation.html" title="6.3. Function interpolation/extrapolation"/><link rel="next" href="conventions.html" title="6.5. Additional DAVE-ML conventions"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="interpolation.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="conventions.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="top-element.html">Major elements</a></span> &gt; <span class="breadcrumb-node">Statistics</span></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="statistics"/>6.4. Statistical information encoding</h3></div></div></div><p> 
+	Statistical measures of variation of certain parameters and functions can be embedded in a
+	DAVE-ML model in several ways. This information is captured in an <a href="uncertainty.html" title="uncertainty"> <code class="sgmltag-element">uncertainty</code></a> element, which can be
+	referenced by <a href="variableDef_overview.html" title="6.2.2. The variable definition element"><code class="sgmltag-element">variableDef</code></a>,
+	<a href="griddedTableDef.html" title="griddedTableDef"><code class="sgmltag-element">griddedTableDef</code></a> and <a href="ungriddedTableDef.html" title="ungriddedTableDef"><code class="sgmltag-element">ungriddedTableDef</code></a> elements.  For
+	maximum modeling flexibility, it is possible to add uncertainty to the independent value
+	arguments to a function or calculation, to the output of a function itself, as well as to
+	any output signal.  Applying uncertainty at more than one location in a calculation change
+	is probably not a good practice, however.
+	<a id="d0e5838" class="indexterm"/>
+	<a id="d0e5844" class="indexterm"/>
+      </p><p>
+	Details on providing the random values for uncertainties is left to the implementer.
+      </p><p> Uncertainty in the value of a parameter or function is given in one of two ways,
+        depending on the appropriate probability distribution function (<acronym class="acronym">PDF</acronym>): as
+        a Gaussian or normal distribution (bell curve) or as a uniform (evenly spread) distribution.
+        One of these distributions is selected by including either a <a href="normalPDF.html" title="normalPDF">
+          <code class="sgmltag-element">normalPDF</code>
+        </a> or a <a href="uniformPDF.html" title="uniformPDF">
+          <code class="sgmltag-element">uniformPDF</code>
+        </a> element within the <a href="uncertainty.html" title="uncertainty">
+          <code class="sgmltag-element">uncertainty</code>
+        </a> element. </p><p> 
+	Linear correlation between the randomness of two or more variables or functions can be
+	specified. Although the correlation between parameters does not have a dependency direction
+	(i.e., the statistical uncertainty of one parameter is specified in terms of the other
+	parameter, therefore the calculation order does not matter), correlation is customarily
+	specified as a dependency of one random variable on the value of another random
+	variable. <a href="correlatesWith.html" title="correlatesWith"> <code class="sgmltag-element">correlatesWith</code> </a>
+	identifies variables or functions whose uncertainty 'depends' on the current value of this
+	variable or parameter; the <a href="correlation.html" title="correlation"> <code class="sgmltag-element">correlation</code>
+	</a> sub-element specifies the correlation coefficient and identifies the (previously
+	calculated) random variable or function on which the correlation depends.
+      </p><p> These correlation sub-elements only apply to normal (Gaussian) probability distribution
+        functions. </p><p> Each of these distribution description elements contain additional information, as
+        described below. </p><pre class="programlisting">
+    <a href="uncertainty.html" title="uncertainty">uncertainty</a> : effect=['additive'|'multiplicative'|'percentage'|'absolute']
+      EITHER
+        <a href="normalPDF.html" title="normalPDF">normalPDF</a> : numSigmas=['1'|'2'|'3']
+            <a href="bounds.html" title="bounds">bounds</a> { scalar value representing the one, two or three sigma bound }: 
+            (<a href="correlatesWith.html" title="correlatesWith">correlatesWith</a>* : varID |
+             <a href="correlation.html" title="correlation">correlation</a>* : varID, corrCoef )
+      OR
+        <a href="uniformPDF.html" title="uniformPDF">uniformPDF</a>
+            <a href="bounds.html" title="bounds">bounds</a> { one or two scalar values for abs. or min/max bounds }
+      </pre><div class="variablelist"><p class="title"><b><a href="uncertainty.html" title="uncertainty">
+            <code class="sgmltag-element">uncertainty</code>
+          </a> attributes:</b></p><dl><dt><span class="term">
+	    <a id="d0e5927" class="indexterm"/>
+            <code class="sgmltag-element">effect</code>
+          </span></dt><dd><p>Indicates, by choice of four enumerated values, how the uncertainty is modeled: as
+              an additive, multiplicative, or percentage variation from the nominal value, or a
+              specific number (absolute).</p></dd></dl></div><div class="variablelist"><p class="title"><b><a href="uncertainty.html" title="uncertainty">
+            <code class="sgmltag-element">uncertainty</code>
+          </a> sub-elements:</b></p><dl><dt><span class="term">
+	    <a id="d0e5950" class="indexterm"/>
+            <code class="sgmltag-element">normalPDF</code>
+          </span></dt><dd><p> If present, the uncertainty in the parameter value has a probability distribution
+              that is Gaussian (bell-shaped). A single parameter representing the additive
+              (± some value), percentage (± some %) of variation from the
+              nominal value in terms of 1, 2, 3, or more standard deviations (sigmas) is specified.
+              Note:  multiplicative and absolute bounds do not make much sense. </p></dd><dt><span class="term">
+	    <a id="d0e5965" class="indexterm"/>
+            <code class="sgmltag-element">uniformPDF</code>
+          </span></dt><dd><p> If present, the uncertainty in the parameter or function value has a uniform
+              likelihood of taking on any value between symmetric or asymmetric boundaries, which
+              are specified in terms of additive (either ±x or +x/-y), multiplicative,
+              percentage, or absolute variations. If absolute, the specified range of values must
+              bracket the nominal value. For this element, the <a href="bounds.html" title="bounds">
+                <code class="sgmltag-element">bounds</code>
+              </a> sub-element may contain one or two values, in which case the boundaries are
+              symmetric or asymmetric. </p></dd></dl></div><div class="example"><a id="uncertainty_example_1"/><p class="title"><b>Example 16. A variable with absolute uncertainty bounds</b></p><div class="example-contents"><p> 
+	  This example<a id="d0e5989" class="indexterm"/> shows how to specify that a constant parameter can take on a
+	  specified range of values with uniform probability distribution. The nominal value of the
+	  minimum drag coefficient is specified to be 0.005, but when performing parametric
+	  variations, it is allowed to take on values between 0.001 and 0.01.
+	</p><pre class="programlisting">
+&lt;DAVEfunc&gt;
+    &lt;fileHeader&gt;
+      .
+      .
+      .
+    &lt;/fileHeader&gt;
+    &lt;variableDef name="CD zero" varID="CDo" units="nd" initialValue="0.005"&gt;     <a id="uncert1-note-1-co" href="statistics.html#uncert1-note-1"><img src="images/callouts/1.png" alt="1" border="0"/></a>
+        &lt;description&gt;
+            Minimum coefficient of drag with an 
+            asymmetric uniform uncertainty band
+        &lt;/description&gt;
+        &lt;isOutput/&gt;
+        &lt;uncertainty effect="absolute"&gt;    <a id="uncert1-note-2-co" href="statistics.html#uncert1-note-2"><img src="images/callouts/2.png" alt="2" border="0"/></a>
+            &lt;uniformPDF&gt;
+                &lt;bounds&gt;0.001&lt;/bounds&gt;
+                &lt;bounds&gt;0.010&lt;/bounds&gt;
+            &lt;/uniformPDF&gt;
+        &lt;/uncertainty&gt;
+    &lt;/variableDef&gt;
+ &lt;/DAVEfunc&gt;
+        </pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a id="uncert1-note-1"/><a href="#uncert1-note-1-co"><img src="images/callouts/1.png" alt="1" border="0"/></a> </td><td valign="top" align="left"><p> We declare the parameter <code class="varname">CDo</code> as having a nominal value of
+              0.005. </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="uncert1-note-2"/><a href="#uncert1-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p> When parametric variations are applied, the value of <code class="varname">CDo</code> can
+              vary uniformly between 0.001 and 0.010. </p></td></tr></table></div></div></div><br class="example-break"/><div class="example"><a id="uncertainty_example_2"/><p class="title"><b>Example 17. 10% uncertainty applied to output variable with a uniform distribution</b></p><div class="example-contents"><p>
+	  This example<a id="d0e6022" class="indexterm"/> shows how to specify that a
+	  variable has a 10% uniformly distributed uncertainty band. In this example, the output
+	  variable comes from a nonlinear 1D function and the uncertainty is applied to the output
+	  of the table.
+	</p><pre class="programlisting">
+&lt;DAVEfunc&gt;
+    &lt;fileHeader&gt;
+       .
+       .
+       .
+    &lt;/fileHeader&gt;
+    &lt;variableDef name="angleOfAttack" varID="Alpha_deg" units="deg"&gt;
+        &lt;isStdAIAA/&gt;
+    &lt;/variableDef&gt;
+    &lt;variableDef name="Cm_u" varID="Cm_u" units="nd"&gt;
+        &lt;description&gt;
+            Coefficient of pitching moment with 10 percent 
+            symmetric uniform uncertainty band
+        &lt;/description&gt;
+        &lt;isOutput/&gt;
+        &lt;uncertainty effect="percentage"&gt;    <a id="uncert2-note-1-co" href="statistics.html#uncert2-note-1"><img src="images/callouts/1.png" alt="1" border="0"/></a>
+            &lt;uniformPDF&gt;
+                &lt;bounds&gt;10.0&lt;/bounds&gt;
+            &lt;/uniformPDF&gt;
+        &lt;/uncertainty&gt;
+    &lt;/variableDef&gt;
+    &lt;breakpointDef bpID="ALP"&gt;
+        &lt;bpVals&gt;0, 5, 10, 15, 20, 25, 30, 35&lt;/bpVals&gt;
+    &lt;/breakpointDef&gt;
+    &lt;function name="Nominal Cm"&gt;
+        &lt;description&gt;
+            Nominal pitching moment values prior to application 
+            of uncertainty
+        &lt;/description&gt;
+        &lt;independentVarRef varID="Alpha_deg"/&gt;
+        &lt;dependentVarRef varID="Cm_u"/&gt;
+        &lt;functionDefn&gt;   <a id="uncert2-note-2-co" href="statistics.html#uncert2-note-2"><img src="images/callouts/2.png" alt="2" border="0"/></a>
+            &lt;griddedTableDef&gt;
+                &lt;breakpointRefs&gt;
+                    &lt;bpRef bpID="ALP"/&gt;
+                &lt;/breakpointRefs&gt;
+                &lt;dataTable&gt;
+5.2, 4.3, 3.1, 1.8, 0.3, 0.1, 0.0, -0.1
+                &lt;/dataTable&gt;
+            &lt;/griddedTableDef&gt;
+        &lt;/functionDefn&gt;
+    &lt;/function&gt;
+&lt;/DAVEfunc&gt;
+        </pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a id="uncert2-note-1"/><a href="#uncert2-note-1-co"><img src="images/callouts/1.png" alt="1" border="0"/></a> </td><td valign="top" align="left"><p> We declare the output variable <code class="varname">Cm_u</code> as having the uncertainty
+              of ±10% uniform distribution. </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="uncert2-note-2"/><a href="#uncert2-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p> This function gives the nominal values of <code class="varname">Cm_u</code> as a
+              1D function of angle-of-attack (alpha). </p></td></tr></table></div></div></div><br class="example-break"/><div class="example"><a id="uncertainty_example_3"/><p class="title"><b>Example 18. Asymmetric additive uncertainty applied to output variable with uniform
+          distribution</b></p><div class="example-contents"><p> 
+	  This example<a id="d0e6055" class="indexterm"/> shows how to specify that a
+	  variable has an asymmetric, uniformly distributed, additive uncertainty band. In this
+	  example, the output variable comes from a nonlinear 1D function and the uncertainty is
+	  applied to the output of the table.
+	</p><pre class="programlisting">
+&lt;DAVEfunc&gt;
+    &lt;fileHeader&gt;
+      .
+      .
+      .
+    &lt;/fileHeader&gt;
+    &lt;variableDef name="angleOfAttack" varID="Alpha_deg" units="deg"&gt;
+        &lt;isStdAIAA/&gt;
+    &lt;/variableDef&gt;
+    &lt;variableDef name="Cm_u" varID="Cm_u" units="nd"&gt;
+        &lt;description&gt;
+            Coefficient of pitching moment with an 
+            asymmetric uniform uncertainty band
+        &lt;/description&gt;
+        &lt;isOutput/&gt;
+        &lt;uncertainty effect="additive"&gt;  <a id="uncert3-note-1-co" href="statistics.html#uncert3-note-1"><img src="images/callouts/1.png" alt="1" border="0"/></a>
+            &lt;uniformPDF&gt;
+                &lt;bounds&gt;-0.50&lt;/bounds&gt;
+                &lt;bounds&gt;0.00&lt;/bounds&gt;
+            &lt;/uniformPDF&gt;
+        &lt;/uncertainty&gt;
+    &lt;/variableDef&gt;
+    &lt;breakpointDef bpID="ALP"&gt;
+        &lt;bpVals&gt;0, 5, 10, 15, 20, 25, 30, 35&lt;/bpVals&gt;
+    &lt;/breakpointDef&gt;
+    &lt;function name="Nominal Cm"&gt;
+        &lt;description&gt;
+            Nominal pitching moment values prior to application 
+            of uncertainty
+        &lt;/description&gt;
+        &lt;independentVarRef varID="Alpha_deg"/&gt;
+        &lt;dependentVarRef varID="Cm_u"/&gt;   <a id="uncert3-note-2-co" href="statistics.html#uncert3-note-2"><img src="images/callouts/2.png" alt="2" border="0"/></a>
+        &lt;functionDefn&gt;
+            &lt;griddedTableDef&gt;
+                &lt;breakpointRefs&gt;
+                    &lt;bpRef bpID="ALP"/&gt;
+                &lt;/breakpointRefs&gt;
+                &lt;dataTable&gt;
+5.2, 4.3, 3.1, 1.8, 0.3, 0.1, 0.0, -0.1
+                &lt;/dataTable&gt;
+            &lt;/griddedTableDef&gt;
+        &lt;/functionDefn&gt;
+    &lt;/function&gt;
+&lt;/DAVEfunc&gt;
+        </pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a id="uncert3-note-1"/><a href="#uncert3-note-1-co"><img src="images/callouts/1.png" alt="1" border="0"/></a> </td><td valign="top" align="left"><p> We declare the output variable <code class="varname">Cm_u</code> varies by as much as −0.5
+              to +0.0 about the nominal value. This delta value is in the same units as the nominal
+              value (i.e. it is not a multiplier or percentage but an additive delta to the nominal
+              value which comes from the 1D <code class="varname">Cm_u</code> function table
+              description). </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="uncert3-note-2"/><a href="#uncert3-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p> This function gives the nominal values of <code class="varname">Cm_u</code> as a
+              1D function of angle-of-attack (alpha). </p></td></tr></table></div></div></div><br class="example-break"/><div class="example"><a id="uncertainty_example_4"/><p class="title"><b>Example 19. A 1D point-by-point, Gaussian distribution function</b></p><div class="example-contents"><p>
+	  In this example<a id="d0e6091" class="indexterm"/>, a Gaussian (normal) distribution function is applied
+	  to <span class="emphasis"><em>each</em></span> point in a 1D function table, with the 3-sigma value
+	  expressed as a multiplier of the nominal value.
+	</p><pre class="programlisting">
+&lt;DAVEfunc&gt;
+    &lt;fileHeader&gt;
+       .
+       .
+       .
+    &lt;/fileHeader&gt;
+    &lt;variableDef name="angleOfAttack" varID="Alpha_deg" units="deg"&gt;
+        &lt;isStdAIAA/&gt;
+    &lt;/variableDef&gt;
+    &lt;variableDef name="Cm_u" varID="Cm_u" units="nd"&gt;
+        &lt;description&gt;
+            Coefficient of pitching moment with 10 percent 
+            symmetric uniform uncertainty band
+        &lt;/description&gt;
+        &lt;isOutput/&gt;
+    &lt;/variableDef&gt;
+    &lt;breakpointDef bpID="ALP"&gt;
+        &lt;bpVals&gt;0, 5, 10, 15, 20, 25, 30, 35&lt;/bpVals&gt;
+    &lt;/breakpointDef&gt;
+  &lt;function name="Uncertain Cm"&gt;
+    &lt;independentVarRef varID="Alpha_deg"/&gt;
+    &lt;dependentVarRef varID="Cm_u"/&gt;
+    &lt;functionDefn&gt;
+      &lt;griddedTableDef&gt;
+        &lt;breakpointRefs&gt;
+          &lt;bpRef bpID="ALP"/&gt;
+        &lt;/breakpointRefs&gt;
+        &lt;uncertainty effect="multiplicative"&gt;  <a id="uncert4-note-1-co" href="statistics.html#uncert4-note-1"><img src="images/callouts/1.png" alt="1" border="0"/></a>
+          &lt;normalPDF numSigmas="3"&gt;  <a id="uncert4-note-2-co" href="statistics.html#uncert4-note-2"><img src="images/callouts/2.png" alt="2" border="0"/></a>
+            &lt;bounds&gt;
+              &lt;dataTable&gt;  <a id="uncert4-note-3-co" href="statistics.html#uncert4-note-3"><img src="images/callouts/3.png" alt="3" border="0"/></a>
+                0.10, 0.08, 0.06, 0.05, 0.05, 0.06, 0.07, 0.12
+              &lt;/dataTable&gt;
+            &lt;/bounds&gt;
+          &lt;/normalPDF&gt;
+        &lt;/uncertainty&gt;
+        &lt;dataTable&gt;   <a id="uncert4-note-4-co" href="statistics.html#uncert4-note-4"><img src="images/callouts/4.png" alt="4" border="0"/></a>
+          5.2, 4.3, 3.1, 1.8, 0.3, 0.1, 0.0, -0.1
+        &lt;/dataTable&gt;
+      &lt;/griddedTableDef&gt;
+    &lt;/functionDefn&gt;
+  &lt;/function&gt;
+&lt;/DAVEfunc&gt;
+        </pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a id="uncert4-note-1"/><a href="#uncert4-note-1-co"><img src="images/callouts/1.png" alt="1" border="0"/></a> </td><td valign="top" align="left"><p> This declares the statistical uncertainty bounds of the <code class="varname">Cm_u</code>
+              dependent variable will be expressed as a multiplication of the nominal value. </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="uncert4-note-2"/><a href="#uncert4-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p> This declares that the probability distribution is a normal distribution and the
+              bounds represent 3-sigma (99.7%) confidence bounds. </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="uncert4-note-3"/><a href="#uncert4-note-3-co"><img src="images/callouts/3.png" alt="3" border="0"/></a> </td><td valign="top" align="left"><p> This table lists three-sigma bounds of each point of the <code class="varname">Cm_u</code>
+              function as a table. The table must have the same dimensions and independent variable
+              arguments as the nominal function; it is in effect an overlay to the nominal function
+              table, but the values represent the bounds as multiples of the nominal function value.
+            </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="uncert4-note-4"/><a href="#uncert4-note-4-co"><img src="images/callouts/4.png" alt="4" border="0"/></a> </td><td valign="top" align="left"><p> This table defines the nominal values of the function; these values will be used
+              if the random variable associated with the uncertainty of this function is zero or
+              undefined by the application. </p></td></tr></table></div></div></div><br class="example-break"/><div class="example"><a id="uncertainty_example_5"/><p class="title"><b>Example 20. Two nonlinear functions with correlated uncertainty</b></p><div class="example-contents"><p>
+	  In this example<a id="d0e6137" class="indexterm"/>, uncertainty in pitching-moment coefficient varies in
+	  direct correlation with lift coefficient uncertainty.
+	</p><pre class="programlisting">
+&lt;DAVEfunc&gt;
+    &lt;fileHeader&gt; . . . &lt;/fileHeader&gt;
+    &lt;variableDef name="angleOfAttack" varID="Alpha_deg" units="deg"&gt;
+        &lt;isStdAIAA/&gt;
+    &lt;/variableDef&gt;
+    &lt;variableDef name="CL_u" varID="CL_u" units="nd"&gt;
+        &lt;description&gt; Coefficient of lift with a symmetric Gaussian uncertainty 
+            of 20%; correlates with Cm uncertainty. &lt;/description&gt;
+        &lt;uncertainty effect="multiplicative"&gt;    <a id="uncert5-note-1-co" href="statistics.html#uncert5-note-1"><img src="images/callouts/1.png" alt="1" border="0"/></a>
+            &lt;normalPDF numSigmas="3"&gt;
+                &lt;bounds&gt;0.20&lt;/bounds&gt;
+                &lt;correlatesWith varID="Cm_u"/&gt;   <a id="uncert5-note-2-co" href="statistics.html#uncert5-note-2"><img src="images/callouts/2.png" alt="2" border="0"/></a>
+            &lt;/normalPDF&gt;
+        &lt;/uncertainty&gt;
+    &lt;/variableDef&gt;
+    &lt;variableDef name="Cm_u" varID="Cm_u" units="nd"&gt;
+        &lt;description&gt; Coefficient of pitching moment with a symmetric Gaussian uncertainty
+            distribution of 30%; correlates directly with lift uncertainty. &lt;/description&gt;
+        &lt;isOutput/&gt;
+        &lt;uncertainty effect="percentage"&gt;        <a id="uncert5-note-3-co" href="statistics.html#uncert5-note-3"><img src="images/callouts/3.png" alt="3" border="0"/></a>
+            &lt;normalPDF numSigmas="3"&gt;
+                &lt;bounds&gt;30&lt;/bounds&gt;
+                &lt;correlation varID="CL_u" corrCoef="1.0"/&gt;  <a id="uncert5-note-4-co" href="statistics.html#uncert5-note-4"><img src="images/callouts/4.png" alt="4" border="0"/></a>
+            &lt;/normalPDF&gt;
+        &lt;/uncertainty&gt;
+    &lt;/variableDef&gt;
+    &lt;breakpointDef bpID="ALP"&gt;
+        &lt;bpVals&gt;0, 5, 10, 15, 20, 25, 30, 35&lt;/bpVals&gt;
+    &lt;/breakpointDef&gt;
+    &lt;function name="Nominal CL"&gt;
+        &lt;description&gt; Nominal lift coefficient values prior to uncertainty &lt;/description&gt;
+        &lt;independentVarRef varID="Alpha_deg"/&gt;
+        &lt;dependentVarRef varID="CL_u"/&gt;
+        &lt;functionDefn&gt;
+            &lt;griddedTableDef&gt;
+                &lt;breakpointRefs&gt;&lt;bpRef bpID="ALP"/&gt;&lt;/breakpointRefs&gt;
+                &lt;dataTable&gt; 0.0, 0.1, 0.2, 0.3, 0.4, 0.45, 0.5, 0.45 &lt;/dataTable&gt;
+            &lt;/griddedTableDef&gt;
+        &lt;/functionDefn&gt;
+    &lt;/function&gt;
+    &lt;function name="Nominal Cm"&gt;
+        &lt;description&gt; Nominal pitching moment values prior to uncertainty &lt;/description&gt;
+        &lt;independentVarRef varID="Alpha_deg"/&gt;
+        &lt;dependentVarRef varID="Cm_u"/&gt;
+        &lt;functionDefn&gt;
+            &lt;griddedTableDef&gt;
+                &lt;breakpointRefs&gt;&lt;bpRef bpID="ALP"/&gt;&lt;/breakpointRefs&gt;
+                &lt;dataTable&gt; 5.2, 4.3, 3.1, 1.8, 0.3, 0.1, 0.0, -0.1 &lt;/dataTable&gt;
+            &lt;/griddedTableDef&gt;
+        &lt;/functionDefn&gt;
+    &lt;/function&gt;
+&lt;/DAVEfunc&gt;
+        </pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a id="uncert5-note-1"/><a href="#uncert5-note-1-co"><img src="images/callouts/1.png" alt="1" border="0"/></a> </td><td valign="top" align="left"><p> 
+	      Lift coefficient has a nominal value that varies with angle-of-attack according to a
+	      nonlinear 1D table (given in the "Nominal CL" table defined in this
+	      example). When performing parametric variations, <code class="varname">CL_u</code> can take on a
+	      multiplicative variation of up to 20% (3-sigma) with a Gaussian distribution.
+	    </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="uncert5-note-2"/><a href="#uncert5-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p> 
+	      This element indicates that the variation of lift coefficient correlates directly with
+	      the variation in pitching moment coefficient.
+	    </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="uncert5-note-3"/><a href="#uncert5-note-3-co"><img src="images/callouts/3.png" alt="3" border="0"/></a> </td><td valign="top" align="left"><p> 
+	      Pitching-moment coefficient has a nominal value that varies as a function of
+	      angle-of-attack, according to a nonlinear 1D table (given in the "Nominal Cm" table
+	      defined in this example). When performing parametric variations,
+	      <code class="varname">Cm_u</code> can take on a 30% variation (3-sigma) with a Gaussian
+	      distribution.
+	    </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="uncert5-note-4"/><a href="#uncert5-note-4-co"><img src="images/callouts/4.png" alt="4" border="0"/></a> </td><td valign="top" align="left"><p> This element indicates that the variation of pitching moment correlates directly
+              with the variation in lift coefficient. </p></td></tr></table></div></div></div><br class="example-break"/></div><P xmlns="" class="CVSinfo">2010-11-08</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="interpolation.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="top-element.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="conventions.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

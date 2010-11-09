@@ -1,0 +1,4531 @@
+Model {
+  Name			  "F16_aero"
+  Version		  5.0
+  SaveDefaultBlockParams  on
+  SampleTimeColors	  off
+  LibraryLinkDisplay	  "none"
+  WideLines		  off
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  off
+  ShowLoopsOnError	  on
+  IgnoreBidirectionalLines off
+  ShowStorageClass	  off
+  ExecutionOrder	  off
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeVarName	  "covCumulativeData"
+  CovCumulativeReport	  off
+  DataTypeOverride	  "UseLocalSettings"
+  MinMaxOverflowLogging	  "UseLocalSettings"
+  MinMaxOverflowArchiveMode "Overwrite"
+  BlockNameDataTip	  off
+  BlockParametersDataTip  off
+  BlockDescriptionStringDataTip	off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  Created		  "Tue Jul 16 08:12:35 2002"
+  Creator		  "bjax"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "bjax"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Tue Oct  1 11:19:57 2002"
+  ModelVersionFormat	  "1.%<AutoIncrement:7>"
+  ConfigurationManager	  "None"
+  SimParamPage		  "Solver"
+  LinearizationMsg	  "none"
+  Profile		  off
+  ParamWorkspaceSource	  "MATLABWorkspace"
+  AccelSystemTargetFile	  "accel.tlc"
+  AccelTemplateMakefile	  "accel_default_tmf"
+  AccelMakeCommand	  "make_rtw"
+  TryForcingSFcnDF	  off
+  ExtModeMexFile	  "ext_comm"
+  ExtModeBatchMode	  off
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  ExtModeSkipDownloadWhenConnect off
+  ExtModeLogAll		  on
+  ExtModeAutoUpdateStatusClock off
+  BufferReuse		  on
+  RTWExpressionDepthLimit 5
+  SimulationMode	  "normal"
+  Solver		  "ode45"
+  SolverMode		  "Auto"
+  StartTime		  "0.0"
+  StopTime		  "10.0"
+  MaxOrder		  5
+  MaxStep		  "auto"
+  MinStep		  "auto"
+  MaxNumMinSteps	  "-1"
+  InitialStep		  "auto"
+  FixedStep		  "auto"
+  RelTol		  "1e-3"
+  AbsTol		  "auto"
+  OutputOption		  "RefineOutputTimes"
+  OutputTimes		  "[]"
+  Refine		  "1"
+  LoadExternalInput	  off
+  ExternalInput		  "[t, u]"
+  LoadInitialState	  off
+  InitialState		  "xInitial"
+  SaveTime		  on
+  TimeSaveName		  "tout"
+  SaveState		  off
+  StateSaveName		  "xout"
+  SaveOutput		  on
+  OutputSaveName	  "yout"
+  SaveFinalState	  off
+  FinalStateName	  "xFinal"
+  SaveFormat		  "Array"
+  Decimation		  "1"
+  LimitDataPoints	  on
+  MaxDataPoints		  "1000"
+  SignalLoggingName	  "sigsOut"
+  ConsistencyChecking	  "none"
+  ArrayBoundsChecking	  "none"
+  AlgebraicLoopMsg	  "warning"
+  BlockPriorityViolationMsg "warning"
+  MinStepSizeMsg	  "warning"
+  InheritedTsInSrcMsg	  "warning"
+  DiscreteInheritContinuousMsg "warning"
+  MultiTaskRateTransMsg	  "error"
+  SingleTaskRateTransMsg  "none"
+  CheckForMatrixSingularity "none"
+  IntegerOverflowMsg	  "warning"
+  Int32ToFloatConvMsg	  "warning"
+  ParameterDowncastMsg	  "error"
+  ParameterOverflowMsg	  "error"
+  ParameterPrecisionLossMsg "warning"
+  UnderSpecifiedDataTypeMsg "none"
+  UnnecessaryDatatypeConvMsg "none"
+  VectorMatrixConversionMsg "none"
+  InvalidFcnCallConnMsg	  "error"
+  SignalLabelMismatchMsg  "none"
+  UnconnectedInputMsg	  "warning"
+  UnconnectedOutputMsg	  "warning"
+  UnconnectedLineMsg	  "warning"
+  SfunCompatibilityCheckMsg "none"
+  RTWInlineParameters	  off
+  BlockReductionOpt	  on
+  BooleanDataType	  off
+  ConditionallyExecuteInputs on
+  ParameterPooling	  on
+  OptimizeBlockIOStorage  on
+  ZeroCross		  on
+  AssertionControl	  "UseLocalSettings"
+  ProdHWDeviceType	  "Microprocessor"
+  ProdHWWordLengths	  "8,16,32,32"
+  RTWSystemTargetFile	  "grt.tlc"
+  RTWTemplateMakefile	  "grt_default_tmf"
+  RTWMakeCommand	  "make_rtw"
+  RTWGenerateCodeOnly	  off
+  RTWRetainRTWFile	  off
+  TLCProfiler		  off
+  TLCDebug		  off
+  TLCCoverage		  off
+  TLCAssertion		  off
+  BlockDefaults {
+    Orientation		    "right"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+  }
+  BlockParameterDefaults {
+    Block {
+      BlockType		      Abs
+      SaturateOnIntegerOverflow	on
+      ZeroCross		      on
+    }
+    Block {
+      BlockType		      Constant
+      Value		      "1"
+      VectorParams1D	      on
+      ShowAdditionalParam     off
+      OutDataTypeMode	      "Inherit from 'Constant value'"
+      OutDataType	      "sfix(16)"
+      ConRadixGroup	      "Use specified scaling"
+      OutScaling	      "2^0"
+    }
+    Block {
+      BlockType		      Gain
+      Gain		      "1"
+      Multiplication	      "Element-wise(K.*u)"
+      ShowAdditionalParam     off
+      ParameterDataTypeMode   "Same as input"
+      ParameterDataType	      "sfix(16)"
+      ParameterScalingMode    "Best Precision: Matrix-wise"
+      ParameterScaling	      "2^0"
+      OutDataTypeMode	      "Same as input"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Inport
+      Port		      "1"
+      PortDimensions	      "-1"
+      SampleTime	      "-1"
+      ShowAdditionalParam     off
+      LatchInput	      off
+      DataType		      "auto"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Math
+      Operator		      "exp"
+      OutputSignalType	      "auto"
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      Product
+      Inputs		      "2"
+      Multiplication	      "Element-wise(.*)"
+      ShowAdditionalParam     off
+      InputSameDT	      on
+      OutDataTypeMode	      "Same as first input"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      RelationalOperator
+      Operator		      ">="
+      ShowAdditionalParam     off
+      InputSameDT	      on
+      LogicOutDataTypeMode    "Logical (see Advanced Sim. Parameters)"
+      LogicDataType	      "uint(8)"
+      ZeroCross		      on
+    }
+    Block {
+      BlockType		      "S-Function"
+      FunctionName	      "system"
+      PortCounts	      "[]"
+      SFunctionModules	      "''"
+    }
+    Block {
+      BlockType		      SubSystem
+      ShowPortLabels	      on
+      Permissions	      "ReadWrite"
+      RTWSystemCode	      "Auto"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      SimViewingDevice	      off
+      DataTypeOverride	      "UseLocalSettings"
+      MinMaxOverflowLogging   "UseLocalSettings"
+    }
+    Block {
+      BlockType		      Sum
+      IconShape		      "rectangular"
+      Inputs		      "++"
+      ShowAdditionalParam     off
+      InputSameDT	      on
+      OutDataTypeMode	      "Same as first input"
+      OutDataType	      "sfix(16)"
+      OutScaling	      "2^0"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+    }
+    Block {
+      BlockType		      Switch
+      Criteria		      "u2 >= Threshold"
+      Threshold		      "0"
+      ShowAdditionalParam     off
+      InputSameDT	      on
+      OutDataTypeMode	      "Inherit via internal rule"
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      ZeroCross		      on
+    }
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  System {
+    Name		    "F16_aero"
+    Location		    [1215, 434, 1787, 998]
+    Open		    on
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    ZoomFactor		    "100"
+    ReportName		    "simulink-default.rpt"
+    Block {
+      BlockType		      Inport
+      Name		      "alpha"
+      Position		      [40, 68, 70, 82]
+      Port {
+	PortNumber		1
+	Name			"alpha"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+	DataLogging		off
+	DataLoggingNameMode	"SignalName"
+	DataLoggingDecimateData	off
+	DataLoggingDecimation	"2"
+	DataLoggingLimitDataPoints off
+	DataLoggingMaxPoints	"5000"
+      }
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "vt"
+      Position		      [40, 108, 70, 122]
+      Port		      "2"
+      Port {
+	PortNumber		1
+	Name			"vt"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+	DataLogging		off
+	DataLoggingNameMode	"SignalName"
+	DataLoggingDecimateData	off
+	DataLoggingDecimation	"2"
+	DataLoggingLimitDataPoints off
+	DataLoggingMaxPoints	"5000"
+      }
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "beta"
+      Position		      [40, 148, 70, 162]
+      Port		      "3"
+      Port {
+	PortNumber		1
+	Name			"beta"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+	DataLogging		off
+	DataLoggingNameMode	"SignalName"
+	DataLoggingDecimateData	off
+	DataLoggingDecimation	"2"
+	DataLoggingLimitDataPoints off
+	DataLoggingMaxPoints	"5000"
+      }
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "body roll rate"
+      Position		      [40, 188, 70, 202]
+      Port		      "4"
+      Port {
+	PortNumber		1
+	Name			"body roll rate"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+	DataLogging		off
+	DataLoggingNameMode	"SignalName"
+	DataLoggingDecimateData	off
+	DataLoggingDecimation	"2"
+	DataLoggingLimitDataPoints off
+	DataLoggingMaxPoints	"5000"
+      }
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "body pitch rate"
+      Position		      [40, 228, 70, 242]
+      Port		      "5"
+      Port {
+	PortNumber		1
+	Name			"body pitch rate"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+	DataLogging		off
+	DataLoggingNameMode	"SignalName"
+	DataLoggingDecimateData	off
+	DataLoggingDecimation	"2"
+	DataLoggingLimitDataPoints off
+	DataLoggingMaxPoints	"5000"
+      }
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "body yaw rate"
+      Position		      [40, 268, 70, 282]
+      Port		      "6"
+      Port {
+	PortNumber		1
+	Name			"body yaw rate"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+	DataLogging		off
+	DataLoggingNameMode	"SignalName"
+	DataLoggingDecimateData	off
+	DataLoggingDecimation	"2"
+	DataLoggingLimitDataPoints off
+	DataLoggingMaxPoints	"5000"
+      }
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "delta elevator"
+      Position		      [40, 308, 70, 322]
+      Port		      "7"
+      Port {
+	PortNumber		1
+	Name			"delta elevator"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+	DataLogging		off
+	DataLoggingNameMode	"SignalName"
+	DataLoggingDecimateData	off
+	DataLoggingDecimation	"2"
+	DataLoggingLimitDataPoints off
+	DataLoggingMaxPoints	"5000"
+      }
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "delta aileron"
+      Position		      [40, 348, 70, 362]
+      Port		      "8"
+      Port {
+	PortNumber		1
+	Name			"delta aileron"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+	DataLogging		off
+	DataLoggingNameMode	"SignalName"
+	DataLoggingDecimateData	off
+	DataLoggingDecimation	"2"
+	DataLoggingLimitDataPoints off
+	DataLoggingMaxPoints	"5000"
+      }
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "delta rudder"
+      Position		      [40, 388, 70, 402]
+      Port		      "9"
+      Port {
+	PortNumber		1
+	Name			"delta rudder"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+	DataLogging		off
+	DataLoggingNameMode	"SignalName"
+	DataLoggingDecimateData	off
+	DataLoggingDecimation	"2"
+	DataLoggingLimitDataPoints off
+	DataLoggingMaxPoints	"5000"
+      }
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "Xcg"
+      Position		      [40, 428, 70, 442]
+      Port		      "10"
+      Port {
+	PortNumber		1
+	Name			"Xcg"
+	TestPoint		off
+	LinearAnalysisOutput	off
+	LinearAnalysisInput	off
+	RTWStorageClass		"Auto"
+	DataLogging		off
+	DataLoggingNameMode	"SignalName"
+	DataLoggingDecimateData	off
+	DataLoggingDecimation	"2"
+	DataLoggingLimitDataPoints off
+	DataLoggingMaxPoints	"5000"
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "F16_aero_XML"
+      Ports		      [10, 6]
+      Position		      [185, 46, 355, 464]
+      TreatAsAtomicUnit	      off
+      System {
+	Name			"F16_aero_XML"
+	Location		[1655, 118, 2686, 1114]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "alpha"
+	  Position		  [25, 1973, 55, 1987]
+	  Port {
+	    PortNumber		    1
+	    Name		    "alpha"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "vt"
+	  Position		  [25, 1883, 55, 1897]
+	  Port			  "2"
+	  Port {
+	    PortNumber		    1
+	    Name		    "vt"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "beta"
+	  Position		  [25, 3763, 55, 3777]
+	  Port			  "3"
+	  Port {
+	    PortNumber		    1
+	    Name		    "beta"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "body roll rate"
+	  Position		  [25, 4003, 55, 4017]
+	  Port			  "4"
+	  Port {
+	    PortNumber		    1
+	    Name		    "body roll rate"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "body pitch rate"
+	  Position		  [25, 4083, 55, 4097]
+	  Port			  "5"
+	  Port {
+	    PortNumber		    1
+	    Name		    "body pitch rate"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "body yaw rate"
+	  Position		  [25, 4163, 55, 4177]
+	  Port			  "6"
+	  Port {
+	    PortNumber		    1
+	    Name		    "body yaw rate"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "delta elevator"
+	  Position		  [25, 4243, 55, 4257]
+	  Port			  "7"
+	  Port {
+	    PortNumber		    1
+	    Name		    "delta elevator"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "delta aileron"
+	  Position		  [25, 4403, 55, 4417]
+	  Port			  "8"
+	  Port {
+	    PortNumber		    1
+	    Name		    "delta aileron"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "delta rudder"
+	  Position		  [25, 4483, 55, 4497]
+	  Port			  "9"
+	  Port {
+	    PortNumber		    1
+	    Name		    "delta rudder"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Xcg"
+	  Position		  [25, 4563, 55, 4577]
+	  Port			  "10"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Xcg"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "ALPHA1"
+	  Ports			  [1, 1]
+	  Position		  [105, 1955, 135, 1985]
+	  SourceBlock		  "simulink/Look-Up\nTables/PreLook-Up\nIndex "
+"Search"
+	  SourceType		  "LookupIdxSearch"
+	  bpData		  "[-10.0, -5.0, 0.0, 5.0, 10.0, 15.0, 20.0, 2"
+"5.0, 30.0, 35.0, 40.0, 45.0]"
+	  searchMode		  "Binary Search"
+	  cacheBpFlag		  on
+	  outputFlag		  off
+	  extrapMode		  "Linear Extrapolation"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "alpha_by_ALPHA1"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "BETA1"
+	  Ports			  [1, 1]
+	  Position		  [195, 3825, 225, 3855]
+	  SourceBlock		  "simulink/Look-Up\nTables/PreLook-Up\nIndex "
+"Search"
+	  SourceType		  "LookupIdxSearch"
+	  bpData		  "[0.0, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0]"
+	  searchMode		  "Binary Search"
+	  cacheBpFlag		  on
+	  outputFlag		  off
+	  extrapMode		  "Linear Extrapolation"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "absbeta_by_BETA1"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "BETA2"
+	  Ports			  [1, 1]
+	  Position		  [105, 3905, 135, 3935]
+	  SourceBlock		  "simulink/Look-Up\nTables/PreLook-Up\nIndex "
+"Search"
+	  SourceType		  "LookupIdxSearch"
+	  bpData		  "[-30.0, -20.0, -10.0, 0.0, 10.0, 20.0, 30.0"
+"]"
+	  searchMode		  "Binary Search"
+	  cacheBpFlag		  on
+	  outputFlag		  off
+	  extrapMode		  "Linear Extrapolation"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "beta_by_BETA2"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "CX_fn"
+	  Ports			  [2, 1]
+	  Position		  [185, 1947, 235, 1998]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "2"
+	  explicitNumDims	  "2"
+	  table			  "CX_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "CX0"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "CXq_fn"
+	  Ports			  [1, 1]
+	  Position		  [185, 2445, 235, 2495]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "1"
+	  explicitNumDims	  "1"
+	  table			  "CXq_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "CXq"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "CYp_fn"
+	  Ports			  [1, 1]
+	  Position		  [185, 2645, 235, 2695]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "1"
+	  explicitNumDims	  "1"
+	  table			  "CYp_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "CYp"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "CYr_fn"
+	  Ports			  [1, 1]
+	  Position		  [185, 2545, 235, 2595]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "1"
+	  explicitNumDims	  "1"
+	  table			  "CYr_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "CYr"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "CZ0_fn"
+	  Ports			  [1, 1]
+	  Position		  [185, 2045, 235, 2095]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "1"
+	  explicitNumDims	  "1"
+	  table			  "CZ0_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "CZ0"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "CZq_fn"
+	  Ports			  [1, 1]
+	  Position		  [185, 2745, 235, 2795]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "1"
+	  explicitNumDims	  "1"
+	  table			  "CZq_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "CZq"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Cl0_fn"
+	  Ports			  [2, 1]
+	  Position		  [285, 2247, 335, 2298]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "2"
+	  explicitNumDims	  "2"
+	  table			  "Cl0_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "absCl0"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Clp_fn"
+	  Ports			  [1, 1]
+	  Position		  [185, 2945, 235, 2995]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "1"
+	  explicitNumDims	  "1"
+	  table			  "Clp_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Clp"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Clr_fn"
+	  Ports			  [1, 1]
+	  Position		  [185, 2845, 235, 2895]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "1"
+	  explicitNumDims	  "1"
+	  table			  "Clr_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Clr"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Cm0_fn"
+	  Ports			  [2, 1]
+	  Position		  [185, 2147, 235, 2198]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "2"
+	  explicitNumDims	  "2"
+	  table			  "Cm0_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Cm0"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Cmq_fn"
+	  Ports			  [1, 1]
+	  Position		  [185, 3045, 235, 3095]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "1"
+	  explicitNumDims	  "1"
+	  table			  "Cmq_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Cmq"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Cn0_fn"
+	  Ports			  [2, 1]
+	  Position		  [285, 2347, 335, 2398]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "2"
+	  explicitNumDims	  "2"
+	  table			  "Cn0_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "absCn0"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Cnp_fn"
+	  Ports			  [1, 1]
+	  Position		  [185, 3245, 235, 3295]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "1"
+	  explicitNumDims	  "1"
+	  table			  "Cnp_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Cnp"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Cnr_fn"
+	  Ports			  [1, 1]
+	  Position		  [185, 3145, 235, 3195]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "1"
+	  explicitNumDims	  "1"
+	  table			  "Cnr_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Cnr"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "DE1"
+	  Ports			  [1, 1]
+	  Position		  [105, 4305, 135, 4335]
+	  SourceBlock		  "simulink/Look-Up\nTables/PreLook-Up\nIndex "
+"Search"
+	  SourceType		  "LookupIdxSearch"
+	  bpData		  "[-24.0, -12.0, 0.0, 12.0, 24.0]"
+	  searchMode		  "Binary Search"
+	  cacheBpFlag		  on
+	  outputFlag		  off
+	  extrapMode		  "Linear Extrapolation"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "delta elevator_by_DE1"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Abs
+	  Name			  "abs"
+	  Position		  [105, 3825, 135, 3855]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "absbeta"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_-0.02_"
+	  Position		  [25, 745, 55, 775]
+	  ShowName		  off
+	  Value			  "-0.02"
+	  Port {
+	    PortNumber		    1
+	    Name		    "const -0.02"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_-0.19_"
+	  Position		  [25, 1145, 55, 1175]
+	  ShowName		  off
+	  Value			  "-0.19"
+	  Port {
+	    PortNumber		    1
+	    Name		    "const -0.19"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_0.021_"
+	  Position		  [25, 825, 55, 855]
+	  ShowName		  off
+	  Value			  "0.021"
+	  Port {
+	    PortNumber		    1
+	    Name		    "const 0.021"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_0.086_"
+	  Position		  [25, 905, 55, 935]
+	  ShowName		  off
+	  Value			  "0.086"
+	  Port {
+	    PortNumber		    1
+	    Name		    "const 0.086"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_0.35_"
+	  Position		  [25, 4705, 55, 4735]
+	  ShowName		  off
+	  Value			  "0.35"
+	  Port {
+	    PortNumber		    1
+	    Name		    "xcgr"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_0_"
+	  Position		  [25, 1705, 55, 1735]
+	  ShowName		  off
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "const 0"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_0_1"
+	  Position		  [25, 1785, 55, 1815]
+	  ShowName		  off
+	  Value			  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "const 0"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_1._"
+	  Position		  [25, 985, 55, 1015]
+	  ShowName		  off
+	  Value			  "1."
+	  Port {
+	    PortNumber		    1
+	    Name		    "const 1."
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_11.32_"
+	  Position		  [25, 4785, 55, 4815]
+	  ShowName		  off
+	  Value			  "11.32"
+	  Port {
+	    PortNumber		    1
+	    Name		    "cbar"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_180._"
+	  Position		  [25, 25, 55, 55]
+	  ShowName		  off
+	  Value			  "180."
+	  Port {
+	    PortNumber		    1
+	    Name		    "const 180."
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_20.0_"
+	  Position		  [25, 265, 55, 295]
+	  ShowName		  off
+	  Value			  "20.0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "const 20.0"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_25.0_"
+	  Position		  [25, 185, 55, 215]
+	  ShowName		  off
+	  Value			  "25.0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "const 25.0"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_2_"
+	  Position		  [25, 1065, 55, 1095]
+	  ShowName		  off
+	  Value			  "2"
+	  Port {
+	    PortNumber		    1
+	    Name		    "const 2"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_2_1"
+	  Position		  [25, 1225, 55, 1255]
+	  ShowName		  off
+	  Value			  "2"
+	  Port {
+	    PortNumber		    1
+	    Name		    "const 2"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_3.14159265_"
+	  Position		  [25, 105, 55, 135]
+	  ShowName		  off
+	  Value			  "3.14159265"
+	  Port {
+	    PortNumber		    1
+	    Name		    "const 3.14159265"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_30.0_"
+	  Position		  [25, 505, 55, 535]
+	  ShowName		  off
+	  Value			  "30.0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "const 30.0"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Constant
+	  Name			  "const_30._"
+	  Position		  [25, 4865, 55, 4895]
+	  ShowName		  off
+	  Value			  "30."
+	  Port {
+	    PortNumber		    1
+	    Name		    "bspan"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "dlda_fn"
+	  Ports			  [2, 1]
+	  Position		  [185, 3347, 235, 3398]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "2"
+	  explicitNumDims	  "2"
+	  table			  "dlda_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "ClDA"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "dldr_fn"
+	  Ports			  [2, 1]
+	  Position		  [185, 3447, 235, 3498]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "2"
+	  explicitNumDims	  "2"
+	  table			  "dldr_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "ClDR"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "dnda_fn"
+	  Ports			  [2, 1]
+	  Position		  [185, 3547, 235, 3598]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "2"
+	  explicitNumDims	  "2"
+	  table			  "dnda_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "CnDA"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "dndr_fn"
+	  Ports			  [2, 1]
+	  Position		  [185, 3647, 235, 3698]
+	  SourceBlock		  "simulink/Look-Up\nTables/Interpolation (n-D"
+")\nusing PreLook-Up"
+	  SourceType		  "LookupNDInterpIdx"
+	  numDimsPopupSelect	  "2"
+	  explicitNumDims	  "2"
+	  table			  "dndr_table"
+	  interpMethod		  "Linear"
+	  extrapMethod		  "Linear"
+	  rangeErrorMode	  "None"
+	  Port {
+	    PortNumber		    1
+	    Name		    "CnDR"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "lt"
+	  Position		  [105, 1707, 135, 1738]
+	  ShowName		  off
+	  Operator		  "<"
+	  Port {
+	    PortNumber		    1
+	    Name		    "lt"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  RelationalOperator
+	  Name			  "lt1"
+	  Position		  [105, 1787, 135, 1818]
+	  ShowName		  off
+	  Operator		  "<"
+	  Port {
+	    PortNumber		    1
+	    Name		    "lt"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "minus"
+	  Position		  [385, 25, 415, 55]
+	  Gain			  "-1.0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "minus"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "minus1"
+	  Position		  [385, 2255, 415, 2285]
+	  Gain			  "-1.0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "minus"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "minus2"
+	  Position		  [385, 2355, 415, 2385]
+	  Gain			  "-1.0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "minus"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "minus3"
+	  Position		  [105, 4545, 135, 4575]
+	  Gain			  "-1.0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "minus"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "minus4"
+	  Position		  [785, 265, 815, 295]
+	  Gain			  "-1.0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "minus"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "minus5"
+	  Position		  [105, 4625, 135, 4655]
+	  Gain			  "-1.0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "minus"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus"
+	  Ports			  [3, 1]
+	  Position		  [295, 265, 325, 295]
+	  ShowName		  off
+	  Inputs		  "+++"
+	  Port {
+	    PortNumber		    1
+	    Name		    "CY0"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus1"
+	  Ports			  [2, 1]
+	  Position		  [625, 27, 655, 58]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "CZ1"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus10"
+	  Ports			  [2, 1]
+	  Position		  [385, 2857, 415, 2888]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "plus"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus11"
+	  Ports			  [3, 1]
+	  Position		  [865, 25, 895, 55]
+	  ShowName		  off
+	  Inputs		  "+++"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Cm"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus12"
+	  Ports			  [2, 1]
+	  Position		  [195, 4547, 225, 4578]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "plus"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus13"
+	  Ports			  [3, 1]
+	  Position		  [865, 265, 895, 295]
+	  ShowName		  off
+	  Inputs		  "+++"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Cn"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus14"
+	  Ports			  [2, 1]
+	  Position		  [385, 3157, 415, 3188]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "plus"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus15"
+	  Ports			  [2, 1]
+	  Position		  [195, 4627, 225, 4658]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "plus"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus2"
+	  Ports			  [2, 1]
+	  Position		  [465, 27, 495, 58]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "plus"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus3"
+	  Ports			  [3, 1]
+	  Position		  [545, 345, 575, 375]
+	  ShowName		  off
+	  Inputs		  "+++"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Cl1"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus4"
+	  Ports			  [3, 1]
+	  Position		  [545, 425, 575, 455]
+	  ShowName		  off
+	  Inputs		  "+++"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Cn"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus5"
+	  Ports			  [2, 1]
+	  Position		  [465, 1467, 495, 1498]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "CX"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus6"
+	  Ports			  [2, 1]
+	  Position		  [545, 267, 575, 298]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "CY"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus7"
+	  Ports			  [2, 1]
+	  Position		  [385, 2557, 415, 2588]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "plus"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus8"
+	  Ports			  [2, 1]
+	  Position		  [705, 27, 735, 58]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "CZ"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "plus9"
+	  Ports			  [2, 1]
+	  Position		  [625, 347, 655, 378]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "Cl"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Math
+	  Name			  "power"
+	  Ports			  [2, 1]
+	  Position		  [295, 27, 325, 58]
+	  ShowName		  off
+	  Operator		  "pow"
+	  Port {
+	    PortNumber		    1
+	    Name		    "power"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "quotient"
+	  Ports			  [2, 1]
+	  Position		  [105, 27, 135, 58]
+	  ShowName		  off
+	  Inputs		  "*/"
+	  Port {
+	    PortNumber		    1
+	    Name		    "rtd"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "quotient1"
+	  Ports			  [2, 1]
+	  Position		  [105, 187, 135, 218]
+	  ShowName		  off
+	  Inputs		  "*/"
+	  Port {
+	    PortNumber		    1
+	    Name		    "del"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "quotient2"
+	  Ports			  [2, 1]
+	  Position		  [105, 267, 135, 298]
+	  ShowName		  off
+	  Inputs		  "*/"
+	  Port {
+	    PortNumber		    1
+	    Name		    "dail"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "quotient3"
+	  Ports			  [2, 1]
+	  Position		  [105, 507, 135, 538]
+	  ShowName		  off
+	  Inputs		  "*/"
+	  Port {
+	    PortNumber		    1
+	    Name		    "drdr"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "quotient4"
+	  Ports			  [2, 1]
+	  Position		  [195, 27, 225, 58]
+	  ShowName		  off
+	  Inputs		  "*/"
+	  Port {
+	    PortNumber		    1
+	    Name		    "quotient"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "quotient5"
+	  Ports			  [2, 1]
+	  Position		  [195, 1227, 225, 1258]
+	  ShowName		  off
+	  Inputs		  "*/"
+	  Port {
+	    PortNumber		    1
+	    Name		    "b2v"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "quotient6"
+	  Ports			  [2, 1]
+	  Position		  [195, 1467, 225, 1498]
+	  ShowName		  off
+	  Inputs		  "*/"
+	  Port {
+	    PortNumber		    1
+	    Name		    "quotient"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "quotient7"
+	  Ports			  [2, 1]
+	  Position		  [705, 267, 735, 298]
+	  ShowName		  off
+	  Inputs		  "*/"
+	  Port {
+	    PortNumber		    1
+	    Name		    "quotient"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Switch
+	  Name			  "switch"
+	  Position		  [465, 1705, 495, 1735]
+	  AttributesFormatString  "Threshold = %<Threshold>"
+	  Threshold		  "0.5"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Cl0"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Switch
+	  Name			  "switch1"
+	  Position		  [465, 1785, 495, 1815]
+	  AttributesFormatString  "Threshold = %<Threshold>"
+	  Threshold		  "0.5"
+	  Port {
+	    PortNumber		    1
+	    Name		    "Cn0"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times"
+	  Ports			  [2, 1]
+	  Position		  [105, 747, 135, 778]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times1"
+	  Ports			  [2, 1]
+	  Position		  [195, 267, 225, 298]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times10"
+	  Ports			  [2, 1]
+	  Position		  [295, 1467, 325, 1498]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "cq2v"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times11"
+	  Ports			  [2, 1]
+	  Position		  [385, 1467, 415, 1498]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times12"
+	  Ports			  [2, 1]
+	  Position		  [465, 1227, 495, 1258]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times13"
+	  Ports			  [2, 1]
+	  Position		  [295, 2657, 325, 2688]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times14"
+	  Ports			  [2, 1]
+	  Position		  [295, 2557, 325, 2588]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times15"
+	  Ports			  [2, 1]
+	  Position		  [385, 1547, 415, 1578]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times16"
+	  Ports			  [2, 1]
+	  Position		  [465, 1307, 495, 1338]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times17"
+	  Ports			  [2, 1]
+	  Position		  [295, 2957, 325, 2988]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times18"
+	  Ports			  [2, 1]
+	  Position		  [295, 2857, 325, 2888]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times19"
+	  Ports			  [2, 1]
+	  Position		  [385, 1627, 415, 1658]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times2"
+	  Ports			  [2, 1]
+	  Position		  [195, 507, 225, 538]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times20"
+	  Ports			  [2, 1]
+	  Position		  [785, 27, 815, 58]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times21"
+	  Ports			  [2, 1]
+	  Position		  [465, 1387, 495, 1418]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times22"
+	  Ports			  [2, 1]
+	  Position		  [295, 3257, 325, 3288]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times23"
+	  Ports			  [2, 1]
+	  Position		  [295, 3157, 325, 3188]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times24"
+	  Ports			  [3, 1]
+	  Position		  [625, 265, 655, 295]
+	  ShowName		  off
+	  Inputs		  "3"
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times3"
+	  Ports			  [2, 1]
+	  Position		  [545, 27, 575, 58]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times4"
+	  Ports			  [2, 1]
+	  Position		  [195, 187, 225, 218]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times5"
+	  Ports			  [2, 1]
+	  Position		  [295, 347, 325, 378]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times6"
+	  Ports			  [2, 1]
+	  Position		  [295, 587, 325, 618]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times7"
+	  Ports			  [2, 1]
+	  Position		  [295, 427, 325, 458]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times8"
+	  Ports			  [2, 1]
+	  Position		  [295, 667, 325, 698]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "times"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Product
+	  Name			  "times9"
+	  Ports			  [2, 1]
+	  Position		  [105, 1227, 135, 1258]
+	  ShowName		  off
+	  Port {
+	    PortNumber		    1
+	    Name		    "tvt"
+	    TestPoint		    off
+	    LinearAnalysisOutput    off
+	    LinearAnalysisInput	    off
+	    RTWStorageClass	    "Auto"
+	    DataLogging		    off
+	    DataLoggingNameMode	    "SignalName"
+	    DataLoggingDecimateData off
+	    DataLoggingDecimation   "2"
+	    DataLoggingLimitDataPoints off
+	    DataLoggingMaxPoints    "5000"
+	  }
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "CX"
+	  Position		  [550, 1483, 580, 1497]
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "CY"
+	  Position		  [615, 223, 645, 237]
+	  Port			  "2"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "CZ"
+	  Position		  [770, 123, 800, 137]
+	  Port			  "3"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Cl"
+	  Position		  [705, 363, 735, 377]
+	  Port			  "4"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Cm"
+	  Position		  [945, 43, 975, 57]
+	  Port			  "5"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Cn"
+	  Position		  [945, 283, 975, 297]
+	  Port			  "6"
+	}
+	Line {
+	  Name			  "vt"
+	  Labels		  [0, 0]
+	  SrcBlock		  "vt"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -640]
+	  DstBlock		  "times9"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "alpha"
+	  Labels		  [0, 0]
+	  SrcBlock		  "alpha"
+	  SrcPort		  1
+	  DstBlock		  "ALPHA1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "beta"
+	  Labels		  [0, 0]
+	  SrcBlock		  "beta"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, 80]
+	  Branch {
+	    Points		    [5, 0]
+	    DstBlock		    "abs"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 80]
+	    Branch {
+	      Points		      [5, 0]
+	      DstBlock		      "BETA2"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, -2120]
+	      Branch {
+		DstBlock		"lt1"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, -80]
+		Branch {
+		  DstBlock		  "lt"
+		  DstPort		  1
+		}
+		Branch {
+		  Points		  [0, -960]
+		  Branch {
+		    DstBlock		    "times"
+		    DstPort		    2
+		  }
+		  Branch {
+		    Points		    [0, -680; 80, 0; 0, -40]
+		    DstBlock		    "quotient4"
+		    DstPort		    1
+		  }
+		}
+	      }
+	    }
+	  }
+	}
+	Line {
+	  Name			  "body roll rate"
+	  Labels		  [0, 0]
+	  SrcBlock		  "body roll rate"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -680]
+	  Branch {
+	    Points		    [0, -300]
+	    Branch {
+	      Points		      [0, -300; 180, 0; 0, -50]
+	      DstBlock		      "times13"
+	      DstPort		      2
+	    }
+	    Branch {
+	      Points		      [180, 0; 0, -50]
+	      DstBlock		      "times17"
+	      DstPort		      2
+	    }
+	  }
+	  Branch {
+	    Points		    [180, 0; 0, -50]
+	    DstBlock		    "times22"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  Name			  "body pitch rate"
+	  Labels		  [0, 0]
+	  SrcBlock		  "body pitch rate"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -2560; 80, 0; 0, -40]
+	  DstBlock		  "quotient6"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "body yaw rate"
+	  Labels		  [0, 0]
+	  SrcBlock		  "body yaw rate"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -940]
+	  Branch {
+	    Points		    [0, -300]
+	    Branch {
+	      Points		      [0, -300; 180, 0; 0, -50]
+	      DstBlock		      "times14"
+	      DstPort		      2
+	    }
+	    Branch {
+	      Points		      [180, 0; 0, -50]
+	      DstBlock		      "times18"
+	      DstPort		      2
+	    }
+	  }
+	  Branch {
+	    Points		    [180, 0; 0, -50]
+	    DstBlock		    "times23"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  Name			  "delta elevator"
+	  Labels		  [0, 0]
+	  SrcBlock		  "delta elevator"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, 80]
+	  Branch {
+	    Points		    [5, 0]
+	    DstBlock		    "DE1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -4120]
+	    DstBlock		    "quotient1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "delta aileron"
+	  Labels		  [0, 0]
+	  SrcBlock		  "delta aileron"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -4120]
+	  DstBlock		  "quotient2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "delta rudder"
+	  Labels		  [0, 0]
+	  SrcBlock		  "delta rudder"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -3960]
+	  DstBlock		  "quotient3"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Xcg"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Xcg"
+	  SrcPort		  1
+	  Points		  [0, 0; 25, 0]
+	  Branch {
+	    Points		    [5, 0]
+	    DstBlock		    "minus3"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 70]
+	    DstBlock		    "minus5"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "rtd"
+	  Labels		  [0, 0]
+	  SrcBlock		  "quotient"
+	  SrcPort		  1
+	  DstBlock		  "quotient4"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "const 180."
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_180._"
+	  SrcPort		  1
+	  DstBlock		  "quotient"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "const 3.14159265"
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_3.14159265_"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -80]
+	  DstBlock		  "quotient"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "xcgr"
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_0.35_"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -40]
+	  Branch {
+	    Points		    [80, 0; 0, -40]
+	    DstBlock		    "plus15"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -80; 80, 0; 0, -40]
+	    DstBlock		    "plus12"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "cbar"
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_11.32_"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -3280]
+	  Branch {
+	    Points		    [180, 0; 0, -40]
+	    DstBlock		    "times10"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -1200; 520, 0; 0, -40]
+	    DstBlock		    "times24"
+	    DstPort		    3
+	  }
+	}
+	Line {
+	  Name			  "bspan"
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_30._"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -3600]
+	  Branch {
+	    Points		    [80, 0; 0, -40]
+	    DstBlock		    "quotient5"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -960; 600, 0; 0, -40]
+	    DstBlock		    "quotient7"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  Name			  "del"
+	  Labels		  [0, 0]
+	  SrcBlock		  "quotient1"
+	  SrcPort		  1
+	  DstBlock		  "times4"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "const 25.0"
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_25.0_"
+	  SrcPort		  1
+	  DstBlock		  "quotient1"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "dail"
+	  Labels		  [0, 0]
+	  SrcBlock		  "quotient2"
+	  SrcPort		  1
+	  Points		  [0, 0; 25, 0]
+	  Branch {
+	    Points		    [0, 120]
+	    Branch {
+	      Points		      [100, 0; 0, -40]
+	      DstBlock		      "times5"
+	      DstPort		      2
+	    }
+	    Branch {
+	      Points		      [0, 160; 100, 0; 0, -40]
+	      DstBlock		      "times7"
+	      DstPort		      2
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "times1"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  Name			  "const 20.0"
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_20.0_"
+	  SrcPort		  1
+	  DstBlock		  "quotient2"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "drdr"
+	  Labels		  [0, 0]
+	  SrcBlock		  "quotient3"
+	  SrcPort		  1
+	  Points		  [0, 0; 25, 0]
+	  Branch {
+	    Points		    [0, 120]
+	    Branch {
+	      Points		      [100, 0; 0, -40]
+	      DstBlock		      "times6"
+	      DstPort		      2
+	    }
+	    Branch {
+	      Points		      [0, 160; 100, 0; 0, -40]
+	      DstBlock		      "times8"
+	      DstPort		      2
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "times2"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  Name			  "const 30.0"
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_30.0_"
+	  SrcPort		  1
+	  DstBlock		  "quotient3"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "CX0"
+	  Labels		  [0, 0]
+	  SrcBlock		  "CX_fn"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -450; 180, 0; 0, -40]
+	  DstBlock		  "plus5"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "CY0"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, 40; 160, 0; 0, -40]
+	  DstBlock		  "plus6"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -440; 100, 0; 0, -40]
+	  DstBlock		  "plus"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "const -0.02"
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_-0.02_"
+	  SrcPort		  1
+	  DstBlock		  "times"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times1"
+	  SrcPort		  1
+	  DstBlock		  "plus"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "const 0.021"
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_0.021_"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -520; 80, 0; 0, -40]
+	  DstBlock		  "times1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times2"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, -240]
+	  DstBlock		  "plus"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "const 0.086"
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_0.086_"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -360; 80, 0; 0, -40]
+	  DstBlock		  "times2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "CZ0"
+	  Labels		  [0, 0]
+	  SrcBlock		  "CZ0_fn"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -1990; 260, 0; 0, -40]
+	  DstBlock		  "times3"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "CZ1"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus1"
+	  SrcPort		  1
+	  DstBlock		  "plus8"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times3"
+	  SrcPort		  1
+	  DstBlock		  "plus1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "plus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus2"
+	  SrcPort		  1
+	  DstBlock		  "times3"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "const 1."
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_1._"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -920; 360, 0; 0, -40]
+	  DstBlock		  "plus2"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "minus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "minus"
+	  SrcPort		  1
+	  DstBlock		  "plus2"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "power"
+	  Labels		  [0, 0]
+	  SrcBlock		  "power"
+	  SrcPort		  1
+	  DstBlock		  "minus"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "quotient"
+	  Labels		  [0, 0]
+	  SrcBlock		  "quotient4"
+	  SrcPort		  1
+	  DstBlock		  "power"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "const 2"
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_2_"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -1000; 180, 0; 0, -40]
+	  DstBlock		  "power"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times4"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, -120; 340, 0; 0, -40]
+	  DstBlock		  "plus1"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "const -0.19"
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_-0.19_"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -920; 80, 0; 0, -40]
+	  DstBlock		  "times4"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Cl1"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus3"
+	  SrcPort		  1
+	  DstBlock		  "plus9"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times5"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, 40; 160, 0; 0, -40]
+	  DstBlock		  "plus3"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times6"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, -200; 160, 0; 0, -40]
+	  DstBlock		  "plus3"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "Cn"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus4"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -120; 240, 0; 0, -40]
+	  DstBlock		  "plus13"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times7"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, 40; 160, 0; 0, -40]
+	  DstBlock		  "plus4"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times8"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, -200; 160, 0; 0, -40]
+	  DstBlock		  "plus4"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "tvt"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times9"
+	  SrcPort		  1
+	  Points		  [0, 0; 25, 0]
+	  Branch {
+	    Points		    [0, 240]
+	    DstBlock		    "quotient6"
+	    DstPort		    2
+	  }
+	  Branch {
+	    DstBlock		    "quotient5"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  Name			  "const 2"
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_2_1"
+	  SrcPort		  1
+	  DstBlock		  "times9"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "b2v"
+	  Labels		  [0, 0]
+	  SrcBlock		  "quotient5"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, 40]
+	  Branch {
+	    Points		    [180, 0; 0, -40]
+	    DstBlock		    "times12"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 160]
+	    Branch {
+	      Points		      [180, 0; 0, -40]
+	      DstBlock		      "times16"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, 160; 180, 0; 0, -40]
+	      DstBlock		      "times21"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Line {
+	  Name			  "cq2v"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times10"
+	  SrcPort		  1
+	  Points		  [0, 0; 35, 0]
+	  Branch {
+	    Points		    [0, 80]
+	    Branch {
+	      Points		      [0, 80]
+	      DstBlock		      "times19"
+	      DstPort		      1
+	    }
+	    Branch {
+	      DstBlock		      "times15"
+	      DstPort		      1
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "times11"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "quotient"
+	  Labels		  [0, 0]
+	  SrcBlock		  "quotient6"
+	  SrcPort		  1
+	  DstBlock		  "times10"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "absbeta"
+	  Labels		  [0, 0]
+	  SrcBlock		  "abs"
+	  SrcPort		  1
+	  DstBlock		  "BETA1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "absCl0"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Cl0_fn"
+	  SrcPort		  1
+	  Points		  [0, 0; 25, 0]
+	  Branch {
+	    Points		    [0, -510; 80, 0; 0, -40]
+	    DstBlock		    "switch"
+	    DstPort		    3
+	  }
+	  Branch {
+	    DstBlock		    "minus1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "absCn0"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Cn0_fn"
+	  SrcPort		  1
+	  Points		  [0, 0; 25, 0]
+	  Branch {
+	    Points		    [0, -530; 80, 0; 0, -40]
+	    DstBlock		    "switch1"
+	    DstPort		    3
+	  }
+	  Branch {
+	    DstBlock		    "minus2"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "Cl0"
+	  Labels		  [0, 0]
+	  SrcBlock		  "switch"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -1360]
+	  DstBlock		  "plus3"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "minus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "minus1"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -550]
+	  DstBlock		  "switch"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "lt"
+	  Labels		  [0, 0]
+	  SrcBlock		  "lt"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, 40; 280, 0; 0, -40]
+	  DstBlock		  "switch"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "const 0"
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_0_"
+	  SrcPort		  1
+	  DstBlock		  "lt"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Cm0"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Cm0_fn"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -2090; 580, 0; 0, -40]
+	  DstBlock		  "plus11"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Cn0"
+	  Labels		  [0, 0]
+	  SrcBlock		  "switch1"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -1360]
+	  DstBlock		  "plus4"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "minus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "minus2"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -570]
+	  DstBlock		  "switch1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "lt"
+	  Labels		  [0, 0]
+	  SrcBlock		  "lt1"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, 40; 280, 0; 0, -40]
+	  DstBlock		  "switch1"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "const 0"
+	  Labels		  [0, 0]
+	  SrcBlock		  "const_0_1"
+	  SrcPort		  1
+	  DstBlock		  "lt1"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "CXq"
+	  Labels		  [0, 0]
+	  SrcBlock		  "CXq_fn"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -950; 100, 0; 0, -40]
+	  DstBlock		  "times11"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "CYr"
+	  Labels		  [0, 0]
+	  SrcBlock		  "CYr_fn"
+	  SrcPort		  1
+	  DstBlock		  "times14"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "CYp"
+	  Labels		  [0, 0]
+	  SrcBlock		  "CYp_fn"
+	  SrcPort		  1
+	  DstBlock		  "times13"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "CZq"
+	  Labels		  [0, 0]
+	  SrcBlock		  "CZq_fn"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -1170; 100, 0; 0, -40]
+	  DstBlock		  "times15"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Clr"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Clr_fn"
+	  SrcPort		  1
+	  DstBlock		  "times18"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Clp"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Clp_fn"
+	  SrcPort		  1
+	  DstBlock		  "times17"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Cmq"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Cmq_fn"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -1390; 100, 0; 0, -40]
+	  DstBlock		  "times19"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Cnr"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Cnr_fn"
+	  SrcPort		  1
+	  DstBlock		  "times23"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Cnp"
+	  Labels		  [0, 0]
+	  SrcBlock		  "Cnp_fn"
+	  SrcPort		  1
+	  DstBlock		  "times22"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "ClDA"
+	  Labels		  [0, 0]
+	  SrcBlock		  "dlda_fn"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -3010]
+	  DstBlock		  "times5"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "ClDR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "dldr_fn"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -2870]
+	  DstBlock		  "times6"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "CnDA"
+	  Labels		  [0, 0]
+	  SrcBlock		  "dnda_fn"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -3130]
+	  DstBlock		  "times7"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "CnDR"
+	  Labels		  [0, 0]
+	  SrcBlock		  "dndr_fn"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -2990]
+	  DstBlock		  "times8"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "CX"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus5"
+	  SrcPort		  1
+	  DstBlock		  "CX"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times11"
+	  SrcPort		  1
+	  DstBlock		  "plus5"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "CY"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus6"
+	  SrcPort		  1
+	  Points		  [15, -10]
+	  Branch {
+	    DstBlock		    "times24"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, -45]
+	    DstBlock		    "CY"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times12"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -960]
+	  DstBlock		  "plus6"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "plus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus7"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -1330]
+	  DstBlock		  "times12"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times13"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, -100]
+	  DstBlock		  "plus7"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times14"
+	  SrcPort		  1
+	  DstBlock		  "plus7"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "CZ"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus8"
+	  SrcPort		  1
+	  Points		  [10, -5]
+	  Branch {
+	    DstBlock		    "times20"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [0, 90]
+	    DstBlock		    "CZ"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times15"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -1480; 240, 0; 0, -40]
+	  DstBlock		  "plus8"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Cl"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus9"
+	  SrcPort		  1
+	  DstBlock		  "Cl"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times16"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -920; 80, 0; 0, -40]
+	  DstBlock		  "plus9"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "plus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus10"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -1550]
+	  DstBlock		  "times16"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times17"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, -100]
+	  DstBlock		  "plus10"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times18"
+	  SrcPort		  1
+	  DstBlock		  "plus10"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Cm"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus11"
+	  SrcPort		  1
+	  DstBlock		  "Cm"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times19"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -1560; 400, 0; 0, -40]
+	  DstBlock		  "plus11"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times20"
+	  SrcPort		  1
+	  DstBlock		  "plus11"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "plus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus12"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, -4480; 500, 0; 0, -40]
+	  DstBlock		  "times20"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "minus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "minus3"
+	  SrcPort		  1
+	  DstBlock		  "plus12"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "Cn"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus13"
+	  SrcPort		  1
+	  DstBlock		  "Cn"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times21"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -1080; 320, 0; 0, -40]
+	  DstBlock		  "plus13"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "plus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus14"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -1770]
+	  DstBlock		  "times21"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times22"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, -100]
+	  DstBlock		  "plus14"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times23"
+	  SrcPort		  1
+	  DstBlock		  "plus14"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "minus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "minus4"
+	  SrcPort		  1
+	  DstBlock		  "plus13"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "quotient"
+	  Labels		  [0, 0]
+	  SrcBlock		  "quotient7"
+	  SrcPort		  1
+	  DstBlock		  "minus4"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "times"
+	  Labels		  [0, 0]
+	  SrcBlock		  "times24"
+	  SrcPort		  1
+	  DstBlock		  "quotient7"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "plus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "plus15"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, -4320; 340, 0; 0, -40]
+	  DstBlock		  "times24"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "minus"
+	  Labels		  [0, 0]
+	  SrcBlock		  "minus5"
+	  SrcPort		  1
+	  DstBlock		  "plus15"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "delta elevator_by_DE1"
+	  Labels		  [0, 0]
+	  SrcBlock		  "DE1"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -2150]
+	  Branch {
+	    Points		    [0, -200]
+	    DstBlock		    "CX_fn"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Cm0_fn"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "alpha_by_ALPHA1"
+	  Labels		  [0, 0]
+	  SrcBlock		  "ALPHA1"
+	  SrcPort		  1
+	  Points		  [0, 0; 25, 0]
+	  Branch {
+	    Points		    [0, 100]
+	    Branch {
+	      Points		      [0, 100]
+	      Branch {
+		Points			[0, 150]
+		Branch {
+		  Points		  [100, 0; 0, -50]
+		  DstBlock		  "Cl0_fn"
+		  DstPort		  2
+		}
+		Branch {
+		  Points		  [0, 200]
+		  Branch {
+		    Points		    [100, 0; 0, -50]
+		    DstBlock		    "Cn0_fn"
+		    DstPort		    2
+		  }
+		  Branch {
+		    Points		    [0, 150]
+		    Branch {
+		    Points		    [0, 100]
+		    Branch {
+		    Points		    [0, 100]
+		    Branch {
+		    Points		    [0, 100]
+		    Branch {
+		    Points		    [0, 100]
+		    Branch {
+		    Points		    [0, 100]
+		    Branch {
+		    Points		    [0, 100]
+		    Branch {
+		    Points		    [0, 100]
+		    Branch {
+		    Points		    [0, 100]
+		    Branch {
+		    Points		    [0, 100]
+		    Branch {
+		    Points		    [0, 100]
+		    Branch {
+		    Points		    [0, 100]
+		    Branch {
+		    Points		    [0, 100]
+		    DstBlock		    "dndr_fn"
+		    DstPort		    2
+		    }
+		    Branch {
+		    DstBlock		    "dnda_fn"
+		    DstPort		    2
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "dldr_fn"
+		    DstPort		    2
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "dlda_fn"
+		    DstPort		    2
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "Cnp_fn"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "Cnr_fn"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "Cmq_fn"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "Clp_fn"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "Clr_fn"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "CZq_fn"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "CYp_fn"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "CYr_fn"
+		    DstPort		    1
+		    }
+		    }
+		    Branch {
+		    DstBlock		    "CXq_fn"
+		    DstPort		    1
+		    }
+		  }
+		}
+	      }
+	      Branch {
+		DstBlock		"Cm0_fn"
+		DstPort			2
+	      }
+	    }
+	    Branch {
+	      DstBlock		      "CZ0_fn"
+	      DstPort		      1
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "CX_fn"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  Name			  "absbeta_by_BETA1"
+	  Labels		  [0, 0]
+	  SrcBlock		  "BETA1"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, -1470]
+	  Branch {
+	    Points		    [0, -100]
+	    DstBlock		    "Cl0_fn"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "Cn0_fn"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  Name			  "beta_by_BETA2"
+	  Labels		  [0, 0]
+	  SrcBlock		  "BETA2"
+	  SrcPort		  1
+	  Points		  [25, 0; 0, -250]
+	  Branch {
+	    Points		    [0, -100]
+	    Branch {
+	      Points		      [0, -100]
+	      Branch {
+		Points			[0, -100]
+		DstBlock		"dlda_fn"
+		DstPort			1
+	      }
+	      Branch {
+		DstBlock		"dldr_fn"
+		DstPort			1
+	      }
+	    }
+	    Branch {
+	      DstBlock		      "dnda_fn"
+	      DstPort		      1
+	    }
+	  }
+	  Branch {
+	    DstBlock		    "dndr_fn"
+	    DstPort		    1
+	  }
+	}
+	Annotation {
+	  Name			  "these two outports added by hand EBJ\ncurre"
+"nt limitation of DAVE-ML"
+	  Position		  [691, 183]
+	}
+      }
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "CX"
+      Position		      [415, 73, 445, 87]
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "CY"
+      Position		      [415, 143, 445, 157]
+      Port		      "2"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "CZ"
+      Position		      [415, 213, 445, 227]
+      Port		      "3"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "Cl"
+      Position		      [415, 283, 445, 297]
+      Port		      "4"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "Cm"
+      Position		      [415, 353, 445, 367]
+      Port		      "5"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "Cn"
+      Position		      [415, 423, 445, 437]
+      Port		      "6"
+    }
+    Line {
+      Name		      "alpha"
+      SrcBlock		      "alpha"
+      SrcPort		      1
+      DstBlock		      "F16_aero_XML"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "F16_aero_XML"
+      SrcPort		      1
+      DstBlock		      "CX"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "F16_aero_XML"
+      SrcPort		      4
+      DstBlock		      "Cl"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "F16_aero_XML"
+      SrcPort		      5
+      DstBlock		      "Cm"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "F16_aero_XML"
+      SrcPort		      6
+      DstBlock		      "Cn"
+      DstPort		      1
+    }
+    Line {
+      Name		      "vt"
+      SrcBlock		      "vt"
+      SrcPort		      1
+      DstBlock		      "F16_aero_XML"
+      DstPort		      2
+    }
+    Line {
+      Name		      "beta"
+      SrcBlock		      "beta"
+      SrcPort		      1
+      DstBlock		      "F16_aero_XML"
+      DstPort		      3
+    }
+    Line {
+      Name		      "body roll rate"
+      Labels		      [0, 0]
+      SrcBlock		      "body roll rate"
+      SrcPort		      1
+      DstBlock		      "F16_aero_XML"
+      DstPort		      4
+    }
+    Line {
+      Name		      "body pitch rate"
+      Labels		      [0, 0]
+      SrcBlock		      "body pitch rate"
+      SrcPort		      1
+      DstBlock		      "F16_aero_XML"
+      DstPort		      5
+    }
+    Line {
+      Name		      "body yaw rate"
+      Labels		      [0, 0]
+      SrcBlock		      "body yaw rate"
+      SrcPort		      1
+      DstBlock		      "F16_aero_XML"
+      DstPort		      6
+    }
+    Line {
+      Name		      "delta elevator"
+      Labels		      [0, 0]
+      SrcBlock		      "delta elevator"
+      SrcPort		      1
+      DstBlock		      "F16_aero_XML"
+      DstPort		      7
+    }
+    Line {
+      Name		      "delta aileron"
+      Labels		      [0, 0]
+      SrcBlock		      "delta aileron"
+      SrcPort		      1
+      DstBlock		      "F16_aero_XML"
+      DstPort		      8
+    }
+    Line {
+      Name		      "delta rudder"
+      Labels		      [0, 0]
+      SrcBlock		      "delta rudder"
+      SrcPort		      1
+      DstBlock		      "F16_aero_XML"
+      DstPort		      9
+    }
+    Line {
+      Name		      "Xcg"
+      Labels		      [0, 0]
+      SrcBlock		      "Xcg"
+      SrcPort		      1
+      DstBlock		      "F16_aero_XML"
+      DstPort		      10
+    }
+    Line {
+      SrcBlock		      "F16_aero_XML"
+      SrcPort		      2
+      DstBlock		      "CY"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "F16_aero_XML"
+      SrcPort		      3
+      DstBlock		      "CZ"
+      DstPort		      1
+    }
+    Annotation {
+      Name		      "This block contains the Stevens & Lewis F-16 ae"
+"ro model\nas programmed by Eugene Morelli\nand captured in DAVE-ML by Bruce J"
+"ackson\nMachine-generated MDL a result of running DAVE2SL java processing pro"
+"gram\n+remove intermediate results outports and added CY CZ outports by hand "
+"EBJ"
+      Position		      [268, 519]
+    }
+    Annotation {
+      Name		      "021001 EBJ"
+      Position		      [508, 15]
+    }
+    Annotation {
+      Name		      "Run \"F16_aero_setup.m\" to load tables and con"
+"stants"
+      Position		      [208, 27]
+    }
+  }
+}

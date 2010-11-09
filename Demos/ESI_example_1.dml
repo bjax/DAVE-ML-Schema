@@ -1,0 +1,78 @@
+<DAVEfunc>
+<!--             ==========================                 -->
+<!--=============  File Header Components  ===============  -->
+<!--             ==========================                 -->
+<fileHeader>
+
+  <!--  Yawing moment coefficient, Cnb, as a function of flap deflection and dynamic pressure
+ -->
+
+  <author name="Jean Slane" org="ESI" email="jhslane@esi-co.com"/>
+  <fileCreationDate date="2006-10-15"/>
+  <description>
+    This is data intended to describe a simple gridded 2-D function
+  </description>
+  <reference refID="REF02" author="Jean Slane" 
+	     title="A Generic Aircraft Simulation Model (does not really exist)" 
+	     accession="None" date="2006-10-15"/>
+
+ <!-- No modification record -->
+
+</fileHeader>
+
+ <!-- Input variable -->
+ 
+ <variableDef name="Flap Deflection" varID="Trailing_Edge_Flap_Deflection" units="deg" >
+   <isStdAIAA/> <!-- Standard variable                             -->
+ </variableDef>
+
+<variableDef name="Dynamic Pressure" varID="dynamicPressure_lbff-2" units="psf" >
+   <isStdAIAA/> <!-- Standard variable                             -->
+ </variableDef>
+
+
+ <!-- Output (function value) -->
+
+ <variableDef name="Yawing moment coefficient due to sideslip"
+	      varID="CnBeta" units="1/deg" sign="+ANR">
+   <description>
+     Derivative of yawing moment coefficient due to sideslip
+  </description>
+ </variableDef>
+
+<breakpointDef bpID="Trailing_Edge_Flap_Deflection_bp1">
+   <bpVals>
+     0, 15, 35
+   </bpVals>	
+</breakpointDef>
+
+<breakpointDef bpID="dynamicPressure_lbff-2_bp2">
+   <bpVals>
+     0, 180
+   </bpVals>	
+</breakpointDef>
+
+<griddedTableDef gtID="CnBeta_Table1">
+   <breakpointRefs>
+     <bpRef bpID="Trailing_Edge_Flap_Deflection_bp1" />
+     <bpRef bpID="dynamicPressure_lbff-2_bp2" />
+   </breakpointRefs>
+
+   <dataTable>
+     0.00262, 0.00264, 0.00393
+	0.00349, 0.00351, 0.00524
+   </dataTable>
+</griddedTableDef>
+
+<function name="Cm_alpha_func">
+   <independentVarRef varID="Trailing_Edge_Flap_Deflection"/>
+   <independentVarRef varID="dynamicPressure_lbff-2"/>
+   <dependentVarRef varID="CnBeta"/>
+   <functionDefn>
+     <griddedTableRef gtID="CnBeta_Table1"/>
+   </functionDefn>
+ </function>
+
+</DAVEfunc>
+
+

@@ -1,0 +1,273 @@
+*no seq
+c -------------------------------
+c  Optimization
+c -------------------------------
+    srchm=4
+ 
+  nindv     = 1
+  indvr = 'spci100', /control variable
+  indph = 1
+  u = 34
+
+  ndepv = 1 
+  depvr = 'gdalt' /target variable
+  depval = 50000
+  depph = 999
+  maxitr = 0
+  ipro = 2
+  isens=0
+  maxitr=0,0,0
+  wvdep=25*1,
+  wvu=25*0,
+  pert = 2
+  wopt=1
+  coneps=100,0,0,0,0
+
+c -------------------------------
+c  Other Macro Names
+c -------------------------------
+*declare GC            32.17404856	        // ft/s^2
+*declare DIAM 	       4.5      		// aeroshell size  (m)
+*declare CHUTESIZE     19.7			// parachute diameter (m)
+*declare EM            2919.0,			// Entry Mass (kg)
+
+c --------------------------------------------
+c   ###### EVENT 1 #######
+c   Initial Event
+c   Cruise Stage Separation (EI-10 min)
+c --------------------------------------------
+  event = 1,
+c -------------------------------
+c  Output
+c -------------------------------
+    pinc      = 10
+    npc(19)   = 1		   // Do print input condition summaries
+    prnt(97)=cs,zhrho,zhpres,densrat,machdt,dynpdt,reyno,n2mole,co2mole,armole
+    o2mole,comole,omole,hemole,h2mole,hmole,h2omole,owlt,ls,ltst,lmst,altmg
+	   windns,windew,windv,densmean,molweight,tlocal,ltst,lmst,mass,gxi,gyi,gzi,
+	   machdt,dynpdt,heat2d,gint1,gint2,gint3,reyno,pstop
+	   
+	   
+   title=0h*MSL EDL*,
+   fesn=999,               / final event number 
+    maxtim    =  1500,  	   // Max Sim time
+    altmax    =  1.0e+09,	   // Max altitude for sim termination
+    altmin    = -1.0e+04,	   // Min altitdue for sim termination
+    ioflag    =  0,		   // Metric-Metric units 
+    npc(1)    =  0,		   // Don't Calculate Conics and print
+    npc(40)   =  3,		   // Calculate 'RV' angles
+    genvlim   =  12		   // need this if genv tab
+    lsflag    = 1		   // Calculate ls only once
+    lstflag   = 2		   // Calculate local solar time at each dt
+
+// -----------------------
+//  Mass Properties
+// -----------------------
+    wgtsg   = {EM*GC/14.5939029}
+    lref    = DIAM/.3048},		    // Reference length (m)
+    sref    ={DIAM*DIAM*pi/(4*(.3048^2))},      // Reference area (m^2)
+    npc(2)  =  1,		    // Runge Kutta integration
+    dt  = 1,			    // 3-DoF (10 Hz)
+// -----------------------
+//  Planet Model - MARS
+// -----------------------
+    mu      = {4.2828376383e+13/(.3048^3)},	     // gravitational constant (kg*m^2/s^2)
+    re      = {3396190/.3048},		     // ellipsoid equitorial radius (m)
+    rp      = {3376200/.3048},		     // ellipsoid polar radius (m)
+    mre     = {3397200/.3048},		     // mean radius (m)
+    rei     = {3522200/.3048},		     // entry interface definition (m)
+    omega   = 7.088218e-05,	     // planet rotation rate (rad/s)
+
+// -----------------------
+//  Gravity Model - Mars
+// -----------------------
+    npc(16) = 6,			// 85x85 Mars gravity model (MGS85F2)
+    gravdata='/node/post_data/grav_data/jpl85x85'
+    l_input=85
+    m_input=85
+	      
+// -----------------------
+//  Atmosphere inputs
+// -----------------------
+  LSTFL    = 'null'
+  OUTFL    = 'null'
+  TRAJFL   = 'null'
+  profile  = 'null'
+  WaveFile = 'null'
+  DATADIR  = '/node/post_data/mg05_data.mro/'
+  GCMDIR   = '/node/post_data/mg05_data.mro/',
+  NPOS     =  1,
+  LonEW    = 1   ,            
+  Dustmin  = 0.3
+  Dustmax  = 1.0
+  Dustnu   = 0.003
+  Dustdiam = 5.0
+  Dustdens = 3000.
+  ALS0     = 0.0
+  ALSDUR   = 48.
+  INTENS   = 0.0
+  RADMAX   = 0.0
+  DUSTLAT  = 0.0
+  DUSTLON  = 0.0
+  F107     = 160.0
+  STDL     = 0.0
+  NVARX    = 1
+  NVARY    = 0
+  LOGSCALE = 0
+  FLAT     = -14.5
+  FLON     = 211.7
+  FHGT     = 0.
+  MOLAhgts = 0     //2
+  hgtasfcm = 0.
+  zoffset  = 5.
+  ibougher = 2
+  DELHGT   = 0.0
+  DELLAT   = 0.
+  DELLON   = 0.
+  DELTIME  = 0.0
+  deltaTEX = 0.0
+  rpscale  = 1.0
+  NMONTE   = 1
+  iup      = 0
+  WaveA0   = 1.0
+  WaveA1   = 0.0
+  Wavephi1 = 0.0
+  WaveA2   = 0.0
+  Wavephi2 = 0.0
+  WaveA3   = 0.0
+  Wavephi3 = 0.0
+  iuwave   = 0
+  Wscale   = 10000. 
+     lat_north = -26.0
+     lat_south = -32.0
+     lon_west  =  22.0
+     lon_east  =  75.0
+c    lat_north =  -35
+c    lat_south =  -50
+c    lon_west  =  200
+c    lon_east  =  325
+  ires      =  32      // use 1/32 deg resolution MOLA data
+  iatmfl1   =  1,
+  iatmfl2   =  7556,
+  iatmfl3   =  0,
+  iatmfl4   =  0,
+  iatmfl5   =  0,
+  npc(6)=4,
+  corlmin  = 0.0
+  ipclat   = 1
+  requa    = {3396.19*1000/.3048}
+  rpole    = {3376.20*1000/.3048}
+  idaydata = 0 
+  IUTC     = 1
+  MapYear  = 0
+  profnear = 0.0
+  proffar  = 0.0
+  rwscale  = 1.0
+  wlscale  = 0.0
+  wmscale  = 1.0
+  blwinfac = 1.0 
+  WaveDate = 0.0  
+  phi1dot  = 0.0 
+  phi2dot  = 0.0  
+  phi3dot  = 0.0
+  iert = 0
+  dusttau = 0.30   
+  dismin = -.5
+  npc(5)  = 0,  		  // No Atmos -- exoatmospheric
+  npc(6)  = 0,  		  // No winds -- exoatmospheric
+  npc(15) = 0,  		  // No aeroheating -- exoatmospheric
+  ialtmola = 2,	//3	 
+      
+// -----------------------
+//  Aerodynamic inputs
+// -----------------------
+  npc(8)  = 0,  		  // No Aero -- exoatmospheric
+  itrim   = 0,  		  // No trim
+
+// ---------------------------------------
+//   Initial Conditions
+// ---------------------------------------
+        npc(3)   =  1,1,		    
+c ------------------------------------------------------------------------------------------
+c   Nominal State
+c      - MSL 0705
+c      - Description: MSL-0705 states 06-Mar-2007
+c      - States: /misc/workarea2/msl/runs/07-05/states/MSL_0705_06Mar2007.sts
+c -------------------------------------------------------------------------------------------
+       xi(1)	  = {3.920323923E+06/.3048}  {1.652265763E+06/.3048} {-2.329333191E+06/.3048}
+       vxi(1)	  = {-4.369715325E+03/.3048}  {2.335312327E+03/.3048}  {7.331609630E+02/.3048}
+       jdate	  = 2455399.9382721,		   // 22 July 2010, 10:31:06.7089 ET 
+
+c ------------------------------------------------------------------------
+c   Nominal State
+c      - MSL 0603
+c      - Description: /misc/workarea2/msl/runs/06-03/states/MSL_0603_26may2006.esf
+c      - States: /misc/workarea2/msl/runs/06-03/states/MSL_0603_26may2006.sts
+c at Mars Atm interface
+c ------------------------------------------------------------------------
+c       xi(1)	  =  7.78544705e+05,-2.42000162e+06, -2.43789847e+06
+c       vxi(1)	  =   4.88494949e+03,1.65304764e+03,2.06373566e+03
+c       jdate	  = 2455413.66502252,		   // 05-AUG-2010 03:57:37.9459 ET 
+ 
+       time	  = 0.0,			   // Sim. start time
+c       iau2pm	  = 0.0,			   // Don't Use! -> States are PM (IORB=132)
+       timeo	  = 0.0,			   // States are PM (IORB=132)
+       azl=0,latl=0,lonl=0,		// Align I- and L-frames (makes quaternion I-to-B)
+
+// ---------------------------------------
+//   Guidance
+// ---------------------------------------
+    iguid(14) =  0,		 // No POST guidance -- Using FSW Apollo Guidance
+    npc(12)   = 1,		 // use relative great circles for xrng & drng 
+    alppc(1) = -15,   // 3DOF alpha poly coeffs
+    betpc(1) =  0.0,  // 3DOF beta poly coeffs
+    bnkpc(1) =  0.0,  // 3DOF bank angle poly coeffs
+    iguid(1)  = 0,0,1,          		// 3-DoF:  Aero angle polynomials
+
+
+c --------------------------------------------
+c   ###### EVENT 200 #######
+c   Entry Interface
+c --------------------------------------------
+ event = 200
+  critr = gcrad, value = {3522200/.3048}, mdl = 9,
+  prnc=0
+
+  npc(8)	= 2,			 // aero table
+  itrim = 0
+  npc(15)   = 1,		     // turn on Aeroheating calc
+c heatsg(si)*sqrt(kg per slug)*ft per meter/ BTU per Watt *meter^2 per ft^2)
+  heatsg  = {1.90270e-04*sqrt(14.5939029)*.3048*(1./1054.350264488888)*(.3048^2)},	     // Sutton-Graves constant
+  rn      ={DIAM/(4*.3048)},  	     // Karl Edquist 2-Sept-2005
+  npc(6)    = 4,		     // winds 
+  npc(5)    = 11,		     // use Mars-GRAM 2005
+  cdt =  "cdt" constant 0 1.55
+  clt =  "clt" constant 0 0
+  cybt =  "cybt" constant 0 0
+  pinc = 1
+c  nspc(21) = 2
+c  genv2t = "entry vel=6000" monovar velr 0 lin_inp xtrap
+c         0.0                      0.939692621   /20 deg
+c         900.0                    0.939692621
+c         900.1                    0.707106781   /45 deg
+c         2000.0                   0.707106781
+c         5500.0                   0.258819045   /75 deg
+c         11000                    0.258819045
+
+  npc(24)=1,gderv=dynpdt,heat2d,machdt
+
+ event=280
+ critr=tdurp
+ value=0
+
+c --------------------------------------------
+c   ###### EVENT 500 #######
+c 
+c --------------------------------------------
+        
+ event = 500
+    critr = tdurp, value = 3, mdl =8
+   
+      
+   event=999, critr=gdalt,  value=0,  mdl=9,  tol=0.1
+   

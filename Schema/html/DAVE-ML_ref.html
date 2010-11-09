@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><style xmlns="" type="text/css">
+div.added    { background-color: #ffff99; }
+div.deleted  { text-decoration: line-through;
+               background-color: #FF7F7F; }
+div.changed  { background-color: #99ff99; }
+div.off      {  }
+
+span.added   { background-color: #ffff99; }
+span.deleted { text-decoration: line-through;
+               background-color: #FF7F7F; }
+span.changed { background-color: #99ff99; }
+span.off     {  }
+</style><title>Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><meta name="description" content="The Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) is a text-based file format intended for encoding the principal elements of a flight simulation model for an aerospace vehicle. It is based on two other open standards: the Extensible Markup Language (XML) version 1.1 and the Mathematical Markup Language (MathML) version 2.0, both products of the World Wide Web Consortium. DAVE-ML defines additional grammar (markup elements) to provide a domain-specific language capable of aerospace flight dynamics modeling, verification, and documentation. This markup language represents the encoding format for BSR/AIAA S-119 Flight Dynamic Model Exchange Standard AIAA10. This is a draft version of the reference manual for DAVE-ML syntax and markup. DAVE-ML syntax is specified by the DAVEfunc.dtd Document Type Definition (DTD) file; the version number above refers to the version of the DAVEfunc.dtd. DAVE-ML is an open standard, being developed by an informal team of American Institute of Aeronautics and Astronautics (AIAA) members. Contact the author above for more information or comments regarding refinement of DAVE-ML."/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="next" href="changes.html" title="1. Changes to this document"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="changes.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-node">DAVE-ML 2</span></div><div class="article" lang="en"><div class="titlepage"><div><div><h1 class="title"><a id="d0e2"/>Dynamic Aerospace Vehicle Exchange Markup Language (<acronym class="acronym">DAVE-ML</acronym>)
+      Reference</h1></div><div><h3 class="subtitle"><i>Version 2.0 (Release Candidate 4)</i></h3></div><div><h3 class="corpauthor">
+      <a href="https://info.aiaa.org/tac/ASG/MSTC" target="_top"> AIAA Modeling and
+        Simulation Technical Committee </a>
+    </h3></div><div><p class="releaseinfo">2010-11-08</p></div><div><div class="abstract"><p class="title"><b>Abstract</b></p><p>
+	The Dynamic Aerospace Vehicle Exchange Markup Language (<acronym class="acronym">DAVE-ML</acronym>) is a
+	text-based file format intended for encoding the principal elements of a flight simulation
+	model for an aerospace vehicle. It is based on two other open standards: the Extensible
+	Markup Language (<acronym class="acronym">XML</acronym>) version 1.1 and the Mathematical Markup Language
+	(<acronym class="acronym">MathML</acronym>) version 2.0, both products of the World Wide Web
+	Consortium. <acronym class="acronym">DAVE-ML</acronym> defines additional grammar (markup elements) to
+	provide a domain-specific language capable of aerospace flight dynamics modeling,
+	verification, and documentation.
+      </p><p>
+	This markup language represents the encoding format for BSR/AIAA S-119 Flight Dynamic Model
+	Exchange Standard <a href="biblio.html#AIAA10">[<span class="citation">AIAA10</span>]</a>.
+      </p><p>
+	This is a draft version of the reference manual for <acronym class="acronym">DAVE-ML</acronym> syntax and
+	markup. <acronym class="acronym">DAVE-ML</acronym> syntax is specified by the
+	<code class="filename">DAVEfunc.dtd</code> Document Type Definition (<acronym class="acronym">DTD</acronym>) file;
+	the version number above refers to the version of the <code class="filename">DAVEfunc.dtd.</code>
+      </p><p>
+	<acronym class="acronym">DAVE-ML</acronym> is an open standard, being developed by an informal team of
+	American Institute of Aeronautics and Astronautics (<acronym class="acronym">AIAA</acronym>) members.
+	Contact the author above for more information or comments regarding refinement of
+	<acronym class="acronym">DAVE-ML</acronym>.
+      </p></div></div></div><hr/></div><div xmlns="" class="changed"><p xmlns="http://www.w3.org/1999/xhtml" class="ackno"> 
+    The editors would like to acknowledge the contributions, encouragement and helpful suggestions
+    for steering the evolution of DAVE-ML from the following individuals:
+
+    Trey Arthur (NASA Langley Research Center),                               <a id="d0e13762" class="indexterm"/>
+    Jon Berndt (Jacobs Sverdrup),                                             <a id="d0e13766" class="indexterm"/>
+    Geoff Brian (Australian DSTO),                                            <a id="d0e13770" class="indexterm"/>
+    Randy Brumbaugh (Indigo Innovations),                                     <a id="d0e13774" class="indexterm"/>
+    Carey Buttrill (NASA Langley Research Center),                            <a id="d0e13778" class="indexterm"/>
+    Giovanni Cignoni (University of Pisa),                                    <a id="d0e13782" class="indexterm"/>
+    Bill Cleveland (NASA Ames Research Center),                               <a id="d0e13786" class="indexterm"/>
+    Zack Crues (NASA Johnson Space Center),                                   <a id="d0e13790" class="indexterm"/>
+    Rob Falck (NASA Glenn Research Center),                                   <a id="d0e13794" class="indexterm"/>
+    Jeremy Furtek (Delphi Research),                                          <a id="d0e13798" class="indexterm"/>
+    Peter Grant (UTIAS),                                                      <a id="d0e13802" class="indexterm"/> 
+    David Hasan (L-3 Communications, Houston),                                <a id="d0e13806" class="indexterm"/>
+    Bruce Hildreth (J.F. Taylor, Inc, Lexington Park),                        <a id="d0e13810" class="indexterm"/>
+    Missy Hill (UNISYS),                                                      <a id="d0e13814" class="indexterm"/>
+    Matt Jessick (L-3 Communications, Houston),                               <a id="d0e13818" class="indexterm"/>
+    Hilary Keating (Fortburn Pty. Ltd.),                                      <a id="d0e13822" class="indexterm"/>
+    Dennis Linse (SAIC),                                                      <a id="d0e13826" class="indexterm"/> 
+    Bill Othon (NASA Johnson Space Center),                                   <a id="d0e13830" class="indexterm"/> 
+    Mike Madden (NASA Langley Research Center),                               <a id="d0e13834" class="indexterm"/>
+    Greg McCarthy (NASA Dryden Flight Research Center),                       <a id="d0e13838" class="indexterm"/>
+    Dana McMinn (NASA Langley Research Center),                               <a id="d0e13842" class="indexterm"/>
+    Dan Murri (NASA Engineering and Safety Center, Hampton),                  <a id="d0e13846" class="indexterm"/>
+    Dan Newman (formerly Ball Aerospace, now Quantitative Aeronautics),       <a id="d0e13850" class="indexterm"/>
+    John Penn (L-3 Communcations, Houston)                                    <a id="d0e13854" class="indexterm"/>
+    Riley Rainey (SDS International),                                         <a id="d0e13858" class="indexterm"/>
+    Mike Red (NASA Johnson Space Center),                                     <a id="d0e13862" class="indexterm"/>
+    Brent York (formerly NAVAIR, now Indra Systems, Inc.),                    <a id="d0e13866" class="indexterm"/>
+      and
+    Curtis Zimmerman (NASA Marshall Space Flight Center).                     <a id="d0e13870" class="indexterm"/>
+  </p></div></div><P xmlns="" class="CVSinfo">2010-11-08</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="changes.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"> <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

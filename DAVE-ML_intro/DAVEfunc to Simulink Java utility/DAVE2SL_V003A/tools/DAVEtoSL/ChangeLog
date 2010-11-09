@@ -1,0 +1,948 @@
+2002-07-15  Bruce Jackson  <bjax@localhost> [V0_3]
+
+	This version does rectilinear lines, even with F-16 xml file. Still need
+	tray assignments, offset, and port locations.
+
+	* SLSignal.java:
+	Fixed bug in dealing with two paths of same length that did not require branching.
+
+	* SLLineSegment.java:
+	Fixed bug in calcLength method that miscalculated vertical lines that
+	started and ended in same row.
+
+2002-07-12  Bruce Jackson  <bjax@localhost> [V0_2_13]
+
+	This version does rectilinear lines (with no line offsets yet) for
+	test.xml model. F16 model is barfing. Need to include tray
+	assignments, offsets, and port locations within cell framework.
+
+	* SLPathList.java:
+	Minor changes to implementation and changed from array of iterators to
+	array of arrays.
+
+	* SLDiagram.java:
+	Moved diagram layout parameters as class static variables; added
+	support for padding of cells.
+
+	* Makefile: Added SLPathList class.
+
+	* BlockOutput.java, BlockMathSwitch.java, BlockMathSum.java, BlockMathRelation.java, BlockMathProduct.java, BlockMathGain.java, BlockMathFunction.java, BlockMathConstant.java, BlockMathAbs.java, BlockInput.java, BlockFuncTable.java, BlockBP.java, Block.java:
+	Added support for xPad and yPad offsets in Simulink realization.
+
+	* SLSignal.java:
+	This version generates MDL nicely with rectilinear routing for
+	test.xml case, but not for F16 case. It does not support vertical lines going both up and down from output port.
+
+	* SLLineSegment.java:
+	This version generates MDL nicely with rectilinear routing for
+	test.xml case, but not for F16 case. It does not support recognizing 0
+	length segments (yet).
+
+2002-07-10  Bruce Jackson  <bjax@localhost>
+
+	* SLPathList.java:
+	Initial attempt to build this using ListIterators instead of
+	ArrayLists of segments.. Saving this version so I can replace with
+	PathList that contains ArrayLists themselves (less confusing).
+
+	* SLSignal.java:
+	Some minor cleanup. Saving before changing singlepath logic.
+
+	* SLLineSegment.java: Before removing old-fashioned describe() method.
+
+	* SLLineSegment.java:
+	Some corrections to get calcLength() working properly; rearranged some minor methods.
+
+	* SLSignal.java:
+	This version now writes MDL for branching wiring; however, not quite right.
+
+2002-07-09  Bruce Jackson  <bjax@localhost>
+
+	* SLLineSegment.java: Fixed a couple bugs in length calculation.
+
+2002-07-08  Bruce Jackson  <bjax@localhost>
+
+	* ChangeLog: Added comments for version 0.2.11
+
+	* SLSignal.java, SLLineSegment.java:
+	Added lots of logic to support constructing branching tree path for signals.
+
+	* SLRowColumnVector.java:
+	Changed logic on adding rows and columns so that flag is passed to add
+	method to indicate row or column instead of to set method.
+
+	* SLDiagram.java:
+	Changed logic on adding rows and columns so that flag is passed to add
+	method to indicate row or column instead of to set method.  Added
+	javadoc header to several methods.  Added diagnostic outputs to
+	routing logic.
+
+	* SLCableTray.java:
+	Added offset constant and methods to calculate standoff distances and sizes.
+
+2002-07-08  Bruce Jackson  <bjax@bjax.larc.nasa.gov> [V0_2_11]
+
+This snapshot appears to be handling second signal routing pass in which
+common line segments are combined. More testing needed. 
+	
+	* SLSignal.java, SLLineSegment.java: Added lots of logic to
+	support constructing branching tree path for signals.
+
+	* SLRowColumnVector.java:
+	Changed logic on adding rows and columns so that flag is passed to add
+	method to indicate row or column instead of to set method.
+
+	* SLDiagram.java:
+	Changed logic on adding rows and columns so that flag is passed to add
+	method to indicate row or column instead of to set method.  Added
+	javadoc header to several methods.  Added diagnostic outputs to
+	routing logic.
+
+	* SLCableTray.java:
+	Added offset constant and methods to calculate standoff distances and sizes.
+
+2002-07-03  Bruce Jackson  <bjax@bjax.larc.nasa.gov>
+
+	* SLLineSegment.java:
+	In this version, I have the calcLength() method debugged for vertical
+	segments, but accurate port offsets are not yet computed.
+
+2002-06-28  Bruce Jackson  <bjax@bjax.larc.nasa.gov>
+
+	* Makefile: Fixed docs command.
+
+	* ChangeLog: Updated comments to version 0.2.10
+
+	* Signal.java:
+	Changed so all port number references are 1-based, in contrast to port
+	indices or offsets; added method getSourcePort().
+
+	* SLSignal.java, SLLineSegment.java:
+	Redesigned in second attempt to get path routing done correctly.
+
+	* SLDiagram.java:
+	Added (commented-out) call to have each SLSignal describe it's route
+
+	* BlockOutput.java, BlockMathSwitch.java, BlockMathSum.java, BlockMathRelation.java, BlockMathProduct.java, BlockMathGain.java, BlockMathFunction.java, BlockMathAbs.java, BlockMath.java, BlockInput.java:
+	Changed so all port number references are 1-based, in contrast to port
+	indices or offsets.
+
+	* BlockFuncTable.java: *** empty log message ***
+
+	* BlockBP.java, Block.java:
+	Changed so all port number references are 1-based, in contrast to port
+	indices or offsets.
+
+2002-06-28  Bruce Jackson  <bjax@localhost.larc.nasa.gov> [V0_2_10]
+
+This snapshot includes versions of DAVEtoSL that create proper routing in
+SLSignal objects. This version also has updated most block objects and
+methods to consistently use 1-base for port numbers (instead of 0-based)
+so SLSignals and SLLineSegments know when a line segment does not connect
+to a port (so the corresponding port number is 0).
+
+	* Makefile: Fixed docs command.
+
+	* Signal.java:
+	Changed so all port number references are 1-based, in contrast to port
+	indices or offsets; added method getSourcePort().
+
+	* SLSignal.java, SLLineSegment.java:
+	Redesigned in second attempt to get path routing done correctly.
+
+	* SLDiagram.java:
+	Added (commented-out) call to have each SLSignal describe it's route
+
+	* BlockFuncTable.java, BlockOutput.java, BlockMathSwitch.java,
+	BlockMathSum.java, BlockMathRelation.java, BlockMathProduct.java,
+	BlockMathGain.java, BlockMathFunction.java, BlockMathAbs.java,
+	BlockMath.java, BlockInput.java, BlockPB.java, Block.java: 
+	Changed so all port number references are 1-based, in contrast to
+	port indices or offsets.
+
+2002-06-26  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* SLSignal.java:
+	This version more or less dead end for having tree of SLSignals with single dest.
+
+2002-06-25  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* SLSignal.java:
+	Configured to use cells instead of blocks; fixed some bugs; added
+	diagnostic messages (but commented out in this version).
+
+	* SLRowColumnVector.java: Replaced direct use of blocks with SLCells.
+
+	* SLDiagram.java:
+	Fixed bug in constructor; added some (commented-out) diagnostics.
+
+	* Makefile: Added SLCell.
+
+	* DAVE.java: Added check for missing source or destination blocks.
+
+	* Block.java:
+	Added diagnostic message to setRowCol() method (but have commented out
+	in this revision).
+
+2002-06-25  Bruce Jackson  <bjax@bjax.larc.nasa.gov>
+
+	* SLSignal.java:
+	Configured to use cells instead of blocks; fixed some bugs; added
+	diagnostic messages (but commented out in this version).
+
+	* SLRowColumnVector.java: Replaced direct use of blocks with SLCells.
+
+	* SLDiagram.java:
+	Fixed bug in constructor; added some (commented-out) diagnostics.
+
+	* Makefile: Added SLCell.
+
+	* DAVE.java: Added check for missing source or destination blocks.
+
+	* Block.java:
+	Added diagnostic message to setRowCol() method (but have commented out
+	in this revision).
+
+2002-06-23  Bruce Jackson  <bjax@bjax.larc.nasa.gov>
+
+	* Makefile: Added SLLineSegment.
+
+	* Block.java, SignalArrayList.java, BlockBP.java, BlockFuncTable.java, Signal.java, DAVE.java:
+	Changed to match new names in Signal: dest instead of output and
+	source instead of input.
+
+	* SLLineSegment.java: Initial version.
+
+	* SLSignal.java:
+	Converted to use SLLineSegments instead of just col-row-col for
+	routing. Also changed to match new names in Signal: dest instead of
+	output and source instead of input.
+
+2002-06-22  Bruce Jackson  <bjax@bjax.larc.nasa.gov>
+
+	* Signal.java:
+	Changed "inputs" to "sources" and "outputs" to "dests". Ditto ports.
+
+	* SLSignal.java: Before adding SLLineSegment logic.
+
+2002-06-21  Bruce Jackson  <bjax@bjax.larc.nasa.gov>
+
+	* SLSignal.java, SLDiagram.java: Converted to gnu style indentation.
+
+	* SLDiagram.java:
+	Many changes in the course of development. This version saved just
+	before trying out creating MDL from routing paths.
+
+	* Makefile: Added SLCableTray object.
+
+	* SLRowColumnVector.java:
+	Many changes in the course of development. This version saved just
+	before trying out creating MDL from routing paths.
+
+	* SLCableTray.java:
+	This initial version created to override add() method of ArrayLists so
+	duplicate entries are not allowed.
+
+	* SLSignal.java:
+	Many changes in the course of development. This version saved just
+	before trying out creating MDL from routing paths.
+
+	* ChangeLog: Captured changes for version 0_2_8.
+
+	* Signal.java: Renamed getParent to getInput to help avoid confusion.
+
+	* SLSignal.java:
+	Initial version - creates SLSignals with branches from old Signals,
+	but generates same simulink MDL - route() method is still not
+	functional.
+
+	* SLRowColumnVector.java: Added get() method.
+
+	* SLFileWriter.java: Fixed first comment.
+
+	* SLDiagram.java:
+	Minor change to building SLSignals from generic Signals.
+
+	* Makefile: Slight change to some variables; added SLSignal to list.
+
+	* DAVEtoSL.java: Commented out describeSelf.
+
+	* DAVE.java:
+	Moved MDL-writing stuff to SLDiagram.java; cleaned up a bit.
+
+	* BlockFuncTable.java:
+	Changed name of signal method getParent() to getInput().
+
+	* Block.java:
+	Added setRowCol method; removed or commented-out diagnostic print lines.
+
+	* SLDiagram.java: Initial version, seems to work.
+
+	* BlockBP.java: Removed debugging print lines.
+
+	* BlockInput.java: Commented out debugging print line.
+
+	* BlockFuncTable.java: Commented out debugging print lines.
+
+	* BlockMathSwitch.java, BlockMathRelation.java, BlockMathAbs.java:
+	Commented out debugging print line.
+
+	* Model.java:
+	Corrected bug in syntax after commenting out debug print lines.
+
+	* BlockMathGain.java, BlockMathFunction.java, BlockMathSum.java, BlockMathProduct.java, Model.java, BlockMath.java:
+	Commented out debugging print line.
+
+	* Signal.java:
+	Commented out debugging print line; added Namespace to find mathml
+	child elements.
+
+	* BlockOutput.java, MDLNameSpace.java:
+	Commented out debugging print line.
+
+2002-06-21  Bruce Jackson  <bjax@localhost> [V0_2_8]
+
+	This version has embryonic SLDiagram and SLSignal objects that
+	create the same Simulink diagram as previous version, but with
+	greatly reduced diagnostic messages, in preparation for trying to
+	autoroute signal paths in output Simulink.
+
+	* Makefile: Fixed docs command.
+
+	* Signal.java: Renamed getParent to getInput to help avoid confusion.
+
+	* SLSignal.java:
+	Initial version - creates SLSignals with branches from old Signals,
+	but generates same simulink MDL - route() method is still not
+	functional.
+
+	* SLRowColumnVector.java: Added get() method.
+
+	* SLFileWriter.java: Fixed first comment.
+
+	* SLDiagram.java:
+	Minor change to building SLSignals from generic Signals.
+
+	* Makefile: Slight change to some variables; added SLSignal to list.
+
+	* DAVEtoSL.java: Commented out describeSelf.
+
+	* DAVE.java:
+	Moved MDL-writing stuff to SLDiagram.java; cleaned up a bit.
+
+	* BlockFuncTable.java:
+	Changed name of signal method getParent() to getInput().
+
+	* Block.java:
+	Added setRowCol method; removed or commented-out diagnostic print lines.
+
+	* SLDiagram.java: Initial version, seems to work.
+
+	* BlockBP.java: Removed debugging print lines.
+
+	* BlockInput.java: Commented out debugging print line.
+
+	* BlockFuncTable.java: Commented out debugging print lines.
+
+	* BlockMathSwitch.java, BlockMathRelation.java, BlockMathAbs.java:
+	Commented out debugging print line.
+
+	* Model.java:
+	Corrected bug in syntax after commenting out debug print lines.
+
+	* BlockMathGain.java, BlockMathFunction.java, BlockMathSum.java, BlockMathProduct.java, Model.java, BlockMath.java:
+	Commented out debugging print line.
+
+	* Signal.java:
+	Commented out debugging print line; added Namespace to find mathml
+	child elements.
+
+	* BlockOutput.java, MDLNameSpace.java:
+	Commented out debugging print line.
+
+2002-06-20  Bruce Jackson  <bjax@localhost>
+
+	* SLRowColumnVector.java: Initial version.
+
+2002-06-17  Bruce Jackson  <bjax@localhost>
+
+	* ChangeLog: Started tracking this with version 0_2_7.
+
+	* Signal.java:
+	Added support to recognize IC value attributes and generate constant
+	block if block has no inputs. Commented out a couple debugging print
+	lines.
+
+	* DAVE.java:
+	Added additional final check to convert method to look for blocks with
+	missing inputs and outputs to try to get them connected to signals
+	that were defined after block was.
+
+	* BlockMathProduct.java:
+	Corrected error that included "iconshape" parameter in MDL (holdover from Plus block); fixed bug that caused all product blocks to be realized as two-input quotients.
+
+	* Block.java:
+	Added GetOutputIterator method; added boolean return value to
+	hookUpInput method to indicate success. Added verifyInputs and
+	verifyOutput methods.
+
+	These changes to support final scanning for unattached blocks.
+
+	* Makefile:
+	Rearranged with explicit source and class names. It doesn't appear
+	feasible to arrange for single java files to be compiled; apparently
+	the compiler only recompiles needed files itself, so we should hand it
+	the complete list of class files in the package.
+
+	One improvement in this version is it will only run 'make' when necessary.
+
+2002-06-17  Bruce Jackson  <bjax@bjax.larc.nasa.gov> [V0_2_7]
+
+	* ChangeLog: Started tracking this with version 0_2_7.
+
+	* Signal.java:
+	Added support to recognize IC value attributes and generate constant
+	block if block has no inputs. Commented out a couple debugging print
+	lines.
+
+	* DAVE.java:
+	Added additional final check to convert method to look for blocks with
+	missing inputs and outputs to try to get them connected to signals
+	that were defined after block was.
+
+	* BlockMathProduct.java: Corrected error that included "iconshape"
+	parameter in MDL (holdover from Plus block); fixed bug that caused
+	all product blocks to be realized as two-input quotients.
+
+	* Block.java:
+	Added GetOutputIterator method; added boolean return value to
+	hookUpInput method to indicate success. Added verifyInputs and
+	verifyOutput methods.
+
+	These changes to support final scanning for unattached blocks.
+
+	* Makefile:
+	Rearranged with explicit source and class names. It doesn't appear
+	feasible to arrange for single java files to be compiled; apparently
+	the compiler only recompiles needed files itself, so we should hand it
+	the complete list of class files in the package.
+
+	One improvement in this version is it will only run 'make' when necessary.
+
+2002-06-14  Bruce Jackson  <bjax@bjax.larc.nasa.gov>
+
+	* BlockMathFunction.java:
+	Initial version, supports only "power" function for now.
+
+	* Makefile: Added new blocks: BlockMathProduct and BlockMathFunction
+
+	* BlockMathSum.java: minor cleanup.
+
+	* BlockMathRelation.java: minor cleanup
+
+	* BlockMath.java:
+	Added Factory selections: BlockMathProduct and BlockMathFunction
+
+	* BlockMathProduct.java: Initial version of BlockMathProduct.
+
+2002-06-14  Bruce Jackson  <bjax@bjax.larc.nasa.gov>  [V0_2_6]
+
+	This version successfully builds a more complex F16_aero.xml file
+	(revision 1.5) that includes products, quotients, sums, and
+	exponentiation (sums).
+
+	* Makefile: Added new blocks: BlockMathProduct and BlockMathFunction
+
+	* BlockMathSum.java: minor cleanup.
+
+	* BlockMathRelation.java: minor cleanup
+
+	* BlockMath.java:
+	Added Factory selections: BlockMathProduct and BlockMathFunction
+
+	* BlockMathProduct.java: Initial version of BlockMathProduct.
+
+2002-06-11  Bruce Jackson  <bjax@bjax.larc.nasa.gov> [V0_2_5]
+
+	Fixed bug in layout algorithm and expanded grid spacing.
+
+	* DAVE.java: Expanded layout grid.
+
+	* BlockFuncTable.java:
+	Changed size of blocks so plots can be more clearly seen.
+
+	* Block.java:
+	Fixed bug in vertical layout scenario causing some blocks to lie on top of each other.
+
+	* DAVEtoSL.java:
+	Added _setup to name of .m file for now to prevent confusion with Matlab.
+
+2002-06-11  Bruce Jackson  <bjax@bjax.larc.nasa.gov> [V0_2_4]
+
+	First version that makes legitimate Simulink for F16 example!
+	
+	* Makefile: Added MatFileWriter class
+
+	* MatFileWriter.java:
+	New class to support writing Matlab .mat workspace files; currently
+	writing .m script instead for prototype.
+
+	* DAVEtoSL.java:
+	Added static method toStubName to remove filetype from end of
+	argument; modified convert() method to support writing of data to .mat
+	file.
+
+	* DAVE.java: Added call to blk.writeMat() to put data into mat file.
+
+	* BlockFuncTable.java, Block.java:
+	Added writeMat method to spit out data into .mat file (presently
+	writes matlab .m script for prototype).
+
+2002-06-10  Bruce Jackson  <bjax@bjax.larc.nasa.gov> [V0_2_3]
+
+	This version reads and creates complete F16_aero example, but
+	does not yet write table values to .m file.
+
+	* BlockMathRelation.java: Initial version.
+
+	* BlockMathSwitch.java:
+	Quite a bit of change to get this to work, but it seems to be happy now.
+
+	* BlockMathGain.java:
+	Added port number parameter to genInputsFromApply invocation;
+	currently only support minus-type unary input.
+
+	* Makefile:
+	Added -g switch to javac command; added BlockMathRelation source
+
+	* BlockMathSum.java, BlockMathAbs.java:
+	Added port number parameter to genInputsFromApply invocation.
+
+	* BlockMath.java:
+	Restructured logic tree in factory() method; added support for
+	relational operatives. Added inputPortNumber parameter to
+	genInputsFromApply method so input signals are added to proper port.
+
+2002-05-23  Bruce Jackson  <bjax@bjax.larc.nasa.gov>
+
+	* BlockMathGain.java: Preliminary version, not yet operational.
+
+	* BlockMathSwitch.java:
+	This version generates only part of switch network.
+
+	* BlockMathSum.java, BlockMathAbs.java:
+	Moved handling of apply elements from here to superblock BlockMath
+	genInputsFromApply() method.
+
+	* BlockMath.java: Added handling of sum block.
+
+	Added genInputsFromApply() method to this subclass. This method
+	handles interpretation and creation of input ports, and connection to
+	existing signals, of math <apply> elements, at least the ones it recognizes.
+
+	* Signal.java:
+	Moved call to Model's add() method to end of constructor so more
+	things are defined.  Corrected documentation for addSink() method.
+
+	* Makefile: Added BlockMathSum.java source file.
+
+	* BlockOutput.java:
+	Added positional offset in createMDL to better align output port nib.
+
+	* BlockInput.java:
+	Added positional offset in createMDL to better align input port nib.
+
+	* BlockFuncTable.java:
+	Modified parseIDsFromFunctionElement() method to use class' addBPIDs() and
+	superclass' addVarIDs() methods instead of performing directly to
+	ensure consistency in input listings.  Modified other methods to use
+	superclass' getInputIterator() and getVarIDIterator() methods.  Added
+	check to make sure VarID and inputs arrays are consistent in
+	hookUpInputs() method.
+
+	* BlockBP.java:
+	Added some debugging info; corrected to use superclass setName()
+	method instead of setting it directly.
+
+	* Block.java:
+	Made ArrayLists of inputs, outputs, inputVarIDs private so I can keep
+	them synchronized. Provided routines to get & set elements
+	(getInputIterator(), getVarIDIterator(), numInputs(), numVarIDs(),
+	these. Made list of children private as well. Moved operation to add
+	ourselves to the Model to the end of each constructor so that it will
+	report the name of the new block.
+
+	Modified addInput() methods to use ArrayList.set instead of
+	ArrayList.add so the specified port is used. Also added growth feature
+	to inVarIDs to keep it the same length as the inputs
+	arraylist. Similarly added growth and set operations to addOutput()
+	methods. Added hookUpInput() method to just connect specified port.
+
+	Removed Model "m" parameter from addConstInput() and hookUpInputs()
+	methods since we can get our parent Model from class variable
+	ourModel.
+
+	Added method getVarID to retrieve ID from specified input port.
+
+2002-05-23  Bruce Jackson  <bjax@localhost.larc.nasa.gov> [V0_2_2]
+
+	This version creates MDL files with working abs and constant
+	blocks being created from <calculation> entries. Also did some
+	tuning on handling the input and varID lists for blocks so that
+	these are hooked up properly. However, need to add one more pass
+	through Model to hook up newly-created <math> blocks that depend
+	on signals not defined when they are created.  <abs> elements are
+	working; <piecewise> turns into unconnected switch block; <cn>,
+	<ci>, and <apply> parameters are all working
+	OK. BlockMathGain.java has been created but is not linked into the
+	model in this version.
+
+	* BlockMathGain.java: Preliminary version, not yet operational.
+
+	* BlockMathSwitch.java:
+	This version generates only part of switch network.
+
+	* BlockMathSum.java, BlockMathAbs.java:
+	Moved handling of apply elements from here to superblock BlockMath
+	genInputsFromApply() method.
+
+	* BlockMath.java: Added handling of sum block.
+
+	Added genInputsFromApply() method to this subclass. This method
+	handles interpretation and creation of input ports, and connection to
+	existing signals, of math <apply> elements, at least the ones it recognizes.
+
+	* Signal.java:
+	Moved call to Model's add() method to end of constructor so more
+	things are defined.  Corrected documentation for addSink() method.
+
+	* Makefile: Added BlockMathSum.java source file.
+
+	* BlockOutput.java:
+	Added positional offset in createMDL to better align output port nib.
+
+	* BlockInput.java:
+	Added positional offset in createMDL to better align input port nib.
+
+	* BlockFuncTable.java:
+	Modified parseIDsFromFunctionElement() method to use class' addBPIDs() and
+	superclass' addVarIDs() methods instead of performing directly to
+	ensure consistency in input listings.  Modified other methods to use
+	superclass' getInputIterator() and getVarIDIterator() methods.  Added
+	check to make sure VarID and inputs arrays are consistent in
+	hookUpInputs() method.
+
+	* BlockBP.java:
+	Added some debugging info; corrected to use superclass setName()
+	method instead of setting it directly.
+
+	* Block.java:
+	Made ArrayLists of inputs, outputs, inputVarIDs private so I can keep
+	them synchronized. Provided routines to get & set elements
+	(getInputIterator(), getVarIDIterator(), numInputs(), numVarIDs(),
+	these. Made list of children private as well. Moved operation to add
+	ourselves to the Model to the end of each constructor so that it will
+	report the name of the new block.
+
+	Modified addInput() methods to use ArrayList.set instead of
+	ArrayList.add so the specified port is used. Also added growth feature
+	to inVarIDs to keep it the same length as the inputs
+	arraylist. Similarly added growth and set operations to addOutput()
+	methods. Added hookUpInput() method to just connect specified port.
+
+	Removed Model "m" parameter from addConstInput() and hookUpInputs()
+	methods since we can get our parent Model from class variable
+	ourModel.
+
+	Added method getVarID to retrieve ID from specified input port.
+
+2002-05-18  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* BlockMathSum.java: Got this working for multiple inputs.
+
+	* Model.java, BlockMathSwitch.java, BlockMathConstant.java:
+	Initial version.
+
+	* Signal.java: Added Model parameter to constructor method signature.
+
+	* Makefile:
+	Added BlockMathSwitch, BlockMathConstant, and BlockMathAbs source files.
+
+	* DAVE.java:
+	Added Model parameter to Signal and Block invocations; removed m.add()
+	calls since this is now done in Signal and Block constructors.
+
+	* BlockOutput.java:
+	Added Model parameter to constructor method signature.
+
+	* BlockMathAbs.java, BlockMath.java:
+	Many changes to support passing Model parameters to constructors, etc.
+
+	* BlockInput.java:
+	Added Model parameter to constructor method signature.
+
+	* BlockFuncTable.java:
+	Added Model parameter to Signal and Block constructor calls; also
+	changed connectorName creation to include underscores for readibility.
+
+	* BlockBP.java: Added Model parameter to constructor calls.
+
+	* Block.java:
+	Added ourModel field to record parent model. Also added addConstInput
+	method to create a constant input block. Added Model input to several
+	method calls.
+
+2002-05-18  Bruce Jackson  <bjax@localhost.larc.nasa.gov> [V0_2_1]
+
+	This version has rudimentary support for <calculation> elements,
+	recursion has not yet been achieved for nested <apply> elements
+	found therein. Managed to find some more source files that weren't
+	under version control. Piecewise block not working properly. In
+	this version, we've established convention of having Block and
+	Signal constructors add themselves to the Model.
+
+	* Model.java, BlockMathSwitch.java, BlockMathConstant.java:
+	Initial version.
+
+	* Signal.java: Added Model parameter to constructor method signature.
+
+	* Makefile:
+	Added BlockMathSwitch, BlockMathConstant, and BlockMathAbs source files.
+
+	* DAVE.java:
+	Added Model parameter to Signal and Block invocations; removed m.add()
+	calls since this is now done in Signal and Block constructors.
+
+	* BlockOutput.java:
+	Added Model parameter to constructor method signature.
+
+	* BlockMathAbs.java, BlockMath.java:
+	Many changes to support passing Model parameters to constructors, etc.
+
+	* BlockInput.java:
+	Added Model parameter to constructor method signature.
+
+	* BlockFuncTable.java:
+	Added Model parameter to Signal and Block constructor calls; also
+	changed connectorName creation to include underscores for readibility.
+
+	* BlockBP.java: Added Model parameter to constructor calls.
+
+	* Block.java:
+	Added ourModel field to record parent model. Also added addConstInput
+	method to create a constant input block. Added Model input to several
+	method calls.
+
+2002-05-17  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* BlockMathAbs.java: Created from BlockMath
+
+	* BlockMath.java:
+	Some progress in developing arbitrary math block capability, but I've
+	decided to branch off and subclass this block. That means I'll have to
+	have some sort of factory static method to return the proper class block.
+
+2002-05-16  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* TreeFileWriter.java, Signal.java, Makefile, DAVE.java, BlockMath.java, BlockFuncTable.java, BlockBP.java, Block.java:
+	This version uses Model object to connect things.
+
+	* BlockMath.java: This block provides math functionality for model.
+
+2002-05-15  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* BlockOutput.java, BlockInput.java:
+	Added then commented-out diagnostic println.
+
+	* NameSpace.java, MDLNameSpace.java: Improved javadoc comments.
+
+	* Block.java: Fixed bug in row calculations.
+
+2002-05-14  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* Makefile: Added NameSpace and MDLNameSpace source files.
+
+	* DAVE.java:
+	Added step in creating MDL to set namespace to ensure unique block names PRIOR to hooking up signals.
+
+	* BlockFuncTable.java:
+	Modified to use setName method instead of setting name directly.
+
+	* Block.java:
+	Added support for setting NameSpace and a name setting method added.
+
+	* MDLNameSpace.java:
+	Ensures method to convert from arbitrary string to restricted string, while ensuring uniqueness.
+
+	* NameSpace.java:
+	Superclass for namespaces. Ensures unique block names and allows
+	personalization of block names to fit requirements of output format.
+
+	* Signal.java:
+	Changed logic to route multiple signal lines with Points directives.
+
+	* BlockInput.java, BlockFuncTable.java, BlockBP.java:
+	Added use of new createMDLPortInfo method to write Port structure into MDL file.
+
+	* Block.java:
+	Added createMDLPortInfo method to write Port structure with signal name.
+
+	* Signal.java:
+	Added createMDL method to generate hookup lines between MDL blocks.
+
+	* DAVE.java:
+	Added more debugging; created instance variables with row and column offset.
+
+	* BlockInput.java: Changed so MDl output would include signal name.
+
+	* BlockFuncTable.java:
+	Changed block name to match functionDef:name, since function:name is often non-unique.
+
+	* Block.java:
+	Added lots of debugging information to createMDL method; fixed vertical-offset compounding bug
+
+2002-05-10  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* Signal.java, DAVEtoSL.java, DAVE.java, BlockOutput.java, BlockInput.java, BlockFuncTable.java, BlockBP.java, Block.java:
+	This version writes, in addition to a lot of verbage, an MDL file
+	containing blocks (but no lines) arranged more or less in the right
+	sequence.
+
+2002-05-07  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* SLFileWriter.java, Makefile, DAVEtoSL.java, DAVE.java, BlockOutput.java, BlockInput.java, BlockFuncTable.java, BlockBP.java, Block.java:
+	Added createMDL method to Simulink MDL file block elements are written. Need to figure out how to space them and then add wiring.
+
+	* SLBlock.java: Going to put SL writing into each block
+
+2002-05-06  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* Signal.java, Makefile, DAVE.java:
+	After adding input & output block types, this version now does whole job.
+
+	* BlockOutput.java, BlockInput.java:
+	Added this block to complete the ntework.
+
+	* Signal.java, Makefile, BlockFuncTable.java, BlockBP.java, Block.java:
+	This version does everything for both trivial and f-16 test cases but does not yet create inports and outports.
+
+	* Signal.java, DAVE.java, BlockFuncTable.java, BlockBP.java, Block.java:
+	This version works with trivial and f16 examples, correctly hooking up
+	breakpoints to connector signals to function tables to output
+	signals. Input signals to breakpoint blocks not yet working.
+
+	* SignalArrayList.java, Signal.java, Makefile, DAVE.java, BlockFuncTable.java, BlockBP.java, BlockArrayList.java, Block.java:
+	This version has problems: mostly having to do with setting breakpoint blocks up.
+
+2002-05-01  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* Signal.java, Makefile, DAVE.java, BlockFuncTable.java, BlockBP.java:
+	This version almost hooks up breakpoint tables to function table blocks.
+
+	* SignalArrayList.java:
+	This class provides additional functionality (extension) for an
+	ArrayList of Signals.
+
+2002-04-30  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* Signal.java, Makefile, DAVE.java, BlockFuncTable.java, BlockBP.java, Block.java:
+	Rudimentary ascii description output now supported.
+
+	* TreeFileWriter.java:
+	This class writes a text description of the DAVE structure to a file.
+
+2002-04-29  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* Signal.java, BlockFuncTable.java, BlockBP.java:
+	This version connects BPs to FuncTables through signal paths. Also prints table values.
+
+	* DAVE.java, BlockFuncTable.java, BlockBP.java:
+	This version prepares to pass signal vector to blocks for hookups.
+
+	* Signal.java, ParseText.java, DAVE.java, BlockFuncTable.java, BlockBP.java:
+	This version passes Elements to Block and Signal routines rather than
+	parsing in top-level routine. Also, this version of ParseText seems to
+	be working with scientific notation OK.
+
+	* ParseText.java:
+	Saving this version, which is a test version, that includes parsing of
+	numbers (but not scientific notation). Will next try to render all
+	items as words and do number conversion separately.
+
+2002-04-28  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* Makefile: Added ParseText to block set
+
+	* BlockFuncTable.java, BlockBP.java:
+	Added processing of breakpoint values into an ArrayList through use of ParseText.
+
+2002-04-26  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* ParseText.java:
+	Somehow 1.5 was child of developmental 1.4.1.1, which isn't working. This should be child of 1.4.2.1.
+	Added static toList method.
+
+	* ParseText.java:
+	Turned on package line, so rest of DAVEtoSL has implicit import
+
+	* ParseText.java: This version has method that returns an ArrayList.
+
+	* ParseText.java:
+	Alternate version w/o StreamTokenizer; ran into problems getting String into double
+
+2002-04-25  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* ParseText.java: diddled with test program input flexibility.
+
+	* ParseText.java: Added Test inner class.
+
+	* ParseText.java: This version sortof works.
+
+2002-04-24  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* ParseText.java:
+	This version parses OK except floating-point format numbers.
+
+	* Signal.java, Makefile, DAVEtoSL.java, DAVE.java, BlockFuncTable.java, BlockBP.java:
+	This version parses two-d table and reports contents. Still haven't hooked up blocks and signals yet.
+
+2002-04-23  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* Signal.java, SLBlock.java, DAVEtoSL.java, Block.java:
+	A little more progress; actually creates signal items in memory.
+
+	* Signal.java, SLFileWriter.java, SLBlock.java, README.txt, Makefile, DAVEtoSL.java, Block.java:
+	This version has been slightly restructured with package names;
+	Makefile modified to reflect new directory structure. DAVEtoSL simply
+	reports number of variables, breakpoints, and functions.
+
+	* Signal.java, SLFileWriter.java, SLBlock.java, README.txt, Makefile, DAVEtoSL.java, Block.java:
+	Minimal version that compiles OK.
+
+2002-04-20  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* DAVEtoSL.java, Makefile: This version appears to build document tree
+
+2002-04-19  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* DAVEtoSL.java, SLFileWriter.java:
+	This version writes simple model header, footer
+
+	* AboutBox.java: DeMacintized
+
+2002-04-09  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* DAVEtoSL.java: Initial import into CVS
+
+	* DAVEtoSL.java: New file.
+
+	* AboutBox.java: Initial import into CVS
+
+	* AboutBox.java: New file.
+
+2001-09-03  Bruce Jackson  <bjax@localhost.larc.nasa.gov>
+
+	* DAVEtoSL.icns: Initial import into CVS
+
+	* DAVEtoSL.icns: New file.
+

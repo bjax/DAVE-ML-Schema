@@ -1,0 +1,398 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE DAVEfunc PUBLIC "-//NASA//DTD for Flight Dynamic Models - Functions 2.0//EN" "DAVEfunc.dtd">
+<!-- $Revision: 343 $ -->
+<DAVEfunc>
+  <fileHeader name="Pitch Axis F-16 Subsonic Aerodynamics Model (a la Garza)">
+    <author name="Bruce Jackson" org="NASA Langley Research Center" email="bruce.jackson@nasa.gov"/>
+    <creationDate date="2003-06-10"/>
+    <fileVersion>$Revision: 343 $</fileVersion>		
+    <description> F-16 Aero Data file. Based on Morelli's adaptation of Stevens and Lewis' F-16
+    example [1] described in Garza &amp; Morelli's TM [2]. Obtained from E. A. Morelli
+    in the form of Matlab scripts [3] &amp; [4]. This version has quotient's replaced
+    with divide's. </description>
+
+    <!-- ================== -->
+    <!--     References     -->
+    <!-- ================== -->
+
+    <reference refID="REF01" author="Stevens, Brian L. and Lewis, Frank L."
+	       title="Aircraft Control and Simulation" accession="ISBN O-471-61397-5" date="1992"/>
+
+    <reference
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xlink:href="http://techreports.larc.nasa.gov/ltrs/PDF/2003/tm/NASA-2003-tm212145.pdf"
+	refID="REF02" author="Garza, Fredrico R.; and Morelli, Eugene A."
+	title="A Collection of Nonlinear Aircraft Simulations in MATLAB"
+	accession="NASA TM-2003-212145" date="2003-01"/>
+
+    <reference refID="REF03" author="Morelli, Eugene A." title="f16_aero.m" date="1995-06-17"/>
+
+    <reference refID="REF04" author="Morelli, Eugene A." title="f16_aero_setup.m"
+	       date="1995-06-17"/>
+
+    <reference refID="NOTE1" author="Bruce Jackson" title="Checkcase data source"
+	       date="2004-02-13">
+      <description> From E. A. Morelli's f16 matlab script, dated 09-Oct-2000; Generated using
+      'make_DAVEML_checkcases.m' </description>
+    </reference>
+
+    <modificationRecord modID="A" date="2004-02-11">
+      <author name="Bruce Jackson" org="NASA Langley Research Center"
+	      email="bruce.jackson@nasa.gov"/>
+      <description> Added checkcase static shots and internal values for debugging purposes.
+      </description>
+    </modificationRecord>
+
+    <modificationRecord modID="B" date="2006-11-16">
+      <author name="Bruce Jackson" org="NASA Langley Research Center"
+	      email="bruce.jackson@nasa.gov"/>
+      <description>Corrected to DAVEfunc.dtd 1.9 standards: replaced xns with email; corrected
+      dates to ANSI; replaced docIC with refID in documentRefs; added fileVersion element
+      </description>
+    </modificationRecord>
+
+    <modificationRecord modID="C" date="2006-11-28">
+      <author name="Bruce Jackson" org="NASA Langley Research Center"
+	      email="bruce.jackson@nasa.gov"/>
+      <description>
+	Resorted variableDefs so they appear in proper order, in
+	response to bug report from Giovanni Cignoni. Reindented file using emacs nxml-mode.
+      </description>
+    </modificationRecord>
+
+    <modificationRecord modID="D" date="2008-02-27">
+      <author name="Bruce Jackson" org="NASA Langley Research Center"
+	      email="bruce.jackson@nasa.gov"/>
+      <description>
+	Updated to DAVE-ML 2.0: replaced fileCreationDate and
+	functionCreationDate with new creationDate element; changed to
+	my email alias.
+      </description>
+    </modificationRecord>
+
+
+    <modificationRecord modID="E" date="2008-10-08">
+      <author name="Bruce Jackson" org="NASA Langley Research Center"
+	      email="bruce.jackson@nasa.gov"/>
+      <description>
+	Updated to DAVE-ML 2.0: replaced signalID elements with varID
+	elements in checkcase data.
+      </description>
+    </modificationRecord>
+
+    <modificationRecord modID="F" date="2008-11-07">
+      <author name="Bruce Jackson" org="NASA Langley Research Center"
+	      email="bruce.jackson@nasa.gov"/>
+      <description>
+	Updated to new AIAA standard variable names.
+      </description>
+    </modificationRecord>
+
+
+  </fileHeader>
+
+  <!-- ================== -->
+  <!--  Input variables   -->
+  <!-- ================== -->
+
+  <variableDef name="trueAirspeed" varID="vt" units="fs-1" symbol="Vt">
+    <description> True airspeed, fs-1 </description>
+    <isStdAIAA/>
+  </variableDef>
+
+  <variableDef name="angleOfAttack" varID="alpha" units="d" symbol="&#x3B1;">
+    <description> Instantaneous true angle-of-attack, in degrees </description>
+    <isStdAIAA/>
+  </variableDef>
+
+  <variableDef name="pitchBodyRate" varID="q" units="rs-1" sign="aircraft nose up"
+	       symbol="q">
+    <description> Body pitch rate, rad/sec </description>
+    <isStdAIAA/>
+  </variableDef>
+
+  <variableDef name="elevatorDeflection" varID="el" units="d" sign="trailing edge down"
+	       symbol="&#x3B4;e">
+    <description>Elevator deflection angle, in degrees (+TED)</description>
+    <isStdAIAA/>
+  </variableDef>
+
+  <!-- ================== -->
+  <!--      Constants     -->
+  <!-- ================== -->
+
+  <variableDef name="referenceWingChord" varID="cbar" units="f" initialValue="11.32">
+    <description> Length of aerodynamic chord, ft </description>
+    <isStdAIAA/>
+  </variableDef>
+
+  <!-- ================== -->
+  <!--  Local variables   -->
+  <!-- ================== -->
+
+  <variableDef name="del" varID="del" units="">
+    <description>
+      Normalized elevator deflection (note range is beyond breakpoint range) 
+    </description>
+    <calculation>
+      <math>
+	<apply>
+	  <divide/>
+	  <ci>el</ci>
+	  <cn>25.0</cn>
+	</apply>
+      </math>
+    </calculation>
+  </variableDef>
+
+  <!-- Add damping derivatives and cg position terms -->
+
+  <variableDef name="cq2v" varID="cq2v" units="">
+    <description> 
+      Chord times pitch rate over 2 times velocity. Used to normalize aero
+      coefficients. 
+    </description>
+    <calculation>
+      <math>
+	<apply>
+	  <times/>
+	  <ci>cbar</ci>
+	  <apply>
+	    <divide/>
+	    <ci>q</ci>
+	    <ci>tvt</ci>
+	  </apply>
+	</apply>
+      </math>
+    </calculation>
+  </variableDef>
+
+  <variableDef name="tvt" varID="tvt" units="ft/sec">
+    <description>Twice velocity.</description>
+    <calculation>
+      <math>
+	<apply>
+	  <times/>
+	  <cn>2</cn>
+	  <ci>vt</ci>
+	</apply>
+      </math>
+    </calculation>
+  </variableDef>
+  
+  <!-- variable output from initial table lookup -->
+  
+  <variableDef name="Cm0" varID="cmt" units="" sign="nose up">
+    <description>
+      Basic coefficient of moment around the Y-body direction (pitch) (+ANU)
+    </description>
+  </variableDef>
+
+  <!-- Damping derivative tables -->
+
+  <variableDef name="Cmq" varID="cmq" units="sr-1" sign="up/+up">
+    <description>
+      Damping derivative: pitching moment increment per radian/sec of
+      pitch rate
+    </description>
+  </variableDef>
+
+  <!-- ================== -->
+  <!--  Output variables  -->
+  <!-- ================== -->
+
+  <variableDef name="aeroPitchBodyMomentCoefficient" varID="cm" units="" sign="ANU">
+    <description> 
+      Total coefficient of moment around the body Y-axis (pitching moment) 
+      Equation is cm = cmt + cq2v*cmq
+    </description>
+    <calculation>
+      <math>
+	<apply>
+	  <plus/>
+	  <ci>cmt</ci>
+	  <apply>
+	    <times/>
+	    <ci>cq2v</ci>
+	    <ci>cmq</ci>
+	  </apply>
+	</apply>
+      </math>
+    </calculation>
+    <isOutput/>
+  </variableDef>
+
+  <!-- ================== -->
+  <!--  Breakpoint values -->
+  <!-- ================== -->
+
+  <breakpointDef name="el" bpID="DE1" units="deg">
+    <description> Elevator angle breakpoints </description>
+    <bpVals> -24., -12., 0., 12., 24. </bpVals>
+  </breakpointDef>
+
+  <breakpointDef name="alpha" bpID="ALPHA1" units="deg">
+    <description>
+      Alpha breakpoints for basic and damping aero tables 
+    </description>
+    <bpVals>
+      -10., -5., 0., 5., 10., 15., 20., 25., 30., 35., 40., 45. 
+    </bpVals>
+  </breakpointDef>
+
+  <!-- ================== -->
+  <!--  Basic Functions   -->
+  <!-- ================== -->
+
+  <function name="Basic Cm">
+    <description>
+      Basic coefficient of pitching-moment as a function of angle of
+      attack and elevator
+    </description>
+    <provenance>
+      <author name="Bruce Jackson" 
+	      org="NASA Langley Research Center" 
+	      email="bruce.jackson@nasa.gov"/>
+      <creationDate date="2002-03-28"/>
+      <documentRef refID="REF01"/>
+      <documentRef refID="REF02"/>
+      <documentRef refID="REF03"/>
+    </provenance>
+    <independentVarRef varID="el" min="-24.0" max="24.0" 
+		       extrapolate="neither"/>
+    <!-- DE breakpoints -->
+    <independentVarRef varID="alpha" min="-10.0" max="45.0" 
+		       extrapolate="neither"/>
+    <!-- Alpha breakpoints -->
+    <dependentVarRef varID="cmt"/>
+
+    <functionDefn name="Cm0_fn">
+      <griddedTable name="Cm0_table">
+	<breakpointRefs>
+	  <bpRef bpID="DE1"/>
+	  <bpRef bpID="ALPHA1"/>
+	</breakpointRefs>
+	<dataTable>
+	  <!-- Note: last breakpoint changes most rapidly -->
+	  .205,.168,.186,.196,.213,.251,.245,.238,.252,.231,.198,.192,
+	  .081,.077,.107,.110,.110,.141,.127,.119,.133,.108,.081,.093,
+	  -.046,-.020,-.009,-.005,-.006,.010,.006,-.001,.014,.000,-.013,.032,
+	  -.174,-.145,-.121,-.127,-.129,-.102,-.097,-.113,-.087,-.084,-.069,-.006,
+	  -.259,-.202,-.184,-.193,-.199,-.150,-.160,-.167,-.104,-.076,-.041,-.005
+	</dataTable>
+      </griddedTable>
+    </functionDefn>
+  </function>
+
+  <function name="Basic Cl">
+    <description> Basic coefficient of rolling moment as a function of angle of attack and
+    sideslip angle </description>
+    <provenance>
+      <author name="Bruce Jackson" org="NASA Langley Research Center"
+	      email="bruce.jackson@nasa.gov"/>
+      <creationDate date="2002-03-28"/>
+      <documentRef refID="REF01"/>
+      <documentRef refID="REF02"/>
+      <documentRef refID="REF03"/>
+    </provenance>
+    <independentVarRef varID="absbeta" min="0.0" max="30.0" extrapolate="neither"/>
+    <!-- Beta breakpoints -->
+    <independentVarRef varID="alpha" min="-10.0" max="45.0" extrapolate="neither"/>
+    <!-- Alpha breakpoints -->
+    <dependentVarRef varID="absCl0"/>
+
+    <functionDefn name="Cl0_fn">
+      <griddedTable name="Cl0_table">
+	<breakpointRefs>
+	  <bpRef bpID="BETA1"/>
+	  <bpRef bpID="ALPHA1"/>
+	</breakpointRefs>
+	<dataTable>
+	  <!-- Note: last breakpoint changes most rapidly --> 0., 0., 0., 0., 0., 0., 0.,
+	  0., 0., 0., 0., 0., -.001,-.004,-.008,-.012,-.016,-.022,
+	  -.022,-.021,-.015,-.008,-.013,-.015, -.003,-.009,-.017,-.024,-.030,-.041,
+	  -.045,-.040,-.016,-.002,-.010,-.019, -.001,-.010,-.020,-.030,-.039,-.054,
+	  -.057,-.054,-.023,-.006,-.014,-.027, .000,-.010,-.022,-.034,-.047,-.060,
+	  -.069,-.067,-.033,-.036,-.035,-.035, .007,-.010,-.023,-.034,-.049,-.063,
+	  -.081,-.079,-.060,-.058,-.062,-.059, .009,-.011,-.023,-.037,-.050,-.068,
+	-.089,-.088,-.091,-.076,-.077,-.076 </dataTable>
+      </griddedTable>
+    </functionDefn>
+  </function>
+
+  <function name="Basic Cn">
+    <description> Basic coefficient of yawing moment as a function of angle of attack and
+    sideslip angle </description>
+    <provenance>
+      <author name="Bruce Jackson" org="NASA Langley Research Center"
+	      email="bruce.jackson@nasa.gov"/>
+      <creationDate date="2002-03-28"/>
+      <documentRef refID="REF01"/>
+      <documentRef refID="REF02"/>
+      <documentRef refID="REF03"/>
+    </provenance>
+    <independentVarRef varID="absbeta" min="0.0" max="30.0" extrapolate="neither"/>
+    <!-- Beta breakpoints -->
+    <independentVarRef varID="alpha" min="-10.0" max="45.0" extrapolate="neither"/>
+    <!-- Alpha breakpoints -->
+    <dependentVarRef varID="absCn0"/>
+
+    <functionDefn name="Cn0_fn">
+      <griddedTable name="Cn0_table">
+	<breakpointRefs>
+	  <bpRef bpID="BETA1"/>
+	  <bpRef bpID="ALPHA1"/>
+	</breakpointRefs>
+	<dataTable>
+	  <!-- Note: last breakpoint (alpha) changes most rapidly -->
+	  <!-- -10    -5     0     5    10    15    20    25    30    35    40    45         Alpha       -->
+	  0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., <!-- |Beta| =  0. --> .018,
+	  .019, .018, .019, .019, .018, .013, .007, .004,-.014,-.017,-.033,
+	  <!-- |Beta| =  5. --> .038, .042, .042, .042, .043, .039, .030, .017,
+	  .004,-.035,-.047,-.057, <!-- |Beta| = 10. --> .056, .057, .059, .058, .058,
+	  .053, .032, .012, .002,-.046,-.071,-.073, <!-- |Beta| = 15. --> .064, .077,
+	  .076, .074, .073, .057, .029, .007, .012,-.034,-.065,-.041,
+	  <!-- |Beta| = 20. --> .074, .086, .093, .089, .080, .062, .049, .022,
+	  .028,-.012,-.002,-.013, <!-- |Beta| = 25. --> .079, .090, .106, .106, .096,
+	  .080, .068, .030, .064, .015, .011,-.001 <!-- |Beta| = 30. -->
+	</dataTable>
+      </griddedTable>
+    </functionDefn>
+  </function>
+
+  <!-- =================== -->
+  <!-- Damping Derivatives -->
+  <!-- =================== -->
+
+  <function name="Cmq">
+    <description>
+      Damping derivative: pitching moment due to pitch rate as a
+      function of angle-of-attack
+    </description>
+    <provenance>
+      <author name="Bruce Jackson" org="NASA Langley Research Center"
+	      email="bruce.jackson@nasa.gov"/>
+      <creationDate date="2002-04-04"/>
+      <documentRef refID="REF01"/>
+      <documentRef refID="REF02"/>
+      <documentRef refID="REF03"/>
+    </provenance>
+    <independentVarRef varID="alpha" min="-10.0" max="45.0" 
+		       extrapolate="neither"/>
+    <!-- Alpha breakpoints -->
+    <dependentVarRef varID="cmq"/>
+
+    <functionDefn name="Cmq_fn">
+      <griddedTable name="Cmq_table">
+	<breakpointRefs>
+	  <bpRef bpID="ALPHA1"/>
+	</breakpointRefs>
+	<dataTable>
+	  -7.21, -5.40, -5.23, -5.26, -6.11, -6.64, -5.69, 
+	  -6.00, -6.20, -6.40, -6.60, -6.00 
+	</dataTable>
+      </griddedTable>
+    </functionDefn>
+  </function>
+
+</DAVEfunc>
