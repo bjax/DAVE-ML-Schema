@@ -12,8 +12,8 @@
     <title>Dynamic Aerospace Vehicle Exchange Markup Language (<acronym>DAVE-ML</acronym>)
       Reference</title>
     <titleabbrev>DAVE-ML 2</titleabbrev>
-    <subtitle>Version 2.0 (Release Candidate 4)</subtitle>
-    <releaseinfo>2010-11-08</releaseinfo>
+    <subtitle>Version 2.0 (Release Candidate 3)</subtitle>
+    <releaseinfo>2010-05-07</releaseinfo>
     <corpauthor>
       <ulink url="https://info.aiaa.org/tac/ASG/MSTC"> AIAA Modeling and
         Simulation Technical Committee </ulink>
@@ -37,7 +37,7 @@
     </editor>
 
     <abstract>
-      <para>
+      <para revisionflag="added">
 	The Dynamic Aerospace Vehicle Exchange Markup Language (<acronym>DAVE-ML</acronym>) is a
 	text-based file format intended for encoding the principal elements of a flight simulation
 	model for an aerospace vehicle. It is based on two other open standards: the Extensible
@@ -47,17 +47,17 @@
 	provide a domain-specific language capable of aerospace flight dynamics modeling,
 	verification, and documentation.
       </para>
-      <para>
+      <para revisionflag="added">
 	This markup language represents the encoding format for BSR/AIAA S-119 Flight Dynamic Model
 	Exchange Standard <link linkend="AIAA10"><citation>AIAA10</citation></link>.
       </para>
-      <para>
+      <para revisionflag="changed">
 	This is a draft version of the reference manual for <acronym>DAVE-ML</acronym> syntax and
 	markup. <acronym>DAVE-ML</acronym> syntax is specified by the
 	<filename>DAVEfunc.dtd</filename> Document Type Definition (<acronym>DTD</acronym>) file;
 	the version number above refers to the version of the <filename>DAVEfunc.dtd.</filename>
       </para>
-      <para>
+      <para revisionflag="changed">
 	<acronym>DAVE-ML</acronym> is an open standard, being developed by an informal team of
 	American Institute of Aeronautics and Astronautics (<acronym>AIAA</acronym>) members.
 	Contact the author above for more information or comments regarding refinement of
@@ -71,98 +71,30 @@
   <sect1 id="changes">
     <title>Changes to this document</title>
     <titleabbrev>Changes</titleabbrev>
-    <para>
+    <para revisionflag="changed">
       This section contains a list of changes during the development of the
       <acronym>DAVE-ML</acronym> <acronym>DTD</acronym>.
     </para>
 
-    <sect2 id="changes_20rc3" revisionflag="added">
-      <title>Changes since version 2.0RC3</title>
-      <titleabbrev>RC4 changes</titleabbrev>
-      <para>
-	This section outlines changes to the DTD and this reference manual since version 2, release
-	candidate 3, was released in May 2010.
-      </para>
-      <para>
-	The changes are divided into <emphasis>structural</emphasis> changes to the DTD and
-	<emphasis>non-structural</emphasis> changes to the DTD and reference manual.
-      </para>
-
-      <sect3 id="dtd-changes-20rc4">
-	<title><acronym>DTD</acronym> structural changes since version 2.0RC3</title>
-	<titleabbrev>RC4 DTD changes</titleabbrev>
-	<para>
-	  <itemizedlist>
-	    <listitem>
-	      <para>
-		Made <sgmltag>gtID</sgmltag> and <sgmltag>utID</sgmltag> attributes of
-		<sgmltag>griddedTableDef</sgmltag> and <sgmltag>ungriddedTableDef</sgmltag> required
-		instead of optional, to make it easier for parsers to deal with the table
-		definitions. Previously these attributes were only required of tables that were to
-		be reused by more than one function, but feedback from several tool implementers
-		made this change desirable.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Changed the definition of the <sgmltag>staticShot</sgmltag> element to allow zero or
-		more <sgmltag>checkInput</sgmltag> children. Previously at least one input had to be
-		specified in a checkcase, which didn't allow verification of constant-only models
-		with no inputs.
-	      </para>
-	    </listitem>
-	  </itemizedlist>
-	</para>
-      </sect3>
-
-      <sect3 id="refman-changes-20rc4">
-	<title>Non-structural <acronym>DTD</acronym> and reference manual changes since version 2.0RC3</title>
-	<titleabbrev>RC4 non-DTD changes</titleabbrev>
-	<para>
-	  <itemizedlist>
-	    <listitem>
-	      <para>
-		Noted that any <sgmltag>math</sgmltag> elements should include an
-		<sgmltag>xmlns</sgmltag> attribute with the value of
-		<sgmltag>"http://www.w3.org/1998/Math/MathML"</sgmltag>. This is not a new
-		requirement but helps parsers recognize the MathML namespace. Added this attribute
-		to two examples that contained a <sgmltag>math</sgmltag> element.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Noted that the <sgmltag>calculation</sgmltag> element must contain exactly one
-		<sgmltag>math</sgmltag> subelement.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Added definition of the <sgmltag>math</sgmltag> MathML2 element.
-	    </listitem>
-	  </itemizedlist>
-	</para>
-      </sect3>
-    </sect2>
-
-    <sect2 id="changes_20rc2">
+    <sect2 id="changes_20rc2" revisionflag="added">
       <title>Changes since version 2.0RC2</title>
       <titleabbrev>RC3 changes</titleabbrev>
-      <para>
+      <para revisionflag="added">
 	This section outlines changes to the DTD and this reference manual since version 2, release
 	candidate 2, was released in October 2008.
       </para>
-      <para>
+      <para revisionflag="added">
 	The changes are divided into <emphasis>structural</emphasis> changes to the DTD and
 	<emphasis>non-structural</emphasis> changes to the DTD and reference manual.
       </para>
 
-      <sect3 id="dtd-changes-20rc3">
+      <sect3 id="dtd-changes-20rc3" revisionflag="added">
 	<title><acronym>DTD</acronym> structural changes since version 2.0RC2</title>
 	<titleabbrev>RC3 DTD changes</titleabbrev>
 	<para>
 	  <itemizedlist>
 	    <listitem>
-	      <para>
+	      <para revisionflag="added">
 		Corrected the DTD to require at least one <link
 		linkend="staticShot"><sgmltag>staticShot</sgmltag></link> child element of the <link
 		linkend="checkData"><sgmltag>checkData</sgmltag></link> element.
@@ -171,7 +103,7 @@
 	  </itemizedlist>
 	  <itemizedlist>
 	    <listitem>
-	      <para>
+	      <para revisionflag="added">
 		Changed the DTD logic for inclusion of provenance information for elements
 		<link linkend="griddedTableDef"><sgmltag>griddedTableDef</sgmltag></link>,
 		<link linkend="ungriddedTableDef"><sgmltag>ungriddedTableDef</sgmltag></link>,
@@ -194,7 +126,7 @@
 	      </para>
 	    </listitem>
 	    <listitem>
-	      <para>
+	      <para revisionflag="added">
 		Added optional, mutually exclusive flag elements <link
 		linkend="isInput"><sgmltag>isInput</sgmltag></link>, <link
 		linkend="isControl"><sgmltag>isControl</sgmltag></link>, and <link
@@ -205,19 +137,19 @@
 	      </para>
 	    </listitem>
 	    <listitem>
-	      <para>
+	      <para revisionflag="added">
 		Changed the Uniform Resource Identifier (URI) for the <emphasis>atan2</emphasis>
 		function definition to the daveml.org domain.
 	      </para>
 	    </listitem>
 	    <listitem>
-	      <para>
+	      <para revisionflag="added">
 		Changed SYSTEM ID to reflect new daveml.org domain; changed PUBLIC ID from NASA to
 		AIAA.
 	      </para>
 	    </listitem>
 	    <listitem>
-	      <para>
+	      <para revisionflag="added">
 		In the <acronym>DTD</acronym>, the default DAVE-ML namespace definition was added to
 		the top-level <link linkend="DAVEfunc"><sgmltag>DAVEfunc</sgmltag></link> element to
 		observe a best-practice for <acronym>XML</acronym> <acronym>DTD</acronym>s, at the
@@ -225,7 +157,7 @@
 	      </para>
 	    </listitem>
 	    <listitem>
-	      <para>
+	      <para revisionflag="added">
 		In the <acronym>DTD</acronym> and reference manual, changed the <link
 		linkend="bpVals"><sgmltag>bpVals</sgmltag></link> elements to allow white space
 		separation of values in addition to comma separation (which has always been the case
@@ -238,7 +170,7 @@
 	    </listitem>
 	  </itemizedlist>
 	</para>
-	<para>
+	<para revisionflag="added">
 	  No other changes have been made to the DAVE-ML grammar since 2.0RC2, but this version of
 	  the <acronym>DTD</acronym> and reference manual include clean-up of a number of
 	  inconsistencies (found by Dennis Linse<indexterm><primary>Linse,
@@ -248,13 +180,13 @@
 	</para>
       </sect3>
 
-      <sect3 id="refman-changes-20rc3">
+      <sect3 id="refman-changes-20rc3" revisionflag="added">
 	<title>Non-structural <acronym>DTD</acronym> and reference manual changes since version 2.0RC2</title>
 	<titleabbrev>RC3 non-DTD changes</titleabbrev>
 	<para>
 	  <itemizedlist>
 	    <listitem>
-	      <para>
+	      <para revisionflag="added">
 		Corrected second ungridded table definition example and CLRUD0 function example;
 		reformatted page references from [xx] to (p. xx) in the PDF reference manual, thanks
 		to suggestions by Dennis Linse<indexterm><primary>Linse,
@@ -262,32 +194,32 @@
 	      </para>
 	    </listitem>
 	    <listitem>
-	      <para>
+	      <para revisionflag="added">
 		Amplified and elaborated on possible values for <sgmltag>interpolate</sgmltag> and
 		<sgmltag>extrapolate</sgmltag> attributes for independent variables of function
 		definitions.
 	      </para>
 	    </listitem>
 	    <listitem>
-	      <para>
+	      <para revisionflag="added">
 		Added  an index to the reference manual.
 	      </para>
 	    </listitem>
 	    <listitem>
-	      <para>
+	      <para revisionflag="added">
 		Removed the sign convention list as this is now in the overlying AIAA draft
 		standard, S-119 <citation>AIAA10</citation>.
 	      </para>
 	    </listitem>
 	    <listitem>
-	      <para>
+	      <para revisionflag="added">
 		Added clarification that, while uncertainty can be applied in multiple places in the
 		model (including input, calculations, functions, and outputs), it is probably not a
 		good practice to do so.
 	      </para>
 	    </listitem>
 	    <listitem>
-	      <para>
+	      <para revisionflag="added">
 		Changed the non-dimensional signal units-of-measure indication from blank or ND to 'nd',
 		in accordance with the latest draft standard <citation>AIAA10</citation>; removed
 		plus sign from front of sign convention since it doesn't always apply and is
@@ -308,7 +240,7 @@
 	      </para>
 	    </listitem>
 	    <listitem>
-	      <para>
+	      <para revisionflag="changed">
 		Added two sentences to the description of the calculation element, explaining how to
 		tie variables in the model to the MathML expression via the MathML content
 		identifier (<sgmltag>ci</sgmltag>) element. Thanks to Missy
@@ -318,7 +250,7 @@
 	      </para>
 	    </listitem>
 	    <listitem>
-	      <para>
+	      <para revisionflag="changed">
 		Changed email address for B. Hildreth; added persistent email at daveml.org; changed
 		default Uniform Resource Locator (URL) to daveml.org
 	      </para>
@@ -657,7 +589,7 @@
           <listitem>
             <para>Removed all <sgmltag>xns</sgmltag> attributes from examples.</para>
           </listitem>
-          <listitem>
+          <listitem revisionflag="changed">
             <para>Emphasized that it is a good practice to provide
                 <sgmltag>variableDef</sgmltag>s in sorted sequence.</para>
           </listitem>
@@ -776,7 +708,7 @@
 	      <sgmltag>gtID</sgmltag> attribute corrected to <sgmltag>utID</sgmltag>.
 	    </para>
           </listitem>
-          <listitem>
+          <listitem revisionflag="changed">
             <para> 
 	      Allowed multiple <link linkend="author"><sgmltag>author</sgmltag></link>
 	      elements wherever only one had been allowed before.
@@ -968,7 +900,7 @@
 
     <beginpage/>
 
-    <para> 
+    <para revisionflag="changed"> 
       This document describes the format for <acronym>DAVE-ML</acronym> model definition files.
       <acronym>DAVE-ML</acronym> is a proposed standard format for the interchange of aerospace
       vehicle flight dynamics models. The intent of <acronym>DAVE-ML</acronym> is to significantly
@@ -1070,7 +1002,7 @@
     <titleabbrev>Purpose</titleabbrev>
     <beginpage/>
 
-    <para>
+    <para revisionflag="added">
       <acronym>DAVE-ML</acronym> is intended to encode (for exchange and long-term archive) an
       entire flight vehicle dynamic simulation data package, as is traditionally done in initial
       delivery and updates to engineering development, flight training, and accident investigation
@@ -1078,7 +1010,7 @@
       the aerodynamic, mass/inertia, landing gear, propulsion, and guidance, navigation and control
       laws for a particular vehicle. </para>
 
-    <para> 
+    <para revisionflag="changed"> 
       Traditionally, flight simulation data packages are often a combination of paper documents and
       data files on magnetic or optical media. This collection of information is very much
       vendor-specific and is often incomplete or inconsistent. Many times, the preparing facility
@@ -1090,7 +1022,7 @@
       in the transmittal) and tracking down inevitable differences in results.
     </para>
 
-    <para> 
+    <para revisionflag="changed"> 
       There are obvious benefits to automating most of this tedious, manual process.  Often, when a
       pair of facilities has already exchanged one model, the transmission of another model is much
       faster since the receiving facility will probably have devised some scripts and processes to
@@ -1102,7 +1034,7 @@
       automatically receive and/or transmit such packages (and updates to those packages) rapidly
       with other DAVE-ML-compliant facilities. </para>
 
-    <para>
+    <para revisionflag="changed">
       To accomplish this goal, the <acronym>DAVE-ML</acronym> project is starting with the
       bulkiest part of most aircraft simulation packages: the aerodynamics model. This initial
       version of <acronym>DAVE-ML</acronym> can be used to transport a complete aerodynamics model,
@@ -1114,7 +1046,7 @@
       in terms of inputs, with no past history (state) information required.
     </para>
      
-    <para>
+    <para revisionflag="added">
       DAVE-ML forms the encoding portion of the Flight Simulation Model Exchange Standard, BSR/AIAA
       S-119-2010 (currently in draft form). More information is available at the S-119 web site
       <link linkend="AIAA10"><citation>AIAA10</citation></link>.
@@ -1140,7 +1072,7 @@
     <title>Background</title>
     <titleabbrev>Background</titleabbrev>
 
-    <para> 
+    <para revisionflag="changed"> 
       The idea of a universally understood flight dynamics data package has been discussed for at
       least two decades within the <acronym>AIAA</acronym> technical committees
       <citation>Hildreth94</citation>, <citation>Hildreth98</citation>. There have been proposals in
@@ -1195,20 +1127,20 @@
       <title><acronym>DAVE-ML</acronym> proposal</title>
       <titleabbrev><acronym>DAVE-ML</acronym> proposal</titleabbrev>
 
-      <para>
+      <para revisionflag="changed">
 	In a 2002 AIAA paper, Jackson and Hildreth proposed using <acronym>XML</acronym> to exchange
 	flight dynamic models <citation><link linkend="Jackson02">Jackson02</link></citation>. This
 	paper gave outlines for how such a standard could be accomplished, and provided a business
 	justification for pursuing such a goal.
       </para>
 
-      <para>
+      <para revisionflag="changed">
 	The 2002 proposal included several key aspects from the draft standard, including allowing
 	use of a standard variable-name convention and data table schema and including traceability
 	for each data point back to a referenced document or change order.
       </para>
 
-      <para>
+      <para revisionflag="changed">
 	In a subsequent paper, Jackson, Hildreth, York<indexterm><primary>York,
 	Brent</primary></indexterm> and Cleveland<indexterm><primary>Cleveland,
 	William</primary></indexterm> <citation><link
@@ -1222,7 +1154,7 @@
     <sect2 id="background-recent">
       <title>Recent applications</title>
       <titleabbrev>DAVE-ML applications</titleabbrev>
-      <para> 
+      <para revisionflag="changed"> 
 	Several successful applications of DAVE-ML have been reported. These include the adoption of
 	DAVE-ML by the Australian DSTO<indexterm><primary>DSTO</primary></indexterm> for threat
 	models <citation><link linkend="Brian05">Brian05</link></citation> and the U.S. Navy for
@@ -1258,7 +1190,7 @@
     <titleabbrev>Supporting technologies</titleabbrev>
     <beginpage/>
 
-    <para id="math-ml">
+    <para id="math" revisionflag="changed">
       <acronym>DAVE-ML</acronym> relies on <acronym>MathML</acronym>, version 2.0, to define
       mathematical relationships. MathML-2 is an <acronym>XML</acronym> grammar for describing
       mathematics as a basis for machine-to-machine communication. It is used in DAVE-ML to describe
@@ -1269,7 +1201,7 @@
       <indexterm><primary>MathML-2</primary></indexterm>
     </para>
 
-    <para>
+    <para revisionflag="changed">
       <acronym>MathML-2</acronym> provides a mostly complete set of mathematical functions,
       including trigonometric, exponential and switching functions. One function that is available
       in most programming languages and computer-aided design tools but is missing from MathML-2 is
@@ -1308,7 +1240,7 @@
     <sect2 id="top-element-davefunc">
       <title>The <sgmltag>DAVEfunc</sgmltag> major element</title>
       <titleabbrev><sgmltag>DAVEfunc</sgmltag></titleabbrev>
-      <para> 
+      <para revisionflag="changed"> 
 	The <link linkend="DAVEfunc"><sgmltag>DAVEfunc</sgmltag></link> element contains both data
 	tables and equations for a particular static model. A <link linkend="davefunc_overview">
 	<sgmltag>DAVEfunc</sgmltag></link> element is broken into six components: a file header,
@@ -1348,7 +1280,7 @@
 	</indexterm>
       </para>
 
-      <para>
+      <para revisionflag="changed">
 	Variables, or more properly <emphasis>signals</emphasis>, are used to route inputs and
 	calculations through the subsystem model into outputs. Each variable is defined with a <link
 	linkend="variableDef_overview"><sgmltag>variableDef</sgmltag></link> element. Variables can
@@ -1497,7 +1429,7 @@
 	</indexterm>
       </para>
 
-      <programlisting>
+      <programlisting revisionflag="changed">
 Key:
     elementname : mandatory_attributes, [optional_attributes]
             mandatory_single_sub-element
@@ -1565,7 +1497,7 @@ Key:
               more functions, signal calculations, and/or as a model output.
 	    </para>
 
-	    <para>
+	    <para revisionflag="added">
 	      In DAVE-ML 2.0, all signals are real and scalar.
 	    </para>
 
@@ -1611,7 +1543,7 @@ Key:
           </term>
 
           <listitem>
-            <para> 
+            <para revisionflag="changed"> 
 	      A <sgmltag>DAVEfunc</sgmltag> model can contain zero, one, or more gridded nonlinear
 	      function table definitions. Each table must be used by multiple <link
 	      linkend="function"><sgmltag>function</sgmltag></link> definition if desired for
@@ -1660,7 +1592,7 @@ Key:
           </term>
           <listitem>
 
-            <para> 
+            <para revisionflag="changed"> 
 	      A DAVEfunc model can contain zero, one, or more ungridded nonlinear function table
 	      definitions. <indexterm><primary sortas="ungriddedTableDef">'ungriddedTableDef' 
 	      element</primary><secondary>as child of 'DAVEfunc' 
@@ -1679,7 +1611,7 @@ Key:
 	      </indexterm>
 	    </para>
 
-            <para> 
+            <para revisionflag="changed"> 
 	      Ungridded table values are specified as a single (unsorted) list of independent
 	      variable (input) values and associated dependent variable (output) values. While the
 	      list is not sorted, the order of the independent variable inputs is important and must
@@ -1759,7 +1691,7 @@ Key:
 	  </indexterm>
 	</para>
 
-        <programlisting>
+        <programlisting revisionflag="changed">
     <link linkend="fileHeader">fileHeader</link> : [name]
         <link linkend="author">author</link>+ : name, org, [email]
             <link linkend="contactInfo">contactInfo</link>* : [contactInfoType, contactLocation]
@@ -1790,7 +1722,7 @@ Key:
                     {textual description of the background of the model}
         </programlisting>
 
-        <variablelist>
+        <variablelist revisionflag="changed">
           <title><link linkend="fileHeader">
               <sgmltag>fileHeader</sgmltag>
             </link> sub-elements:</title>
@@ -1884,7 +1816,7 @@ Key:
               </link>
             </term>
             <listitem>
-              <para> An optional list of one or more modifications with
+              <para revisionflag="changed"> An optional list of one or more modifications with
               optional reference IDs, as well as author information and descriptions for each
               modification record. These modifications are referred to by individual function tables
               and/or data points, using the AIAA modification letter convention. If more than one
@@ -1905,7 +1837,7 @@ Key:
               </link>
             </term>
             <listitem>
-              <para> 
+              <para revisionflag="changed"> 
 		An optional list of one or more <link linkend="provenance">provenance</link>
 		elements allows the author to describe the source and history of the data within
 		this model. Since the model may be constructed from several sources, more than one
@@ -1925,7 +1857,7 @@ Key:
 	  <?dbfo keep-together="auto"?>
           <title>An excerpt with an example of a <sgmltag>fileHeader</sgmltag> element</title>
 	  <indexterm><primary sortas="fileHeader">'fileHeader' element</primary><secondary>example of</secondary></indexterm>
-          <programlisting>
+          <programlisting revisionflag="changed">
 &lt;!--                          =================                          --&gt; <co id="fh-note-1-co" linkends="fh-note-1"/>
 &lt;!-- =========================   FILE HEADER   ========================= --&gt;
 &lt;!--                          =================                          --&gt;
@@ -2001,14 +1933,14 @@ Key:
 	      </para>
             </callout>
             <callout arearefs="fh-note-5-co" id="fh-note-5">
-              <para>
+              <para revisionflag="changed">
 		All documents referenced by notation throughout the file should be described in the
 		<link linkend="fileHeader"><sgmltag>fileHeader</sgmltag></link> as
 		<sgmltag>reference</sgmltag> elements.
 	      </para>
             </callout>
             <callout arearefs="fh-note-6-co" id="fh-note-6">
-              <para>
+              <para revisionflag="changed">
 		All modifications made to the contents of this file should be listed in the <link
 		linkend="fileHeader"><sgmltag>fileHeader</sgmltag></link> as <link
 		linkend="modificationRecord"><sgmltag>modificationRecord</sgmltag></link>
@@ -2026,7 +1958,7 @@ Key:
       <sect3 id="variableDef_overview">
         <title>The variable definition element</title>
         <titleabbrev><sgmltag>variableDef</sgmltag> overview</titleabbrev>
-        <para>
+        <para revisionflag="changed">
 	  The <link linkend="variableDef"><sgmltag>variableDef</sgmltag></link> element is used to
 	  define each constant, parameter, or variable used within or generated by the defined
 	  subsystem model. It contains attributes including the variable name (used for
@@ -2048,7 +1980,7 @@ Key:
 
 	</para>
 
-	<para>
+	<para revisionflag="added">
 	  Other optional sub-elements are provided to identify inputs, disturbances, and simulation
 	  control parameters, as well as the ability to identify a variable as a state or state
 	  derivative for linear model purposes.
@@ -2126,7 +2058,7 @@ Key:
               <sgmltag>units</sgmltag>
             </term>
             <listitem>
-              <para>
+              <para revisionflag="changed">
 		The units-of-measure for the signal, using the AIAA standard units convention <link
 		linkend="AIAA10"><citation>AIAA10</citation></link>.
 	      </para>
@@ -2142,7 +2074,7 @@ Key:
               <sgmltag>axisSystem</sgmltag>
             </term>
             <listitem>
-              <para>
+              <para revisionflag="changed">
 		An optional indicator of the axis system (body, inertial, etc.) in which the signal
 		is measured. See <link linkend="AIAA10"><citation>AIAA10</citation></link> or <xref
 		linkend="conventions"/> below for recommended practice for nomenclature.
@@ -2165,7 +2097,7 @@ Key:
             </listitem>
           </varlistentry>
           
-          <varlistentry>
+          <varlistentry revisionflag="added">
             <term>
 	      <indexterm>
 		<primary sortas="alias">'alias' attribute</primary>
@@ -2267,7 +2199,7 @@ Key:
 		contains a single <sgmltag>math</sgmltag> element which is defined in the <ulink
 		url="http://www.w3.org/Math">MathML-2 markup language</ulink>.
 	      </para>
-              <para>
+              <para revisionflag="added">
 		A <acronym>MathML</acronym>-2 calculation can include both constants (using the
 		content numeric <sgmltag>cn</sgmltag> element) and references to other variables
 		internal to the parent <sgmltag>DAVEfunc</sgmltag> description. The variables
@@ -2277,12 +2209,12 @@ Key:
 		<acronym>MathML</acronym> content identifier (<sgmltag>ci</sgmltag>) element of
 		the expression.
 	      </para>
-              <para>
+              <para revisionflag="added">
 		Examples of MathML expressions appear later in this reference.
               </para>
 	    </listitem>
           </varlistentry>
-          <varlistentry>
+          <varlistentry revisionflag="added">
             <term>
 	      <indexterm>
 		<primary sortas="isInput">'isInput' element</primary>
@@ -2299,7 +2231,7 @@ Key:
 	      </para>
             </listitem>
           </varlistentry>
-          <varlistentry>
+          <varlistentry revisionflag="added">
             <term>
 	      <indexterm>
 		<primary sortas="isControl">'isControl' element</primary>
@@ -2316,7 +2248,7 @@ Key:
 	      </para>
             </listitem>
           </varlistentry>
-          <varlistentry>
+          <varlistentry revisionflag="added">
             <term>
 	      <indexterm>
 		<primary sortas="isDisturbance">'isDisturbance' element</primary>
@@ -2409,7 +2341,7 @@ Key:
               </link>
             </term>
             <listitem>
-              <para> 
+              <para revisionflag="changed"> 
 		This optional element, if present, describes the uncertainty of this parameter.
                 See the section on <link linkend="statistics">Statistics</link> below for more
                 information about this element. 
@@ -2423,7 +2355,7 @@ Key:
 	  <?dbfo keep-together="auto"?>
           <title>An example of two <sgmltag>variableDef</sgmltag> elements defining
             input signals</title>
-          <para> 
+          <para revisionflag="changed"> 
 	    In this example<indexterm><primary sortas="variableDef">'variableDef'
 	    element</primary><secondary>example of</secondary></indexterm> , two input
 	    variables are defined: <varname>XMACH</varname> and <varname>DBFLL</varname>. These two
@@ -2461,7 +2393,7 @@ Key:
           </programlisting>
           <calloutlist>
             <callout arearefs="vd1-note-1-co" id="vd1-note-1">
-              <para> 
+              <para revisionflag="changed"> 
 		The <sgmltag>name</sgmltag> attribute is intended for humans to read, perhaps as the
 		signal name in a wiring diagram. Note that "machNumber" is one of the standard AIAA
 		simulation variable names.
@@ -2473,21 +2405,21 @@ Key:
               model.</para>
             </callout>
             <callout arearefs="vd1-note-7-co" id="vd1-note-7">
-	      <para>
+	      <para revisionflag="added">
 		The optional <sgmltag>isInput</sgmltag> attribute indicates this variable should
 		be treated as an input to the model for model hierarchy and linear model extraction
 		(for example).
 	      </para>
             </callout>
             <callout arearefs="vd1-note-3-co" id="vd1-note-3">
-              <para>The optional <sgmltag>isStdAIAA</sgmltag> sub-element indicates this signal is
+              <para revisionflag="changed">The optional <sgmltag>isStdAIAA</sgmltag> sub-element indicates this signal is
               one of the predefined standard variables that most simulation facilities define in
               their equations of motion code. The <sgmltag>name</sgmltag> attribute should
               correspond to the standard AIAA parameter name from Annex A of <citation><link
               linkend="AIAA10">AIAA10</link></citation> or subsequent standards document</para>
             </callout>
             <callout arearefs="vd1-note-4-co" id="vd1-note-4">
-              <para>
+              <para revisionflag="changed">
 		The mandatory <sgmltag>units</sgmltag> attribute describes the units of measure of
 		the variable. See <xref linkend="uofm"/> below for a recommended list of
 		units-of-measure abbreviations.
@@ -2510,7 +2442,7 @@ Key:
 	  <?dbfo keep-together="auto"?>
           <title>A simple local variable definition example</title>
 
-          <para> 
+          <para revisionflag="changed"> 
 	    This DAVE-ML excerpt<indexterm><primary
 	    sortas="variableDef">'variableDef'
 	    element</primary><secondary>example of a local</secondary></indexterm> defines
@@ -2541,7 +2473,7 @@ Key:
           </programlisting>
         </example>
 
-	<para>
+	<para revisionflag="added">
 	  Since this signal is not flagged as an input, control, disturbance or output, this
 	  variable is an intermediate signal local to this model.
 	</para>
@@ -2552,7 +2484,7 @@ Key:
 	    A more complete <sgmltag>variableDef</sgmltag> example with a
 	    <sgmltag>calculation</sgmltag> element
 	  </title>
-          <para> 
+          <para revisionflag="changed"> 
 	    In this example<indexterm><primary sortas="variableDef">'variableDef'
 	    element</primary><secondary>example of calculated</secondary></indexterm>, the local
 	    variable <varname>CLBFLL</varname> is defined as a calculated quantity, based on several
@@ -2623,7 +2555,7 @@ Key:
                 the results of the nested <sgmltag>apply</sgmltag> operation).</para>
             </callout>
             <callout arearefs="vd3-note-6-co" id="vd3-note-6">
-              <para>
+              <para revisionflag="added">
 		The content identifier (<sgmltag>ci</sgmltag>) MathML-2 element gives the
 		<sgmltag>varID</sgmltag> of the previously defined variables used in this equation;
 		this variable represents the output of the <sgmltag>CLBFLL0</sgmltag> function found
@@ -2669,7 +2601,7 @@ Key:
                    CLWFL + CLWFR + CLRUD + CLGE + CLLG
     &lt;/description&gt;
     &lt;calculation&gt;
-      &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+      &lt;math&gt;
         &lt;apply&gt; <co id="vd4-note-1-co" linkends="vd4-note-1"/>
           &lt;plus/&gt;
           &lt;ci&gt;CL0&lt;/ci&gt;
@@ -2694,7 +2626,7 @@ Key:
                 variables, referenced by their <sgmltag>varID</sgmltag>s. </para>
             </callout>
             <callout arearefs="vd4-note-2-co" id="vd4-note-2">
-              <para>
+              <para revisionflag="added">
 		This <sgmltag>ci</sgmltag> element refers to the lower left body flag lift
 		contribution calculated in the previous <xref linkend="variableDef_example_3"
 		xrefstyle="template:example"/>.
@@ -2712,7 +2644,7 @@ Key:
 	  <?dbfo keep-together="auto"?>
           <title>An intermediate variable with a <sgmltag>calculation</sgmltag> element that uses a
             DAVE-ML function extension to the default MathML-2 function set</title>
-          <para>
+          <para revisionflag="changed">
 	    In this excerpt<indexterm><primary sortas="variableDef">'variableDef'
 	    element</primary><secondary>example with extension to MathML-2</secondary></indexterm>,
 	    we demonstrate a means to encode a math function, <emphasis>atan2</emphasis>, that is
@@ -2735,7 +2667,7 @@ Key:
       library.
     &lt;/description&gt;
     &lt;calculation&gt;
-      &lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;
+      &lt;math&gt;
         &lt;apply&gt;
           &lt;csymbol definitionURL="http://daveml.org/function_spaces.html#atan2"
                    encoding="text"&gt;  <co id="vd5-note-2-co" linkends="vd5-note-2"/>
@@ -2764,7 +2696,7 @@ Key:
 	      </para>
             </callout>
             <callout arearefs="vd5-note-2-co" id="vd5-note-2">
-              <para> 
+              <para revisionflag="changed"> 
 		The <sgmltag>csymbol</sgmltag> element is provided by MathML-2 as a means to extend
 		the function set of MathML-2. An extension for <emphasis>atan2</emphasis> is the
 		only function defined at present but others may be added to the set in the future.
@@ -2896,7 +2828,7 @@ Key:
         <example id="breakpointDef_example">
 	  <?dbfo keep-together="auto"?>
           <title>Two <sgmltag>breakpointDef</sgmltag> examples in a DAVE-ML model excerpt</title>
-          <para> 
+          <para revisionflag="changed"> 
 	    As an example, two breakpoint sets are defined<indexterm><primary
 	    sortas="breakpointDef">'breakpointDef'
 	    element</primary><secondary>example of</secondary></indexterm> which are used in the
@@ -2938,7 +2870,7 @@ Key:
               must be in monotonically increasing numerical order.</para>
             </callout>
             <callout arearefs="bpd-note-3-co" id="bpd-note-3">
-              <para>
+              <para revisionflag="added">
 		This breakpoint set defines the breakpoints for lower body flap deflection.
 	      </para>
             </callout>
@@ -2950,7 +2882,7 @@ Key:
         <title>The gridded table definition element</title>
         <titleabbrev><sgmltag>griddedTableDef</sgmltag> overview</titleabbrev>
 
-        <para> 
+        <para revisionflag="changed"> 
 	  The <link linkend="griddedTableDef"><sgmltag>griddedTableDef</sgmltag></link> element
 	  defines a multi-dimensional table of values corresponding with the value of an arbitrary
 	  function at each intersection of a set of specified independent input values. The
@@ -2964,7 +2896,7 @@ Key:
 	  </indexterm>
 	</para>
 
-        <para> 
+        <para revisionflag="changed"> 
 	  The data contained within the data table definition are a comma- or white space-separated
 	  set of floating-point values. This list of values represents a multi-dimensional array
 	  whose size is inferred from the length of each breakpoint vector. For example, a 2D table
@@ -3131,7 +3063,7 @@ Key:
               </link>
             </term>
             <listitem>
-              <para> 
+              <para revisionflag="changed"> 
 		This optional element, if present, describes the uncertainty of this parameter.  See
 		<xref linkend="statistics" xrefstyle="template:Section %n"/> for more information
 		about this element.
@@ -3150,7 +3082,7 @@ Key:
               </link>
             </term>
             <listitem>
-              <para>
+              <para revisionflag="changed">
 		The numeric values of the function at the function vertices specified by the
 		breakpoint sets are contained within this element, in a single comma- or
 		white space-separated list, representing an unraveled multi-dimensional table.
@@ -3232,7 +3164,7 @@ Key:
                 is intended for automatic wiring (autocode) tools. </para>
             </callout>
             <callout arearefs="gtd-note-3-co" id="gtd-note-3">
-              <para>
+              <para revisionflag="changed">
 		Descriptions make for good practice whenever possible. Here we explain the contents
 		of the function represented by the data points.
 	      </para>
@@ -3284,7 +3216,7 @@ Key:
           presented. See the section on <link linkend="statistics">Statistics</link> below for more
           information about this element. </para>
 
-        <programlisting>
+        <programlisting revisionflag="changed">
     <link linkend="ungriddedTableDef">ungriddedTableDef</link> : [utID, name, units]
         <link linkend="description">description</link>? :
             {description character data}
@@ -3498,7 +3430,7 @@ Key:
               <para>Comments are a good idea for human readers</para>
             </callout>
             <callout arearefs="ug2dtd-note-3-co" id="ug2dtd-note-3">
-              <para> 
+              <para revisionflag="changed"> 
 		For a 2D table such as this one, data points give two columns of independent
 		breakpoint values and a third column of function values at those breakpoints.
 	      </para>
@@ -3605,7 +3537,7 @@ Key:
               DSTO<indexterm><primary>DSTO</primary></indexterm></para>
             </callout>
             <callout arearefs="ug3dtd-note-2-co" id="ug3dtd-note-2">
-              <para> 
+              <para revisionflag="changed"> 
 		In this example, columns are labeled with an <acronym>XML</acronym>
 		comment for human readers. Actual association of each input
 		(alpha, beta and delta) and the single output (yawing
@@ -3628,7 +3560,7 @@ Key:
         <title>The function definition element</title>
         <titleabbrev><sgmltag>function</sgmltag> overview</titleabbrev>
 
-        <para>
+        <para revisionflag="changed">
 	  The <link linkend="function"><sgmltag>function</sgmltag></link> element connects
 	  breakpoint sets (for gridded tables), independent variables, and data tables (gridded or
 	  ungridded) to their respective output variable.
@@ -3638,7 +3570,7 @@ Key:
 	  </indexterm>
 	</para>
 
-        <programlisting>
+        <programlisting revisionflag="changed">
     <link linkend="function">function</link> : name
         <link linkend="description">description</link>? :
             {text description of the function}
@@ -3764,7 +3696,7 @@ Key:
               </link>
             </term>
             <listitem>
-              <para> 
+              <para revisionflag="changed"> 
 		If the author chooses, she can express a linearly interpolated functions by
 		specifying the independent (breakpoint) value sets as one or more
 		<sgmltag>independentVarPts</sgmltag> which are comma- or white space-separated,
@@ -3775,7 +3707,7 @@ Key:
 		<link linkend="independentVarPts"><sgmltag>independentVarPts</sgmltag></link> set
 		with an input variable.
 	      </para>
-              <para> 
+              <para revisionflag="changed"> 
 		An optional <sgmltag>interpolate</sgmltag> attribute specifies the preference for
 		using linear, quadratic, or cubic relaxed splines for calculating dependent values
 		when the independent arguments are in between specified values. When not specified,
@@ -3817,13 +3749,13 @@ Key:
               </link>
             </term>
             <listitem>
-              <para> 
+              <para revisionflag="changed"> 
 		One or more of these elements refers to separately defined <link
 		linkend="variableDef"><sgmltag>variableDef</sgmltag></link>s. The order of
 		specification is important and must match the order in which breakpoint sets are
 		specified or the order of coordinates in ungridded table coordinate/value sets.
 	      </para>
-              <para>
+              <para revisionflag="changed">
 		An optional <sgmltag>interpolate</sgmltag> attribute specifies the preference for
 		using discrete, linear, quadratic, or cubic splines for calculating dependent values
 		when the independent arguments are in between specified values. When not specified,
@@ -3845,7 +3777,7 @@ Key:
               </link>
             </term>
             <listitem>
-              <para> 
+              <para revisionflag="changed"> 
 		A single <sgmltag>dependentVarRef</sgmltag> must be specified to connect the output
 		of this function to a particular <sgmltag>variableDef</sgmltag>.
 	      </para>
@@ -3937,7 +3869,7 @@ Key:
           </programlisting>
           <calloutlist>
             <callout arearefs="fn1-note-1-co" id="fn1-note-1">
-              <para> 
+              <para revisionflag="changed"> 
 		The independent variables must be given in the order of least-rapidly changing to
 		most-rapidly changing values in the previously defined function table. The
 		processing application needs to pay attention to the <sgmltag>extrapolate</sgmltag>
@@ -3961,7 +3893,7 @@ Key:
         <example id="function_example_2">
 	  <?dbfo keep-together="auto"?>
           <title>A <sgmltag>function</sgmltag> with an internal table</title>
-          <para> 
+          <para revisionflag="changed"> 
 	    In this example<indexterm><primary sortas="function">'function'
 	    element</primary><secondary>example of with internal table</secondary></indexterm>, the
 	    function <varname>CLRUD0</varname> returns, in the variable <varname>CLRUD0</varname>,
@@ -3973,6 +3905,15 @@ Key:
 	    respectively.
 	  </para>
 
+          <para revisionflag="deleted"> 
+	    In this case, the use of the <varname>CLRUD0</varname> string for both the function
+	    <sgmltag>name</sgmltag> attribute and as the <sgmltag>varID</sgmltag> for the dependent
+	    (output) variable reference does not interfere (although they are confusing);
+	    <sgmltag>name</sgmltag> is not in the <acronym>XML</acronym> namespace. The
+	    <sgmltag>name</sgmltag> attribute is only used for documentation (such as a label for a
+	    box representing this function).
+	  </para>
+
           <programlisting>
       &lt;!-- ================ --&gt;
       &lt;!-- Rudder functions --&gt;
@@ -3982,7 +3923,7 @@ Key:
      definitions are internal to the function definition.
 --&gt; <co id="fn2-note-1-co" linkends="fn2-note-1"/>
 
-  &lt;function name="CLRUD0_fn"&gt; <co id="fn2-note-2-co" linkends="fn2-note-2"/>
+  &lt;function name="CLRUD0"&gt; <co id="fn2-note-2-co" linkends="fn2-note-2"/>
     &lt;description&gt;
         Rudder contribution to lift coefficient,
         polynomial multiplier for constant term.
@@ -3996,7 +3937,7 @@ Key:
     &lt;independentVarRef varID="XMACH" min="0.3" max="4.0" extrapolate="neither"/&gt;
     &lt;dependentVarRef varID="CLRUD0"/&gt; <co id="fn2-note-4-co" linkends="fn2-note-4"/>
 
-    &lt;functionDefn name="CLRUD0_fn_defn"&gt;
+    &lt;functionDefn name="CLRUD0_fn"&gt;
       &lt;griddedTableDef name="CLRUD0_table"&gt; <co id="fn2-note-5-co" linkends="fn2-note-5"/>
         &lt;breakpointRefs&gt;
           &lt;bpRef bpID="DRUD_PTS"/&gt;
@@ -4026,19 +3967,19 @@ Key:
               <para>This comment helps humans understand the reason for an embedded table.</para>
             </callout>
             <callout arearefs="fn2-note-2-co" id="fn2-note-2">
-              <para>
+              <para revisionflag="added">
 		The <sgmltag>name</sgmltag> attribute is used for documentation purposes, not for
 		internal variable linkage.
 	      </para>
             </callout>
             <callout arearefs="fn2-note-3-co" id="fn2-note-3">
-              <para>
+              <para revisionflag="changed">
 		The <sgmltag>provenance</sgmltag> element is required by the AIAA standard <link
 		linkend="AIAA10"><citation>AIAA10</citation></link>.
 	      </para>
             </callout>
             <callout arearefs="fn2-note-4-co" id="fn2-note-4">
-              <para>
+              <para revisionflag="added">
 		The <sgmltag>varID</sgmltag> attribute is used to link the output of this function
 		with a previously defined variable as given in <xref linkend="variableDef_example_2"
 		xrefstyle="template:Example %n"/>.
@@ -4054,7 +3995,7 @@ Key:
         <example id="function_example_3">
 	  <?dbfo keep-together="auto"?>
           <title>A simple 1D <sgmltag>function</sgmltag></title>
-          <para> 
+          <para revisionflag="changed"> 
 	    At the other end of the spectrum, a simple 1D nonlinear function<indexterm><primary
 	    sortas="function">'function' element</primary><secondary>example of
 	    simple</secondary></indexterm> can be defined with no reuse, as shown below; however,
@@ -4098,7 +4039,7 @@ Key:
 	  </indexterm>
 	</para>
 
-        <programlisting>
+        <programlisting revisionflag="changed">
     <link linkend="checkData">checkData</link>
       <link linkend="staticShot">staticShot</link>+ : name, [refID]
             <link linkend="description">description</link>?
@@ -4133,7 +4074,7 @@ Key:
               <sgmltag>staticShot</sgmltag>
             </term>
             <listitem>
-              <para> 
+              <para revisionflag="changed"> 
 		One or more check-case data sets, each of which contain mandatory sub-elements <link
 		linkend="checkInputs"><sgmltag>checkInputs</sgmltag></link> and <link
 		linkend="checkOutputs"><sgmltag>checkOutputs</sgmltag> vectors</link> (with required
@@ -4223,7 +4164,7 @@ Key:
 	      </para>
             </callout>
             <callout arearefs="chk1-note-3-co" id="chk1-note-3">
-              <para> 
+              <para revisionflag="changed"> 
 		Multiple <sgmltag>signal</sgmltag> elements are usually given; taken together, these
 		scalar <sgmltag>signals</sgmltag>s represent the check-case input "vector."
               </para>
@@ -4235,7 +4176,7 @@ Key:
 	      </para>
             </callout>
             <callout arearefs="chk1-note-5-co" id="chk1-note-5">
-              <para> 
+              <para revisionflag="changed"> 
 		Note the included tolerance value, indicating the absolute value tolerance within
 		which the output values must match the check-case data values.
 	      </para>
@@ -4258,7 +4199,7 @@ Key:
 	    element</primary><secondary>example of</secondary><tertiary>with internal
 	    values</tertiary></indexterm>
 	  </para>
-          <programlisting>
+          <programlisting revisionflag="changed">
   &lt;checkData&gt;
     &lt;( provenance | provenanceRef )?&gt;
     &lt;staticShot name="Skewed inputs"&gt;
@@ -4325,7 +4266,7 @@ Key:
           </programlisting>
           <calloutlist>
             <callout arearefs="chk2-note-1-co" id="chk2-note-1">
-              <para> 
+              <para revisionflag="changed"> 
 		The <sgmltag>internalValues</sgmltag> element, if present, usually is a list of all
 		model-defined internal variable values. This is normally not required for a model
 		exchange, but such information is very useful to aide in debugging the
@@ -4342,7 +4283,7 @@ Key:
     <sect2 id="interpolation">
       <title>Function interpolation/extrapolation</title>
       <titleabbrev>Interpolation</titleabbrev>
-      <para> 
+      <para revisionflag="changed"> 
 	It is possible to specify the method of interpolation to be used for nonlinear
         function tables by use of the <sgmltag>interpolate</sgmltag> attribute of the <link
         linkend="independentVarPts">
@@ -4460,23 +4401,23 @@ Key:
 	</varlistentry>
       </variablelist>
 
-      <para> 
+      <para revisionflag="changed"> 
 	Implementation of the specific interpolation algorithm is left up to the implementer. One
 	reference is the Wikipedia entry on interpolation <link
 	linkend="wiki01"><citation>wiki01</citation></link>.
       </para>
-      <para>
+      <para revisionflag="changed">
 	The following implementation notes are suggested: 
 	<itemizedlist>
           <listitem>
-            <para>
+            <para revisionflag="changed">
 	      An infinite set of quadratic interpolations are possible; it is suggested to use the
 	      one that minimizes either the deviation from a linear interpolation or the slope error
 	      at any edge.
 	    </para>
           </listitem>
           <listitem>
-            <para> 
+            <para revisionflag="changed"> 
 	      For cubic interpolation, the natural cubic spline (which has a second derivative of
 	      zero at each end) is recommended when the <sgmltag>extrapolate</sgmltag> attribute is
 	      <sgmltag>none</sgmltag>. When the <sgmltag>extrapolate</sgmltag> attribute is
@@ -4485,7 +4426,7 @@ Key:
 	    </para>
           </listitem>
           <listitem>
-            <para> 
+            <para revisionflag="changed"> 
 	      For the discrete interpolation values (<sgmltag>discrete</sgmltag>,
 	      <sgmltag>ceiling</sgmltag>, or <sgmltag>floor</sgmltag>), the value of the
 	      <sgmltag>extrapolate</sgmltag> attribute is meaningless.
@@ -4493,18 +4434,18 @@ Key:
           </listitem>
         </itemizedlist>
       </para>
-      <para>
+      <para revisionflag="added">
 	For discrete interpolation, 
 	<itemizedlist>
 	  <listitem>
-	    <para>
+	    <para revisionflag="added">
 	      <sgmltag>discrete</sgmltag> implies the change between output values occurs midway between independent
 	      breakpoint values, as shown in the top plot of <xref
 	      linkend="discrete_interpolation_figure" xrefstyle="template:Figure %n"/>.
 	    </para>
 	  </listitem>
 	  <listitem>
-	    <para>
+	    <para revisionflag="added">
 	      <sgmltag>ceiling</sgmltag> means the output takes on the value of the next-higher
 	      dependent variable breakpoint as soon as each independent breakpoint value is passed
 	      (assuming the input value is increasing) as shown in the middle plot of <xref
@@ -4512,7 +4453,7 @@ Key:
 	    </para>
 	  </listitem>
 	  <listitem>
-	    <para>
+	    <para revisionflag="added">
 	      <sgmltag>floor</sgmltag> means the output retains the value of the last dependent
 	      variable breakpoint until the next independent breakpoint value is reached (assuming
 	      the input value is increasing) as shown in the bottom plot of <xref
@@ -4521,11 +4462,11 @@ Key:
 	  </listitem>
 	</itemizedlist>
       </para>
-      <para>
+      <para revisionflag="added">
 	The default value for <sgmltag>interpolate</sgmltag> is <sgmltag>linear</sgmltag>.  The
 	default value for <sgmltag>extrapolate</sgmltag> is <sgmltag>neither</sgmltag>.
       </para>
-      <para>
+      <para revisionflag="changed">
 	Figures <xref linkend="discrete_interpolation_figure" xrefstyle="template:%n"/> and <xref
 	linkend="interpolation_figure" xrefstyle="template:%n"/> below give nine different examples
 	for a 1D table whose independent values are [1, 3, 4, 6, 7.5] with dependent
@@ -4567,7 +4508,7 @@ Key:
     <sect2 id="statistics">
       <title>Statistical information encoding</title>
       <titleabbrev>Statistics</titleabbrev>
-      <para> 
+      <para revisionflag="changed"> 
 	Statistical measures of variation of certain parameters and functions can be embedded in a
 	DAVE-ML model in several ways. This information is captured in an <link
 	linkend="uncertainty"> <sgmltag>uncertainty</sgmltag></link> element, which can be
@@ -4587,7 +4528,7 @@ Key:
 	  <secondary>encoding for</secondary>
 	</indexterm>
       </para>
-      <para>
+      <para revisionflag="added">
 	Details on providing the random values for uncertainties is left to the implementer.
       </para>
       <para> Uncertainty in the value of a parameter or function is given in one of two ways,
@@ -4600,7 +4541,7 @@ Key:
         </link> element within the <link linkend="uncertainty">
           <sgmltag>uncertainty</sgmltag>
         </link> element. </para>
-      <para> 
+      <para revisionflag="changed"> 
 	Linear correlation between the randomness of two or more variables or functions can be
 	specified. Although the correlation between parameters does not have a dependency direction
 	(i.e., the statistical uncertainty of one parameter is specified in terms of the other
@@ -4693,7 +4634,7 @@ Key:
       <example id="uncertainty_example_1">
 	<?dbfo keep-together="auto"?>
         <title>A variable with absolute uncertainty bounds</title>
-        <para> 
+        <para revisionflag="changed"> 
 	  This example<indexterm><primary sortas="uncertainty">'uncertainty'
 	  element</primary><secondary>example of</secondary><tertiary>with absolute
 	  bounds</tertiary></indexterm> shows how to specify that a constant parameter can take on a
@@ -4739,7 +4680,7 @@ Key:
       <example id="uncertainty_example_2">
 	<?dbfo keep-together="auto"?>
         <title>10% uncertainty applied to output variable with a uniform distribution</title>
-        <para>
+        <para revisionflag="changed">
 	  This example<indexterm><primary sortas="uncertainty">'uncertainty'
 	  element</primary><secondary>example
 	  of</secondary><tertiary>percentage</tertiary></indexterm> shows how to specify that a
@@ -4809,7 +4750,7 @@ Key:
 	<?dbfo keep-together="auto"?>
         <title>Asymmetric additive uncertainty applied to output variable with uniform
           distribution</title>
-        <para> 
+        <para revisionflag="changed"> 
 	  This example<indexterm><primary sortas="uncertainty">'uncertainty'
 	  element</primary><secondary>example
 	  of</secondary><tertiary>additive</tertiary></indexterm> shows how to specify that a
@@ -5025,7 +4966,7 @@ Key:
 
         <calloutlist>
           <callout arearefs="uncert5-note-1-co" id="uncert5-note-1">
-            <para> 
+            <para revisionflag="changed"> 
 	      Lift coefficient has a nominal value that varies with angle-of-attack according to a
 	      nonlinear 1D table (given in the "Nominal CL" table defined in this
 	      example). When performing parametric variations, <varname>CL_u</varname> can take on a
@@ -5033,13 +4974,13 @@ Key:
 	    </para>
           </callout>
           <callout arearefs="uncert5-note-2-co" id="uncert5-note-2">
-            <para> 
+            <para revisionflag="changed"> 
 	      This element indicates that the variation of lift coefficient correlates directly with
 	      the variation in pitching moment coefficient.
 	    </para>
           </callout>
           <callout arearefs="uncert5-note-3-co" id="uncert5-note-3">
-            <para> 
+            <para revisionflag="changed"> 
 	      Pitching-moment coefficient has a nominal value that varies as a function of
 	      angle-of-attack, according to a nonlinear 1D table (given in the "Nominal Cm" table
 	      defined in this example). When performing parametric variations,
@@ -5060,7 +5001,7 @@ Key:
       <title>Additional DAVE-ML conventions</title>
       <titleabbrev>Conventions</titleabbrev>
 
-      <para>
+      <para revisionflag="changed">
 	To facilitate the interpretation of DAVE-ML packages, the following conventions are
 	proposed. Failure to follow any of these conventions should be noted prominently in the data
 	files and any cover documentation.
@@ -5069,7 +5010,7 @@ Key:
       <sect3 id="point_order">
         <title>Ordering of points</title>
         <titleabbrev>Point order</titleabbrev>
-        <para> 
+        <para revisionflag="changed"> 
 	  In listing data points in multi-dimensional table definitions, the sequence should be such
 	  that the last dimension changes most rapidly. In other words, a table that is a function
 	  of <emphasis>f(a,b,c)</emphasis> should list the value for <emphasis>f(1,1,1)</emphasis>,
@@ -5078,7 +5019,7 @@ Key:
 	  data in the correct sequence in the model realization is left up to the implementer.
 	  <indexterm><primary>points, ordering of</primary></indexterm>
         </para>
-	<para>
+	<para revisionflag="added">
 	  <xref linkend="table_order_figure" xrefstyle="template:Figure %n"/> below shows how a
 	  3D table is represented as an unraveled list of points.
 	</para>
@@ -5126,7 +5067,7 @@ Key:
         <title>Date format in DAVE-ML</title>
         <titleabbrev>Date format</titleabbrev>
 
-        <para>
+        <para revisionflag="changed">
 	  The recommended way of representing dates in DAVE-ML documentation, especially date
 	  attributes and creation date elements, is numerically in the order YYYY-MM-DD. Thus, July
 	  15, 2003 is given as 2003-07-15. This formatting convention conforms to the ISO-8601
@@ -5140,7 +5081,7 @@ Key:
         <title>Common sign convention notation</title>
         <titleabbrev>Sign conventions</titleabbrev>
 
-	<para>
+	<para revisionflag="added">
 	  A convention for indicating positive sign conventions for measurements is included in
 	  Annex A of the draft AIAA Flight Dynamics Model Exchange Standard <link
 	  linkend="AIAA10"><citation>AIAA10</citation></link>. These acronyms, if applicable, should
@@ -5149,17 +5090,17 @@ Key:
 	</para>
       </sect3>
 
-      <sect3 id="uofm">
+      <sect3 id="uofm" revisionflag="changed">
         <title>Units-of-measure abbreviation</title>
         <titleabbrev>Units</titleabbrev>
-        <para> 
+        <para revisionflag="changed"> 
 	  Each variable definition includes a mandatory <sgmltag>units</sgmltag>
 	  attribute. This attribute gives the units-of-measure for the signal represented by the
 	  variable and either 'nd' (for non-dimensional) or blank if the signal is a dimensionless
 	  quantity or flag. In addition, the use of 'fract' to indicate a fraction (0-1) or 'pct' to
 	  indicate a percentage (0-100 or more) is encouraged.
 	</para>
-        <para> 
+        <para revisionflag="changed"> 
 	  Informally, this attribute can take on any reasonable abbreviation for a set of units that
 	  might be understandable by the intended audience, in either set of units (English or
 	  ISO). For greater re-usability, it is recommended that the set of measurements listed in
@@ -5170,10 +5111,10 @@ Key:
 	  <indexterm><primary>units-of-measure</primary></indexterm>
         </para>
       </sect3>
-      <sect3 id="identifiers">
+      <sect3 id="identifiers" revisionflag="added">
 	<title>Internal identifiers</title>
 	<titleabbrev>XML Identifiers</titleabbrev>
-	<para>
+	<para revisionflag="changed">
 	  Identifiers are used throughout DAVE-ML to connect signals, functions, modification
 	  records and reference documents with each other, e.g., <sgmltag>utID</sgmltag>,
 	  <sgmltag>gtID</sgmltag>, <sgmltag>bpID</sgmltag>, <sgmltag>refID</sgmltag>, etc. These
@@ -5189,16 +5130,16 @@ Key:
 	</para>
       </sect3>
 
-      <sect3 id="namespaces">
+      <sect3 id="namespaces" revisionflag="changed">
         <title><acronym>DAVE-ML</acronym> Namespace</title>
         <titleabbrev>Namespace</titleabbrev>
-        <para> 
+        <para revisionflag="changed"> 
 	  The <acronym>XML</acronym> standard allows for namespace domains, in which element names
 	  belong to either the empty (null) namespace or to a namespace that belongs to a particular
 	  <acronym>XML</acronym> grammar. Namespaces are identified by a uniform resource identifier
 	  (URI) that is fashioned, similar to a URL, in order that uniqueness is guaranteed.
 	</para>
-	<para>
+	<para revisionflag="changed">
 	  The DAVE-ML namespace should be defined in the top-level element as follows:
 	  <programlisting>
           &lt;DAVEfunc xmlns="http://daveml.org/2010/DAVEML"&gt;
@@ -5241,7 +5182,7 @@ Key:
         simulation models, including <itemizedlist>
 
 	  <listitem>
-	    <para>
+	    <para revisionflag="added">
 	      Support for vector and matrix variables and math operations.
 	    </para>
 	  </listitem>
@@ -5296,33 +5237,21 @@ Key:
 
     Trey Arthur (NASA Langley Research Center),                               <indexterm><primary>Arthur, Jarvis A., III</primary></indexterm>
     Jon Berndt (Jacobs Sverdrup),                                             <indexterm><primary>Berndt, Jon S.</primary></indexterm>
-    Geoff Brian (Australian DSTO),                                            <indexterm><primary>Brian, Geoffrey J.</primary></indexterm>
+    Geoff Brian (Australian DSTO),                                            <indexterm><primary>Brian, Geoffrey</primary></indexterm>
     Randy Brumbaugh (Indigo Innovations),                                     <indexterm><primary>Brumbaugh, Randy</primary></indexterm>
-    Carey Buttrill (NASA Langley Research Center),                            <indexterm><primary>Buttrill, Carey S.</primary></indexterm>
-    Giovanni Cignoni (University of Pisa),                                    <indexterm><primary>Cignoni, Giovanni A.</primary></indexterm>
+    Giovanni A. Cignoni (University of Pisa),                                 <indexterm><primary>Cignoni, Giovanni A.</primary></indexterm>
     Bill Cleveland (NASA Ames Research Center),                               <indexterm><primary>Cleveland, William</primary></indexterm>
-    Zack Crues (NASA Johnson Space Center),                                   <indexterm><primary>Crues, Edwin Z.</primary></indexterm>
-    Rob Falck (NASA Glenn Research Center),                                   <indexterm><primary>Falck, Robert D.</primary></indexterm>
     Jeremy Furtek (Delphi Research),                                          <indexterm><primary>Furtek, Jeremy</primary></indexterm>
     Peter Grant (UTIAS),                                                      <indexterm><primary>Grant, Peter</primary></indexterm> 
-    David Hasan (L-3 Communications, Houston),                                <indexterm><primary>Hasan, David A.</primary></indexterm>
-    Bruce Hildreth (J.F. Taylor, Inc, Lexington Park),                        <indexterm><primary>Hildreth, Bruce L.</primary></indexterm>
     Missy Hill (UNISYS),                                                      <indexterm><primary>Hill, Melissa</primary></indexterm>
-    Matt Jessick (L-3 Communications, Houston),                               <indexterm><primary>Jessick, Matthew V.</primary></indexterm>
     Hilary Keating (Fortburn Pty. Ltd.),                                      <indexterm><primary>Keating, Hilary</primary></indexterm>
-    Dennis Linse (SAIC),                                                      <indexterm><primary>Linse, Dennis J.</primary></indexterm> 
-    Bill Othon (NASA Johnson Space Center),                                   <indexterm><primary>Othon, William L.</primary></indexterm> 
-    Mike Madden (NASA Langley Research Center),                               <indexterm><primary>Madden, Michael M.</primary></indexterm>
-    Greg McCarthy (NASA Dryden Flight Research Center),                       <indexterm><primary>McCarthy, Thomas G.</primary></indexterm>
-    Dana McMinn (NASA Langley Research Center),                               <indexterm><primary>McMinn, J. Dana</primary></indexterm>
-    Dan Murri (NASA Engineering and Safety Center, Hampton),                  <indexterm><primary>Murri, Daniel G.</primary></indexterm>
-    Dan Newman (formerly Ball Aerospace, now Quantitative Aeronautics),       <indexterm><primary>Newman, Daniel M.</primary></indexterm>
-    John Penn (L-3 Communcations, Houston)                                    <indexterm><primary>Penn, John M.</primary></indexterm>
+    Dennis Linse (SAIC),                                                      <indexterm><primary>Linse, Dennis</primary></indexterm> 
+    J. Dana McMinn (NASA Langley Research Center),                            <indexterm><primary>McMinn, J. Dana</primary></indexterm>
+    Daniel M. Newman (formerly Ball Aerospace, now Quantitative Aeronautics), <indexterm><primary>Newman, Daniel M.</primary></indexterm>
     Riley Rainey (SDS International),                                         <indexterm><primary>Rainey, Riley</primary></indexterm>
-    Mike Red (NASA Johnson Space Center),                                     <indexterm><primary>Red, Michael T.</primary></indexterm>
     Brent York (formerly NAVAIR, now Indra Systems, Inc.),                    <indexterm><primary>York, Brent</primary></indexterm>
-      and
-    Curtis Zimmerman (NASA Marshall Space Flight Center).                     <indexterm><primary>Zimmerman, Curtis J.</primary></indexterm>
+    and
+    Curtis Zimmerman (NASA Marshall Space Flight Center).                     <indexterm><primary>Zimmerman, Curtis</primary></indexterm>
   </ackno>
 
   <?hard-pagebreak?>

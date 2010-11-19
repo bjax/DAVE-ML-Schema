@@ -13,7 +13,7 @@ span.deleted { text-decoration: line-through;
                background-color: #FF7F7F; }
 span.changed { background-color: #99ff99; }
 span.off     {  }
-</style><title>1.3. Changes since version 2.0RC1</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="changes.html" title="1. Changes to this document"/><link rel="prev" href="refman-changes-20rc3.html" title="1.2.2. Non-structural DTD and reference manual changes since version 2.0RC2"/><link rel="next" href="changes-20rc1.html" title="1.4. Changes since version 1.9b3"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="refman-changes-20rc3.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="changes-20rc1.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="changes.html">Changes</a></span> &gt; <span class="breadcrumb-node">RC2 changes</span></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="changes-20rc2"/>1.3. Changes since version 2.0RC1</h3></div></div></div><p>
+</style><title>1.2. Changes since version 2.0RC1</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="changes.html" title="1. Changes to this document"/><link rel="prev" href="refman-changes-20rc3.html" title="1.1.2. Non-structural DTD and reference manual changes since version 2.0RC2"/><link rel="next" href="changes-20rc1.html" title="1.3. Changes since version 1.9b3"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="refman-changes-20rc3.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="changes-20rc1.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="changes.html">Changes</a></span> &gt; <span class="breadcrumb-node">RC2 changes</span></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="changes-20rc2"/>1.2. Changes since version 2.0RC1</h3></div></div></div><p>
         </p><div class="itemizedlist"><ul type="disc"><li><p> 
 	      Tweaked examples and syntaxes to match the 2.0 RC 2 <acronym class="acronym">DTD</acronym>. Cleaned up
 	      a couple of figures and incorporated several new reference citations. Added <a href="interpolation.html" title="6.3. Function interpolation/extrapolation">interpolation</a> paragraph.
@@ -25,8 +25,8 @@ span.off     {  }
                 <code class="sgmltag-element">varID</code> </a> (which meant the introduction of a formal
                 <code class="sgmltag-element">varID</code> element) and made the specification of <a href="signalUnits.html" title="signalUnits"><code class="sgmltag-element">signalUnits</code> sub-element</a> mandatory
                 for input and output signals for consistency. Thanks to Dan Newman
-                <a id="d0e694" class="indexterm"/>for helping solidify the
-                thinking about this issue.<a id="d0e698" class="indexterm"/>
+                <a id="d0e599" class="indexterm"/>for helping solidify the
+                thinking about this issue.<a id="d0e603" class="indexterm"/>
 
 	    </p></li><li><p> 
 	      Changed examples in this text to use updated AIAA variable names to match a revised
@@ -37,15 +37,15 @@ span.off     {  }
 	      Removed the <code class="sgmltag-element">symmetric</code> attribute of the <a href="uniformPDF.html" title="uniformPDF"><code class="sgmltag-element">uniformPDF</code> sub-element</a>; this attribute
 	      was redundant as symmetric distribution is implied with a single <a href="bounds.html" title="bounds"><code class="sgmltag-element">bounds</code> sub-element</a>, and asymmetric is
 	      implied by two <code class="sgmltag-element">bounds</code> sub-elements. Kudos to Dan Newman
-	      <a id="d0e726" class="indexterm"/>and Dennis
-	      Linse<a id="d0e730" class="indexterm"/> for catching the
+	      <a id="d0e631" class="indexterm"/>and Dennis
+	      Linse<a id="d0e635" class="indexterm"/> for catching the
 	      inconsistent examples and for suggesting this convention.
 	    </p></li><li><p> 
 	      Corrected the <acronym class="acronym">DTD</acronym> by reversing the definition of the
 	      <code class="sgmltag-element">floor</code> and <code class="sgmltag-element">ceiling</code> values of the
 	      <code class="sgmltag-element">interpolate</code> attribute of the <a href="independentVarPts.html" title="independentVarPts">
 	      <code class="sgmltag-element">independentVarPts</code> </a> element; also corrected the correlated
-	      uncertainty example. Thanks to Dan Newman <a id="d0e755" class="indexterm"/>for catching both of these problems in 2.0 RC1.
+	      uncertainty example. Thanks to Dan Newman <a id="d0e660" class="indexterm"/>for catching both of these problems in 2.0 RC1.
 	    </p></li><li><p> 
 	      Corrected the <acronym class="acronym">DTD</acronym> so that only one <a href="checkData.html" title="checkData"><code class="sgmltag-element">checkData</code> element</a> is allowed (but it can
 	      have multiple different <a href="staticShot.html" title="staticShot"><code class="sgmltag-element">staticShot</code> test
@@ -54,7 +54,7 @@ span.off     {  }
 	    </p></li><li><p> 
 	      Added a <a href="description.html" title="description"><code class="sgmltag-element">description</code> sub-element</a>
 	      to the <a href="staticShot.html" title="staticShot"><code class="sgmltag-element">staticShot</code> element</a> in
-	      response to a suggestion by Dennis Linse<a id="d0e791" class="indexterm"/>; and added a typical description to example listings.
+	      response to a suggestion by Dennis Linse<a id="d0e696" class="indexterm"/>; and added a typical description to example listings.
 	    </p></li><li><p> 
 	      Added a section about namespaces and removed the hard link in the
 	      <acronym class="acronym">DTD</acronym> that incorrectly set the namespace for the <a href="calculation.html" title="calculation"><code class="sgmltag-element">calculation</code> element.</a>
@@ -64,7 +64,7 @@ span.off     {  }
                 <code class="sgmltag-element">fileCreationDate</code>
               </a> and <a href="functionCreationDate.html" title="functionCreationDate">
                 <code class="sgmltag-element">functionCreationDate</code> </a> elements, at the suggestion of
-                Dennis Linse<a id="d0e826" class="indexterm"/> of SAIC.
+                Dennis Linse<a id="d0e731" class="indexterm"/> of SAIC.
 	      <a href="fileCreationDate.html" title="fileCreationDate">
                 <code class="sgmltag-element">fileCreationDate</code>
               </a> and <a href="functionCreationDate.html" title="functionCreationDate">
@@ -79,7 +79,7 @@ span.off     {  }
               </a> element; previously the descriptions implied that these elements were only
               specified external to functions and thus the <code class="sgmltag-element">utID</code> and
                 <code class="sgmltag-element">gtID</code> attributes, respectively, were required. Thanks to Dennis
-              Linse<a id="d0e869" class="indexterm"/> for the correction. </p></li><li><p> 
+              Linse<a id="d0e774" class="indexterm"/> for the correction. </p></li><li><p> 
 	      Depicted <a href="provenanceRef.html" title="provenanceRef"><code class="sgmltag-element">provenanceRef</code></a> as an
 	      option to the <a href="provenance.html" title="provenance"><code class="sgmltag-element">provenance</code></a>
 	      sub-element for <a href="griddedTableDef.html" title="griddedTableDef"><code class="sgmltag-element">griddedTableDef</code>
@@ -89,16 +89,16 @@ span.off     {  }
 	      section). Also added both <a href="provenance.html" title="provenance">
 	      <code class="sgmltag-element">provenance</code></a> and <a href="provenanceRef.html" title="provenanceRef">
 	      <code class="sgmltag-element">provenanceRef</code></a> as optional sub-elements of the <a href="variableDef.html" title="variableDef"><code class="sgmltag-element">variableDef</code></a> and <a href="checkData.html" title="checkData"><code class="sgmltag-element">checkData</code></a> elements. Thanks to Dennis
-	      Linse<a id="d0e916" class="indexterm"/> for the correction.
+	      Linse<a id="d0e821" class="indexterm"/> for the correction.
 	    </p></li><li><p> 
 	      Added '[Deprecated]' to the description of <a href="griddedTable.html" title="griddedTable">
 	      <code class="sgmltag-element">griddedTable</code></a>, <a href="ungriddedTable.html" title="ungriddedTable">
 	      <code class="sgmltag-element">ungriddedTable</code></a>, and <a href="confidenceBound.html" title="confidenceBound"><code class="sgmltag-element">confidenceBound</code></a> elements for
 	      consistency; these were previously deprecated but not marked clearly in each element's
-	      'purpose' section. Thanks to Dennis Linse<a id="d0e937" class="indexterm"/> for the suggestion.
+	      'purpose' section. Thanks to Dennis Linse<a id="d0e842" class="indexterm"/> for the suggestion.
 	    </p></li><li><p> 
 	      Updated the acknowledgment paragraph of the <acronym class="acronym">DTD</acronym>; significantly
 	      reformatted the .PDF version of this document, and added section numbers to all
 	      versions. 
 	    </p></li></ul></div><p>
-      </p></div><P xmlns="" class="CVSinfo">2010-11-08</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="refman-changes-20rc3.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="changes.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="changes-20rc1.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+      </p></div><P xmlns="" class="CVSinfo">2010-05-07</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="refman-changes-20rc3.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="changes.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="changes-20rc1.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><style xmlns="" type="text/css">
+div.added    { background-color: #ffff99; }
+div.deleted  { text-decoration: line-through;
+               background-color: #FF7F7F; }
+div.changed  { background-color: #99ff99; }
+div.off      {  }
+
+span.added   { background-color: #ffff99; }
+span.deleted { text-decoration: line-through;
+               background-color: #FF7F7F; }
+span.changed { background-color: #99ff99; }
+span.off     {  }
+</style><title>dataPoint</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="elementDescriptions.html" title="8.2. Element descriptions"/><link rel="prev" href="creationDate.html" title="creationDate"/><link rel="next" href="dataTable.html" title="dataTable"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="creationDate.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="dataTable.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="elementRefs.html">Element references and descriptions</a></span> &gt; <span class="breadcrumb-link"><a href="elementDescriptions.html">Element descriptions</a></span> &gt; <span class="breadcrumb-node">dataPoint</span></div><div class="refentry" lang="en"><a id="dataPoint"/><div class="titlepage"/><a id="d0e8567" class="indexterm"/><div class="refnamediv"><h2><span class="refentrytitle">dataPoint</span></h2><p>dataPoint — Defines each point of an ungridded table</p></div><div class="refsect1" lang="en"><a id="d0e8580"/><h2>Content model</h2><pre class="synopsis">dataPoint :  [modID]
+     (#PCDATA)</pre></div><div class="refsect1" lang="en"><a id="d0e8585"/><h2>Attributes</h2><div class="variablelist"><dl><dt><span class="term">
+<code class="varname">modID</code>
+</span></dt><dd><p>(optional) The internal identifier for a modification record.<a id="d0e8598" class="indexterm"/>
+</p></dd></dl></div></div><div class="refsect1" lang="en"><a id="d0e8604"/><h2>Description</h2><p>
+
+      The dataPoint element is used by ungridded tables to list the
+      values of independent variables that are associated with each
+      value of dependent variable. For example:
+                                                                 
+ &lt;dataPoint&gt;                                                     
+   0.1, -4.0, 0.2      &lt;!- Mach, alpha, CL -&gt;                    
+ &lt;/dataPoint&gt;                                                    
+ &lt;dataPoint&gt;                                                     
+   0.1,  0.0, 0.6      &lt;!- Mach, alpha  CL -&gt;                    
+ &lt;/dataPoint&gt;                                                    
+                                                                 
+      Each data point may have associated with it a modification tag
+      to document the genesis of that particular point.  No
+      requirement on ordering of independent variables is implied.
+      Since this is an ungridded table, the interpreting application is
+      required to handle what may be unsorted data.
+    </p></div><div class="refsect1" lang="en"><a id="d0e8609"/><h2>
+	Possible parents
+      </h2><table class="simplelist" border="0" summary="Simple list"><tr><td>
+<a href="ungriddedTableDef.html" title="ungriddedTableDef">
+<code class="sgmltag-element">ungriddedTableDef</code>
+</a>
+</td></tr><tr><td>
+<a href="ungriddedTable.html" title="ungriddedTable">
+<code class="sgmltag-element">ungriddedTable</code>
+</a>
+</td></tr></table></div><div class="refsect1" lang="en"><a id="d0e8629"/><h2>
+	Allowable children
+      </h2><table class="simplelist" border="0" summary="Simple list"><tr><td>NONE</td></tr></table></div></div><P xmlns="" class="CVSinfo">2010-11-08</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="creationDate.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="elementDescriptions.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="dataTable.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

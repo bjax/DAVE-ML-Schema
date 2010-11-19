@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><style xmlns="" type="text/css">
+div.added    { background-color: #ffff99; }
+div.deleted  { text-decoration: line-through;
+               background-color: #FF7F7F; }
+div.changed  { background-color: #99ff99; }
+div.off      {  }
+
+span.added   { background-color: #ffff99; }
+span.deleted { text-decoration: line-through;
+               background-color: #FF7F7F; }
+span.changed { background-color: #99ff99; }
+span.off     {  }
+</style><title>6.3. Function interpolation/extrapolation</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="top-element.html" title="6. Major elements"/><link rel="prev" href="checkData_overview.html" title="6.2.7. The checkData element"/><link rel="next" href="statistics.html" title="6.4. Statistical information encoding"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="checkData_overview.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="statistics.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="top-element.html">Major elements</a></span> &gt; <span class="breadcrumb-node">Interpolation</span></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="interpolation"/>6.3. Function interpolation/extrapolation</h3></div></div></div><p> 
+	It is possible to specify the method of interpolation to be used for nonlinear
+        function tables by use of the <code class="sgmltag-element">interpolate</code> attribute of the <a href="independentVarPts.html" title="independentVarPts">
+        <code class="sgmltag-element">independentVarPts</code></a> and <a href="independentVarRef.html" title="independentVarRef">
+        <code class="sgmltag-element">independentVarRef</code></a> elements. This attribute, combined with the
+        <code class="sgmltag-element">extrapolate</code> flag, provides several different ways of realizing the
+        intermediate values of the function when not at one of the specified intersections of
+        independent values.
+	<a id="d0e5575" class="indexterm"/>
+	<a id="d0e5581" class="indexterm"/>
+      </p><div class="variablelist"><p class="title"><b>Possible values for the <code class="sgmltag-element">interpolate</code> attribute are:</b></p><dl><dt><span class="term">
+	    <code class="sgmltag-element">discrete</code>
+	  </span></dt><dd><p>Output uses value associated with nearest breakpoint</p></dd><dt><span class="term">
+	    <code class="sgmltag-element">floor</code>
+	  </span></dt><dd><p>Output uses value associated with next (numerically higher) breakpoint</p></dd><dt><span class="term">
+	    <code class="sgmltag-element">ceiling</code>
+	  </span></dt><dd><p>Output uses value associated with last (numerically lower) breakpoint</p></dd><dt><span class="term">
+	    <code class="sgmltag-element">linear</code> (default)
+	  </span></dt><dd><p>Output is linearly interpolated between breakpoints</p></dd><dt><span class="term">
+	    <code class="sgmltag-element">quadraticSpline</code>
+	  </span></dt><dd><p>Output follows a quadratic spline fit through values associated with two nearby breakpoints</p></dd><dt><span class="term">
+	    <code class="sgmltag-element">cubicSpline</code>
+	  </span></dt><dd><p>Output follows a cubic spline fit through values associated with three nearby breakpoints</p></dd></dl></div><div class="variablelist"><p class="title"><b>Possible values for the <code class="sgmltag-element">extrapolate</code> attribute are:</b></p><dl><dt><span class="term">
+	    <code class="sgmltag-element">neither</code> (default)
+	  </span></dt><dd><p>
+	      Output is held constant at value associated with closest end of breakpoints if the
+	      input value is outside the limits of the associated breakpoint set
+	    </p></dd><dt><span class="term">
+	    <code class="sgmltag-element">min</code>
+	  </span></dt><dd><p>
+	      Output follows extrapolated values of function if the input is below the minimum
+	      breakpoint value
+	    </p></dd><dt><span class="term">
+	    <code class="sgmltag-element">max</code>
+	  </span></dt><dd><p>
+	      Output follows extrapolated values of function if the input is above maximum
+	      breakpoint value
+	    </p></dd><dt><span class="term">
+	    <code class="sgmltag-element">both</code>
+	  </span></dt><dd><p>
+	      Output follows extrapolated values of function if the input is outside the limits of
+	      the associated breakpoint set
+	    </p></dd></dl></div><p> 
+	Implementation of the specific interpolation algorithm is left up to the implementer. One
+	reference is the Wikipedia entry on interpolation <a href="biblio.html#wiki01">[<span class="citation">wiki01</span>]</a>.
+      </p><p>
+	The following implementation notes are suggested: 
+	</p><div class="itemizedlist"><ul type="disc"><li><p>
+	      An infinite set of quadratic interpolations are possible; it is suggested to use the
+	      one that minimizes either the deviation from a linear interpolation or the slope error
+	      at any edge.
+	    </p></li><li><p> 
+	      For cubic interpolation, the natural cubic spline (which has a second derivative of
+	      zero at each end) is recommended when the <code class="sgmltag-element">extrapolate</code> attribute is
+	      <code class="sgmltag-element">none</code>. When the <code class="sgmltag-element">extrapolate</code> attribute is
+	      <code class="sgmltag-element">both</code>, a clamped cubic spline that matches the extrapolated slope of
+	      the last two data points is suggested.
+	    </p></li><li><p> 
+	      For the discrete interpolation values (<code class="sgmltag-element">discrete</code>,
+	      <code class="sgmltag-element">ceiling</code>, or <code class="sgmltag-element">floor</code>), the value of the
+	      <code class="sgmltag-element">extrapolate</code> attribute is meaningless.
+	    </p></li></ul></div><p>
+      </p><p>
+	For discrete interpolation, 
+	</p><div class="itemizedlist"><ul type="disc"><li><p>
+	      <code class="sgmltag-element">discrete</code> implies the change between output values occurs midway between independent
+	      breakpoint values, as shown in the top plot of <a href="interpolation.html#discrete_interpolation_figure" title="Figure 4.  Example of the three discrete enumeration values of interpolate&#xA;          attribute of the independentVarPts and&#xA;            independentVarRef elements for a 1D&#xA;          function table. ">Figure 4</a>.
+	    </p></li><li><p>
+	      <code class="sgmltag-element">ceiling</code> means the output takes on the value of the next-higher
+	      dependent variable breakpoint as soon as each independent breakpoint value is passed
+	      (assuming the input value is increasing) as shown in the middle plot of <a href="interpolation.html#discrete_interpolation_figure" title="Figure 4.  Example of the three discrete enumeration values of interpolate&#xA;          attribute of the independentVarPts and&#xA;            independentVarRef elements for a 1D&#xA;          function table. ">Figure 4</a>.
+	    </p></li><li><p>
+	      <code class="sgmltag-element">floor</code> means the output retains the value of the last dependent
+	      variable breakpoint until the next independent breakpoint value is reached (assuming
+	      the input value is increasing) as shown in the bottom plot of <a href="interpolation.html#discrete_interpolation_figure" title="Figure 4.  Example of the three discrete enumeration values of interpolate&#xA;          attribute of the independentVarPts and&#xA;            independentVarRef elements for a 1D&#xA;          function table. ">Figure 4</a>.
+	    </p></li></ul></div><p>
+      </p><p>
+	The default value for <code class="sgmltag-element">interpolate</code> is <code class="sgmltag-element">linear</code>.  The
+	default value for <code class="sgmltag-element">extrapolate</code> is <code class="sgmltag-element">neither</code>.
+      </p><p>
+	Figures <a href="interpolation.html#discrete_interpolation_figure" title="Figure 4.  Example of the three discrete enumeration values of interpolate&#xA;          attribute of the independentVarPts and&#xA;            independentVarRef elements for a 1D&#xA;          function table. ">4</a> and <a href="interpolation.html#interpolation_figure" title="Figure 5.  Examples of the three higher-order interpolation methods showing the effect of the&#xA;            interpolate attribute of the&#xA;            independentVarPts and&#xA;            independentVarRef elements for a 1D&#xA;          function table. ">5</a> below give nine different examples
+	for a 1D table whose independent values are [1, 3, 4, 6, 7.5] with dependent
+	values of [2, 6, 5, 7, 1.5].
+      </p><div class="figure"><a id="discrete_interpolation_figure"/><p class="title"><b>Figure 4.  Example of the three discrete enumeration values of <code class="sgmltag-element">interpolate</code>
+          attribute of the <code class="sgmltag-element">independentVarPts</code> and
+            <code class="sgmltag-element">independentVarRef</code> elements for a 1D
+          function table. </b></p><div class="figure-contents"><div class="mediaobject"><img src="figures/interp_discrete.png" alt="Example of the three discrete enumeration values of interpolate attribute of the independentVarPts and independentVarRef elements for a 1D function table."/></div></div></div><br class="figure-break"/><div class="figure"><a id="interpolation_figure"/><p class="title"><b>Figure 5.  Examples of the three higher-order interpolation methods showing the effect of the
+            <code class="sgmltag-element">interpolate</code> attribute of the
+            <code class="sgmltag-element">independentVarPts</code> and
+            <code class="sgmltag-element">independentVarRef</code> elements for a 1D
+          function table. </b></p><div class="figure-contents"><div class="mediaobject"><img src="figures/interp.png" alt="Examples of the three higher-order interpolation methods showing the effect of the interpolate attribute of the independentVarPts and independentVarRef elements for a 1D function table."/></div></div></div><br class="figure-break"/></div><P xmlns="" class="CVSinfo">2010-11-08</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="checkData_overview.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="top-element.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="statistics.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

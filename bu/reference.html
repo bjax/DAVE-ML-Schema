@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><style xmlns="" type="text/css">
+div.added    { background-color: #ffff99; }
+div.deleted  { text-decoration: line-through;
+               background-color: #FF7F7F; }
+div.changed  { background-color: #99ff99; }
+div.off      {  }
+
+span.added   { background-color: #ffff99; }
+span.deleted { text-decoration: line-through;
+               background-color: #FF7F7F; }
+span.changed { background-color: #99ff99; }
+span.off     {  }
+</style><title>reference</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="elementDescriptions.html" title="8.2. Element descriptions"/><link rel="prev" href="provenanceRef.html" title="provenanceRef"/><link rel="next" href="signal.html" title="signal"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="provenanceRef.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="signal.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="elementRefs.html">Element references and descriptions</a></span> &gt; <span class="breadcrumb-link"><a href="elementDescriptions.html">Element descriptions</a></span> &gt; <span class="breadcrumb-node">reference</span></div><div class="refentry" lang="en"><a id="reference"/><div class="titlepage"/><a id="d0e11857" class="indexterm"/><div class="refnamediv"><h2><span class="refentrytitle">reference</span></h2><p>reference — Describes an external document</p></div><div class="refsect1" lang="en"><a id="d0e11870"/><h2>Content model</h2><pre class="synopsis">reference :  xmlns:xlink,  xlink:type,  refID,  author,  title,  [classification],  [accession],  date,  [xlink:href]
+     <a href="description.html" title="description">description</a>?</pre></div><div class="refsect1" lang="en"><a id="d0e11878"/><h2>Attributes</h2><div class="variablelist"><dl><dt><span class="term">
+<code class="varname">xmlns:xlink</code>
+</span></dt><dd><p>The value of this attribute must be
+      "http://www.w3.org/1999/xlink". If omitted, it should be
+      provided by the parser since it is specified in the DTD.<a id="d0e11891" class="indexterm"/>
+</p></dd><dt><span class="term">
+<code class="varname">xlink:type</code>
+</span></dt><dd><p>The value of this attribute must be "simple". If
+      omitted, it should be provided by the parser since it is
+      specified in the DTD.<a id="d0e11906" class="indexterm"/>
+</p></dd><dt><span class="term">
+<code class="varname">refID</code>
+</span></dt><dd><p>An internal identifier for this reference definition.<a id="d0e11921" class="indexterm"/>
+</p></dd><dt><span class="term">
+<code class="varname">author</code>
+</span></dt><dd><p>The name of the author of the reference.<a id="d0e11936" class="indexterm"/>
+</p></dd><dt><span class="term">
+<code class="varname">title</code>
+</span></dt><dd><p>The title of the referenced document.<a id="d0e11951" class="indexterm"/>
+</p></dd><dt><span class="term">
+<code class="varname">classification</code>
+</span></dt><dd><p>(optional) The security classification of the document.<a id="d0e11966" class="indexterm"/>
+</p></dd><dt><span class="term">
+<code class="varname">accession</code>
+</span></dt><dd><p>(optional) The accession number (ISBN or organization report number) of the document.<a id="d0e11981" class="indexterm"/>
+</p></dd><dt><span class="term">
+<code class="varname">date</code>
+</span></dt><dd><p>The date of the document, in ISO 8601 (YYYY-MM-DD) format.<a id="d0e11996" class="indexterm"/>
+</p></dd><dt><span class="term">
+<code class="varname">xlink:href</code>
+</span></dt><dd><p>(optional) A URL to an on-line copy of the referenced document.<a id="d0e12011" class="indexterm"/>
+</p></dd></dl></div></div><div class="refsect1" lang="en"><a id="d0e12017"/><h2>Description</h2><p>
+
+      This element gives identifying (citation) information to an
+      external, possibly on-line, reference document, including a
+      user-specified author, title, classification, accession number,
+      date and URL.
+    </p></div><div class="refsect1" lang="en"><a id="d0e12022"/><h2>
+	Possible parents
+      </h2><table class="simplelist" border="0" summary="Simple list"><tr><td>
+<a href="fileHeader.html" title="fileHeader">
+<code class="sgmltag-element">fileHeader</code>
+</a>
+</td></tr></table></div><div class="refsect1" lang="en"><a id="d0e12034"/><h2>
+	Allowable children
+      </h2><table class="simplelist" border="0" summary="Simple list"><tr><td>
+<a id="d0e12040" class="indexterm"/>
+<a href="description.html" title="description">
+<code class="sgmltag-element">description</code>
+</a>
+</td></tr></table></div></div><P xmlns="" class="CVSinfo">2010-11-08</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="provenanceRef.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="elementDescriptions.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="signal.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

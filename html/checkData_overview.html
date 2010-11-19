@@ -17,8 +17,8 @@ span.off     {  }
 	  The <a href="checkData.html" title="checkData"><code class="sgmltag-element">checkData</code></a> element contains one or
 	  more input/output vector pairs (and optionally a dump of internal values) for the encoded
 	  model to assist in verification and debugging of the implementation. 
-	  <a id="d0e5352" class="indexterm"/>
-	</p><pre class="programlisting">
+	  <a id="d0e5277" class="indexterm"/>
+	</p><div xmlns="" class="changed"><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">
     <a href="checkData.html" title="checkData">checkData</a>
       <a href="staticShot.html" title="staticShot">staticShot</a>+ : name, [refID]
             <a href="description.html" title="description">description</a>?
@@ -40,14 +40,14 @@ span.off     {  }
                     <a href="signalValue.html" title="signalValue">signalValue</a>
                     <a href="tol.html" title="tol">tol</a>
 
-        </pre><div class="variablelist"><p class="title"><b><code class="sgmltag-element">checkData</code> sub-elements:</b></p><dl><dt><span class="term">
-	      <a id="d0e5428" class="indexterm"/>
+        </pre></div><div class="variablelist"><p class="title"><b><code class="sgmltag-element">checkData</code> sub-elements:</b></p><dl><dt><span class="term">
+	      <a id="d0e5353" class="indexterm"/>
               <code class="sgmltag-element">staticShot</code>
-            </span></dt><dd><p> 
+            </span></dt><dd><div xmlns="" class="changed"><p xmlns="http://www.w3.org/1999/xhtml"> 
 		One or more check-case data sets, each of which contain mandatory sub-elements <a href="checkInputs.html" title="checkInputs"><code class="sgmltag-element">checkInputs</code></a> and <a href="checkOutputs.html" title="checkOutputs"><code class="sgmltag-element">checkOutputs</code> vectors</a> (with required
 		match tolerances), and optional <a href="provenance.html" title="provenance"><code class="sgmltag-element">provenance</code></a>, <a href="provenanceRef.html" title="provenanceRef"><code class="sgmltag-element">provenanceRef</code></a>, <a href="description.html" title="description"><code class="sgmltag-element">description</code></a> and <a href="internalValues.html" title="internalValues"><code class="sgmltag-element">internalValues</code></a> sub-elements.
-	      </p></dd></dl></div><div class="example"><a id="checkData_example_1"/><p class="title"><b>Example 14. Check-case data set excerpt</b></p><div class="example-contents"><p>
-	    A DAVE-ML file excerpt<a id="d0e5471" class="indexterm"/> specifying a
+	      </p></div></dd></dl></div><div class="example"><a id="checkData_example_1"/><p class="title"><b>Example 14. Check-case data set excerpt</b></p><div class="example-contents"><p>
+	    A DAVE-ML file excerpt<a id="d0e5396" class="indexterm"/> specifying a
 	    check-case data set example for a simple model
 	  </p><pre class="programlisting">
   &lt;checkData&gt;
@@ -106,22 +106,22 @@ span.off     {  }
 	      </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="chk1-note-2"/><a href="#chk1-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p>
 		The <code class="sgmltag-element">checkInputs</code> element defines the input variable values, by
 		variable name, as well as units (so they can be verified).
-	      </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="chk1-note-3"/><a href="#chk1-note-3-co"><img src="images/callouts/3.png" alt="3" border="0"/></a> </td><td valign="top" align="left"><p> 
+	      </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="chk1-note-3"/><a href="#chk1-note-3-co"><img src="images/callouts/3.png" alt="3" border="0"/></a> </td><td valign="top" align="left"><div xmlns="" class="changed"><p xmlns="http://www.w3.org/1999/xhtml"> 
 		Multiple <code class="sgmltag-element">signal</code> elements are usually given; taken together, these
 		scalar <code class="sgmltag-element">signals</code>s represent the check-case input "vector."
-              </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="chk1-note-4"/><a href="#chk1-note-4-co"><img src="images/callouts/4.png" alt="4" border="0"/></a> </td><td valign="top" align="left"><p>
+              </p></div></td></tr><tr><td width="5%" valign="top" align="left"><a id="chk1-note-4"/><a href="#chk1-note-4-co"><img src="images/callouts/4.png" alt="4" border="0"/></a> </td><td valign="top" align="left"><p>
 		The <code class="sgmltag-element">checkOutputs</code> element defines output variable values that
 		should result from the specified input values.
-	      </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="chk1-note-5"/><a href="#chk1-note-5-co"><img src="images/callouts/5.png" alt="5" border="0"/></a> </td><td valign="top" align="left"><p> 
+	      </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="chk1-note-5"/><a href="#chk1-note-5-co"><img src="images/callouts/5.png" alt="5" border="0"/></a> </td><td valign="top" align="left"><div xmlns="" class="changed"><p xmlns="http://www.w3.org/1999/xhtml"> 
 		Note the included tolerance value, indicating the absolute value tolerance within
 		which the output values must match the check-case data values.
-	      </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="chk1-note-6"/><a href="#chk1-note-6-co"><img src="images/callouts/6.png" alt="6" border="0"/></a> </td><td valign="top" align="left"><p> 
+	      </p></div></td></tr><tr><td width="5%" valign="top" align="left"><a id="chk1-note-6"/><a href="#chk1-note-6-co"><img src="images/callouts/6.png" alt="6" border="0"/></a> </td><td valign="top" align="left"><p> 
 		Multiple check-cases may be specified; this one differs from the previous check-case
 		due to an increase in the pitching-rate input.
 	      </p></td></tr></table></div></div></div><br class="example-break"/><div class="example"><a id="checkData_example_2"/><p class="title"><b>Example 15. A second <code class="sgmltag-element">checkData</code> example with internal values</b></p><div class="example-contents"><p>
 	    This example shows another check-case; this one includes intermediate values as an aide
-	    to debugging a new implementation.<a id="d0e5533" class="indexterm"/>
-	  </p><pre class="programlisting">
+	    to debugging a new implementation.<a id="d0e5458" class="indexterm"/>
+	  </p><div xmlns="" class="changed"><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">
   &lt;checkData&gt;
     &lt;( provenance | provenanceRef )?&gt;
     &lt;staticShot name="Skewed inputs"&gt;
@@ -185,9 +185,9 @@ span.off     {  }
     &lt;/staticShot&gt;
   &lt;/checkData&gt;
             
-          </pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a id="chk2-note-1"/><a href="#chk2-note-1-co"><img src="images/callouts/1.png" alt="1" border="0"/></a> </td><td valign="top" align="left"><p> 
+          </pre></div><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a id="chk2-note-1"/><a href="#chk2-note-1-co"><img src="images/callouts/1.png" alt="1" border="0"/></a> </td><td valign="top" align="left"><div xmlns="" class="changed"><p xmlns="http://www.w3.org/1999/xhtml"> 
 		The <code class="sgmltag-element">internalValues</code> element, if present, usually is a list of all
 		model-defined internal variable values. This is normally not required for a model
 		exchange, but such information is very useful to aide in debugging the
 		implementation by the recipient.
-	      </p></td></tr></table></div></div></div><br class="example-break"/></div><P xmlns="" class="CVSinfo">2010-11-08</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="function_overview.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="davefunc_overview.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="interpolation.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+	      </p></div></td></tr></table></div></div></div><br class="example-break"/></div><P xmlns="" class="CVSinfo">2010-05-07</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="function_overview.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="davefunc_overview.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="interpolation.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

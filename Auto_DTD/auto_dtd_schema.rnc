@@ -19,7 +19,6 @@ el =
     attr*,
     future?,
     deprecated?
-    skipdef?
   }
 attlist.el &= empty
 name = element name { attlist.name, text }

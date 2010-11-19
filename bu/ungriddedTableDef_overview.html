@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><style xmlns="" type="text/css">
+div.added    { background-color: #ffff99; }
+div.deleted  { text-decoration: line-through;
+               background-color: #FF7F7F; }
+div.changed  { background-color: #99ff99; }
+div.off      {  }
+
+span.added   { background-color: #ffff99; }
+span.deleted { text-decoration: line-through;
+               background-color: #FF7F7F; }
+span.changed { background-color: #99ff99; }
+span.off     {  }
+</style><title>6.2.5. The ungridded table definition element</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="davefunc_overview.html" title="6.2. Schematic overview of DAVEfunc"/><link rel="prev" href="griddedTableDef_overview.html" title="6.2.4. The gridded table definition element"/><link rel="next" href="function_overview.html" title="6.2.6. The function definition element"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="griddedTableDef_overview.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="function_overview.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="top-element.html">Major elements</a></span> &gt; <span class="breadcrumb-link"><a href="davefunc_overview.html"><code xmlns="http://www.w3.org/1999/xhtml" class="sgmltag-element">DAVEfunc</code> overview</a></span> &gt; <span class="breadcrumb-node"><code xmlns="http://www.w3.org/1999/xhtml" class="sgmltag-element">ungriddedTableDef</code> overview</span></div><div class="sect3" lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="ungriddedTableDef_overview"/>6.2.5. The ungridded table definition element</h4></div></div></div><p> 
+	  The <a href="ungriddedTableDef.html" title="ungriddedTableDef"><code class="sgmltag-element">ungriddedTableDef</code></a> element
+	  defines a set of non-orthogonal data points, along with their independent values
+	  (coordinates), corresponding with the dependent value of an arbitrary function.
+	  <a id="d0e4416" class="indexterm"/>
+	</p><p> A 'non-orthogonal' data set, as opposed to a gridded or 'orthogonal' data set, means
+          that the independent values are not laid out in an orthogonal grid. This form must be used
+          if the dependent coordinates in any table dimension cannot be expressed by a single
+          monotonically increasing vector. </p><p> See the excerpts below for two instances of ungridded data. </p><p> An optional <a href="uncertainty.html" title="uncertainty">
+            <code class="sgmltag-element">uncertainty</code>
+          </a> element may be provided that represents the statistical variation in the values
+          presented. See the section on <a href="statistics.html" title="6.4. Statistical information encoding">Statistics</a> below for more
+          information about this element. </p><pre class="programlisting">
+    <a href="ungriddedTableDef.html" title="ungriddedTableDef">ungriddedTableDef</a> : [utID, name, units]
+        <a href="description.html" title="description">description</a>? :
+            {description character data}
+        EITHER
+            <a href="provenanceRef.html" title="provenanceRef">provenanceRef</a>? : provID
+        OR
+            <a href="provenance.html" title="provenance">provenance</a>? : [provID]
+                <a href="author.html" title="author">author</a>+ : name, org, [email]
+                    <a href="contactInfo.html" title="contactInfo">contactInfo</a>* : [contactInfoType, contactLocation]
+                        {text describing contact information}
+                <a href="creationDate.html" title="creationDate">creationDate</a> : date {in YYYY-MM-DD format}
+                <a href="documentRef.html" title="documentRef">documentRef</a>* : [docID,] refID
+                <a href="modificationRef.html" title="modificationRef">modificationRef</a>* : modID
+                <a href="description.html" title="description">description</a>?
+        <a href="uncertainty.html" title="uncertainty">uncertainty</a>? : effect
+            (<a href="normalPDF.html" title="normalPDF">normalPDF</a> : numSigmas) | (<a href="uniformPDF.html" title="uniformPDF">uniformPDF</a> : bounds+)
+        <a href="dataPoint.html" title="dataPoint">dataPoint</a>+ :
+            {coordinate/value sets as character data}
+        </pre><div class="variablelist"><p class="title"><b><a href="ungriddedTableDef.html" title="ungriddedTableDef">
+              <code class="sgmltag-element">ungriddedTableDef</code>
+            </a> attributes:</b></p><dl><dt><span class="term">
+	      <a id="d0e4492" class="indexterm"/>
+              <code class="sgmltag-element">utID</code>
+            </span></dt><dd><p>An internal reference that is unique within the file</p></dd><dt><span class="term">
+	      <a id="d0e4507" class="indexterm"/>
+              <code class="sgmltag-element">name</code>
+            </span></dt><dd><p>An optional UNICODE name for the table (may be the same string as
+                  <code class="sgmltag-element">utID</code>).</p></dd><dt><span class="term">
+	      <a id="d0e4525" class="indexterm"/>
+              <code class="sgmltag-element">units</code>
+            </span></dt><dd><p>Optional units-of-measure for the table's output signal.</p></dd></dl></div><div class="variablelist"><p class="title"><b><a href="ungriddedTableDef.html" title="ungriddedTableDef">
+              <code class="sgmltag-element">ungriddedTableDef</code>
+            </a> sub-elements:</b></p><dl><dt><span class="term">
+	      <a id="d0e4548" class="indexterm"/>
+              <a href="description.html" title="description">
+                <code class="sgmltag-element">description</code>
+              </a>
+            </span></dt><dd><p>The optional <a href="description.html" title="description">description</a> element allows the
+                author to describe the data contained within this
+                <code class="sgmltag-element">ungriddedTable</code>.</p></dd><dt><span class="term">
+	      <a id="d0e4572" class="indexterm"/>
+              <a href="provenance.html" title="provenance">
+                <code class="sgmltag-element">provenance</code>
+              </a>
+            </span></dt><dd><p>The optional <a href="provenance.html" title="provenance">provenance</a> element allows the
+                author to describe the source and history of the data within this
+                  <code class="sgmltag-element">ungriddedTable</code>. Alternatively, a <a href="provenanceRef.html" title="provenanceRef">
+                  <code class="sgmltag-element">provenanceRef</code>
+                </a> reference can be made to a previously defined provenance.</p></dd><dt><span class="term">
+	      <a id="d0e4602" class="indexterm"/>
+              <a href="uncertainty.html" title="uncertainty">
+                <code class="sgmltag-element">uncertainty</code>
+              </a>
+            </span></dt><dd><p> This optional element, if present, describes the uncertainty of this parameter.
+                See the section on <a href="statistics.html" title="6.4. Statistical information encoding">Statistics</a> below for more
+                information about this element. </p></dd><dt><span class="term">
+	      <a id="d0e4623" class="indexterm"/>
+              <a href="dataPoint.html" title="dataPoint">
+                <code class="sgmltag-element">dataPoint</code>
+              </a>
+            </span></dt><dd><p>One or more sets of coordinate and output numeric values of the function at
+                various locations within its input space. This element includes one coordinate for
+                each function input variable. Parsing this information into a usable interpolative
+                function is up to the implementer. By convention, the coordinates are listed in the
+                same order that they appear in the parent function.</p></dd></dl></div><div class="example"><a id="twoD_ungriddedTableDef_example"/><p class="title"><b>Example 9.  
+	    An excerpt showing an <code class="sgmltag-element">ungriddedTableDef</code> element, encoding the data
+	    depicted in <a href="ungriddedTableDef_overview.html#twoD_ungriddedTable_figure" title="Figure 2.  The 2D lift function given in Example 9&#xA;          ">Figure 2</a>.
+	  </b></p><div class="example-contents"><p> 
+	    This 2D function table is an example<a id="d0e4649" class="indexterm"/> provided by Dr. Peter
+	    Grant of the University of Toronto. Such a table definition would be used in a
+	    subsequent <code class="sgmltag-element">function</code> to describe how an output variable would be
+	    defined based on two independent input variables. The function table does not indicate
+	    which input and output variables are represented; this information is supplied by the
+	    <code class="sgmltag-element">function</code> element later so that a single function table can be reused
+	    by multiple functions.
+	  </p><pre class="programlisting">
+
+ &lt;ungriddedTableDef name="CLBASIC as function of flap angle and angle-of-
+        attack" utID="CLBAlfaFlap_Table" units="nd"&gt;
+   &lt;description&gt;
+     CL basic as a function of flap angle and angle-of-attack. Note the alpha 
+     used in this table is with respect to the wing design plane (in degrees). 
+     Flap is in degrees as well.
+   &lt;/description&gt;
+
+   &lt;provenance&gt;
+     &lt;author name="Peter Grant" org="UTIAS"/&gt;  <a id="ug2dtd-note-1-co" href="ungriddedTableDef_overview.html#ug2dtd-note-1"><img src="images/callouts/1.png" alt="1" border="0"/></a>
+     &lt;creationDate date="2006-11-01"/&gt;
+     &lt;documentRef refID="PRG1" /&gt;
+   &lt;/provenance&gt;
+
+   &lt;!--For ungridded tables you provide a list of dataPoints--&gt; <a id="ug2dtd-note-2-co" href="ungriddedTableDef_overview.html#ug2dtd-note-2"><img src="images/callouts/2.png" alt="2" border="0"/></a>
+        &lt;dataPoint&gt; 1.0 -5.00  -0.44 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;   <a id="ug2dtd-note-3-co" href="ungriddedTableDef_overview.html#ug2dtd-note-3"><img src="images/callouts/3.png" alt="3" border="0"/></a>
+        &lt;dataPoint&gt; 1.0  10.00  0.95 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 1.0  12.00  1.12 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 1.0  14.00  1.26 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 1.0  15.00  1.32 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 1.0  17.00  1.41 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 5.0 -5.00  -0.55 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 5.0  0.00  -0.03 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 5.0  5.00   0.50 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 5.0  10.00  1.02 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 5.0  12.00  1.23 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 5.0  14.00  1.44 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 5.0  16.00  1.63 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 5.0  17.00  1.70 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 5.0  18.00  1.75 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint modID='A'&gt; 10.0 -5.00 -0.40 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt; <a id="ug2dtd-note-4-co" href="ungriddedTableDef_overview.html#ug2dtd-note-4"><img src="images/callouts/4.png" alt="4" border="0"/></a>
+        &lt;dataPoint&gt; 10.0 14.00  1.57 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 10.0 15.00  1.66 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 10.0 16.00  1.75 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 10.0 17.00  1.80 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        &lt;dataPoint&gt; 10.0 18.00  1.84 &lt;!-- flap, alfawdp, CLB--&gt;&lt;/dataPoint&gt;
+        
+&lt;/ungriddedTableDef&gt;
+          </pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a id="ug2dtd-note-1"/><a href="#ug2dtd-note-1-co"><img src="images/callouts/1.png" alt="1" border="0"/></a> </td><td valign="top" align="left"><p>Example courtesy of Dr. Peter Grant, U. Toronto</p></td></tr><tr><td width="5%" valign="top" align="left"><a id="ug2dtd-note-2"/><a href="#ug2dtd-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p>Comments are a good idea for human readers</p></td></tr><tr><td width="5%" valign="top" align="left"><a id="ug2dtd-note-3"/><a href="#ug2dtd-note-3-co"><img src="images/callouts/3.png" alt="3" border="0"/></a> </td><td valign="top" align="left"><p> 
+		For a 2D table such as this one, data points give two columns of independent
+		breakpoint values and a third column of function values at those breakpoints.
+	      </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="ug2dtd-note-4"/><a href="#ug2dtd-note-4-co"><img src="images/callouts/4.png" alt="4" border="0"/></a> </td><td valign="top" align="left"><p> The <code class="sgmltag-element">modID</code> attribute implies this point was edited during
+                modification 'A' of this model, as described in the file header information. </p></td></tr></table></div></div></div><br class="example-break"/><div class="figure"><a id="twoD_ungriddedTable_figure"/><p class="title"><b>Figure 2.  The 2D lift function given in <a href="ungriddedTableDef_overview.html#twoD_ungriddedTableDef_example" title="Example 9.  &#xA;&#x9;    An excerpt showing an ungriddedTableDef element, encoding the data&#xA;&#x9;    depicted in Figure 2.&#xA;&#x9;  ">Example 9</a>
+          </b></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="60%"><tr><td><img src="figures/prg_2Dungridded.png" width="100%" alt="The 2D lift function given in"/></td></tr></table></div></div></div><br class="figure-break"/><div class="example"><a id="threeD_ungriddedTableDef_example"/><p class="title"><b>Example 10. 
+	    An excerpt from a sample aerodynamics model giving an example of a 3D
+	    <code class="sgmltag-element">ungriddedTableDef</code> element, encoding the data shown in <a href="ungriddedTableDef_overview.html#threeD_ungriddedTable_figure" title="Figure 3. The 3D function given in the previous example">Figure 3</a>.
+	  </b></p><div class="example-contents"><p> 
+	    In this example<a id="d0e4708" class="indexterm"/>, the dependent
+	    coordinates all vary in each dimension.
+	  </p><pre class="programlisting">
+     &lt;!--===================================--&gt;  <a id="ug3dtd-note-1-co" href="ungriddedTableDef_overview.html#ug3dtd-note-1"><img src="images/callouts/1.png" alt="1" border="0"/></a>
+     &lt;!--  Three-D Table Definition Example --&gt;
+     &lt;!--===================================--&gt;
+
+     &lt;ungriddedTableDef name="yawMomentCoefficientTable1" units="nd" utID="yawMomentCoefficientTable1"&gt;
+                &lt;!--  alpha,     beta,      delta:     yawMomentCoeff --&gt;    <a id="ug3dtd-note-2-co" href="ungriddedTableDef_overview.html#ug3dtd-note-2"><img src="images/callouts/2.png" alt="2" border="0"/></a>
+       &lt;dataPoint&gt; -1.8330592 -5.3490387 -4.7258599 -0.00350641&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; -1.9302179 -4.9698462 0.2798654  -0.0120538&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; -2.1213095 -5.0383145 5.2146443  -0.0207089&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 0.2522004  -4.9587161 -5.2312860 -0.000882368&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 0.3368831  -5.0797159 -0.3370540 -0.0111846&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 0.2987289  -4.9691198 5.2868938  -0.0208758&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 1.8858257  -5.2077654 -4.7313074 -0.00219842&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 1.8031083  -4.7072954 0.0541231  -0.0111726&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 1.7773659  -5.0317988 5.1507477  -0.0208074&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 3.8104785  -5.2982162 -4.7152852 -0.00225906&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 4.2631596  -5.1695257 -0.1343410 -0.0116563&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 4.0470946  -5.2541017 5.0686926  -0.0215506&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; -1.8882611 0.2422452  -5.1959304 0.0113462&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; -2.1796091 0.0542085  0.2454711  -0.000253915&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; -2.2699103 -0.3146657 4.8638859  -0.00875431&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 0.0148579  0.1095599  -4.9639500 0.0105144&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; -0.1214591 -0.0047960 0.2788827  -0.000487753&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 0.0610233  0.2029588  5.0831767  -0.00816086&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 1.7593356  -0.0149007 -5.0494446 0.0106762&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 1.9717048  -0.0870861 0.0763833  -0.000332616&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 2.0228263  -0.2962294 5.1777078  -0.0093807&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 4.0567507  -0.2948622 -5.1002243 0.010196&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 3.6534822  0.2163747  0.1369900  0.000312733&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 3.6848003  0.0884533  4.8214805  -0.00809437&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; -2.3347682 5.2288720  -4.7193014 0.02453&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; -2.3060350 4.9652745  0.2324610  0.0133447&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; -1.8675176 5.0754646  5.1169942  0.00556052&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 0.0004379  5.1220145  -5.2734993 0.0250468&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; -0.1977035 4.7462188  0.0664495  0.0124083&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; -0.1467742 5.0470092  5.1806131  0.00475277&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 1.6599338  4.9352809  -5.1210532 0.0242646&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 2.2719825  4.8865093  0.0315210  0.0125658&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 2.0406858  5.3253471  5.2880688  0.00491779&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 4.0179983  5.0826426  -4.9597629 0.0243518&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 4.2863811  4.8806558  -0.2877697 0.0128886&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 3.9289361  5.2246849  4.9758705  0.00471241&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; -2.2809763 9.9844584  -4.8800790 0.0386951&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; -2.0733070 9.9204337  0.0241722  0.027546&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; -1.7624546 9.9153493  5.1985794  0.0188357&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 0.2279962  9.8962508  -4.7811258 0.0375762&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; -0.2800363 10.3004593 0.1413907  0.028144&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 0.0828562  9.9008011  5.2962722  0.0179398&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 1.8262230  10.0939436 -4.6710211 0.037712&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 1.7762123  10.1556398 -0.1307093 0.0278079&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 2.2258599  9.8009720  4.6721747  0.018244&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 3.7892651  9.8017197  -4.8026383 0.0368199&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 4.0150716  9.6815531  -0.0630955 0.0252014&lt;/dataPoint&gt;
+       &lt;dataPoint&gt; 4.1677953  9.8754433  5.1776223  0.0164312&lt;/dataPoint&gt;
+     &lt;/ungriddedTableDef&gt;
+          </pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a id="ug3dtd-note-1"/><a href="#ug3dtd-note-1-co"><img src="images/callouts/1.png" alt="1" border="0"/></a> </td><td valign="top" align="left"><p>Example courtesy of Mr. Geoff Brian<a id="d0e4724" class="indexterm"/>,
+              DSTO<a id="d0e4728" class="indexterm"/></p></td></tr><tr><td width="5%" valign="top" align="left"><a id="ug3dtd-note-2"/><a href="#ug3dtd-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p> 
+		In this example, columns are labeled with an <acronym class="acronym">XML</acronym>
+		comment for human readers. Actual association of each input
+		(alpha, beta and delta) and the single output (yawing
+		moment) to the respective input and output signals
+		is mechanized in any subsequent function definition(s).
+	      </p></td></tr></table></div></div></div><br class="example-break"/><div class="figure"><a id="threeD_ungriddedTable_figure"/><p class="title"><b>Figure 3. The 3D function given in the <a href="ungriddedTableDef_overview.html#threeD_ungriddedTableDef_example" title="Example 10.  An excerpt from a sample aerodynamics model giving an example of a 3D ungriddedTableDef element, encoding the data shown in Figure 3.">previous example</a></b></p><div class="figure-contents"><div><img src="figures/gb_3Dungridded.png" alt="The 3D function given in the previous example"/></div></div></div><br class="figure-break"/></div><P xmlns="" class="CVSinfo">2010-11-08</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="griddedTableDef_overview.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="davefunc_overview.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="function_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

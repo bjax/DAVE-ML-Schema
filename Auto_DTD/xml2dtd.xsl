@@ -4,7 +4,7 @@
   xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:mathml="http://www.w3.org/TR/Math/MathML2"
   >
-  <xsl:output method="text" indent="no"/>
+  <xsl:output method="xml" indent="no"/>
   
   <!-- 
     Converts my home-grown DTD .xml specification back into a DTD document. Tested with
@@ -75,7 +75,7 @@
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="el">
-
+    
     <xsl:variable name="newline">
       <xsl:text>
 </xsl:text>
@@ -85,62 +85,54 @@
       <xsl:text>    </xsl:text>
     </xsl:variable>
     
-    <xsl:choose>
+    <xsl:apply-templates select="./descrip"/>
+    
+    <xsl:text disable-output-escaping="yes">&lt;!ELEMENT </xsl:text>
+    <xsl:value-of select="./name"/>
+    <xsl:text> </xsl:text>
+    
+    <xsl:if test="data">
+      <xsl:text>(#PCDATA)</xsl:text>
+    </xsl:if>
+    
+    <xsl:if test="sequence">
+      <xsl:text>(</xsl:text>
+      <xsl:apply-templates select="sequence">
+	<xsl:with-param name="indent" select="$indent"/>
+      </xsl:apply-templates>
+      <xsl:text>)</xsl:text>
+      <xsl:value-of select="$newline"/>
+    </xsl:if>
+    
+    <xsl:apply-templates select="choice">
+      <xsl:with-param name="indent" select="$indent"/>
+    </xsl:apply-templates>
+    
+    <xsl:if test="elRef">
+      <xsl:text>(</xsl:text>
+      <xsl:apply-templates select='elRef'/>
+      <xsl:text>)</xsl:text>
+    </xsl:if>
+    
+    <xsl:if test="empty">
+      <xsl:text>EMPTY</xsl:text>
+    </xsl:if>
 
-      <xsl:when test="nodef"></xsl:when>
-
-      <xsl:otherwise>
-
-	<xsl:apply-templates select="./descrip"/>
+    <xsl:text disable-output-escaping="yes">&gt;</xsl:text>
     
-	<xsl:text disable-output-escaping="yes">&lt;!ELEMENT </xsl:text>
-	<xsl:value-of select="./name"/>
-	<xsl:text> </xsl:text>
+    <xsl:value-of select="$newline"/>
     
-	<xsl:if test="data">
-	  <xsl:text>(#PCDATA)</xsl:text>
-	</xsl:if>
+    <xsl:if test="attr">
+      <xsl:text disable-output-escaping="yes">&lt;!ATTLIST </xsl:text>
+      <xsl:value-of select="name"/>
+      <xsl:value-of select="$newline"/>
+      <xsl:apply-templates select="attr"/>
+      <xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+    </xsl:if>
     
-	<xsl:if test="sequence">
-	  <xsl:text>(</xsl:text>
-	  <xsl:apply-templates select="sequence">
-	    <xsl:with-param name="indent" select="$indent"/>
-	  </xsl:apply-templates>
-	  <xsl:text>)</xsl:text>
-	  <xsl:value-of select="$newline"/>
-	</xsl:if>
+    <xsl:value-of select="$newline"/>
+    <xsl:value-of select="$newline"/>
     
-	<xsl:apply-templates select="choice">
-	  <xsl:with-param name="indent" select="$indent"/>
-	</xsl:apply-templates>
-    
-	<xsl:if test="elRef">
-	  <xsl:text>(</xsl:text>
-	  <xsl:apply-templates select='elRef'/>
-	  <xsl:text>)</xsl:text>
-	</xsl:if>
-    
-	<xsl:if test="empty">
-	  <xsl:text>EMPTY</xsl:text>
-	</xsl:if>
-
-	<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-    
-	<xsl:value-of select="$newline"/>
-    
-	<xsl:if test="attr">
-	  <xsl:text disable-output-escaping="yes">&lt;!ATTLIST </xsl:text>
-	  <xsl:value-of select="name"/>
-	  <xsl:value-of select="$newline"/>
-	  <xsl:apply-templates select="attr"/>
-	  <xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-	</xsl:if>
-    
-	<xsl:value-of select="$newline"/>
-	<xsl:value-of select="$newline"/>
-
-      </xsl:otherwise>
-    </xsl:choose>
   </xsl:template>
   
   

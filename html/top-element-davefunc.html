@@ -13,7 +13,7 @@ span.deleted { text-decoration: line-through;
                background-color: #FF7F7F; }
 span.changed { background-color: #99ff99; }
 span.off     {  }
-</style><title>6.1. The DAVEfunc major element</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="top-element.html" title="6. Major elements"/><link rel="prev" href="top-element.html" title="6. Major elements"/><link rel="next" href="davefunc_overview.html" title="6.2. Schematic overview of DAVEfunc"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="top-element.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="davefunc_overview.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="top-element.html">Major elements</a></span> &gt; <span class="breadcrumb-node"><code xmlns="http://www.w3.org/1999/xhtml" class="sgmltag-element">DAVEfunc</code></span></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="top-element-davefunc"/>6.1. The <code class="sgmltag-element">DAVEfunc</code> major element</h3></div></div></div><p> 
+</style><title>6.1. The DAVEfunc major element</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="top-element.html" title="6. Major elements"/><link rel="prev" href="top-element.html" title="6. Major elements"/><link rel="next" href="davefunc_overview.html" title="6.2. Schematic overview of DAVEfunc"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="top-element.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="davefunc_overview.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="top-element.html">Major elements</a></span> &gt; <span class="breadcrumb-node"><code xmlns="http://www.w3.org/1999/xhtml" class="sgmltag-element">DAVEfunc</code></span></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a id="top-element-davefunc"/>6.1. The <code class="sgmltag-element">DAVEfunc</code> major element</h3></div></div></div><div xmlns="" class="changed"><p xmlns="http://www.w3.org/1999/xhtml"> 
 	The <a href="DAVEfunc.html" title="DAVEfunc"><code class="sgmltag-element">DAVEfunc</code></a> element contains both data
 	tables and equations for a particular static model. A <a href="davefunc_overview.html" title="6.2. Schematic overview of DAVEfunc">
 	<code class="sgmltag-element">DAVEfunc</code></a> element is broken into six components: a file header,
@@ -24,18 +24,18 @@ span.off     {  }
 	usually state variables of the simulation (such as Mach number or angle-of-attack). The
 	outputs from these interpolated tables are combined to represent forces and moments acting
 	on the vehicle due to aerodynamics. 
-      <a id="d0e2046" class="indexterm"/>
-      <a id="d0e2052" class="indexterm"/>
-      <a id="d0e2058" class="indexterm"/>
-      </p><p> It is possible, using <code class="sgmltag-element">DAVEfunc</code> and <acronym class="acronym">MathML-2</acronym>
+      <a id="d0e1951" class="indexterm"/>
+      <a id="d0e1957" class="indexterm"/>
+      <a id="d0e1963" class="indexterm"/>
+      </p></div><p> It is possible, using <code class="sgmltag-element">DAVEfunc</code> and <acronym class="acronym">MathML-2</acronym>
         elements, to completely define an aerodynamic model without use of function tables (by
         mathematical combinations of input variables, such as a polynomial model) but this is not
         yet common in the American flight-simulation industry. 
       </p><p> 
 	A <a href="fileHeader_overview.html" title="6.2.1. The file header element"><code class="sgmltag-element">fileHeader</code></a> element is
 	included to give background and reference data for the represented model.
-	<a id="d0e2078" class="indexterm"/>
-      </p><p>
+	<a id="d0e1983" class="indexterm"/>
+      </p><div xmlns="" class="changed"><p xmlns="http://www.w3.org/1999/xhtml">
 	Variables, or more properly <span class="emphasis"><em>signals</em></span>, are used to route inputs and
 	calculations through the subsystem model into outputs. Each variable is defined with a <a href="variableDef_overview.html" title="6.2.2. The variable definition element"><code class="sgmltag-element">variableDef</code></a> element. Variables can
 	be thought of as parameters in a computer program or signal paths on a block diagram. They
@@ -49,15 +49,15 @@ span.off     {  }
 	represent the current value of a function (the <code class="sgmltag-element">dependentVariableDef</code> in a
 	<a href="function_overview.html" title="6.2.6. The function definition element"><code class="sgmltag-element">function</code></a> definition) so the
 	output of functions can be used as inputs to other variables or functions.
-      <a id="d0e2109" class="indexterm"/>
-      <a id="d0e2115" class="indexterm"/>
-      <a id="d0e2119" class="indexterm"/>
-      </p><p>
+      <a id="d0e2014" class="indexterm"/>
+      <a id="d0e2020" class="indexterm"/>
+      <a id="d0e2024" class="indexterm"/>
+      </p></div><p>
 	Breakpoint definitions, captured in <a href="breakpointDef_overview.html" title="6.2.3. The breakpoint set definition element"><code class="sgmltag-element">breakpointDef</code></a> elements, consist
 	of a list of monotonically increasing floating-point values separated by commas or white
 	space. These sets are referenced by "gridded" function table definitions and may be
 	referenced by more than one <a href="function_overview.html" title="6.2.6. The function definition element"><code class="sgmltag-element">function</code></a> definition.
-      <a id="d0e2133" class="indexterm"/>
+      <a id="d0e2038" class="indexterm"/>
       </p><p> 
 	Function table definitions, described by <a href="griddedTableDef_overview.html" title="6.2.4. The gridded table definition element"><code class="sgmltag-element">griddedTableDef</code></a> and <a href="ungriddedTableDef_overview.html" title="6.2.5. The ungridded table definition element"><code class="sgmltag-element">ungriddedTableDef</code></a> elements,
 	generally contain the bulk of data points in an aerodynamics model, and typically represent
@@ -68,9 +68,9 @@ span.off     {  }
 	each dimension's breakpoint, or "ungridded," meaning each data point has a specified
 	coordinate location in n-space. The same table can be reused in several functions, such as a
 	left- and right-aileron moment contribution.
-      <a id="d0e2149" class="indexterm"/>
-      <a id="d0e2155" class="indexterm"/>
-      <a id="d0e2161" class="indexterm"/>
+      <a id="d0e2054" class="indexterm"/>
+      <a id="d0e2060" class="indexterm"/>
+      <a id="d0e2066" class="indexterm"/>
       </p><p> 
 	Function definitions (described by <a href="function_overview.html" title="6.2.6. The function definition element"><code class="sgmltag-element">function</code></a> elements) connect breakpoint
 	sets and data tables to define how an output signal (or dependent variable) should vary with
@@ -78,16 +78,16 @@ span.off     {  }
 	magnitudes, along with extrapolation requirements for out-of-range inputs, can be
 	defined. There is no limit to the number of independent variables, or function
 	dimensionality, of the function.
-      <a id="d0e2173" class="indexterm"/>
-      <a id="d0e2179" class="indexterm"/>
+      <a id="d0e2078" class="indexterm"/>
+      <a id="d0e2084" class="indexterm"/>
       </p><p>
 	Check-case data (described by a single <a href="checkData_overview.html" title="6.2.7. The checkData element"><code class="sgmltag-element">checkData</code></a> element) can be included
 	to provide information to automatically verify the proper implementation of the model by the
 	recipient. Multiple check-cases can (and should) be specified using multiple <a href="staticShot.html" title="staticShot"><code class="sgmltag-element">staticShot</code> test-case definitions</a>, as well as
 	optional internal signal values within the model to assist in debugging an instantiation of
 	the model by the recipient.
-      <a id="d0e2196" class="indexterm"/>
-      <a id="d0e2202" class="indexterm"/>
+      <a id="d0e2101" class="indexterm"/>
+      <a id="d0e2107" class="indexterm"/>
 
       </p><p>
         <a href="top-element-davefunc.html#daveml_file_excerpt_fig" title="Figure 1.  Excerpts from an example DAVE-ML file ">Figure 1</a> 
@@ -104,4 +104,4 @@ span.off     {  }
         </a> is to give the gridded table values or ungridded table values inside the <a href="function.html" title="function">
           <code class="sgmltag-element">function</code>
         </a> body, but refer to externally defined breakpoint sets. This allows reuse of the
-        breakpoint sets by other functions but keeps the table data private. </p></div><P xmlns="" class="CVSinfo">2010-11-08</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="top-element.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="top-element.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="davefunc_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+        breakpoint sets by other functions but keeps the table data private. </p></div><P xmlns="" class="CVSinfo">2010-05-07</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="top-element.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="top-element.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="davefunc_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

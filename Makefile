@@ -25,12 +25,15 @@ AUTO_DTD_REF  = ${AUTO_DTD_DIR}/DAVEfunc_ref_auto.xml
 AUTO_DTD_DOCS = ${AUTO_DTD_DIR}/DAVEfunc_dtd.xml ${AUTO_DTD_DIR}/xml2db.xsl 
 HTML_DOC      = ${HTML_DIR}/index.html
 PDF_DOC       = ${PDF_DIR}/DAVE-ML_ref.pdf 
+AIAA_PDF_DOC  = ${PDF_DIR}/DAVE-ML_ref_aiaa.pdf
 WORDML_DOC    = ${WORDML_DIR}/DAVE-ML_ref.doc
 
 make: ${HTML_DOC} ${AUTO_DTD}
 
-.PHONY: pdf text html all doc
+.PHONY: aiaa pdf text html all doc
 pdf: ${PDF_DOC}
+
+aiaa: ${AIAA_PDF_DOC}
 
 text: DAVE-ML_ref.txt
 
@@ -40,7 +43,7 @@ doc:  ${WORDML_DOC}
 
 #all: make pdf text doc
 
-all: make pdf
+all: make pdf aiaa
 
 ${HTML_DOC}: ${SOURCE_DOCS} toXhtml.sh DAVE-ML_db2html.xsl
 	@echo "Making DocBook into .html files..."
@@ -50,6 +53,10 @@ ${PDF_DOC}: ${SOURCE_DOCS} toPDF.sh DAVE-ML_db2pdf.xsl  my_fo_titlepage.xsl
 	@echo "Making DocBook into .pdf file..."
 	@./toPDF.sh
 	@open ${PDF_DOC}
+
+${AIAA_PDF_DOC}: ${SOURCE_DOCS} toAIAA_PDF.sh DAVE-ML_db2pdf_AIAA.xsl  my_fo_titlepage.xsl
+	@echo "Making DocBook into AIAA .pdf file..."
+	@./toAIAA_PDF.sh
 
 my_fo_titlepage.xsl: my_fo_titlepage.xml
 	xsltproc --output $@ /Users/bjax/Documents/DocBook/docbook-xsl/template/titlepage.xsl my_fo_titlepage.xml
@@ -78,3 +85,4 @@ clean:
 	-rm -rf text
 	-rm -rf html
 	-rm ${PDF_DOC}
+	-rm ${AIAA_PDF_DOC}

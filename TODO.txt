@@ -1,25 +1,8 @@
-For 2.0 RC 4:
+Pending:
 
-    2010-10-28 - Remove multiplicative or percentage uncertainty tags
-                 (NESC FSME suggestion)
+    2010-10-18 - Recommend including attribute xmlns="http://www.w3.org/1998/Math/MathML" to <math>
+                 element
 
-    2010-10-28 - Move absolute uncertainty tags down to uniformPDF
-                 (NESC FSME suggestion)
-
-
-Pending after 2.0:
-
-    2010-10-28 - Make name attribute optional for functionDefs (Rob
-                 Curtin suggestion)
-
-    2010-10-28 - Move dependentVarRef attribute into <function>
-                 (Dennis Linse suggestion)
-
-    2010-10-28 - Consider adopting UnitsML for S-119?
-
-    2010-10-28 - Add optional min/max attributes to variableDef 
-    	       	 add enforceLimits flag?
-		 add notify = 'ignore', 'warn', 'error'? (NESC FSME)
 
     2010-07-02 - Make 'bounds' subelement as "bounds, bounds?"  in DTD
 
@@ -46,22 +29,6 @@ Pending after 2.0:
 
 
 Completed:
-
-
-  in 2.0 RC4:
-
-    2010-10-28 - Fix ref manual examples so function, functionDef,
-                 etc. names are all unique [2010-11-01]
-
-    2010-10-18 - Recommend including attribute
-                 xmlns="http://www.w3.org/1998/Math/MathML" to <math>
-                 element [2010-10-29]
-
-    2010-10-28 - Make gtID and utID mandatory for all
-                 [un]griddedTableDefs (NESC FSME suggestion) [2010-10-29]
-
-    2010-10-28 - don't require staticShot to have at least one
-                 checkInputs (NESC FSME suggestion) [2010-10-28]
 
     2010-04-01 - Install git repository on daveml.org 
     	         [completed in April 2010 sometime]

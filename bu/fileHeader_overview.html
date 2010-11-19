@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><style xmlns="" type="text/css">
+div.added    { background-color: #ffff99; }
+div.deleted  { text-decoration: line-through;
+               background-color: #FF7F7F; }
+div.changed  { background-color: #99ff99; }
+div.off      {  }
+
+span.added   { background-color: #ffff99; }
+span.deleted { text-decoration: line-through;
+               background-color: #FF7F7F; }
+span.changed { background-color: #99ff99; }
+span.off     {  }
+</style><title>6.2.1. The file header element</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="davefunc_overview.html" title="6.2. Schematic overview of DAVEfunc"/><link rel="prev" href="davefunc_overview.html" title="6.2. Schematic overview of DAVEfunc"/><link rel="next" href="variableDef_overview.html" title="6.2.2. The variable definition element"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="davefunc_overview.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="variableDef_overview.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="top-element.html">Major elements</a></span> &gt; <span class="breadcrumb-link"><a href="davefunc_overview.html"><code xmlns="http://www.w3.org/1999/xhtml" class="sgmltag-element">DAVEfunc</code> overview</a></span> &gt; <span class="breadcrumb-node"><code xmlns="http://www.w3.org/1999/xhtml" class="sgmltag-element">fileHeader</code> overview</span></div><div class="sect3" lang="en"><div class="titlepage"><div><div><h4 class="title"><a id="fileHeader_overview"/>6.2.1. The file header element</h4></div></div></div><p> 
+	  The <a href="fileHeader.html" title="fileHeader"><code class="sgmltag-element">fileHeader</code> </a> element contains
+	  information about the source of the data contained within the <a href="DAVEfunc.html" title="DAVEfunc"><code class="sgmltag-element">DAVEfunc</code></a> major element, including the author,
+	  creation date, description, reference information, and modification history. 
+	  <a id="d0e2576" class="indexterm"/>
+	</p><pre class="programlisting">
+    <a href="fileHeader.html" title="fileHeader">fileHeader</a> : [name]
+        <a href="author.html" title="author">author</a>+ : name, org, [email]
+            <a href="contactInfo.html" title="contactInfo">contactInfo</a>* : [contactInfoType, contactLocation]
+                {text describing contact information for author}
+        <a href="creationDate.html" title="creationDate">creationDate</a> : date {in ISO 8601 YYYY-MM-DD format}
+        <a href="fileVersion.html" title="fileVersion">fileVersion</a>? 
+            {file version identifier}
+        <a href="description.html" title="description">description</a>?
+            {textual description of model}
+        <a href="reference.html" title="reference">reference</a>* : refID, author, title, date, [classification, accession, href]
+            <a href="description.html" title="description">description</a>? :
+                {textual information about reference}
+        <a href="modificationRecord.html" title="modificationRecord">modificationRecord</a>* : modID, date, [refID]
+            <a href="author.html" title="author">author</a>+ : name, org, [email]
+                <a href="contactInfo.html" title="contactInfo">contactInfo</a>* : [contactInfoType, contactLocation]
+                    {text describing contact information for author}
+            <a href="description.html" title="description">description</a>?
+                {textual description of modification}
+            <a href="extraDocRef.html" title="extraDocRef">extraDocRef</a>* : refID
+        <a href="provenance.html" title="provenance">provenance</a>* :
+                <a href="author.html" title="author">author</a>+ : name, org, [email]
+                    <a href="contactInfo.html" title="contactInfo">contactInfo</a>* : [contactInfoType, contactLocation]
+                        {text describing contact information for author}
+                <a href="creationDate.html" title="creationDate">creationDate</a> : date {in ISO 8601 YYYY-MM-DD format}
+                <a href="documentRef.html" title="documentRef">documentRef</a>* : [docID,] refID
+                <a href="modificationRef.html" title="modificationRef">modificationRef</a>* : modID
+                <a href="description.html" title="description">description</a>?
+                    {textual description of the background of the model}
+        </pre><div class="variablelist"><p class="title"><b><a href="fileHeader.html" title="fileHeader">
+              <code class="sgmltag-element">fileHeader</code>
+            </a> sub-elements:</b></p><dl><dt><span class="term">
+	      <a id="d0e2655" class="indexterm"/>
+              <a href="author.html" title="author">
+                <code class="sgmltag-element">author</code>
+              </a>
+            </span></dt><dd><p>Name, organization, optional email address and other contact information for
+                each author.</p></dd><dt><span class="term">
+	      <a id="d0e2673" class="indexterm"/>
+              <a href="creationDate.html" title="creationDate">
+                <code class="sgmltag-element">creationDate</code>
+              </a>
+            </span></dt><dd><p>
+		Creation date of this file. See <a href="date_format_note.html" title="6.5.4. Date format in DAVE-ML">Section 6.5.4, “Date format”</a>
+                for the recommended format for encoding dates.
+	      </p></dd><dt><span class="term">
+	      <a id="d0e2693" class="indexterm"/>
+              <a href="fileVersion.html" title="fileVersion">
+                <code class="sgmltag-element">fileVersion</code>
+              </a>
+            </span></dt><dd><p>A string that indicates the version of the document. No convention is specified
+                for the format, but a good practice would include an automated revision number from a
+                version control system.</p></dd><dt><span class="term">
+	      <a id="d0e2711" class="indexterm"/>
+              <a href="description.html" title="description">
+                <code class="sgmltag-element">description</code>
+              </a>
+            </span></dt><dd><p>An optional but recommended text description: what does this
+                  <acronym class="acronym">DAVE-ML</acronym> file represent?</p></dd><dt><span class="term">
+	      <a id="d0e2732" class="indexterm"/>
+              <a href="reference.html" title="reference">
+                <code class="sgmltag-element">reference</code>
+              </a>
+            </span></dt><dd><p> An optional list of one or more references with a document-unique ID (must
+                begin with alpha character), author, title, date, and optional accession and URL of
+                the reference. This sub-element can include a description of the reference. </p></dd><dt><span class="term">
+	      <a id="d0e2750" class="indexterm"/>
+              <a href="modificationRecord.html" title="modificationRecord">
+                <code class="sgmltag-element">modificationRecord</code>
+              </a>
+            </span></dt><dd><p> An optional list of one or more modifications with
+              optional reference IDs, as well as author information and descriptions for each
+              modification record. These modifications are referred to by individual function tables
+              and/or data points, using the AIAA modification letter convention. If more than one
+              document is associated with the modification, multiple sub-element <a href="extraDocRef.html" title="extraDocRef">extraDocRef</a>s may be used in place of the <a href="modificationRecord.html" title="modificationRecord"><code class="sgmltag-element">modificationRecord</code></a>'s
+              <code class="sgmltag-element">refID</code> attribute. </p></dd><dt><span class="term">
+	      <a id="d0e2778" class="indexterm"/>
+              <a href="provenance.html" title="provenance">
+                <code class="sgmltag-element">provenance</code>
+              </a>
+            </span></dt><dd><p> 
+		An optional list of one or more <a href="provenance.html" title="provenance">provenance</a>
+		elements allows the author to describe the source and history of the data within
+		this model. Since the model may be constructed from several sources, more than one
+		provenance may be provided, one for each source of data. Use of a
+		<code class="sgmltag-element">provID</code> attribute in the <a href="fileHeader.html" title="fileHeader"><code class="sgmltag-element">fileHeader</code></a> is unnecessary since this
+		provenance applies to the entire model unless otherwise specified.
+	      </p></dd></dl></div><div class="example"><a id="fileHeader_example"/><p class="title"><b>Example 1. An excerpt with an example of a <code class="sgmltag-element">fileHeader</code> element</b></p><div class="example-contents"><a id="d0e2811" class="indexterm"/><pre class="programlisting">
+&lt;!--                          =================                          --&gt; <a id="fh-note-1-co" href="fileHeader_overview.html#fh-note-1"><img src="images/callouts/1.png" alt="1" border="0"/></a>
+&lt;!-- =========================   FILE HEADER   ========================= --&gt;
+&lt;!--                          =================                          --&gt;
+
+
+  &lt;<a href="fileHeader.html" title="fileHeader">fileHeader</a>&gt; <a id="fh-note-2-co" href="fileHeader_overview.html#fh-note-2"><img src="images/callouts/2.png" alt="2" border="0"/></a>
+    &lt;<a href="author.html" title="author">author</a> name="Bruce Jackson" org="NASA Langley Research Center"&gt;
+      &lt;<a href="contactInfo.html" title="contactInfo">contactInfo</a> contactInfoType='address' contactLocation='professional'&gt;
+         MS 308 NASA, Hampton, VA 23681
+      &lt;/contactInfo&gt;
+      &lt;<a href="contactInfo.html" title="contactInfo">contactInfo</a> contactInfoType='email' contactLocation='professional'&gt;
+        Bruce.Jackson@nospam.nasa.gov
+      &lt;/contactInfo&gt;
+    &lt;/author&gt;
+    &lt;<a href="creationDate.html" title="creationDate">creationDate</a> date="2003-03-18"/&gt; <a id="fh-note-3-co" href="fileHeader_overview.html#fh-note-3"><img src="images/callouts/3.png" alt="3" border="0"/></a>
+
+    &lt;<a href="fileVersion.html" title="fileVersion">fileVersion</a>&gt;$<code class="sgmltag-element">Revision</code>: 1.24 $&lt;/fileVersion&gt; <a id="fh-note-4-co" href="fileHeader_overview.html#fh-note-4"><img src="images/callouts/4.png" alt="4" border="0"/></a>
+
+    &lt;<a href="description.html" title="description">description</a>&gt;
+     Version 2.0 aero model for HL-20 lifting body, as described in
+     NASA TM-107580. This aero model was used for HL-20 approach and
+     landing studies at NASA Langley Research Center during 1989-1995
+     and for follow-on studies at NASA Johnson Space Center in 1994
+     and NASA Ames Research Center in 2001. This DAVE-ML version was
+     created in March 2003 by Bruce Jackson to demonstrate DAVE-ML.
+    &lt;/description&gt;
+
+    &lt;<a href="reference.html" title="reference">reference</a> refID="REF01" <a id="fh-note-5-co" href="fileHeader_overview.html#fh-note-5"><img src="images/callouts/5.png" alt="5" border="0"/></a>
+        author="Jackson, E. Bruce; Cruz, Christopher I. &amp; and Ragsdale, W. A." 
+        title="Real-Time Simulation Model of the HL-20 Lifting Body" 
+        accession="NASA TM-107580"
+        date="1992-07-01"
+    /&gt;
+
+    &lt;<a href="reference.html" title="reference">reference</a> refID="REF02" 
+        author="Cleveland, William B. &lt;nospam@mail.arc.nasa.gov&gt;" 
+        title="Possible Typo in HL20_aero.xml" 
+        accession="email" 
+        date="2003-08-19"
+    /&gt;
+
+    &lt;<a href="modificationRecord.html" title="modificationRecord">modificationRecord</a> modID="A" refID="REF02"&gt; <a id="fh-note-6-co" href="fileHeader_overview.html#fh-note-6"><img src="images/callouts/6.png" alt="6" border="0"/></a>
+      &lt;<a href="author.html" title="author">author</a> name="Bruce Jackson" org="NASA Langley Research Center"&gt;
+        &lt;<a href="contactInfo.html" title="contactInfo">contactInfo</a> contactInfoType='address' contactLocation='professional'&gt;
+           MS 308 NASA, Hampton, VA 23681
+        &lt;/contactInfo&gt;
+      &lt;/author&gt;
+      &lt;<a href="description.html" title="description">description</a>&gt;
+        Revision 1.24: Fixed typo in CLRUD0 function description which
+        gave dependent signal name as "CLRUD1." Bill Cleveland of NASA
+        Ames caught this in his xml2ftp script. Also made use of 1.5b2
+        fileHeader fields and changed date formats to comply with
+        convention.
+      &lt;/description&gt;
+    &lt;/modificationRecord&gt;
+
+  &lt;/fileHeader&gt;
+          </pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a id="fh-note-1"/><a href="#fh-note-1-co"><img src="images/callouts/1.png" alt="1" border="0"/></a> </td><td valign="top" align="left"><p>Use of comments make models more readable by humans.</p></td></tr><tr><td width="5%" valign="top" align="left"><a id="fh-note-2"/><a href="#fh-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p>Start of the <code class="sgmltag-element">fileHeader</code> element.</p></td></tr><tr><td width="5%" valign="top" align="left"><a id="fh-note-3"/><a href="#fh-note-3-co"><img src="images/callouts/3.png" alt="3" border="0"/></a> </td><td valign="top" align="left"><p>Creation date of file, in ISO-8601 format. See <a href="date_format_note.html" title="6.5.4. Date format in DAVE-ML">Section 6.5.4, “Date format”</a></p></td></tr><tr><td width="5%" valign="top" align="left"><a id="fh-note-4"/><a href="#fh-note-4-co"><img src="images/callouts/4.png" alt="4" border="0"/></a> </td><td valign="top" align="left"><p>
+		In this example, the revision number is automatically inserted by a version control system.
+	      </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="fh-note-5"/><a href="#fh-note-5-co"><img src="images/callouts/5.png" alt="5" border="0"/></a> </td><td valign="top" align="left"><p>
+		All documents referenced by notation throughout the file should be described in the
+		<a href="fileHeader.html" title="fileHeader"><code class="sgmltag-element">fileHeader</code></a> as
+		<code class="sgmltag-element">reference</code> elements.
+	      </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="fh-note-6"/><a href="#fh-note-6-co"><img src="images/callouts/6.png" alt="6" border="0"/></a> </td><td valign="top" align="left"><p>
+		All modifications made to the contents of this file should be listed in the <a href="fileHeader.html" title="fileHeader"><code class="sgmltag-element">fileHeader</code></a> as <a href="modificationRecord.html" title="modificationRecord"><code class="sgmltag-element">modificationRecord</code></a>
+		sub-elements for easy reference by later <a href="modificationRef.html" title="modificationRef"><code class="sgmltag-element">modificationRef</code></a>
+		elements.
+	      </p></td></tr></table></div></div></div><br class="example-break"/></div><P xmlns="" class="CVSinfo">2010-11-08</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="davefunc_overview.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="davefunc_overview.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="variableDef_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

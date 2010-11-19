@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><style xmlns="" type="text/css">
+div.added    { background-color: #ffff99; }
+div.deleted  { text-decoration: line-through;
+               background-color: #FF7F7F; }
+div.changed  { background-color: #99ff99; }
+div.off      {  }
+
+span.added   { background-color: #ffff99; }
+span.deleted { text-decoration: line-through;
+               background-color: #FF7F7F; }
+span.changed { background-color: #99ff99; }
+span.off     {  }
+</style><title>independentVarPts</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="elementDescriptions.html" title="8.2. Element descriptions"/><link rel="prev" href="griddedTableRef.html" title="griddedTableRef"/><link rel="next" href="independentVarRef.html" title="independentVarRef"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="griddedTableRef.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="independentVarRef.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="elementRefs.html">Element references and descriptions</a></span> &gt; <span class="breadcrumb-link"><a href="elementDescriptions.html">Element descriptions</a></span> &gt; <span class="breadcrumb-node">independentVarPts</span></div><div class="refentry" lang="en"><a id="independentVarPts"/><div class="titlepage"/><a id="d0e10418" class="indexterm"/><div class="refnamediv"><h2><span class="refentrytitle">independentVarPts</span></h2><p>independentVarPts — Simple definition of independent breakpoints</p></div><div class="refsect1" lang="en"><a id="d0e10431"/><h2>Content model</h2><pre class="synopsis">independentVarPts :  varID,  [name],  [units],  [sign],  [extrapolate],  [interpolate]
+     (#PCDATA)</pre></div><div class="refsect1" lang="en"><a id="d0e10436"/><h2>Attributes</h2><div class="variablelist"><dl><dt><span class="term">
+<code class="varname">varID</code>
+</span></dt><dd><p>The internal identifier of the input signal
+      corresponding to this independent variable.<a id="d0e10449" class="indexterm"/>
+</p></dd><dt><span class="term">
+<code class="varname">name</code>
+</span></dt><dd><p>(optional) The name of the function's independent variable input signal.<a id="d0e10464" class="indexterm"/>
+</p></dd><dt><span class="term">
+<code class="varname">units</code>
+</span></dt><dd><p>(optional) The units of measure for the independent variable.<a id="d0e10479" class="indexterm"/>
+</p></dd><dt><span class="term">
+<code class="varname">sign</code>
+</span></dt><dd><p>(optional) The sign convention for the independent variable.<a id="d0e10494" class="indexterm"/>
+</p></dd><dt><span class="term">
+<code class="varname">extrapolate</code>
+</span></dt><dd><p>(optional) Extrapolation flags for IV out-of-bounds (default is neither) (enumerated).
+</p><div class="itemizedlist"><ul type="disc"><li><p>
+<code class="varname">neither</code>
+</p></li><li><p>
+<code class="varname">min</code>
+</p></li><li><p>
+<code class="varname">max</code>
+</p></li><li><p>
+<code class="varname">both</code>
+</p></li></ul></div><p>
+<a id="d0e10535" class="indexterm"/>
+</p></dd><dt><span class="term">
+<code class="varname">interpolate</code>
+</span></dt><dd><p>(optional) Interpolation flags for independent variable (default is linear) (enumerated).
+</p><div class="itemizedlist"><ul type="disc"><li><p>
+<code class="varname">discrete</code>
+</p></li><li><p>
+<code class="varname">floor</code>
+</p></li><li><p>
+<code class="varname">ceiling</code>
+</p></li><li><p>
+<code class="varname">linear</code>
+</p></li><li><p>
+<code class="varname">quadraticSpline</code>
+</p></li><li><p>
+<code class="varname">cubicSpline</code>
+</p></li></ul></div><p>
+<a id="d0e10588" class="indexterm"/>
+</p></dd></dl></div></div><div class="refsect1" lang="en"><a id="d0e10594"/><h2>Description</h2><p>
+
+      An independentVarPts element is a simple white space- or
+      comma-separated list of breakpoints and contains a mandatory
+      varID identifier as well as optional name, units, and sign
+      convention attributes.
+
+      An optional extrapolate attribute describes how to extrapolate
+      the output value when the input value exceeds specified values
+      (default is 'neither,' meaning the value of the table is held
+      constant at the nearest defined value). An optional interpolate
+      attribute indicates how to perform the interpolation within the
+      table (supporting discrete, linear, cubic or quadratic
+      splines). There are three different discrete options: 'discrete'
+      means nearest-neighbor, with an exact mid-point value being
+      rounded in the positive direction; 'ceiling' means the function
+      takes on the value associated with the next (numerically) higher
+      independent breakpoint as soon as the original value is exceeded;
+      and 'floor' means the function holds the value associated with
+      each breakpoint until the next (numerically) higher breakpoint
+      value is reached by the independent argument. The default
+      interpolation attribute value is 'linear.'
+
+      This element is used for simple functions that do not share
+      breakpoint or table values with other functions.
+    </p></div><div class="refsect1" lang="en"><a id="d0e10599"/><h2>
+	Possible parents
+      </h2><table class="simplelist" border="0" summary="Simple list"><tr><td>
+<a href="function.html" title="function">
+<code class="sgmltag-element">function</code>
+</a>
+</td></tr></table></div><div class="refsect1" lang="en"><a id="d0e10611"/><h2>
+	Allowable children
+      </h2><table class="simplelist" border="0" summary="Simple list"><tr><td>NONE</td></tr></table></div></div><P xmlns="" class="CVSinfo">2010-11-08</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="griddedTableRef.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="elementDescriptions.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="independentVarRef.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
