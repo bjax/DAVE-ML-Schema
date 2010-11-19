@@ -1,7 +1,5 @@
 How to release new DAVEfunc.dtd file:
 
-In the 'trunk' directory:
-
 do {
 
   Edit Auto_DTD/DAVEfunc_dtd.xml to make changes to DTD; edit

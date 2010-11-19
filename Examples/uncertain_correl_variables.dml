@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE DAVEfunc PUBLIC "-//NASA//DTD for Flight Dynamic Models - Functions 2.0//EN" 
                           "DAVEfunc.dtd">
-<DAVEfunc>
+<DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
     <fileHeader>
         <author name="" org=""/>
         <creationDate date=""/>

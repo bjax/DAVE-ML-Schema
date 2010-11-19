@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE DAVEfunc PUBLIC "-//NASA//DTD for Flight Dynamic Models - Functions 2.0//EN" "DAVEfunc.dtd">
+<DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
+  <fileHeader>
+    <author name="Bruce Jackson" org="NASA"/>
+    <creationDate date="2002-03-11"/>
+   </fileHeader>
+  <variableDef name="alpha" varID="alpdeg" units="deg"/>
+  <variableDef name="CL" varID="cl" units=""/>
+  <function name="CL">
+    <independentVarPts varID="alpdeg">
+	  -4.0,0.,4.0,8.0,12.0,16.0
+    </independentVarPts>
+    <dependentVarPts varID="cl">
+	  0.0,0.2,0.4,0.8,1.0,1.2
+    </dependentVarPts>
+  </function>
+</DAVEfunc>

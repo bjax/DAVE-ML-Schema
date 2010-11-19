@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
-<!DOCTYPE DAVEfunc SYSTEM "DAVEfunc.dtd">
-
-<DAVEfunc>
+<!DOCTYPE DAVEfunc PUBLIC "-//AIAA/DTD for Flight Dynamic Models - Functions 2.0//EN" 
+          "DAVEfunc.dtd">
+<DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
   <fileHeader name="CEVCapsule">
     <author name="Bruce Jackson" org="NASA Langley Research Center" 
         email="bruce.jackson@nasa.gov">

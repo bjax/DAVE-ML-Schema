@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE DAVEfunc PUBLIC "-//NASA//DTD for Flight Dynamic Models - Functions 2.0//EN" "DAVEfunc.dtd">
+<DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
+
+  <!--             ==========================                 -->
+  <!--=============  File Header Components  ===============  -->
+  <!--             ==========================                 -->
+  <fileHeader>
+
+    <!--  
+      This is example of 2D ungridded tabular data. It is a subset of Boeing 
+	    747-100 Basic lift force coefficient (CL_Basic) at low-speed. Only 3 
+	    flap setting were included in this dataset, 1 deg, 5 deg and 10 deg. 
+	    In addition, the full range of angles of attack are not included, the 
+	    range is from -5 deg to 18 degrees (roughly). See NASA CR 114494 page 
+	    2.0-7 for data.
+    -->
+
+    <author name="Peter Grant" org="University of Toronto" email="prgrant@utias.utoronto.ca"/>
+    <fileCreationDate date="2006-11-01"/>
+    <fileVersion>$Revision: 1.0$</fileVersion>
+
+    <description> This is CL basic data for Boeing 747-100 for 3 flap settings and a range of angles
+      of attack. It comes from NASA CR 114494 page 2.0-7. This is only a small subset of the data
+      created for testing the 2D ungridded tabular data in DAVE-ML. It was created by Peter Grant
+      from the University of Toronto Novemember 1, 2006. </description>
+
+    <reference refID="PRG1" author="C.R. Hanke and D.R. Nordwall"
+      title="The Simulation of a Jumbo Jet Transport Aircraft Volume II Modeling data"
+      accession="NASA CR-114494" date="1970-09-01"/>
+
+    <modificationRecord modID="A" refID="PRG1" date="2006-11-01">
+      <author name="Peter Grant" org="University of Toronto" email="prgrant@utias.utoronto.ca"> </author>
+      <description> Revision 1.0: Initial checkin. </description>
+    </modificationRecord>
+
+    <modificationRecord modID="B" date="2006-11-17">
+      <author name="Bruce Jackson" org="NASA Langley Research Center" email="e.b.jackson@nasa.gov"/>
+      <description> Rearranged slightly to conform to DTD 1.9. </description>
+    </modificationRecord>
+
+  </fileHeader>
+
+  <!--             ==================================                 -->
+  <!--=============  Variable Definition Components  ===============  -->
+  <!--             ==================================                 -->
+
+
+  <!-- Input variables -->
+
+  <variableDef name="Angle of attack" varID="angleOfAttack_d" units="deg">
+    <isStdAIAA/>
+    <!-- Indicates that this variable is a standard
+		     variable. This is the body axis angle of attack +ANU                     
+			-->
+  </variableDef>
+
+  <variableDef name="Offset angle attack of wing relative to body axis" varID="alpha0" units="deg"
+    initialValue="2.0" sign="+ANU">
+    <description> Offset of design plane of wing relative to body axis </description>
+  </variableDef>
+
+  <variableDef name="Trailing_Edge_Flap_Deflection" varID="flapdef" units="deg">
+    <description> Trailing edge flap deflection in degrees +DOWN </description>
+  </variableDef>
+
+  <!-- Calculated values needed for 2D table -->
+
+  <variableDef name="Angle of Attach DWP" varID="AOAdwp" units="deg">
+    <description> Angle of attack of design wing plane in degrees +ANU </description>
+    <calculation>
+      <math>
+        <apply>
+          <plus/>
+          <ci>angleOfAttack_d</ci>
+          <ci>alpha0</ci>
+        </apply>
+      </math>
+    </calculation>
+  </variableDef>
+
+  <!-- Output (function value) -->
+
+  <variableDef name="coefficient of lift due to flaps and angle of attack" varID="CLBASIC"
+    units="nondimensional" sign="+UP">
+    <description> Calculate the 747-100 basic lift coefficient. This only includes effects for flaps
+      and angle of attack. This is only a small subset of actual aircraft data. </description>
+    <isOutput/>
+  </variableDef>
+
+
+
+
+  <!--             =============================                -->
+  <!--===========  UnGridded 2-D Table Definition   =========== -->
+  <!--             =============================                -->
+
+  <ungriddedTableDef name="CLBASIC as function of flap angle and angle of 
+	attack"
+    utID="CLBAlfaFlap_Table" units="ND">
+    <description> CL basic as a function of flap angle and angle of attack. Note the alpha used in
+      this table is with respect to the wing design plane (in degrees). Flap is in degrees as well. </description>
+
+    <provenance>
+      <author name="Peter Grant" org="UTIAS"/>
+      <functionCreationDate date="2006-11-01"/>
+      <documentRef refID="PRG1"/>
+    </provenance>
+
+    <uncertainty effect="percentage">
+      <normalPDF numSigmas="3">
+        <bounds>15</bounds>
+      </normalPDF>
+      <!--  3 sigma confidence is +-15% on the Data. -->
+    </uncertainty>
+
+
+    <!--For ungridded tables you need a list of these dataPoints-->
+    <dataPoint> 1.0 -5.00 -0.44 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 1.0 10.00 0.95 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 1.0 12.00 1.12 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 1.0 14.00 1.26 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 1.0 15.00 1.32 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 1.0 17.00 1.41 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 5.0 -5.00 -0.55 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 5.0 0.00 -0.03 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 5.0 5.00 0.50 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 5.0 10.00 1.02 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 5.0 12.00 1.23 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 5.0 14.00 1.44 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 5.0 16.00 1.63 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 5.0 17.00 1.70 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 5.0 18.00 1.75 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 10.0 -5.00 -0.40 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 10.0 14.00 1.57 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 10.0 15.00 1.66 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 10.0 16.00 1.75 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 10.0 17.00 1.80 <!-- alfawdp, flap, CLB--></dataPoint>
+    <dataPoint> 10.0 18.00 1.84 <!-- alfawdp, flap, CLB--></dataPoint>
+
+  </ungriddedTableDef>
+
+  <!--             ========================                -->
+  <!--=============  Function Definition   =============== -->
+  <!--             ========================                -->
+
+  <!-- The function definition ties together input and output variables
+      to table definitions. 
+ -->
+
+  <function name="CLBASIC_func">
+    <provenance>
+      <author name="Peter Grant" org="UTIAS"/>
+      <functionCreationDate date="2006-11-01"/>
+      <documentRef refID="PRG1"/>
+    </provenance>
+    <independentVarRef varID="flapdef"/>
+    <independentVarRef varID="AOAdwp"/>
+    <dependentVarRef varID="CLBASIC"/>
+    <functionDefn>
+      <griddedTableRef gtID=" CLBAlfaFlap_Table"/>
+    </functionDefn>
+  </function>
+
+  <!--             =====================                -->
+  <!--=============  Check Data Cases   =============== -->
+  <!--             =====================                -->
+
+  <!-- Checkcase data provides automatic verification of the model by
+      specifying the tolerance in output values for a given set of
+      input values. One 'staticShot' is required per input/output
+      mapping; in this case for a single input, single output model,
+      we have a single input signal and a single output signal in each
+      test point. 
+ -->
+
+  <checkData>
+    <staticShot name="case 1">
+      <checkInputs>
+        <signal>
+          <varID>angleOfAttack_d</varID>
+          <signalValue> -2.</signalValue>
+        </signal>
+        <signal>
+          <varID>flapdef</varID>
+          <signalValue> 1.</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <varID>CLBASIC</varID>
+          <signalValue>0.0233</signalValue>
+          <tol>0.0005</tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="case 2">
+      <checkInputs>
+        <signal>
+          <varID>angleOfAttack_d</varID>
+          <signalValue> 0.5</signalValue>
+        </signal>
+        <signal>
+          <varID>flapdef</varID>
+          <signalValue> 2.5</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <varID>CLBASIC</varID>
+          <signalValue>0.2600</signalValue>
+          <tol>0.0001</tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="case 3">
+      <checkInputs>
+        <signal>
+          <varID>angleOfAttack_d</varID>
+          <signalValue>1.6</signalValue>
+        </signal>
+        <signal>
+          <varID>flapdef</varID>
+          <signalValue>6.0</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <varID>CLBASIC</varID>
+          <signalValue>0.3822</signalValue>
+          <tol>0.0001</tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="case 4">
+      <checkInputs>
+        <signal>
+          <varID>angleOfAttack_d</varID>
+          <signalValue>7.1</signalValue>
+        </signal>
+        <signal>
+          <varID>flapdef</varID>
+          <signalValue>8.0</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <varID>CLBASIC</varID>
+          <signalValue>1.0072</signalValue>
+          <tol>0.0001</tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+  </checkData>
+</DAVEfunc>

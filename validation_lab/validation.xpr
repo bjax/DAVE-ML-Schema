@@ -6,19 +6,18 @@
         <options/>
     </meta>
     <projectTree name="validation.xpr">
-        <file name="blh_cma_example.dml"/>
-        <file name="blh_shorter_cma_example.dml"/>
         <file name="DAVEfunc.dtd"/>
-        <file name="simple_aero.dml"/>
-        <file name="twoD_table.dml"/>
-        <file name="twoD_ungridded.dml"/>
-        <file name="threeD_ungridded.dml"/>
-        <file name="F16_aero.dml"/>
-        <file name="HL20_aero.dml"/>
-        <file name="uncertain_1D_table.dml"/>
-        <file name="uncertain_correl_variables.dml"/>
-        <file name="uncertain_variable.dml"/>
-        <file name="uncertain_variable_asym.dml"/>
-        <file name="uncertain_variable_table.dml"/>
+        <file name="simple_aero.xml"/>
+        <file name="simplest_aero.xml"/>
+        <file name="twoD_table.xml"/>
+        <file name="twoD_ungridded.xml"/>
+        <file name="threeD_ungridded.xml"/>
+        <file name="F16_aero.xml"/>
+        <file name="HL20_aero.xml"/>
+        <file name="uncertain_1D_table.xml"/>
+        <file name="uncertain_correl_variables.xml"/>
+        <file name="uncertain_variable.xml"/>
+        <file name="uncertain_variable_asym.xml"/>
+        <file name="uncertain_variable_table.xml"/>
     </projectTree>
 </project>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE DAVEfunc PUBLIC "-//NASA//DTD for Flight Dynamic Models - Functions 2.0//EN" "DAVEfunc.dtd">
+<DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
+  <!--===================================-->
+  <!--File Header-->
+  <!--===================================-->
+   <fileHeader>
+    <author name="Geoff Brian" org="DSTO" email="Geoff.Brian@dsto.defence.gov.au"/>
+    <creationDate date="2006-09-12"/>
+     <fileVersion>$Revision$</fileVersion>		
+     <description>
+      This file contains an example of a 3 dimensional ungridded dataset.
+      The data encapsulated in the ungridded table is yawing moment coefficient, being
+      a function of angle of attack, angle of sideslip and yaw control effector.
+    </description>
+    <reference refID="Ref01" author="Joe Smith" title="A Generic Aircraft Simulation Model (does not really exist)" 
+                         date="2004-01-01" accession="ISBN 1-2345-678-9"></reference>
+    <modificationRecord modID="Mod001" date="2006-11-01">
+      <author name="Geoff Brian" org="DSTO" email="Geoff.Brian@dsto.defence.gov.au"/>
+      <description>Just for the Record.</description>
+    </modificationRecord>
+    <modificationRecord modID="Mod002" date="2006-11-15">
+      <author name="Bruce Jackson" org="NASA Langley Research Center" email="bruce.jackson@nasa.gov"/>
+      <description>
+	Added date to modificationRecord Mod001; added automatic Revision keyword to fileVersion.
+      </description>
+    </modificationRecord>
+    <modificationRecord modID="Mod003" date="2008-02-27">
+      <author name="Bruce Jackson" org="NASA Langley Research Center" email="bruce.jackson@nasa.gov"/>
+      <description>
+	Updated to 2.0: replaced fileCreationDate with creationDate; updated email address.
+      </description>
+    </modificationRecord>
+     
+   </fileHeader>
+  
+  <!--===================================-->
+  <!--Input Variables-->
+  <!--===================================-->
+  <variableDef name="angleOfAttack_d" varID="angleOfAttack" units="d" symbol="&#x3B1;" axisSystem="Body Axis"  sign="ANU">
+    <description>Instantaneous body reference angle of attack</description>
+    <isStdAIAA/>
+  </variableDef>
+  <variableDef name="angleOfSideslip_d" varID="angleOfSideslip" units="d" symbol="&#x3B2;" axisSystem="Body Axis" sign="ANL">
+    <description>Instantaneous body reference angle of sideslip</description>
+    <isStdAIAA/>
+  </variableDef>
+  <variableDef name="yawControlDeflection_d" varID="yawControlDeflection" units="d" symbol="&#x3B4;r" axisSystem="Body Axis" sign="TEL">
+    <description>Instantaneous body reference angle of sideslip</description>
+  </variableDef>
+
+  <!--===================================-->
+  <!--Variable Definitions-->
+  <!--Output Variables-->
+  <!--===================================-->
+  <variableDef name="aeroBodyYawMomentCoefficient_1" varID="aeroBodyYawMomentCoefficient_1" units="ND"  symbol="Cn" axisSystem="Body Axis">
+    <description>Total yawing moment coefficient</description>
+    <isOutput/>
+  </variableDef>
+  <variableDef name="aeroBodyYawMomentCoefficient_2" varID="aeroBodyYawMomentCoefficient_2" units="ND"  symbol="Cn" axisSystem="Body Axis">
+    <description>Total yawing moment coefficient</description>
+    <isOutput/>
+  </variableDef>
+  
+  <!--===================================-->
+  <!--Table and Functions Definitions-->
+  <!--Output Variables-->
+  <!--===================================-->
+<ungriddedTableDef name="yawMomentCoefficientTable1" units="ND" utID="yawMomentCoefficientTable1">
+  <dataPoint> -1.8330592 -5.3490387 -4.7258599 -0.00350641</dataPoint>
+  <dataPoint> -1.9302179 -4.9698462 0.2798654  -0.0120538</dataPoint>
+  <dataPoint> -2.1213095 -5.0383145 5.2146443  -0.0207089</dataPoint>
+  <dataPoint> 0.2522004  -4.9587161 -5.2312860 -0.000882368</dataPoint>
+  <dataPoint> 0.3368831  -5.0797159 -0.3370540 -0.0111846</dataPoint>
+  <dataPoint> 0.2987289  -4.9691198 5.2868938  -0.0208758</dataPoint>
+  <dataPoint> 1.8858257  -5.2077654 -4.7313074 -0.00219842</dataPoint>
+  <dataPoint> 1.8031083  -4.7072954 0.0541231  -0.0111726</dataPoint>
+  <dataPoint> 1.7773659  -5.0317988 5.1507477  -0.0208074</dataPoint>
+  <dataPoint> 3.8104785  -5.2982162 -4.7152852 -0.00225906</dataPoint>
+  <dataPoint> 4.2631596  -5.1695257 -0.1343410 -0.0116563</dataPoint>
+  <dataPoint> 4.0470946  -5.2541017 5.0686926  -0.0215506</dataPoint>
+  <dataPoint> -1.8882611 0.2422452  -5.1959304 0.0113462</dataPoint>
+  <dataPoint> -2.1796091 0.0542085  0.2454711  -0.000253915</dataPoint>
+  <dataPoint> -2.2699103 -0.3146657 4.8638859  -0.00875431</dataPoint>
+  <dataPoint> 0.0148579  0.1095599  -4.9639500 0.0105144</dataPoint>
+  <dataPoint> -0.1214591 -0.0047960 0.2788827  -0.000487753</dataPoint>
+  <dataPoint> 0.0610233  0.2029588  5.0831767  -0.00816086</dataPoint>
+  <dataPoint> 1.7593356  -0.0149007 -5.0494446 0.0106762</dataPoint>
+  <dataPoint> 1.9717048  -0.0870861 0.0763833  -0.000332616</dataPoint>
+  <dataPoint> 2.0228263  -0.2962294 5.1777078  -0.0093807</dataPoint>
+  <dataPoint> 4.0567507  -0.2948622 -5.1002243 0.010196</dataPoint>
+  <dataPoint> 3.6534822  0.2163747  0.1369900  0.000312733</dataPoint>
+  <dataPoint> 3.6848003  0.0884533  4.8214805  -0.00809437</dataPoint>
+  <dataPoint> -2.3347682 5.2288720  -4.7193014 0.02453</dataPoint>
+  <dataPoint> -2.3060350 4.9652745  0.2324610  0.0133447</dataPoint>
+  <dataPoint> -1.8675176 5.0754646  5.1169942  0.00556052</dataPoint>
+  <dataPoint> 0.0004379  5.1220145  -5.2734993 0.0250468</dataPoint>
+  <dataPoint> -0.1977035 4.7462188  0.0664495  0.0124083</dataPoint>
+  <dataPoint> -0.1467742 5.0470092  5.1806131  0.00475277</dataPoint>
+  <dataPoint> 1.6599338  4.9352809  -5.1210532 0.0242646</dataPoint>
+  <dataPoint> 2.2719825  4.8865093  0.0315210  0.0125658</dataPoint>
+  <dataPoint> 2.0406858  5.3253471  5.2880688  0.00491779</dataPoint>
+  <dataPoint> 4.0179983  5.0826426  -4.9597629 0.0243518</dataPoint>
+  <dataPoint> 4.2863811  4.8806558  -0.2877697 0.0128886</dataPoint>
+  <dataPoint> 3.9289361  5.2246849  4.9758705  0.00471241</dataPoint>
+  <dataPoint> -2.2809763 9.9844584  -4.8800790 0.0386951</dataPoint>
+  <dataPoint> -2.0733070 9.9204337  0.0241722  0.027546</dataPoint>
+  <dataPoint> -1.7624546 9.9153493  5.1985794  0.0188357</dataPoint>
+  <dataPoint> 0.2279962  9.8962508  -4.7811258 0.0375762</dataPoint>
+  <dataPoint> -0.2800363 10.3004593 0.1413907  0.028144</dataPoint>
+  <dataPoint> 0.0828562  9.9008011  5.2962722  0.0179398</dataPoint>
+  <dataPoint> 1.8262230  10.0939436 -4.6710211 0.037712</dataPoint>
+  <dataPoint> 1.7762123  10.1556398 -0.1307093 0.0278079</dataPoint>
+  <dataPoint> 2.2258599  9.8009720  4.6721747  0.018244</dataPoint>
+  <dataPoint> 3.7892651  9.8017197  -4.8026383 0.0368199</dataPoint>
+  <dataPoint> 4.0150716  9.6815531  -0.0630955 0.0252014</dataPoint>
+  <dataPoint> 4.1677953  9.8754433  5.1776223  0.0164312</dataPoint>
+</ungriddedTableDef>
+
+<!--
+  This function computes the yaw moment coefficient using a 3 dimensional ungridded data table
+  defined using an ungriddedTableDef format for storing data.
+-->
+<function name="yawMomentCoefficientFunction1">
+  <description>
+    This function computes the yaw moment coefficient using a 3 dimensional ungridded data table
+    defined using an ungriddedTableDef format for storing data.
+  </description>
+  <independentVarRef varID="angleOfAttack" extrapolate="neither" max="5" min="-3"/>
+  <independentVarRef varID="angleOfSideslip" min="-6" max="12" extrapolate="neither"/>
+  <independentVarRef varID="yawControlDeflection" min="-6" max="6" extrapolate="neither"/>
+  <dependentVarRef varID="aeroBodyYawMomentCoefficient_1"/>
+  <functionDefn name="Ungridded Table by Reference, 3D">
+    <ungriddedTableRef utID="yawMomentCoefficientTable1"/>
+  </functionDefn>
+</function>
+
+  <!--
+    This function computes the yaw moment coefficient using a 3 dimensional ungridded data table
+    with data stored within the function.
+  -->
+<function name="yawMomentCoefficientFunction2">
+  <description>
+    This function computes the yaw moment coefficient using a 3 dimensional ungridded data table
+    with data stored within the function.
+  </description>
+  <independentVarRef varID="angleOfAttack" extrapolate="neither" max="5" min="-3"/>
+  <independentVarRef varID="angleOfSideslip" min="-6" max="12" extrapolate="neither"/>
+  <independentVarRef varID="yawControlDeflection" min="-6" max="6" extrapolate="neither"/>
+  <dependentVarRef varID="aeroBodyYawMomentCoefficient_2"/>
+  <functionDefn name="Ungrided table defined in function, 3D">
+    <ungriddedTableDef>
+      <dataPoint> -1.8330592 -5.3490387 -4.7258599 -0.00350641</dataPoint>
+      <dataPoint> -1.9302179 -4.9698462 0.2798654  -0.0120538</dataPoint>
+      <dataPoint> -2.1213095 -5.0383145 5.2146443  -0.0207089</dataPoint>
+      <dataPoint> 0.2522004  -4.9587161 -5.2312860 -0.000882368</dataPoint>
+      <dataPoint> 0.3368831  -5.0797159 -0.3370540 -0.0111846</dataPoint>
+      <dataPoint> 0.2987289  -4.9691198 5.2868938  -0.0208758</dataPoint>
+      <dataPoint> 1.8858257  -5.2077654 -4.7313074 -0.00219842</dataPoint>
+      <dataPoint> 1.8031083  -4.7072954 0.0541231  -0.0111726</dataPoint>
+      <dataPoint> 1.7773659  -5.0317988 5.1507477  -0.0208074</dataPoint>
+      <dataPoint> 3.8104785  -5.2982162 -4.7152852 -0.00225906</dataPoint>
+      <dataPoint> 4.2631596  -5.1695257 -0.1343410 -0.0116563</dataPoint>
+      <dataPoint> 4.0470946  -5.2541017 5.0686926  -0.0215506</dataPoint>
+      <dataPoint> -1.8882611 0.2422452  -5.1959304 0.0113462</dataPoint>
+      <dataPoint> -2.1796091 0.0542085  0.2454711  -0.000253915</dataPoint>
+      <dataPoint> -2.2699103 -0.3146657 4.8638859  -0.00875431</dataPoint>
+      <dataPoint> 0.0148579  0.1095599  -4.9639500 0.0105144</dataPoint>
+      <dataPoint> -0.1214591 -0.0047960 0.2788827  -0.000487753</dataPoint>
+      <dataPoint> 0.0610233  0.2029588  5.0831767  -0.00816086</dataPoint>
+      <dataPoint> 1.7593356  -0.0149007 -5.0494446 0.0106762</dataPoint>
+      <dataPoint> 1.9717048  -0.0870861 0.0763833  -0.000332616</dataPoint>
+      <dataPoint> 2.0228263  -0.2962294 5.1777078  -0.0093807</dataPoint>
+      <dataPoint> 4.0567507  -0.2948622 -5.1002243 0.010196</dataPoint>
+      <dataPoint> 3.6534822  0.2163747  0.1369900  0.000312733</dataPoint>
+      <dataPoint> 3.6848003  0.0884533  4.8214805  -0.00809437</dataPoint>
+      <dataPoint> -2.3347682 5.2288720  -4.7193014 0.02453</dataPoint>
+      <dataPoint> -2.3060350 4.9652745  0.2324610  0.0133447</dataPoint>
+      <dataPoint> -1.8675176 5.0754646  5.1169942  0.00556052</dataPoint>
+      <dataPoint> 0.0004379  5.1220145  -5.2734993 0.0250468</dataPoint>
+      <dataPoint> -0.1977035 4.7462188  0.0664495  0.0124083</dataPoint>
+      <dataPoint> -0.1467742 5.0470092  5.1806131  0.00475277</dataPoint>
+      <dataPoint> 1.6599338  4.9352809  -5.1210532 0.0242646</dataPoint>
+      <dataPoint> 2.2719825  4.8865093  0.0315210  0.0125658</dataPoint>
+      <dataPoint> 2.0406858  5.3253471  5.2880688  0.00491779</dataPoint>
+      <dataPoint> 4.0179983  5.0826426  -4.9597629 0.0243518</dataPoint>
+      <dataPoint> 4.2863811  4.8806558  -0.2877697 0.0128886</dataPoint>
+      <dataPoint> 3.9289361  5.2246849  4.9758705  0.00471241</dataPoint>
+      <dataPoint> -2.2809763 9.9844584  -4.8800790 0.0386951</dataPoint>
+      <dataPoint> -2.0733070 9.9204337  0.0241722  0.027546</dataPoint>
+      <dataPoint> -1.7624546 9.9153493  5.1985794  0.0188357</dataPoint>
+      <dataPoint> 0.2279962  9.8962508  -4.7811258 0.0375762</dataPoint>
+      <dataPoint> -0.2800363 10.3004593 0.1413907  0.028144</dataPoint>
+      <dataPoint> 0.0828562  9.9008011  5.2962722  0.0179398</dataPoint>
+      <dataPoint> 1.8262230  10.0939436 -4.6710211 0.037712</dataPoint>
+      <dataPoint> 1.7762123  10.1556398 -0.1307093 0.0278079</dataPoint>
+      <dataPoint> 2.2258599  9.8009720  4.6721747  0.018244</dataPoint>
+      <dataPoint> 3.7892651  9.8017197  -4.8026383 0.0368199</dataPoint>
+      <dataPoint> 4.0150716  9.6815531  -0.0630955 0.0252014</dataPoint>
+      <dataPoint> 4.1677953  9.8754433  5.1776223  0.0164312</dataPoint>
+    </ungriddedTableDef>
+  </functionDefn>
+</function>
+</DAVEfunc>
