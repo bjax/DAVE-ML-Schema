@@ -1,0 +1,973 @@
+# MathML 2.0 DTD  .......................................................
+
+# file: mathml2.dtd
+
+# MathML 2.0 DTD
+# 
+# This is the Mathematical Markup Language (MathML) 2.0, an XML
+# application for describing mathematical notation and capturing
+# both its structure and content.
+# 
+# Copyright &#xa9; 1998-2003 W3C&#xae; (MIT, ERCIM, Keio), All Rights 
+# Reserved. W3C liability, trademark, document use and software
+# licensing rules apply. 
+# 
+# Permission to use, copy, modify and distribute the MathML 2.0 DTD and
+# its accompanying documentation for any purpose and without fee is
+# hereby granted in perpetuity, provided that the above copyright notice
+# and this paragraph appear in all copies.  The copyright holders make
+# no representation about the suitability of the DTD for any purpose.
+# 
+# It is provided "as is" without expressed or implied warranty.
+# 
+#    Revision:   $Id: mathml2.dtd,v 1.12 2003/11/04 13:14:35 davidc Exp $
+# 
+# This entity may be identified by the PUBLIC and SYSTEM identifiers:
+# 
+#   PUBLIC "-//W3C//DTD MathML 2.0//EN"
+#   SYSTEM "mathml2.dtd"
+# 
+# Revisions: editor and revision history at EOF
+
+# Entity used to enable marked sections which enforces stricter		
+# checking of MathML syntax rules		
+
+# MathML Qualified Names module ...............................
+
+default namespace = "http://www.w3.org/1998/Math/MathML"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace xlink = "http://www.w3.org/1999/xlink"
+namespace xsi = "##xsi"
+
+include "mathml2-qname-1.mod.rnc"
+# if %NS.prefixed; is INCLUDE, include all NS attributes, 
+# otherwise just those associated with MathML
+MATHML.NamespaceDecl.attrib = MATHML.xmlns.attrib
+# Attributes shared by all elements  ..........................
+MATHML.Common.attrib =
+  MATHML.NamespaceDecl.attrib,
+  attribute xlink:href { text }?,
+  attribute xlink:type { text }?,
+  attribute class { text }?,
+  attribute style { text }?,
+  attribute id { xsd:ID }?,
+  attribute xref { xsd:IDREF }?,
+  attribute other { text }?
+# Presentation element set  ...................................
+
+# Attribute definitions
+att-fontsize = attribute fontsize { text }?
+att-fontweight = attribute fontweight { "normal" | "bold" }?
+att-fontstyle = attribute fontstyle { "normal" | "italic" }?
+att-fontfamily = attribute fontfamily { text }?
+att-color = attribute color { text }?
+# MathML2 typographically-distinguished symbol attributes
+att-mathvariant = attribute mathvariant { text }?
+att-mathsize = attribute mathsize { text }?
+att-mathcolor = attribute mathcolor { text }?
+att-mathbackground = attribute mathbackground { text }?
+att-fontinfo =
+  att-fontsize,
+  att-fontweight,
+  att-fontstyle,
+  att-fontfamily,
+  att-color,
+  att-mathvariant,
+  att-mathsize,
+  att-mathcolor,
+  att-mathbackground
+att-form = attribute form { "prefix" | "infix" | "postfix" }?
+att-fence = attribute fence { "true" | "false" }?
+att-separator = attribute separator { "true" | "false" }?
+att-lspace = attribute lspace { text }?
+att-rspace = attribute rspace { text }?
+att-stretchy = attribute stretchy { "true" | "false" }?
+att-symmetric = attribute symmetric { "true" | "false" }?
+att-maxsize = attribute maxsize { text }?
+att-minsize = attribute minsize { text }?
+att-largeop = attribute largeop { "true" | "false" }?
+att-movablelimits = attribute movablelimits { "true" | "false" }?
+att-accent = attribute accent { "true" | "false" }?
+att-opinfo =
+  att-form,
+  att-fence,
+  att-separator,
+  att-lspace,
+  att-rspace,
+  att-stretchy,
+  att-symmetric,
+  att-maxsize,
+  att-minsize,
+  att-largeop,
+  att-movablelimits,
+  att-accent
+att-width = attribute width { text }?
+att-height = attribute height { text }?
+att-depth = attribute depth { text }?
+att-linebreak = attribute linebreak { text }?
+att-sizeinfo = att-width, att-height, att-depth
+att-lquote = attribute lquote { text }?
+att-rquote = attribute rquote { text }?
+att-linethickness = attribute linethickness { text }?
+att-scriptlevel = attribute scriptlevel { text }?
+att-displaystyle = attribute displaystyle { "true" | "false" }?
+att-scriptsizemultiplier = attribute scriptsizemultiplier { text }?
+att-scriptminsize = attribute scriptminsize { text }?
+att-background = attribute background { text }?
+att-veryverythinmathspace = attribute veryverythinmathspace { text }?
+att-verythinmathspace = attribute verythinmathspace { text }?
+att-thinmathspace = attribute thinmathspace { text }?
+att-mediummathspace = attribute mediummathspace { text }?
+att-thickmathspace = attribute thickmathspace { text }?
+att-verythickmathspace = attribute verythickmathspace { text }?
+att-veryverythickmathspace = attribute veryverythickmathspace { text }?
+att-open = attribute open { text }?
+att-close = attribute close { text }?
+att-separators = attribute separators { text }?
+att-subscriptshift = attribute subscriptshift { text }?
+att-superscriptshift = attribute superscriptshift { text }?
+att-accentunder = attribute accentunder { "true" | "false" }?
+att-align = attribute align { text }?
+att-numalign = attribute numalign { text }?
+att-denomalign = attribute denomalign { text }?
+att-rowalign-list = attribute rowalign { text }?
+att-columnalign-list = attribute columnalign { text }?
+att-rowalign = attribute rowalign { text }?
+att-columnalign = attribute columnalign { text }?
+att-columnwidth = attribute columnwidth { text }?
+att-groupalign-list = attribute groupalign { text }?
+att-groupalign = attribute groupalign { text }?
+att-alignmentscope = attribute alignmentscope { text }?
+att-rowspacing = attribute rowspacing { text }?
+att-columnspacing = attribute columnspacing { text }?
+att-rowlines = attribute rowlines { text }?
+att-columnlines = attribute columnlines { text }?
+att-frame = attribute frame { "none" | "solid" | "dashed" }?
+att-side =
+  attribute side { "left" | "right" | "leftoverlap" | "rightoverlap" }?
+att-framespacing = attribute framespacing { text }?
+att-minlabelspacing = attribute minlabelspacing { text }?
+att-equalrows = attribute equalrows { text }?
+att-equalcolumns = attribute equalcolumns { text }?
+att-tableinfo =
+  att-align,
+  att-rowalign-list,
+  att-columnalign-list,
+  att-columnwidth,
+  att-groupalign-list,
+  att-alignmentscope,
+  att-side,
+  att-rowspacing,
+  att-columnspacing,
+  att-rowlines,
+  att-columnlines,
+  att-width,
+  att-frame,
+  att-framespacing,
+  att-minlabelspacing,
+  att-equalrows,
+  att-equalcolumns,
+  att-displaystyle
+att-rowspan = attribute rowspan { text }?
+att-columnspan = attribute columnspan { text }?
+att-edge = attribute edge { "left" | "right" }?
+att-actiontype = attribute actiontype { text }?
+att-selection = attribute selection { text }?
+att-name = attribute name { text }?
+att-alt = attribute alt { text }?
+att-index = attribute index { text }?
+att-bevelled = attribute bevelled { text }?
+# Presentation schemata with content
+ptoken = mi | mn | mo | mtext | ms
+attlist-mi &= MATHML.Common.attrib, att-fontinfo
+attlist-mn &= MATHML.Common.attrib, att-fontinfo
+attlist-mo &= MATHML.Common.attrib, att-fontinfo, att-opinfo
+attlist-mtext &= MATHML.Common.attrib, att-fontinfo
+attlist-ms &= MATHML.Common.attrib, att-fontinfo, att-lquote, att-rquote
+# Empty presentation schemata
+petoken = mspace
+mspace = element mspace { attlist-mspace, empty }
+attlist-mspace &= att-sizeinfo, att-linebreak, MATHML.Common.attrib
+# Presentation: general layout schemata
+pgenschema =
+  mrow
+  | mfrac
+  | msqrt
+  | mroot
+  | menclose
+  | mstyle
+  | merror
+  | mpadded
+  | mphantom
+  | mfenced
+attlist-mrow &= MATHML.Common.attrib
+attlist-mfrac &=
+  MATHML.Common.attrib,
+  att-bevelled,
+  att-numalign,
+  att-denomalign,
+  att-linethickness
+attlist-msqrt &= MATHML.Common.attrib
+attlist-menclose &=
+  MATHML.Common.attrib,
+  [ a:defaultValue = "longdiv" ] attribute notation { text }?
+attlist-mroot &= MATHML.Common.attrib
+attlist-mstyle &=
+  MATHML.Common.attrib,
+  att-fontinfo,
+  att-opinfo,
+  att-lquote,
+  att-rquote,
+  att-linethickness,
+  att-scriptlevel,
+  att-scriptsizemultiplier,
+  att-scriptminsize,
+  att-background,
+  att-veryverythinmathspace,
+  att-verythinmathspace,
+  att-thinmathspace,
+  att-mediummathspace,
+  att-thickmathspace,
+  att-verythickmathspace,
+  att-veryverythickmathspace,
+  att-open,
+  att-close,
+  att-separators,
+  att-subscriptshift,
+  att-superscriptshift,
+  att-accentunder,
+  att-tableinfo,
+  att-rowspan,
+  att-columnspan,
+  att-edge,
+  att-selection,
+  att-bevelled,
+  att-height,
+  att-depth
+attlist-merror &= MATHML.Common.attrib
+attlist-mpadded &= MATHML.Common.attrib, att-sizeinfo, att-lspace
+attlist-mphantom &= MATHML.Common.attrib
+attlist-mfenced &=
+  MATHML.Common.attrib, att-open, att-close, att-separators
+# Presentation layout schemata: scripts and limits
+pscrschema =
+  msub | msup | msubsup | munder | mover | munderover | mmultiscripts
+attlist-msub &= MATHML.Common.attrib, att-subscriptshift
+attlist-msup &= MATHML.Common.attrib, att-superscriptshift
+attlist-msubsup &=
+  MATHML.Common.attrib, att-subscriptshift, att-superscriptshift
+attlist-munder &= MATHML.Common.attrib, att-accentunder
+attlist-mover &= MATHML.Common.attrib, att-accent
+attlist-munderover &= MATHML.Common.attrib, att-accent, att-accentunder
+attlist-mmultiscripts &=
+  MATHML.Common.attrib, att-subscriptshift, att-superscriptshift
+# Presentation layout schemata: empty elements for scripts
+pscreschema = mprescripts | none
+mprescripts = element mprescripts { attlist-mprescripts, empty }
+attlist-mprescripts &= MATHML.xmlns.attrib
+none = element none { attlist-none, empty }
+attlist-none &= MATHML.xmlns.attrib
+# Presentation layout schemata: tables
+ptabschema = mtable | mtr | mlabeledtr | mtd
+attlist-mtable &= MATHML.Common.attrib, att-tableinfo
+attlist-mtr &=
+  MATHML.Common.attrib,
+  att-rowalign,
+  att-columnalign-list,
+  att-groupalign-list
+attlist-mlabeledtr &=
+  MATHML.Common.attrib,
+  att-rowalign,
+  att-columnalign-list,
+  att-groupalign-list
+attlist-mtd &=
+  MATHML.Common.attrib,
+  att-rowalign,
+  att-columnalign,
+  att-groupalign-list,
+  att-rowspan,
+  att-columnspan
+plschema = pgenschema | pscrschema | ptabschema
+# Empty presentation layout schemata
+peschema = maligngroup | malignmark
+malignmark = element malignmark { attlist-malignmark, empty }
+attlist-malignmark &= att-edge
+maligngroup = element maligngroup { attlist-maligngroup, empty }
+attlist-maligngroup &= MATHML.Common.attrib, att-groupalign
+mglyph = element mglyph { attlist-mglyph, empty }
+attlist-mglyph &= att-alt, att-fontfamily, att-index
+# Presentation action schemata
+pactions = maction
+attlist-maction &= MATHML.Common.attrib, att-actiontype, att-selection
+# The following entity for substitution into
+# content constructs excludes elements that
+# are not valid as expressions.
+PresInCont = ptoken | petoken | plschema | peschema | pactions
+# Presentation entity: all presentation constructs
+Presentation =
+  ptoken | petoken | pscreschema | plschema | peschema | pactions
+# Content element set  ........................................
+
+# Attribute definitions
+att-base = [ a:defaultValue = "10" ] attribute base { text }?
+att-closure = [ a:defaultValue = "closed" ] attribute closure { text }?
+att-definition =
+  [ a:defaultValue = "" ] attribute definitionURL { text }?
+att-encoding = [ a:defaultValue = "" ] attribute encoding { text }?
+att-nargs = [ a:defaultValue = "1" ] attribute nargs { text }?
+att-occurrence =
+  [ a:defaultValue = "function-model" ] attribute occurrence { text }?
+att-order = [ a:defaultValue = "numeric" ] attribute order { text }?
+att-scope = [ a:defaultValue = "local" ] attribute scope { text }?
+att-type = attribute type { text }?
+# Content elements: leaf nodes
+ctoken = csymbol | ci | cn
+attlist-ci &=
+  MATHML.Common.attrib, att-type, att-definition, att-encoding
+attlist-csymbol &=
+  MATHML.Common.attrib, att-encoding, att-type, att-definition
+attlist-cn &=
+  MATHML.Common.attrib, att-type, att-base, att-definition, att-encoding
+# Content elements: specials
+cspecial = apply | reln | lambda
+attlist-apply &= MATHML.Common.attrib
+attlist-reln &= MATHML.Common.attrib
+attlist-lambda &= MATHML.Common.attrib
+# Content elements: others
+cother = condition | declare | sep
+attlist-condition &= MATHML.Common.attrib
+attlist-declare &=
+  MATHML.Common.attrib,
+  att-type,
+  att-scope,
+  att-nargs,
+  att-occurrence,
+  att-definition,
+  att-encoding
+sep = element sep { attlist-sep, empty }
+attlist-sep &= MATHML.xmlns.attrib
+# Content elements: semantic mapping
+csemantics = semantics | annotation | annotation-xml
+attlist-semantics &= MATHML.Common.attrib, att-definition, att-encoding
+attlist-annotation &= MATHML.Common.attrib, att-encoding
+attlist-annotation-xml &= MATHML.Common.attrib, att-encoding
+# Content elements: constructors
+cconstructor =
+  interval | \list | matrix | matrixrow | set | vector | piecewise
+attlist-interval &= MATHML.Common.attrib, att-closure
+attlist-set &= MATHML.Common.attrib, att-type
+attlist-list &= MATHML.Common.attrib, att-order
+attlist-vector &= MATHML.Common.attrib
+attlist-matrix &= MATHML.Common.attrib
+attlist-matrixrow &= MATHML.Common.attrib
+attlist-piecewise &= MATHML.Common.attrib
+attlist-piece &= MATHML.Common.attrib
+attlist-otherwise &= MATHML.Common.attrib
+# Content elements: symbols
+c0ary =
+  integers
+  | reals
+  | rationals
+  | naturalnumbers
+  | complexes
+  | primes
+  | exponentiale
+  | imaginaryi
+  | notanumber
+  | true
+  | false
+  | emptyset
+  | pi
+  | eulergamma
+  | infinity
+integers = element integers { attlist-integers, empty }
+attlist-integers &= MATHML.Common.attrib, att-definition, att-encoding
+reals = element reals { attlist-reals, empty }
+attlist-reals &= MATHML.Common.attrib, att-definition, att-encoding
+rationals = element rationals { attlist-rationals, empty }
+attlist-rationals &= MATHML.Common.attrib, att-definition, att-encoding
+naturalnumbers =
+  element naturalnumbers { attlist-naturalnumbers, empty }
+attlist-naturalnumbers &=
+  MATHML.Common.attrib, att-definition, att-encoding
+complexes = element complexes { attlist-complexes, empty }
+attlist-complexes &= MATHML.Common.attrib, att-definition, att-encoding
+primes = element primes { attlist-primes, empty }
+attlist-primes &= MATHML.Common.attrib, att-definition, att-encoding
+exponentiale = element exponentiale { attlist-exponentiale, empty }
+attlist-exponentiale &=
+  MATHML.Common.attrib, att-definition, att-encoding
+imaginaryi = element imaginaryi { attlist-imaginaryi, empty }
+attlist-imaginaryi &= MATHML.Common.attrib, att-definition, att-encoding
+notanumber = element notanumber { attlist-notanumber, empty }
+attlist-notanumber &= MATHML.Common.attrib, att-definition, att-encoding
+true = element true { attlist-true, empty }
+attlist-true &= MATHML.Common.attrib, att-definition, att-encoding
+false = element false { attlist-false, empty }
+attlist-false &= MATHML.Common.attrib, att-definition, att-encoding
+emptyset = element emptyset { attlist-emptyset, empty }
+attlist-emptyset &= MATHML.Common.attrib, att-definition, att-encoding
+pi = element pi { attlist-pi, empty }
+attlist-pi &= MATHML.Common.attrib, att-definition, att-encoding
+eulergamma = element eulergamma { attlist-eulergamma, empty }
+attlist-eulergamma &= MATHML.Common.attrib, att-definition, att-encoding
+infinity = element infinity { attlist-infinity, empty }
+attlist-infinity &= MATHML.Common.attrib, att-definition, att-encoding
+# Content elements: operators
+cfuncop1ary = inverse | ident | domain | codomain | image
+inverse = element inverse { attlist-inverse, empty }
+attlist-inverse &= MATHML.Common.attrib, att-definition, att-encoding
+domain = element domain { attlist-domain, empty }
+attlist-domain &= MATHML.Common.attrib, att-definition, att-encoding
+codomain = element codomain { attlist-codomain, empty }
+attlist-codomain &= MATHML.Common.attrib, att-definition, att-encoding
+image = element image { attlist-image, empty }
+attlist-image &= MATHML.Common.attrib, att-definition, att-encoding
+cfuncopnary = fn | compose
+attlist-fn &= MATHML.Common.attrib, att-definition, att-encoding
+ident = element ident { attlist-ident, empty }
+attlist-ident &= MATHML.Common.attrib, att-definition, att-encoding
+compose = element compose { attlist-compose, empty }
+attlist-compose &= MATHML.Common.attrib, att-definition, att-encoding
+carithop1ary =
+  abs
+  | conjugate
+  | exp
+  | factorial
+  | arg
+  | real
+  | imaginary
+  | floor
+  | ceiling
+exp = element exp { attlist-exp, empty }
+attlist-exp &= MATHML.Common.attrib, att-definition, att-encoding
+abs = element abs { attlist-abs, empty }
+attlist-abs &= MATHML.Common.attrib, att-definition, att-encoding
+arg = element arg { attlist-arg, empty }
+attlist-arg &= MATHML.Common.attrib, att-definition, att-encoding
+real = element real { attlist-real, empty }
+attlist-real &= MATHML.Common.attrib, att-definition, att-encoding
+imaginary = element imaginary { attlist-imaginary, empty }
+attlist-imaginary &= MATHML.Common.attrib, att-definition, att-encoding
+conjugate = element conjugate { attlist-conjugate, empty }
+attlist-conjugate &= MATHML.Common.attrib, att-definition, att-encoding
+factorial = element factorial { attlist-factorial, empty }
+attlist-factorial &= MATHML.Common.attrib, att-definition, att-encoding
+floor = element floor { attlist-floor, empty }
+attlist-floor &= MATHML.Common.attrib, att-definition, att-encoding
+ceiling = element ceiling { attlist-ceiling, empty }
+attlist-ceiling &= MATHML.Common.attrib, att-definition, att-encoding
+carithop1or2ary = minus
+minus = element minus { attlist-minus, empty }
+attlist-minus &= MATHML.Common.attrib, att-definition, att-encoding
+carithop2ary = quotient | divide | power | rem
+quotient = element quotient { attlist-quotient, empty }
+attlist-quotient &= MATHML.Common.attrib, att-definition, att-encoding
+divide = element divide { attlist-divide, empty }
+attlist-divide &= MATHML.Common.attrib, att-definition, att-encoding
+power = element power { attlist-power, empty }
+attlist-power &= MATHML.Common.attrib, att-definition, att-encoding
+rem = element rem { attlist-rem, empty }
+attlist-rem &= MATHML.Common.attrib, att-definition, att-encoding
+carithopnary = plus | times | max | min | gcd | lcm
+plus = element plus { attlist-plus, empty }
+attlist-plus &= MATHML.Common.attrib, att-definition, att-encoding
+max = element max { attlist-max, empty }
+attlist-max &= MATHML.Common.attrib, att-definition, att-encoding
+min = element min { attlist-min, empty }
+attlist-min &= MATHML.Common.attrib, att-definition, att-encoding
+times = element times { attlist-times, empty }
+attlist-times &= MATHML.Common.attrib, att-definition, att-encoding
+gcd = element gcd { attlist-gcd, empty }
+attlist-gcd &= MATHML.Common.attrib, att-definition, att-encoding
+lcm = element lcm { attlist-lcm, empty }
+attlist-lcm &= MATHML.Common.attrib, att-definition, att-encoding
+carithoproot = root
+root = element root { attlist-root, empty }
+attlist-root &= MATHML.Common.attrib, att-definition, att-encoding
+clogicopquant = exists | forall
+exists = element exists { attlist-exists, empty }
+attlist-exists &= MATHML.Common.attrib, att-definition, att-encoding
+forall = element forall { attlist-forall, empty }
+attlist-forall &= MATHML.Common.attrib, att-definition, att-encoding
+clogicopnary = and | or | xor
+and = element and { attlist-and, empty }
+attlist-and &= MATHML.Common.attrib, att-definition, att-encoding
+or = element or { attlist-or, empty }
+attlist-or &= MATHML.Common.attrib, att-definition, att-encoding
+xor = element xor { attlist-xor, empty }
+attlist-xor &= MATHML.Common.attrib, att-definition, att-encoding
+clogicop1ary = not
+not = element not { attlist-not, empty }
+attlist-not &= MATHML.Common.attrib, att-definition, att-encoding
+clogicop2ary = implies
+implies = element implies { attlist-implies, empty }
+attlist-implies &= MATHML.Common.attrib, att-definition, att-encoding
+ccalcop =
+  log | int | diff | partialdiff | divergence | grad | curl | laplacian
+divergence = element divergence { attlist-divergence, empty }
+attlist-divergence &= MATHML.Common.attrib, att-definition, att-encoding
+grad = element grad { attlist-grad, empty }
+attlist-grad &= MATHML.Common.attrib, att-definition, att-encoding
+curl = element curl { attlist-curl, empty }
+attlist-curl &= MATHML.Common.attrib, att-definition, att-encoding
+laplacian = element laplacian { attlist-laplacian, empty }
+attlist-laplacian &= MATHML.Common.attrib, att-definition, att-encoding
+log = element log { attlist-log, empty }
+attlist-log &= MATHML.Common.attrib, att-definition, att-encoding
+int = element int { attlist-int, empty }
+attlist-int &= MATHML.Common.attrib, att-definition, att-encoding
+diff = element diff { attlist-diff, empty }
+attlist-diff &= MATHML.Common.attrib, att-definition, att-encoding
+partialdiff = element partialdiff { attlist-partialdiff, empty }
+attlist-partialdiff &=
+  MATHML.Common.attrib, att-definition, att-encoding
+ccalcop1ary = ln
+ln = element ln { attlist-ln, empty }
+attlist-ln &= MATHML.Common.attrib, att-definition, att-encoding
+csetop1ary = card
+card = element card { attlist-card, empty }
+attlist-card &= MATHML.Common.attrib, att-definition, att-encoding
+csetop2ary = setdiff
+setdiff = element setdiff { attlist-setdiff, empty }
+attlist-setdiff &= MATHML.Common.attrib, att-definition, att-encoding
+csetopnary = union | intersect | cartesianproduct
+union = element union { attlist-union, empty }
+attlist-union &= MATHML.Common.attrib, att-definition, att-encoding
+intersect = element intersect { attlist-intersect, empty }
+attlist-intersect &= MATHML.Common.attrib, att-definition, att-encoding
+cartesianproduct =
+  element cartesianproduct { attlist-cartesianproduct, empty }
+attlist-cartesianproduct &=
+  MATHML.Common.attrib, att-definition, att-encoding
+cseqop = sum | product | limit
+sum = element sum { attlist-sum, empty }
+attlist-sum &= MATHML.Common.attrib, att-definition, att-encoding
+product = element product { attlist-product, empty }
+attlist-product &= MATHML.Common.attrib, att-definition, att-encoding
+limit = element limit { attlist-limit, empty }
+attlist-limit &= MATHML.Common.attrib, att-definition, att-encoding
+ctrigop =
+  sin
+  | cos
+  | tan
+  | sec
+  | csc
+  | cot
+  | sinh
+  | cosh
+  | tanh
+  | sech
+  | csch
+  | coth
+  | arcsin
+  | arccos
+  | arctan
+  | arccosh
+  | arccot
+  | arccoth
+  | arccsc
+  | arccsch
+  | arcsec
+  | arcsech
+  | arcsinh
+  | arctanh
+sin = element sin { attlist-sin, empty }
+attlist-sin &= MATHML.Common.attrib, att-definition, att-encoding
+cos = element cos { attlist-cos, empty }
+attlist-cos &= MATHML.Common.attrib, att-definition, att-encoding
+tan = element tan { attlist-tan, empty }
+attlist-tan &= MATHML.Common.attrib, att-definition, att-encoding
+sec = element sec { attlist-sec, empty }
+attlist-sec &= MATHML.Common.attrib, att-definition, att-encoding
+csc = element csc { attlist-csc, empty }
+attlist-csc &= MATHML.Common.attrib, att-definition, att-encoding
+cot = element cot { attlist-cot, empty }
+attlist-cot &= MATHML.Common.attrib, att-definition, att-encoding
+sinh = element sinh { attlist-sinh, empty }
+attlist-sinh &= MATHML.Common.attrib, att-definition, att-encoding
+cosh = element cosh { attlist-cosh, empty }
+attlist-cosh &= MATHML.Common.attrib, att-definition, att-encoding
+tanh = element tanh { attlist-tanh, empty }
+attlist-tanh &= MATHML.Common.attrib, att-definition, att-encoding
+sech = element sech { attlist-sech, empty }
+attlist-sech &= MATHML.Common.attrib, att-definition, att-encoding
+csch = element csch { attlist-csch, empty }
+attlist-csch &= MATHML.Common.attrib, att-definition, att-encoding
+coth = element coth { attlist-coth, empty }
+attlist-coth &= MATHML.Common.attrib, att-definition, att-encoding
+arcsin = element arcsin { attlist-arcsin, empty }
+attlist-arcsin &= MATHML.Common.attrib, att-definition, att-encoding
+arccos = element arccos { attlist-arccos, empty }
+attlist-arccos &= MATHML.Common.attrib, att-definition, att-encoding
+arctan = element arctan { attlist-arctan, empty }
+attlist-arctan &= MATHML.Common.attrib, att-definition, att-encoding
+arccosh = element arccosh { attlist-arccosh, empty }
+attlist-arccosh &= MATHML.Common.attrib, att-definition, att-encoding
+arccot = element arccot { attlist-arccot, empty }
+attlist-arccot &= MATHML.Common.attrib, att-definition, att-encoding
+arccoth = element arccoth { attlist-arccoth, empty }
+attlist-arccoth &= MATHML.Common.attrib, att-definition, att-encoding
+arccsc = element arccsc { attlist-arccsc, empty }
+attlist-arccsc &= MATHML.Common.attrib, att-definition, att-encoding
+arccsch = element arccsch { attlist-arccsch, empty }
+attlist-arccsch &= MATHML.Common.attrib, att-definition, att-encoding
+arcsec = element arcsec { attlist-arcsec, empty }
+attlist-arcsec &= MATHML.Common.attrib, att-definition, att-encoding
+arcsech = element arcsech { attlist-arcsech, empty }
+attlist-arcsech &= MATHML.Common.attrib, att-definition, att-encoding
+arcsinh = element arcsinh { attlist-arcsinh, empty }
+attlist-arcsinh &= MATHML.Common.attrib, att-definition, att-encoding
+arctanh = element arctanh { attlist-arctanh, empty }
+attlist-arctanh &= MATHML.Common.attrib, att-definition, att-encoding
+cstatopnary = mean | sdev | variance | median | mode
+mean = element mean { attlist-mean, empty }
+attlist-mean &= MATHML.Common.attrib, att-definition, att-encoding
+sdev = element sdev { attlist-sdev, empty }
+attlist-sdev &= MATHML.Common.attrib, att-definition, att-encoding
+variance = element variance { attlist-variance, empty }
+attlist-variance &= MATHML.Common.attrib, att-definition, att-encoding
+median = element median { attlist-median, empty }
+attlist-median &= MATHML.Common.attrib, att-definition, att-encoding
+mode = element mode { attlist-mode, empty }
+attlist-mode &= MATHML.Common.attrib, att-definition, att-encoding
+cstatopmoment = moment
+moment = element moment { attlist-moment, empty }
+attlist-moment &= MATHML.Common.attrib, att-definition, att-encoding
+clalgop1ary = determinant | transpose
+determinant = element determinant { attlist-determinant, empty }
+attlist-determinant &=
+  MATHML.Common.attrib, att-definition, att-encoding
+transpose = element transpose { attlist-transpose, empty }
+attlist-transpose &= MATHML.Common.attrib, att-definition, att-encoding
+clalgop2ary = vectorproduct | scalarproduct | outerproduct
+vectorproduct = element vectorproduct { attlist-vectorproduct, empty }
+attlist-vectorproduct &=
+  MATHML.Common.attrib, att-definition, att-encoding
+scalarproduct = element scalarproduct { attlist-scalarproduct, empty }
+attlist-scalarproduct &=
+  MATHML.Common.attrib, att-definition, att-encoding
+outerproduct = element outerproduct { attlist-outerproduct, empty }
+attlist-outerproduct &=
+  MATHML.Common.attrib, att-definition, att-encoding
+clalgopnary = selector
+selector = element selector { attlist-selector, empty }
+attlist-selector &= MATHML.Common.attrib, att-definition, att-encoding
+# Content elements: relations
+cgenrel2ary = neq | factorof
+neq = element neq { attlist-neq, empty }
+attlist-neq &= MATHML.Common.attrib, att-definition, att-encoding
+factorof = element factorof { attlist-factorof, empty }
+attlist-factorof &= MATHML.Common.attrib, att-definition, att-encoding
+cgenrelnary = eq | leq | lt | geq | gt | equivalent | approx
+eq = element eq { attlist-eq, empty }
+attlist-eq &= MATHML.Common.attrib, att-definition, att-encoding
+equivalent = element equivalent { attlist-equivalent, empty }
+attlist-equivalent &= MATHML.Common.attrib, att-definition, att-encoding
+approx = element approx { attlist-approx, empty }
+attlist-approx &= MATHML.Common.attrib, att-definition, att-encoding
+gt = element gt { attlist-gt, empty }
+attlist-gt &= MATHML.Common.attrib, att-definition, att-encoding
+lt = element lt { attlist-lt, empty }
+attlist-lt &= MATHML.Common.attrib, att-definition, att-encoding
+geq = element geq { attlist-geq, empty }
+attlist-geq &= MATHML.Common.attrib, att-definition, att-encoding
+leq = element leq { attlist-leq, empty }
+attlist-leq &= MATHML.Common.attrib, att-definition, att-encoding
+csetrel2ary = in | notin | notsubset | notprsubset
+in = element in { attlist-in, empty }
+attlist-in &= MATHML.Common.attrib, att-definition, att-encoding
+notin = element notin { attlist-notin, empty }
+attlist-notin &= MATHML.Common.attrib, att-definition, att-encoding
+notsubset = element notsubset { attlist-notsubset, empty }
+attlist-notsubset &= MATHML.Common.attrib, att-definition, att-encoding
+notprsubset = element notprsubset { attlist-notprsubset, empty }
+attlist-notprsubset &=
+  MATHML.Common.attrib, att-definition, att-encoding
+csetrelnary = subset | prsubset
+subset = element subset { attlist-subset, empty }
+attlist-subset &= MATHML.Common.attrib, att-definition, att-encoding
+prsubset = element prsubset { attlist-prsubset, empty }
+attlist-prsubset &= MATHML.Common.attrib, att-definition, att-encoding
+cseqrel2ary = tendsto
+tendsto = element tendsto { attlist-tendsto, empty }
+attlist-tendsto &=
+  MATHML.Common.attrib, att-definition, att-encoding, att-type
+# Content elements: quantifiers
+cquantifier =
+  lowlimit
+  | uplimit
+  | bvar
+  | degree
+  | logbase
+  | momentabout
+  | domainofapplication
+attlist-lowlimit &= MATHML.Common.attrib
+attlist-uplimit &= MATHML.Common.attrib
+attlist-bvar &= MATHML.Common.attrib
+attlist-degree &= MATHML.Common.attrib
+attlist-logbase &= MATHML.Common.attrib
+attlist-momentabout &= MATHML.Common.attrib
+attlist-domainofapplication &= MATHML.Common.attrib
+# Operator groups
+cop1ary =
+  cfuncop1ary
+  | carithop1ary
+  | clogicop1ary
+  | ccalcop1ary
+  | ctrigop
+  | clalgop1ary
+  | csetop1ary
+cop2ary = carithop2ary | clogicop2ary | clalgop2ary | csetop2ary
+copnary =
+  cfuncopnary
+  | carithopnary
+  | clogicopnary
+  | csetopnary
+  | cstatopnary
+  | clalgopnary
+copmisc =
+  carithoproot
+  | carithop1or2ary
+  | ccalcop
+  | cseqop
+  | cstatopmoment
+  | clogicopquant
+# Relation groups
+crel2ary = cgenrel2ary | csetrel2ary | cseqrel2ary
+crelnary = cgenrelnary | csetrelnary
+# Content constructs: all
+Content =
+  ctoken
+  | cspecial
+  | cother
+  | csemantics
+  | c0ary
+  | cconstructor
+  | cquantifier
+  | cop1ary
+  | cop2ary
+  | copnary
+  | copmisc
+  | crel2ary
+  | crelnary
+# Content constructs for substitution in presentation structures
+ContInPres =
+  ci
+  | csymbol
+  | cn
+  | c0ary
+  | apply
+  | fn
+  | lambda
+  | reln
+  | cconstructor
+  | semantics
+  | declare
+# .............................................................
+
+# Recursive definition for content of expressions. Include
+# presentation constructs at lowest level so presentation
+# layout schemata hold presentation or content elements.
+# Include content constructs at lowest level so content
+# elements hold PCDATA or presentation elements at leaf
+# level (for permitted substitutable elements in context)
+ContentExpression = (Content | PresInCont)*
+semanticsContentExpression = ContentExpression
+PresExpression = (Presentation | ContInPres)*
+MathExpression = (PresInCont | ContInPres)*
+# PCDATA or MathML character elements
+MathMLCharacters = text | mglyph
+# Content elements: tokens
+
+# (may contain embedded presentation constructs)
+ci = element ci { attlist-ci, (MathMLCharacters | PresInCont)* }
+csymbol =
+  element csymbol { attlist-csymbol, (MathMLCharacters | PresInCont)* }
+cn = element cn { attlist-cn, (MathMLCharacters | sep | PresInCont)* }
+# Content elements: special
+apply = element apply { attlist-apply, ContentExpression }
+reln = element reln { attlist-reln, ContentExpression }
+lambda = element lambda { attlist-lambda, ContentExpression }
+# Content elements: other
+condition = element condition { attlist-condition, ContentExpression }
+declare = element declare { attlist-declare, ContentExpression }
+# Content elements: semantics
+semantics =
+  element semantics { attlist-semantics, semanticsContentExpression }
+Annotation.content = text
+annotation =
+  element annotation { attlist-annotation, Annotation.content }
+annotation-xml = element annotation-xml { attlist-annotation-xml, any }
+# Content elements: constructors
+interval = element interval { attlist-interval, ContentExpression }
+set = element set { attlist-set, ContentExpression }
+\list = element list { attlist-list, ContentExpression }
+vector = element vector { attlist-vector, ContentExpression }
+matrix = element matrix { attlist-matrix, ContentExpression }
+matrixrow = element matrixrow { attlist-matrixrow, ContentExpression }
+piecewise = element piecewise { attlist-piecewise, piece*, otherwise? }
+piece = element piece { attlist-piece, ContentExpression }
+otherwise = element otherwise { attlist-otherwise, ContentExpression }
+# Content elements: operator (user-defined)
+fn = element fn { attlist-fn, ContentExpression }
+# Content elements: quantifiers
+lowlimit = element lowlimit { attlist-lowlimit, ContentExpression }
+uplimit = element uplimit { attlist-uplimit, ContentExpression }
+bvar = element bvar { attlist-bvar, ContentExpression }
+degree = element degree { attlist-degree, ContentExpression }
+logbase = element logbase { attlist-logbase, ContentExpression }
+momentabout =
+  element momentabout { attlist-momentabout, ContentExpression }
+domainofapplication =
+  element domainofapplication {
+    attlist-domainofapplication, ContentExpression
+  }
+# .............................................................
+
+# Presentation layout schemata contain tokens,
+# layout and content schemata.
+
+# By default keep them as they were in MathML 2.0
+twoPresExpression = PresExpression
+threePresExpression = PresExpression
+mtrPresExpression = PresExpression
+mtdPresExpression = PresExpression
+prscrPresExpression = PresExpression
+mstyle = element mstyle { attlist-mstyle, PresExpression }
+merror = element merror { attlist-merror, PresExpression }
+mphantom = element mphantom { attlist-mphantom, PresExpression }
+mrow = element mrow { attlist-mrow, PresExpression }
+mfrac = element mfrac { attlist-mfrac, twoPresExpression }
+msqrt = element msqrt { attlist-msqrt, PresExpression }
+menclose = element menclose { attlist-menclose, PresExpression }
+mroot = element mroot { attlist-mroot, twoPresExpression }
+msub = element msub { attlist-msub, twoPresExpression }
+msup = element msup { attlist-msup, twoPresExpression }
+msubsup = element msubsup { attlist-msubsup, threePresExpression }
+mmultiscripts =
+  element mmultiscripts { attlist-mmultiscripts, prscrPresExpression }
+munder = element munder { attlist-munder, twoPresExpression }
+mover = element mover { attlist-mover, twoPresExpression }
+munderover =
+  element munderover { attlist-munderover, threePresExpression }
+mtable = element mtable { attlist-mtable, mtrPresExpression }
+mtr = element mtr { attlist-mtr, mtdPresExpression }
+mlabeledtr =
+  element mlabeledtr { attlist-mlabeledtr, mtdPresExpression }
+mtd = element mtd { attlist-mtd, PresExpression }
+maction = element maction { attlist-maction, PresExpression }
+mfenced = element mfenced { attlist-mfenced, PresExpression }
+mpadded = element mpadded { attlist-mpadded, PresExpression }
+# Presentation elements contain PCDATA or malignmark constructs.
+mi = element mi { attlist-mi, (MathMLCharacters | malignmark)* }
+mn = element mn { attlist-mn, (MathMLCharacters | malignmark)* }
+mo = element mo { attlist-mo, (MathMLCharacters | malignmark)* }
+mtext =
+  element mtext { attlist-mtext, (MathMLCharacters | malignmark)* }
+ms = element ms { attlist-ms, (MathMLCharacters | malignmark)* }
+# Browser interface definition  ...............................
+
+# Attributes for top-level element "math"
+att-macros = attribute macros { text }?
+att-mode = attribute mode { text }?
+att-display = attribute display { text }?
+att-schemalocation = attribute xsi:schemaLocation { text }?
+att-topinfo =
+  MATHML.Common.attrib,
+  att-schemalocation,
+  att-macros,
+  att-mode,
+  att-display
+# Attributes for browser interface element
+att-baseline = attribute baseline { text }?
+att-overflow =
+  [ a:defaultValue = "scroll" ]
+  attribute overflow { "scroll" | "elide" | "truncate" | "scale" }?
+att-altimg = attribute altimg { text }?
+att-alttext = attribute alttext { text }?
+att-browif =
+  att-type,
+  att-name,
+  att-height,
+  att-width,
+  att-baseline,
+  att-overflow,
+  att-altimg,
+  att-alttext
+# .............................................................
+
+# The top-level element "math" contains MathML encoded
+# mathematics. The "math" element has the browser info
+# attributes iff it is also the browser interface element.
+math = element math { attlist-math, MathExpression }
+attlist-math &= att-topinfo, att-browif
+# MathML Character Entities ..............................................
+
+# Entity sets from ISO Technical Report 9573-13 .....
+
+# Entity sets from informative annex to ISO 8879:1986 (SGML) .......
+
+# New characters defined by MathML ............................
+
+# MathML aliases for characters defined above .................
+
+# end of MathML Character Entity section
+
+# Revision History:
+# 
+# Initial draft (syntax = XML) 1997-05-09
+#    Stephen Buswell
+# Revised 1997-05-14
+#    Robert Miner
+# Revised 1997-06-29 and 1997-07-02
+#    Stephen Buswell
+# Revised 1997-12-15
+#    Stephen Buswell
+# Revised 1998-02-08
+#    Stephen Buswell
+# Revised 1998-04-04
+#    Stephen Buswell
+# Entities and small revisions 1999-02-21
+#    David Carlisle
+# Added attribute definitionURL to ci and cn 1999-10-11
+#    Nico Poppelier
+# Additions for MathML 2  1999-12-16
+#    David Carlisle
+# Namespace support 2000-01-14
+#    David Carlisle
+# XHTML Compatibility 2000-02-23
+#    Murray Altheim
+# New content elements 2000-03-26
+#    David Carlisle
+# Further revisions for MathML2 CR draft 2000-07-11
+#    David Carlisle
+# Further revisions for MathML2 CR draft 2000-10-31		
+#    David Carlisle		
+# Revisions for Unicode 3.2  2002-05-21		
+#    David Carlisle		
+# Add width and side attributes to mtable (to align with the specification)  2002-06-05		
+#    David Carlisle		
+# Use %XLINK.prefix rather than hardwired xlink:, add xlink:type 2002-06-12		
+#    David Carlisle		
+# Add missing numalign and denomalign attributes for mfrac 2002-07-05		
+#    David Carlisle		
+# Add MathMLstrict entity and related extra constraints 2002-12-05		
+#    David Carlisle		
+# Add support for xi:schemaLocation 2003-04-05		
+#    David Carlisle		
+# Removed actiontype from mstyle (to match spec) 2003-04-07		
+#    David Carlisle		
+# Additional constraints for MathMLstrict code (From Simon		
+#    Pepping on www-math list) 2003-05-22		
+#    David Carlisle		
+# Add missing minlabelspacing attribute (From Simon		
+#    Pepping on www-math list) 2003-05-22		
+#    David Carlisle		
+# Removed restricted menclose notation checking from MathMLstrict 2003-09-08		
+#    David Carlisle		
+#
+
+# end of MathML 2.0 DTD  ................................................
+
+# .......................................................................

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE DAVEfunc PUBLIC "-//NASA//DTD for Flight Dynamic Models - Functions 2.0//EN" 
+                          "DAVEfunc.dtd">
+<DAVEfunc>
+    <fileHeader>
+        <author name="" org=""></author>
+        <creationDate date=""/>
+    </fileHeader>
+    <variableDef name="CD zero" varID="CDo" units="ND" initialValue="0.005">
+        <description>
+            Minimum coefficient of drag with  
+            symmetric uniform uncertainty band
+        </description>
+        <isOutput/>
+        <uncertainty effect="absolute">
+            <uniformPDF>
+                <bounds>0.001</bounds>
+                <bounds>0.010</bounds>
+            </uniformPDF>
+        </uncertainty>
+    </variableDef>
+ </DAVEfunc>

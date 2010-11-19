@@ -1,0 +1,82 @@
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+
+dtd =
+  element dtd {
+    attlist.dtd, (genlcomment | elLevel | el | entityDef | entityRef)*
+  }
+attlist.dtd &= empty
+genlcomment = element genlcomment { attlist.genlcomment, text }
+attlist.genlcomment &= empty
+elLevel = element elLevel { attlist.elLevel, text }
+attlist.elLevel &= empty
+el =
+  element el {
+    attlist.el,
+    name,
+    purpose,
+    descrip?,
+    (\empty | data | elRef | choice | sequence)*,
+    attr*,
+    future?,
+    deprecated?
+    skipdef?
+  }
+attlist.el &= empty
+name = element name { attlist.name, text }
+attlist.name &= empty
+purpose = element purpose { attlist.purpose, text }
+attlist.purpose &= empty
+descrip = element descrip { attlist.descrip, text }
+attlist.descrip &= empty
+choice = element choice { attlist.choice, (data | elRef | sequence)* }
+attlist.choice &=
+  [ a:defaultValue = "one" ]
+  attribute num { "one" | "binary" | "oneplus" | "zeroplus" }?
+sequence = element sequence { attlist.sequence, (elRef | choice)* }
+attlist.sequence &=
+  [ a:defaultValue = "one" ]
+  attribute num { "one" | "binary" | "oneplus" | "zeroplus" }?
+elRef = element elRef { attlist.elRef, empty }
+attlist.elRef &=
+  attribute elID { xsd:NMTOKEN },
+  [ a:defaultValue = "one" ]
+  attribute num { "one" | "binary" | "oneplus" | "zeroplus" }?
+attr = element attr { attlist.attr, attdef?, enumVal*, deprecated? }
+attlist.attr &=
+  attribute name { text },
+  attribute type {
+    "simple"
+    | "cdata"
+    | "nmtoken"
+    | "nmtokens"
+    | "enum"
+    | "entity"
+    | "entities"
+    | "id"
+    | "idref"
+    | "idrefs"
+    | "notation"
+  },
+  attribute default { "implied" | "required" | "fixed" | "literal" },
+  attribute value { text }?
+future = element future { attlist.future, text }
+attlist.future &= empty
+attdef = element attdef { attlist.attdef, text }
+attlist.attdef &= empty
+\empty = element empty { attlist.empty, empty }
+attlist.empty &= empty
+data = element data { attlist.data, empty }
+attlist.data &= empty
+entityDef = element entityDef { attlist.entityDef, empty }
+attlist.entityDef &=
+  attribute enID { xsd:ID },
+  attribute name { text },
+  attribute public { text }?,
+  attribute system { text }?
+entityRef = element entityRef { attlist.entityRef, empty }
+attlist.entityRef &= attribute enID { xsd:IDREF }
+enumVal = element enumVal { attlist.enumVal, text }
+attlist.enumVal &= empty
+deprecated = element deprecated { attlist.deprecated, empty }
+attlist.deprecated &= empty
+start = dtd
