@@ -1,4 +1,3 @@
-#
 # validation lab Makefile
 #
 # Copies latest versions of known models to this directory
@@ -7,42 +6,29 @@
 #
 # 061117 EBJ
 
-DOCUMENTS_DIR = ../../Documents
+DAVE_HOME_DIR = $(HOME)/Documents/Projects/DAVE
+TECH_DIR      = $(DAVE_HOME_DIR)/Tech
+MODELS_DIR    = $(TECH_DIR)/Models
+F16_DIR       = $(MODELS_DIR)/F-16
+HL20_DIR      = $(HOME)/Documents/Projects/HL-20/Sim_models/DAVE
 EXAMPLES_DIR  = ../Examples
-F16_DIR       = ../../F-16
-HL20_DIR      = ~/Documents/Projects/HL-20/Sim_models/DAVE
 
-make: simple_aero.dml twoD_table.dml twoD_ungridded.dml \
-      threeD_ungridded.dml F16_aero.dml HL20_aero.dml \
-      aero_cm.dml uncertain_1D_table.dml uncertain_correl_variables.dml \
-      uncertain_variable.dml uncertain_variable_asym.dml \
-      uncertain_variable_table.dml
+VPATH         = $(EXAMPLES_DIR):$(F16_DIR):$(HL20_DIR)
 
-aero_cm.dml: $(EXAMPLES_DIR)/aero_cm.dml
+make: simple_aero_copy.dml                   \
+      simplest_aero_copy.dml                 \
+      twoD_table.dml twoD_ungridded_copy.dml \
+      threeD_ungridded_copy.dml              \
+      F16_aero_copy.dml                      \
+      HL20_aero_copy.dml                     \
+      aero_cm_copy.dml                       \
+      uncertain_1D_table_copy.dml            \
+      uncertain_correl_variables_copy.dml    \
+      uncertain_variable_copy.dml            \
+      uncertain_variable_asym_copy.dml       \
+      uncertain_variable_table_copy.dml      \
 
-uncertain_1D_table.dml: $(EXAMPLES_DIR)/uncertain_1D_table.dml
-
-uncertain_correl_variables.dml: $(EXAMPLES_DIR)/uncertain_correl_variables.dml
-
-uncertain_variable.dml: $(EXAMPLES_DIR)/uncertain_variable.dml
-
-uncertain_variable_asym.dml: $(EXAMPLES_DIR)/uncertain_variable_asym.dml
-
-uncertain_variable_table.dml: $(EXAMPLES_DIR)/uncertain_variable_table.dml
-
-simple_aero.dml: $(DOCUMENTS_DIR)/simple_aero.dml
-
-twoD_table.dml: $(DOCUMENTS_DIR)/twoD_table.dml
-
-twoD_ungridded.dml: $(DOCUMENTS_DIR)/twoD_ungridded.dml
-
-threeD_ungridded.dml: $(DOCUMENTS_DIR)/threeD_ungridded.dml
-
-F16_aero.dml: $(F16_DIR)/F16_aero.dml
-
-HL20_aero.dml: $(HL20_DIR)/HL20_aero.dml
-
-%.dml: */%.dml
+%_copy.dml : %.dml
 	@-chmod 666 $@
 	cp $< $@
 	@chmod 444 $@
