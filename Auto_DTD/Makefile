@@ -20,8 +20,7 @@ NXML-MODE  = ~/downloaded_sw/nxml-mode/schema
 CLASSPATH  = $(TRANG_DIR):$(JING_DIR)/bin
 
 
-make: DAVEfunc_auto.dtd DAVEfunc_ref_auto.xml $(SCHEMA_DIR)/DAVEfunc.dtd \
-      $(VAL_LAB)/DAVEfunc.dtd $(VAL_LAB)/DAVEfunc.rnc 
+make: DAVEfunc_auto.dtd DAVEfunc_ref_auto.xml $(SCHEMA_DIR)/DAVEfunc.dtd
 
 DAVEfunc_auto.dtd: DAVEfunc_dtd.xml xml2dtd.xsl
 	@echo "Making .dtd file..."
@@ -30,16 +29,6 @@ DAVEfunc_auto.dtd: DAVEfunc_dtd.xml xml2dtd.xsl
 DAVEfunc.rnc: DAVEfunc_auto.dtd
 	@echo  "Making .rnc version..."
 	@java -cp $(CLASSPATH) -jar $(TRANG_DIR)/trang.jar DAVEfunc_auto.dtd DAVEfunc.rnc
-
-$(VAL_LAB)/DAVEfunc.rnc: DAVEfunc.rnc
-	@echo  "Copying $@ to validation directory..."
-	@mkdir -p $(VAL_LAB)
-	@cp DAVEfunc.rnc mathml2.rnc mathml2-qname-1.mod.rnc $(VAL_LAB)
-
-$(VAL_LAB)/DAVEfunc.dtd: DAVEfunc_auto.dtd
-	@echo  "Copying $@ to validation directory..."
-	@mkdir -p $(VAL_LAB)
-	@cp $< $@
 
 $(SCHEMA_DIR)/DAVEfunc.dtd: DAVEfunc_auto.dtd
 	@echo  "Copying $@ to schema directory..."
