@@ -13,7 +13,7 @@
       Reference</title>
     <titleabbrev>DAVE-ML 2</titleabbrev>
     <subtitle>Version 2.0 (Release Candidate 4)</subtitle>
-    <releaseinfo>2010-11-08</releaseinfo>
+    <releaseinfo>2010-12-01</releaseinfo>
     <corpauthor>
       <ulink url="https://info.aiaa.org/tac/ASG/MSTC"> AIAA Modeling and
         Simulation Technical Committee </ulink>
@@ -76,7 +76,7 @@
       <acronym>DAVE-ML</acronym> <acronym>DTD</acronym>.
     </para>
 
-    <sect2 id="changes_20rc3" revisionflag="added">
+    <sect2 id="changes-20rc4" revisionflag="added">
       <title>Changes since version 2.0RC3</title>
       <titleabbrev>RC4 changes</titleabbrev>
       <para>
@@ -144,7 +144,7 @@
       </sect3>
     </sect2>
 
-    <sect2 id="changes_20rc2">
+    <sect2 id="changes-20rc3">
       <title>Changes since version 2.0RC2</title>
       <titleabbrev>RC3 changes</titleabbrev>
       <para>
