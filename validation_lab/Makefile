@@ -13,7 +13,9 @@ F16_DIR       = $(MODELS_DIR)/F-16
 HL20_DIR      = $(HOME)/Documents/Projects/HL-20/Sim_models/DAVE
 EXAMPLES_DIR  = ../Examples
 HERE          = $(shell pwd)
-SGML_CATALOG_FILES = .
+DTD           = ../Auto_DTD/DAVEfunc_auto.dtd
+
+export XML_CATALOG_FILES:=./davefunc_catalog.xml
 
 VPATH         = $(EXAMPLES_DIR):$(F16_DIR):$(HL20_DIR)
 
@@ -32,8 +34,8 @@ MODELS = simple_aero.xml                   \
 
 make: $(MODELS)
 
-%.xml : %.dml
-	cat $< | xmllint - --valid  >$@
+%.xml : %.dml $(DTD)
+	xmllint --valid $< >$@
 
 clean:
 	-rm $(MODELS)

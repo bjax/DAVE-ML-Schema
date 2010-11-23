@@ -1,5 +1,7 @@
 <?xml version="1.0" standalone="no"?>
-<!DOCTYPE DAVEfunc PUBLIC "-//NASA//DTD for Flight Dynamic Models - Functions 2.0//EN" "http://www.daveml.org/DTDs/2p0RC4/DAVEfunc.dtd">
+<!DOCTYPE DAVEfunc 
+         PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" 
+                "http://www.daveml.org/DTDs/2p0RC4/DAVEfunc.dtd">
 <DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
   <fileHeader>
     <author name="Bruce Jackson" org="NASA Langley Research Center" email="e.b.jackson@nasa.gov"/>

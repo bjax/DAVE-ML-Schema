@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE DAVEfunc PUBLIC "-//NASA//DTD for Flight Dynamic Models - Functions 2.0//EN" "http://www.daveml.org/DTDs/2p0RC4/DAVEfunc.dtd">
+<!DOCTYPE DAVEfunc 
+         PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" 
+                "http://www.daveml.org/DTDs/2p0RC4/DAVEfunc.dtd">
 <DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
   <!--===================================-->
   <!--File Header-->
@@ -149,7 +151,7 @@
   <independentVarRef varID="yawControlDeflection" min="-6" max="6" extrapolate="neither"/>
   <dependentVarRef varID="aeroBodyYawMomentCoefficient_2"/>
   <functionDefn name="Ungrided table defined in function, 3D">
-    <ungriddedTableDef>
+    <ungriddedTableDef utID="localYawMomentCoeff_table">
       <dataPoint> -1.8330592 -5.3490387 -4.7258599 -0.00350641</dataPoint>
       <dataPoint> -1.9302179 -4.9698462 0.2798654  -0.0120538</dataPoint>
       <dataPoint> -2.1213095 -5.0383145 5.2146443  -0.0207089</dataPoint>

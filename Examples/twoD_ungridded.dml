@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE DAVEfunc PUBLIC "-//NASA//DTD for Flight Dynamic Models - Functions 2.0//EN" "http://www.daveml.org/DTDs/2p0RC4/DAVEfunc.dtd">
+<!DOCTYPE DAVEfunc 
+         PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" 
+                "http://www.daveml.org/DTDs/2p0RC4/DAVEfunc.dtd">
 <DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
 
   <!--             ==========================                 -->

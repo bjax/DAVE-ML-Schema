@@ -4,7 +4,7 @@
   xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:mathml="http://www.w3.org/TR/Math/MathML2"
   >
-  <xsl:output method="text" indent="no"/>
+  <xsl:output method="xml" indent="no"/>
   
   <!-- 
     Converts my home-grown DTD .xml specification back into a DTD document. Tested with

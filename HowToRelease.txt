@@ -22,19 +22,12 @@ do {
 
   Test the new DAVEfunc.dtd in the validation_lab directory:
 
-    1. validate it with Oxygen
-    2. validate against known .dml's in Oxygen
+    1. cd validation_lab
+    2. make clean
+    3. make
 
-  This is accomplished by 
+  and inspect for errors.
 
-    1. running 'make' in the validation lab directory to copy latest
-        versions of known .dml's there
-
-    2. opening validation_lab/validation.xpr and
-        clicking 'validate all documents.'
-
-    3. run 'make' in the DAVEtools/tests/app_tests/dave2sl folder;
-       see if all is well with resulting models
 
 [ Running jing (~/downloaded_sw/jing) in validation lab against each
   example with the new DTD is a good idea (probably should automate
@@ -56,13 +49,6 @@ git commit all changes
 remove 'DTDs/new' directory in web site (if it exists)
 
 run 'make install' to copy revision to DTD directory in WebSites folder
-
-[should also automate]: 
-
-cp Auto_DTD/DAVEfunc_auto.dtd to
-Schemas/trunk/DAVEfunc.dtd and to ~/Documents/Dev/DAVE/Documents
-
-cd to Schemas
 
 git tag V_2p2rc1-2010-03-28
 
