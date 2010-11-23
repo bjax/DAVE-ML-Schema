@@ -20,6 +20,10 @@ do {
 
   Poke through the updated reference manual to see if it's OK.
 
+  Change the SYSTEM entity string in each Example model to reflect
+  actual URI to new DTD (don't need to publish yet; we're using
+  a local catalog file to redirect xmllint for validation test).
+
   Test the new DAVEfunc.dtd in the validation_lab directory:
 
     1. cd validation_lab
