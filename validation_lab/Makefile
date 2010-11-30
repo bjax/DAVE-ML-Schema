@@ -19,13 +19,15 @@ export XML_CATALOG_FILES:=./davefunc_catalog.xml
 
 VPATH         = $(EXAMPLES_DIR):$(F16_DIR):$(HL20_DIR)
 
-MODELS = simple_aero.xml                   \
-         simplest_aero.xml                 \
-         twoD_table.dml twoD_ungridded.xml \
-         threeD_ungridded.xml              \
+MODELS = \
          F16_aero.xml                      \
          HL20_aero.xml                     \
          aero_cm.xml                       \
+         alpha_beta_to_alphaT_phi.xml      \
+         simple_aero.xml                   \
+         simplest_aero.xml                 \
+         threeD_ungridded.xml              \
+         twoD_table.dml twoD_ungridded.xml \
          uncertain_1D_table.xml            \
          uncertain_correl_variables.xml    \
          uncertain_variable.xml            \

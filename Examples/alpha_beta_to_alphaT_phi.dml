@@ -1,0 +1,612 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE DAVEfunc PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN"  
+          "DAVEfunc.dtd">
+<DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
+  <fileHeader name="alpha_beta_to_alphaT_phi">
+    <author name="Bruce Jackson" org="NASA Langley Research Center" xns="@bjax"
+      email="e.b.jackson@nasa.gov">
+      <address>MS 308 NASA, Hampton, VA 23681</address>
+    </author>
+    <fileCreationDate date="2007-02-23"/>
+    <description>
+      Test DAVE-ML file that demonstrates the conversion from
+      alpha/beta to alpha_total/phi; also shows use of non-MathML
+      function 'atan2'.
+    </description>
+  </fileHeader>
+
+  <variableDef name="angleOfAttack_d" varID="ALPHAD" units="deg">
+    <isStdAIAA/>
+  </variableDef>
+
+  <variableDef name="angleOfSideslip_d" varID="BETAD" units="deg">
+    <isStdAIAA/>
+  </variableDef>
+
+  <variableDef name="radians to degrees" varID="R2D" units="rad_deg-1"
+	       initialValue="57.2957795131"/>
+
+  <variableDef name="degrees to radians" varID="D2R" units="deg_rad-1"
+	       initialValue="0.017453292519943"/>
+
+  <variableDef name="Alpha radians" varID="ALPHA" units="rad">
+    <calculation>
+      <math>
+	<apply>
+	  <times/>
+          <ci>D2R</ci>
+	  <ci>ALPHAD</ci>
+	</apply>
+      </math>
+    </calculation>
+  </variableDef>
+
+  <variableDef name="Beta radians" varID="BETA" units="rad">
+    <calculation>
+      <math>
+	<apply>
+	  <times/>
+          <ci>D2R</ci>
+	  <ci>BETAD</ci>
+	</apply>
+      </math>
+    </calculation>
+  </variableDef>
+
+  <variableDef name="Total alpha" varID="TALPHADG" units="deg">
+    <calculation>
+      <math>
+        <apply>
+          <times/>
+          <ci>R2D</ci>
+          <apply>
+            <arccos/>
+            <apply>
+              <times/>
+              <apply>
+                <cos/>
+                <ci>ALPHA</ci>
+              </apply>              <!-- COS(ALPHA) -->
+              <apply>
+                <cos/>
+                <ci>BETA</ci>
+              </apply>              <!-- COS(BETA) -->
+            </apply>            <!-- COS(ALPHA)*COS(BETA) -->
+          </apply>          <!-- ACOS(COS(ALPHA)*COS(BETA)) -->
+        </apply>        <!-- ACOS(COS(ALPHA)*COS(BETA))*RADTODG -->
+      </math>
+    </calculation>
+    <isOutput/>
+  </variableDef>
+
+  <variableDef name="Wind roll angle" varID="PHI" units="rad">
+    <calculation>
+      <math>
+        <apply>
+	  <csymbol definitionURL="http://daveml.org/function_spaces.html#atan2"
+		   encoding="text">
+	    atan2
+	  </csymbol>
+	  <apply>
+	    <tan/>
+	    <ci>BETA</ci>
+	  </apply>
+	  <apply>
+	    <sin/>
+	    <ci>ALPHA</ci>
+	  </apply>
+        </apply> 
+      </math>
+    </calculation>
+  </variableDef>
+
+  <variableDef name="Wind roll angle deg" varID="PHID" units="deg">
+    <calculation>
+      <math>
+	<apply>
+	  <times/>
+          <ci>R2D</ci>
+	  <ci>PHI</ci>
+	</apply>
+      </math>
+    </calculation>
+  </variableDef>
+
+  <checkData>
+
+    <staticShot name="Zero">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>0.0</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>0.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>0.0</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>0.0</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="+10+10">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>10.0</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>10.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>14.106044</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>45.4385485</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="+10-10">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>10.0</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-10.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>14.106044</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-45.4385485</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="-10+10">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-10.0</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>10.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>14.106044</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>134.561451</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="-10-10">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-10.0</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-10.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>14.106044</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-134.561451</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="+60+0">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>60.0</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>0.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>60.0</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>0.0</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="+60+30">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>60.0</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>30.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>64.341094</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>33.690068</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="+60+60">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>60.0</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>60.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>75.522488</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>63.434949</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="+60+90">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>60.0</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>90.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>90.000000</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>90.000000</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="+60-30">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>60.0</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-30.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>64.341094</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-33.690068</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="+60-60">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>60.0</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-60.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>75.522488</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-63.434949</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="+60-90">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>60.0</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-90.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>90.000000</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-90.000000</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="+89+30">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>89.0</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>30.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>89.1339856</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>30.0037791</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="+120-10">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>120</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-10.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>119.4987042</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-11.5083934</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="+180+0">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>180</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>0.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>180.000000</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>0.000000</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="+180+45">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>180</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>45.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>135.000000</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>90.000000</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+    <staticShot name="+180-89">
+      <checkInputs>
+	<signal>
+	  <signalName>angleOfAttack_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>180</signalValue>
+	</signal>
+	<signal>
+	  <signalName>angleOfSideslip_d</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-89.0</signalValue>
+	</signal>
+      </checkInputs>
+      <checkOutputs>
+	<signal>
+	  <signalName>Total alpha</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>91.000000</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+	<signal>
+	  <signalName>Wind roll angle deg</signalName>
+	  <signalUnits>deg</signalUnits>
+	  <signalValue>-90.000000</signalValue>
+	  <tol>0.000001</tol>
+	</signal>
+      </checkOutputs>
+    </staticShot>
+
+  </checkData>
+
+</DAVEfunc>
