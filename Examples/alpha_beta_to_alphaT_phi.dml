@@ -219,6 +219,7 @@
 	  <signalName>Total alpha</signalName>
 	  <signalUnits>deg</signalUnits>
 	  <signalValue>14.106044</signalValue>
+	  <signalValue></signalValue>
 	  <tol>0.000001</tol>
 	</signal>
 	<signal>
