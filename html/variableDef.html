@@ -13,7 +13,7 @@ span.deleted { text-decoration: line-through;
                background-color: #FF7F7F; }
 span.changed { background-color: #99ff99; }
 span.off     {  }
-</style><title>variableDef</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="elementDescriptions.html" title="8.2. Element descriptions"/><link rel="prev" href="uniformPDF.html" title="uniformPDF"/><link rel="next" href="variableRef.html" title="variableRef"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="uniformPDF.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="variableRef.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="elementRefs.html">Element references and descriptions</a></span> &gt; <span class="breadcrumb-link"><a href="elementDescriptions.html">Element descriptions</a></span> &gt; <span class="breadcrumb-node">variableDef</span></div><div class="refentry" lang="en"><a id="variableDef"/><div class="titlepage"/><a id="d0e13275" class="indexterm"/><div class="refnamediv"><h2><span class="refentrytitle">variableDef</span></h2><p>variableDef — Defines signals used in DAVE-ML model</p></div><div class="refsect1" lang="en"><a id="d0e13288"/><h2>Content model</h2><pre class="synopsis">variableDef :  name,  varID,  units,  [axisSystem],  [sign],  [alias],  [symbol],  [initialValue]
+</style><title>variableDef</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="elementDescriptions.html" title="8.2. Element descriptions"/><link rel="prev" href="uniformPDF.html" title="uniformPDF"/><link rel="next" href="variableRef.html" title="variableRef"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="uniformPDF.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="variableRef.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="elementRefs.html">Element references and descriptions</a></span> &gt; <span class="breadcrumb-link"><a href="elementDescriptions.html">Element descriptions</a></span> &gt; <span class="breadcrumb-node">variableDef</span></div><div class="refentry" lang="en"><a id="variableDef"/><div class="titlepage"/><a id="d0e13363" class="indexterm"/><div class="refnamediv"><h2><span class="refentrytitle">variableDef</span></h2><p>variableDef — Defines signals used in DAVE-ML model</p></div><div class="refsect1" lang="en"><a id="d0e13376"/><h2>Content model</h2><pre class="synopsis">variableDef :  name,  varID,  units,  [axisSystem],  [sign],  [alias],  [symbol],  [initialValue],  [minValue],  [maxValue]
      <a href="description.html" title="description">description</a>?
      (<a href="provenance.html" title="provenance">provenance</a> | <a href="provenanceRef.html" title="provenanceRef">provenanceRef</a>)?
      <a href="calculation.html" title="calculation">calculation</a>?
@@ -23,31 +23,37 @@ span.off     {  }
      <a href="isOutput.html" title="isOutput">isOutput</a>?
      <a href="isStdAIAA.html" title="isStdAIAA">isStdAIAA</a>?
      <a href="uncertainty.html" title="uncertainty">uncertainty</a>?
-</pre></div><div class="refsect1" lang="en"><a id="d0e13329"/><h2>Attributes</h2><div class="variablelist"><dl><dt><span class="term">
+</pre></div><div class="refsect1" lang="en"><a id="d0e13417"/><h2>Attributes</h2><div class="variablelist"><dl><dt><span class="term">
 <code class="varname">name</code>
-</span></dt><dd><p>The name of the signal being defined.<a id="d0e13342" class="indexterm"/>
+</span></dt><dd><p>The name of the signal being defined.<a id="d0e13430" class="indexterm"/>
 </p></dd><dt><span class="term">
 <code class="varname">varID</code>
-</span></dt><dd><p>An internal identifier for the signal.<a id="d0e13357" class="indexterm"/>
+</span></dt><dd><p>An internal identifier for the signal.<a id="d0e13445" class="indexterm"/>
 </p></dd><dt><span class="term">
 <code class="varname">units</code>
-</span></dt><dd><p>The units of the signal.<a id="d0e13372" class="indexterm"/>
+</span></dt><dd><p>The units of the signal.<a id="d0e13460" class="indexterm"/>
 </p></dd><dt><span class="term">
 <code class="varname">axisSystem</code>
-</span></dt><dd><p>(optional) The axis in which the signal is measured.<a id="d0e13387" class="indexterm"/>
+</span></dt><dd><p>(optional) The axis in which the signal is measured.<a id="d0e13475" class="indexterm"/>
 </p></dd><dt><span class="term">
 <code class="varname">sign</code>
-</span></dt><dd><p>(optional) The sign convention for the signal, if any.<a id="d0e13402" class="indexterm"/>
+</span></dt><dd><p>(optional) The sign convention for the signal, if any.<a id="d0e13490" class="indexterm"/>
 </p></dd><dt><span class="term">
 <code class="varname">alias</code>
-</span></dt><dd><p>(optional) Possible alias name (facility specific) for the signal.<a id="d0e13417" class="indexterm"/>
+</span></dt><dd><p>(optional) Possible alias name (facility specific) for the signal.<a id="d0e13505" class="indexterm"/>
 </p></dd><dt><span class="term">
 <code class="varname">symbol</code>
-</span></dt><dd><p>(optional) UNICODE symbol for the signal.<a id="d0e13432" class="indexterm"/>
+</span></dt><dd><p>(optional) UNICODE symbol for the signal.<a id="d0e13520" class="indexterm"/>
 </p></dd><dt><span class="term">
 <code class="varname">initialValue</code>
-</span></dt><dd><p>(optional) An initial and possibly constant numeric value for the signal.<a id="d0e13447" class="indexterm"/>
-</p></dd></dl></div></div><div class="refsect1" lang="en"><a id="d0e13453"/><h2>Description</h2><p>
+</span></dt><dd><p>(optional) An initial and possibly constant numeric value for the signal.<a id="d0e13535" class="indexterm"/>
+</p></dd><dt><span class="term">
+<code class="varname">minValue</code>
+</span></dt><dd><p>(optional) A minimum value the variable shall be limited to remain greater than or equal to.<a id="d0e13550" class="indexterm"/>
+</p></dd><dt><span class="term">
+<code class="varname">maxValue</code>
+</span></dt><dd><p>(optional) A maximum value the variable shall be limited to remain less than or equal to.<a id="d0e13565" class="indexterm"/>
+</p></dd></dl></div></div><div class="refsect1" lang="en"><a id="d0e13571"/><h2>Description</h2><p>
 
       variableDef elements provide wiring information (i.e., they
       identify the input and output signals used by these function
@@ -59,7 +65,14 @@ span.off     {  }
       calculation is performed. Information about the reason for
       inclusion or change to this element can be included in an
       optional provenance sub-element.
-    </p></div><div class="refsect1" lang="en"><a id="d0e13458"/><h2>
+
+      If either or both min or max attributes are specified, the
+      implementer must limit the final value of the variable to remain
+      within the specified bound(s). These attributes imply a one- or
+      two-sided limiter function downstream of any specified
+      calculation, input signal, or initial value.
+    
+    </p></div><div class="refsect1" lang="en"><a id="d0e13576"/><h2>
 	Possible parents
       </h2><table class="simplelist" border="0" summary="Simple list"><tr><td>
 <a href="DAVEfunc.html" title="DAVEfunc">
@@ -69,66 +82,66 @@ span.off     {  }
 <a href="bounds.html" title="bounds">
 <code class="sgmltag-element">bounds</code>
 </a>
-</td></tr></table></div><div class="refsect1" lang="en"><a id="d0e13478"/><h2>
+</td></tr></table></div><div class="refsect1" lang="en"><a id="d0e13596"/><h2>
 	Allowable children
       </h2><table class="simplelist" border="0" summary="Simple list"><tr><td>
-<a id="d0e13484" class="indexterm"/>
+<a id="d0e13602" class="indexterm"/>
 <a href="description.html" title="description">
 <code class="sgmltag-element">description</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e13498" class="indexterm"/>
+<a id="d0e13616" class="indexterm"/>
 <a href="provenance.html" title="provenance">
 <code class="sgmltag-element">provenance</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e13512" class="indexterm"/>
+<a id="d0e13630" class="indexterm"/>
 <a href="provenanceRef.html" title="provenanceRef">
 <code class="sgmltag-element">provenanceRef</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e13526" class="indexterm"/>
+<a id="d0e13644" class="indexterm"/>
 <a href="calculation.html" title="calculation">
 <code class="sgmltag-element">calculation</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e13540" class="indexterm"/>
+<a id="d0e13658" class="indexterm"/>
 <a href="isInput.html" title="isInput">
 <code class="sgmltag-element">isInput</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e13554" class="indexterm"/>
+<a id="d0e13672" class="indexterm"/>
 <a href="isControl.html" title="isControl">
 <code class="sgmltag-element">isControl</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e13568" class="indexterm"/>
+<a id="d0e13686" class="indexterm"/>
 <a href="isDisturbance.html" title="isDisturbance">
 <code class="sgmltag-element">isDisturbance</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e13582" class="indexterm"/>
+<a id="d0e13700" class="indexterm"/>
 <a href="isState.html" title="isState">
 <code class="sgmltag-element">isState</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e13596" class="indexterm"/>
+<a id="d0e13714" class="indexterm"/>
 <a href="isStateDeriv.html" title="isStateDeriv">
 <code class="sgmltag-element">isStateDeriv</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e13610" class="indexterm"/>
+<a id="d0e13728" class="indexterm"/>
 <a href="isOutput.html" title="isOutput">
 <code class="sgmltag-element">isOutput</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e13624" class="indexterm"/>
+<a id="d0e13742" class="indexterm"/>
 <a href="isStdAIAA.html" title="isStdAIAA">
 <code class="sgmltag-element">isStdAIAA</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e13638" class="indexterm"/>
+<a id="d0e13756" class="indexterm"/>
 <a href="uncertainty.html" title="uncertainty">
 <code class="sgmltag-element">uncertainty</code>
 </a>
-</td></tr></table></div></div><P xmlns="" class="CVSinfo">2010-11-08</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="uniformPDF.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="elementDescriptions.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="variableRef.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+</td></tr></table></div></div><P xmlns="" class="CVSinfo">2010-12-01</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="uniformPDF.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="elementDescriptions.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="variableRef.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

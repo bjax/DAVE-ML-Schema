@@ -3,13 +3,14 @@
                    Dynamic Aerospace Vehicle Exchange DTD            
                         Function Data Representation                   
                                                                 
-                              Version: 2.0 Release Candidate 4                             
+                              Version: 2.0                            
+                            01 December 2010                                       
                                                                 
     This DTD module is identified by these PUBLIC and SYSTEM       
     identifiers:                                                   
                                                                 
     PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" 
-    SYSTEM "http://daveml.org/DTDs/2p0RC4/DAVEfunc.dtd"
+    SYSTEM "http://daveml.org/DTDs/2p0/DAVEfunc.dtd"
                                                                 
     Developed by:
 
@@ -136,6 +137,13 @@
       calculation is performed. Information about the reason for
       inclusion or change to this element can be included in an
       optional provenance sub-element.
+
+      If either or both min or max attributes are specified, the
+      implementer must limit the final value of the variable to remain
+      within the specified bound(s). These attributes imply a one- or
+      two-sided limiter function downstream of any specified
+      calculation, input signal, or initial value.
+    
     
      ================================================================= -->
 
@@ -160,6 +168,8 @@
      alias	CDATA	#IMPLIED
      symbol	CDATA	#IMPLIED
      initialValue	CDATA	#IMPLIED
+     minValue	CDATA	#IMPLIED
+     maxValue	CDATA	#IMPLIED
 >
 
 <!ELEMENT variableRef EMPTY>
@@ -635,6 +645,12 @@
       each breakpoint until the next (numerically) higher breakpoint
       value is reached by the independent argument. The default
       interpolation attribute value is 'linear.'
+
+      Note also that the option min and max attributes serve to limit
+      the numeric range of the independent (function input) variable;
+      these attributes are independent of and serve as additional
+      range contraints with respect to any minValue or maxValue
+      attribute associated with the independent variable itself.
 
       This element allows reuse of common breakpoint values for many
       tables but with possible differences in interpolation or

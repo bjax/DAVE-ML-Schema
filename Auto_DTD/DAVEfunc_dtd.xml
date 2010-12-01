@@ -14,13 +14,14 @@
                    Dynamic Aerospace Vehicle Exchange DTD            
                         Function Data Representation                   
                                                                 
-                              Version: 2.0 Release Candidate 4                             
+                              Version: 2.0                            
+                            01 December 2010                                       
                                                                 
     This DTD module is identified by these PUBLIC and SYSTEM       
     identifiers:                                                   
                                                                 
     PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" 
-    SYSTEM "http://daveml.org/DTDs/2p0RC4/DAVEfunc.dtd"
+    SYSTEM "http://daveml.org/DTDs/2p0/DAVEfunc.dtd"
                                                                 
     Developed by:
 
@@ -141,6 +142,13 @@
       calculation is performed. Information about the reason for
       inclusion or change to this element can be included in an
       optional provenance sub-element.
+
+      If either or both min or max attributes are specified, the
+      implementer must limit the final value of the variable to remain
+      within the specified bound(s). These attributes imply a one- or
+      two-sided limiter function downstream of any specified
+      calculation, input signal, or initial value.
+    
     </descrip>
     <sequence>
       <elRef elID="description" num="binary"/>
@@ -184,6 +192,12 @@
     </attr>
     <attr name="initialValue" type="cdata" default="implied">
       <attdef>An initial and possibly constant numeric value for the signal.</attdef>
+    </attr>
+    <attr name="minValue" type="cdata" default="implied">
+      <attdef>A minimum value the variable shall be limited to remain greater than or equal to.</attdef>
+    </attr>
+    <attr name="maxValue" type="cdata" default="implied">
+      <attdef>A maximum value the variable shall be limited to remain less than or equal to.</attdef>
     </attr>
 
   </el>
@@ -257,8 +271,8 @@
     </attr>
     <attr name="gtID" type="id" default="required"> 
       <attdef>
-	An internal identifier for the table. As of DAVE-ML 2.0 RC4, required for all tables
-	(previously required only if the table was to be be reused by another function or was
+	An internal identifier for the table. As of DAVE-ML 2.0, it is required for all tables
+	(previously was required only if the table was to be be reused by another function or was
 	defined outside of a function.
       </attdef>
     </attr>
@@ -291,10 +305,10 @@
     </attr>
     <attr name="utID" type="id" default="required"> 
       <attdef>
-	An internal identifier for the table. As of DAVE-ML 2.0 RC4,
-	required for all tables (previously required only if the table
-	was to be be reused by another function or was defined outside
-	of a function.
+	An internal identifier for the table. As of DAVE-ML 2.0, it is
+	required for all tables (previously it was required only if
+	the table was to be be reused by another function or was
+	defined outside of a function.
       </attdef>
     </attr>
     <attr name="units" type="cdata" default="implied">
@@ -565,7 +579,7 @@
       <attdef>
 	The value of this attribute must be
 	"http://www.w3.org/1998/Math/MathML". If omitted, it should be
-	provided by the parser since it is specifid in the DTD.
+	provided by the parser since it is specified in the DTD.
       </attdef>
     </attr>
     <nodef/>
@@ -815,6 +829,12 @@
       each breakpoint until the next (numerically) higher breakpoint
       value is reached by the independent argument. The default
       interpolation attribute value is 'linear.'
+
+      Note also that the option min and max attributes serve to limit
+      the numeric range of the independent (function input) variable;
+      these attributes are independent of and serve as additional
+      range contraints with respect to any minValue or maxValue
+      attribute associated with the independent variable itself.
 
       This element allows reuse of common breakpoint values for many
       tables but with possible differences in interpolation or

@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE DAVEfunc PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN"  
-          "DAVEfunc.dtd">
+          "http://www.daveml.org/DTDs/2p0/DAVEfunc.dtd">
 <DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
   <fileHeader name="alpha_beta_to_alphaT_phi">
     <author name="Bruce Jackson" org="NASA Langley Research Center" xns="@bjax"
@@ -11,8 +11,9 @@
     <description>
       Test DAVE-ML file that demonstrates the conversion from
       alpha/beta to alpha_total/phi; also shows use of non-MathML
-      function 'atan2'.
+      function 'atan2.'
     </description>
+
   </fileHeader>
 
   <variableDef name="angleOfAttack_d" varID="ALPHAD" units="deg">
@@ -219,7 +220,6 @@
 	  <signalName>Total alpha</signalName>
 	  <signalUnits>deg</signalUnits>
 	  <signalValue>14.106044</signalValue>
-	  <signalValue></signalValue>
 	  <tol>0.000001</tol>
 	</signal>
 	<signal>

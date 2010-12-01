@@ -12,7 +12,7 @@
     <title>Dynamic Aerospace Vehicle Exchange Markup Language (<acronym>DAVE-ML</acronym>)
       Reference</title>
     <titleabbrev>DAVE-ML 2</titleabbrev>
-    <subtitle>Version 2.0 (Release Candidate 4)</subtitle>
+    <subtitle>Version 2.0</subtitle>
     <releaseinfo>2010-12-01</releaseinfo>
     <corpauthor>
       <ulink url="https://info.aiaa.org/tac/ASG/MSTC"> AIAA Modeling and
@@ -47,12 +47,12 @@
 	provide a domain-specific language capable of aerospace flight dynamics modeling,
 	verification, and documentation.
       </para>
-      <para>
-	This markup language represents the encoding format for BSR/AIAA S-119 Flight Dynamic Model
-	Exchange Standard <link linkend="AIAA10"><citation>AIAA10</citation></link>.
+      <para revisionflag="changed">
+	This markup language represents the encoding format for BSR/AIAA S-119-201x Flight Dynamic
+	Model Exchange Standard <link linkend="AIAA10"><citation>AIAA10</citation></link>.
       </para>
-      <para>
-	This is a draft version of the reference manual for <acronym>DAVE-ML</acronym> syntax and
+      <para revisionflag="changed">
+	This document is a reference manual for <acronym>DAVE-ML</acronym> syntax and
 	markup. <acronym>DAVE-ML</acronym> syntax is specified by the
 	<filename>DAVEfunc.dtd</filename> Document Type Definition (<acronym>DTD</acronym>) file;
 	the version number above refers to the version of the <filename>DAVEfunc.dtd.</filename>
@@ -76,9 +76,9 @@
       <acronym>DAVE-ML</acronym> <acronym>DTD</acronym>.
     </para>
 
-    <sect2 id="changes-20rc4" revisionflag="added">
+    <sect2 id="changes-20" revisionflag="added">
       <title>Changes since version 2.0RC3</title>
-      <titleabbrev>RC4 changes</titleabbrev>
+      <titleabbrev>V2.0 changes</titleabbrev>
       <para>
 	This section outlines changes to the DTD and this reference manual since version 2, release
 	candidate 3, was released in May 2010.
@@ -88,16 +88,17 @@
 	<emphasis>non-structural</emphasis> changes to the DTD and reference manual.
       </para>
 
-      <sect3 id="dtd-changes-20rc4">
+      <sect3 id="dtd-changes-20">
 	<title><acronym>DTD</acronym> structural changes since version 2.0RC3</title>
-	<titleabbrev>RC4 DTD changes</titleabbrev>
+	<titleabbrev>Version 2 Release DTD changes</titleabbrev>
 	<para>
 	  <itemizedlist>
 	    <listitem>
 	      <para>
-		Made <sgmltag>gtID</sgmltag> and <sgmltag>utID</sgmltag> attributes of
-		<sgmltag>griddedTableDef</sgmltag> and <sgmltag>ungriddedTableDef</sgmltag> required
-		instead of optional, to make it easier for parsers to deal with the table
+		Made <sgmltag>gtID</sgmltag> and <sgmltag>utID</sgmltag> required attributes of
+		<link linkend="griddedTableDef"><sgmltag>griddedTableDef</sgmltag></link> and <link
+		linkend="ungriddedTableDef"><sgmltag>ungriddedTableDef</sgmltag></link> instead of
+		optional, to make it easier for parsers to deal with the table
 		definitions. Previously these attributes were only required of tables that were to
 		be reused by more than one function, but feedback from several tool implementers
 		made this change desirable.
@@ -105,25 +106,38 @@
 	    </listitem>
 	    <listitem>
 	      <para>
-		Changed the definition of the <sgmltag>staticShot</sgmltag> element to allow zero or
-		more <sgmltag>checkInput</sgmltag> children. Previously at least one input had to be
+		Changed the definition of the <link
+		linkend="staticShot"><sgmltag>staticShot</sgmltag></link> element to allow zero or more
+		<sgmltag>checkInput</sgmltag> children. Previously at least one input had to be
 		specified in a checkcase, which didn't allow verification of constant-only models
 		with no inputs.
+	      </para>
+	    </listitem>
+	    <listitem>
+	      <para>
+		Added optional <sgmltag>minValue</sgmltag> and <sgmltag>maxValue</sgmltag>
+		attributes to the <link linkend="variableDef"><sgmltag>variableDef</sgmltag></link>
+		element so models can specify limits of acceptable ranges of values for inputs,
+		initial values, or calculation results. Also added a paragraph to the <link
+		linkend="independentVarRef"><sgmltag>independentVarRef</sgmltag></link> element
+		description to reinforce that these attributes are independent range constraints
+		that act in series with any subsequent <sgmltag>independentVarRef</sgmltag>'s
+		<sgmltag>min</sgmltag> or <sgmltag>max</sgmltag> range attributes.
 	      </para>
 	    </listitem>
 	  </itemizedlist>
 	</para>
       </sect3>
 
-      <sect3 id="refman-changes-20rc4">
+      <sect3 id="refman-changes-20">
 	<title>Non-structural <acronym>DTD</acronym> and reference manual changes since version 2.0RC3</title>
-	<titleabbrev>RC4 non-DTD changes</titleabbrev>
+	<titleabbrev>Version 2 Release non-DTD changes</titleabbrev>
 	<para>
 	  <itemizedlist>
 	    <listitem>
 	      <para>
-		Noted that any <sgmltag>math</sgmltag> elements should include an
-		<sgmltag>xmlns</sgmltag> attribute with the value of
+		Noted that any <link linkend="math"><sgmltag>math</sgmltag></link> elements should
+		include an <sgmltag>xmlns</sgmltag> attribute with the value of
 		<sgmltag>"http://www.w3.org/1998/Math/MathML"</sgmltag>. This is not a new
 		requirement but helps parsers recognize the MathML namespace. Added this attribute
 		to two examples that contained a <sgmltag>math</sgmltag> element.
@@ -131,13 +145,14 @@
 	    </listitem>
 	    <listitem>
 	      <para>
-		Noted that the <sgmltag>calculation</sgmltag> element must contain exactly one
-		<sgmltag>math</sgmltag> subelement.
+		Noted that the <link linkend="calculation"><sgmltag>calculation</sgmltag></link>
+		element must contain exactly one <sgmltag>math</sgmltag> subelement.
 	      </para>
 	    </listitem>
 	    <listitem>
 	      <para>
-		Added definition of the <sgmltag>math</sgmltag> MathML2 element.
+		Added definition of the <link linkend="math"><sgmltag>math</sgmltag></link> MathML2 element.
+	      </para>
 	    </listitem>
 	  </itemizedlist>
 	</para>
@@ -146,7 +161,7 @@
 
     <sect2 id="changes-20rc3">
       <title>Changes since version 2.0RC2</title>
-      <titleabbrev>RC3 changes</titleabbrev>
+      <titleabbrev>V2.0, RC3 changes</titleabbrev>
       <para>
 	This section outlines changes to the DTD and this reference manual since version 2, release
 	candidate 2, was released in October 2008.
@@ -308,12 +323,12 @@
 	      </para>
 	    </listitem>
 	    <listitem>
-	      <para>
+	      <para revisionflag="changed">
 		Added two sentences to the description of the calculation element, explaining how to
 		tie variables in the model to the MathML expression via the MathML content
 		identifier (<sgmltag>ci</sgmltag>) element. Thanks to Missy
 		Hill<indexterm><primary>Hill, Melissa</primary></indexterm> and Curtis
-		Zimmerman<indexterm><primary>Zimmerman, Curtis</primary></indexterm> for pointing
+		Zimmerman<indexterm><primary>Zimmerman, Curtis J.</primary></indexterm> for pointing
 		out the lack of explanation.
 	      </para>
 	    </listitem>
@@ -440,7 +455,7 @@
 
     <sect2 id="changes-20rc2">
       <title>Changes since version 2.0RC1</title>
-      <titleabbrev>RC2 changes</titleabbrev>
+      <titleabbrev>V2.0, RC2 changes</titleabbrev>
       <para>
         <itemizedlist>
 
@@ -600,7 +615,7 @@
 
     <sect2 id="changes-20rc1">
       <title>Changes since version 1.9b3</title>
-      <titleabbrev>RC1 changes</titleabbrev>
+      <titleabbrev>V2.0, RC1 changes</titleabbrev>
       <para>
         <itemizedlist>
           <listitem>
@@ -608,7 +623,7 @@
             selections to <sgmltag>interpolate</sgmltag> attribute of <link
             linkend="independentVarPts"> <sgmltag>independentVarPts</sgmltag> </link> and <link
             linkend="independentVarRef"> <sgmltag>independentVarRef</sgmltag> </link> elements at
-            the suggestions of Geoff Brian<indexterm><primary>Brian, Geoffrey</primary></indexterm>,
+            the suggestions of Geoff Brian<indexterm><primary>Brian, Geoffrey J.</primary></indexterm>,
             Giovanni Cignoni<indexterm><primary>Cignoni, Giovanni A.</primary></indexterm>, Randy
             Brumbaugh<indexterm><primary>Brumbaugh, Randy</primary></indexterm>, and Dan
             Newman.<indexterm><primary>Newman, Daniel M.</primary></indexterm> </para>
@@ -628,7 +643,7 @@
 
     <sect2 id="changes-19b3">
       <title>Changes since version 1.9b2</title>
-      <titleabbrev>1.9b3 changes</titleabbrev>
+      <titleabbrev>V1.9b3 changes</titleabbrev>
       <para>
         <itemizedlist>
           <listitem>
@@ -643,7 +658,7 @@
                 <sgmltag>independentVarPts</sgmltag>
               </link> and <link linkend="independentVarRef">
                 <sgmltag>independentVarRef</sgmltag> </link> elements at the suggestion of Geoff
-                Brian<indexterm><primary>Brian, Geoffrey</primary></indexterm>, Australian Defence
+                Brian<indexterm><primary>Brian, Geoffrey J.</primary></indexterm>, Australian Defence
                 Science and Technology Organisation
                 (<acronym>DSTO</acronym>)<indexterm><primary>DSTO</primary></indexterm>. </para>
           </listitem>
@@ -667,7 +682,7 @@
 
     <sect2 id="changes-19b2">
       <title>Changes since version 1.8b1</title>
-      <titleabbrev>1.9b2 changes</titleabbrev>
+      <titleabbrev>V1.9b2 changes</titleabbrev>
       <para>
         <itemizedlist>
           <listitem>
@@ -676,7 +691,8 @@
 	      <sgmltag>interpolate</sgmltag> attributes of the <link linkend="independentVarPts">
 	      <sgmltag>independentVarPts</sgmltag></link> and <link
 	      linkend="independentVarRef"><sgmltag>independentVarRef</sgmltag></link>
-	      elements (in response to a request from Geoff Brian<indexterm><primary>Brian, Geoffrey</primary></indexterm> of DSTO) and fixed a typographical
+	      elements (in response to a request from Geoff Brian<indexterm><primary>Brian, Geoffrey
+	      J.</primary></indexterm> of DSTO) and fixed a typographical
 	      error in <sgmltag>cubicSpline</sgmltag> attribute string. Added reference to <link
 	      linkend="wiki01">Wikipedia article</link> on <ulink
 	      url="http://en.wikipedia.org/wiki/Spline_interpolation">spline interpolation</ulink>.
@@ -688,7 +704,7 @@
 	      <sgmltag>reference</sgmltag></link> element and added a
 	      <sgmltag>date</sgmltag> attribute to the <link linkend="modificationRecord">
 	      <sgmltag>modificationRecord</sgmltag></link> element, at the suggestion of
-	      Geoff Brian<indexterm><primary>Brian, Geoffrey</primary></indexterm> of DSTO.
+	      Geoff Brian<indexterm><primary>Brian, Geoffrey J.</primary></indexterm> of DSTO.
 	    </para>
           </listitem>
           <listitem>
@@ -696,7 +712,7 @@
 	      Added 2D and 3D ungridded table examples and figures and corrected a typographical
 	      error in the ungridded table definition syntax (thanks to Dr. Peter Grant of
 	      U. Toronto's UTIAS and Geoff Brian<indexterm><primary>Brian,
-	      Geoffrey</primary></indexterm> of DSTO).
+	      Geoffrey J.</primary></indexterm> of DSTO).
 	    </para>
           </listitem>
           <listitem>
@@ -716,7 +732,7 @@
 	      linkend="provenanceRef"><sgmltag>provenanceRef</sgmltag></link> acceptable
 	      sub-elements to <link linkend="variableDef"><sgmltag>variableDef</sgmltag> </link> and
 	      <link linkend="checkData"><sgmltag>checkData</sgmltag></link> elements at the request
-	      of Geoff Brian<indexterm><primary>Brian, Geoffrey</primary></indexterm> of DSTO.
+	      of Geoff Brian<indexterm><primary>Brian, Geoffrey J.</primary></indexterm> of DSTO.
 	    </para>
           </listitem>
         </itemizedlist>
@@ -724,7 +740,7 @@
     </sect2>
     <sect2 id="changes-18b1">
       <title>Changes since version 1.7b1</title>
-      <titleabbrev>1.8b1 changes</titleabbrev>
+      <titleabbrev>V1.8b1 changes</titleabbrev>
       <para>
         <itemizedlist>
           <listitem>
@@ -829,7 +845,7 @@
     </sect2>
     <sect2 id="changes-17b1">
       <title>Changes since version 1.6b1</title>
-      <titleabbrev>1.7b1 changes</titleabbrev>
+      <titleabbrev>V1.7b1 changes</titleabbrev>
       <para> Added <link linkend="checkData">
           <sgmltag>checkData</sgmltag>
         </link> and associated elements. Added <link linkend="description">
@@ -840,7 +856,7 @@
     </sect2>
     <sect2 id="changes-16b1">
       <title>Changes since version 1.5b3</title>
-      <titleabbrev>1.6b1 changes</titleabbrev>
+      <titleabbrev>V1.6b1 changes</titleabbrev>
       <para> 
 	Added an <link linkend="uncertainty"><sgmltag>uncertainty</sgmltag></link>
 	element. Emphasized MathML-2 content markup over presentation markup. Fixed several
@@ -850,7 +866,7 @@
     </sect2>
     <sect2 id="changes-15b3">
       <title>Changes since version 1.5b2</title>
-      <titleabbrev>1.5b3 changes</titleabbrev>
+      <titleabbrev>V1.5b3 changes</titleabbrev>
       <para>
         <itemizedlist>
           <listitem>
@@ -910,7 +926,7 @@
 
     <sect2 id="changes-15b2">
       <title>Changes since version 1.5b</title>
-      <titleabbrev>1.5b2 changes</titleabbrev>
+      <titleabbrev>V1.5b2 changes</titleabbrev>
       <para>
         <itemizedlist>
           <listitem>
@@ -2026,7 +2042,7 @@ Key:
       <sect3 id="variableDef_overview">
         <title>The variable definition element</title>
         <titleabbrev><sgmltag>variableDef</sgmltag> overview</titleabbrev>
-        <para>
+        <para revisionflag="changed">
 	  The <link linkend="variableDef"><sgmltag>variableDef</sgmltag></link> element is used to
 	  define each constant, parameter, or variable used within or generated by the defined
 	  subsystem model. It contains attributes including the variable name (used for
@@ -2035,7 +2051,7 @@ Key:
 	  system, sign convention, alias, and symbol declarations. Optional sub-elements include a
 	  written text description and a mathematical description, in MathML-2 content markup, of
 	  the calculations needed to derive the variable from other variables or function table
-	  outputs. Optional sub-element <sgmltag>isOutput</sgmltag>, serves to indicate an
+	  outputs. Optional sub-element <sgmltag>isOutput</sgmltag> serves to indicate an
 	  intermediate calculation that should be brought out to the rest of the simulation. Another
 	  optional sub-element, <sgmltag>isStdAIAA</sgmltag>, indicates the variable name is defined
 	  in the AIAA simulation standards document. Another optional sub-element,
@@ -2046,6 +2062,20 @@ Key:
 	  <secondary>overview</secondary>
 	</indexterm>
 
+	</para>
+
+	<para revisionflag="added">
+	  Optional <sgmltag>minValue</sgmltag> and <sgmltag>maxValue</sgmltag> attributes specify
+	  restrictions on the range of values the variable may have; these apply to all means of
+	  setting the value of the variable whether as an input to the model, an initial value
+	  attribute, or the result of a <sgmltag>calculation</sgmltag> sub-element. Note that the
+	  value of a variable used by a subsequent <sgmltag>independentVarRef</sgmltag> of a
+	  <sgmltag>function</sgmltag> may be further limited for use by that specific function.
+
+	  <indexterm>
+	    <primary sortas="variableDef">'variableDef' element</primary>
+	    <secondary>range limits</secondary>
+	  </indexterm>
 	</para>
 
 	<para>
@@ -2060,7 +2090,8 @@ Key:
           DAVEfunc model.</para>
 
         <programlisting>
-    <link linkend="variableDef">variableDef</link> : name, varID, units, [axisSystem, sign, alias, symbol, initialValue]
+    <link linkend="variableDef">variableDef</link> : name, varID, units, [axisSystem, sign, alias, symbol, 
+                         initialValue, minValue, maxValue]
         <link linkend="description">description</link>? :
                 {description character data}
         (
@@ -2209,6 +2240,44 @@ Key:
             </listitem>
           </varlistentry>
 
+	  <varlistentry>
+	    <term>
+	      <indexterm>
+		<primary sortas="minValue">'minValue' attribute</primary>
+		<secondary>of 'variableDef' element</secondary>
+	      </indexterm>
+	      <sgmltag>minValue</sgmltag>
+	    </term>
+	    <listitem>
+	      <para revisionflag="added">
+		An optional minimum value that the variable may take on, regardless of how that
+		value is determined. If present, this attribute implies a one-sided minimum value
+		limiter that is applied to the final value of the variable. If the minimum value is
+		greater than a sibling <sgmltag>maxValue</sgmltag> attribute the result is
+		undetermined.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term>
+	      <indexterm>
+		<primary sortas="maxValue">'maxValue' attribute</primary>
+		<secondary>of 'variableDef' element</secondary>
+	      </indexterm>
+	      <sgmltag>maxValue</sgmltag>
+	    </term>
+	    <listitem>
+	      <para revisionflag="added">
+		An optional maximum value that the variable may take on, regardless of how that
+		value is determined. If present, this attribute implies a one-sided maximum value
+		limiter that is applied to the final value of the variable. If the maximum value is
+		lesser than a sibling <sgmltag>minValue</sgmltag> attribute the result is
+		undetermined.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
         </variablelist>
 
         <variablelist>
@@ -2278,7 +2347,7 @@ Key:
 		the expression.
 	      </para>
               <para>
-		Examples of MathML expressions appear later in this reference.
+		Examples of MathML expressions appear later in this document.
               </para>
 	    </listitem>
           </varlistentry>
@@ -2515,10 +2584,10 @@ Key:
 	    sortas="variableDef">'variableDef'
 	    element</primary><secondary>example of a local</secondary></indexterm> defines
 	    <varname>CLBFLLO</varname> which is the dependent variable (output) from a table lookup
-	    function (shown later in <xref linkend="function_example_1" xrefstyle="template:Example
-	    %n"/>). It is subsequently used in the calculation of the lower-left body flap lift
-	    coefficient (shown in <xref linkend="variableDef_example_3" xrefstyle="template:Example
-	    %n"/>).
+	    function, shown later in <xref linkend="function_example_1" xrefstyle="template:Example
+	    %n"/>. It is subsequently used in the calculation of the lower-left body flap lift
+	    coefficient, shown in <xref linkend="variableDef_example_3" xrefstyle="template:Example
+	    %n"/>.
 	  </para>
 
           <programlisting>
@@ -2985,7 +3054,7 @@ Key:
           information about this element. </para>
 
         <programlisting>
-    <link linkend="griddedTableDef">griddedTableDef</link> : [name, gtID, units]
+    <link linkend="griddedTableDef">griddedTableDef</link> : gtID, [name, units]
         <link linkend="description">description</link>?
           {description of table in character data}
         EITHER
@@ -3285,7 +3354,7 @@ Key:
           information about this element. </para>
 
         <programlisting>
-    <link linkend="ungriddedTableDef">ungriddedTableDef</link> : [utID, name, units]
+    <link linkend="ungriddedTableDef">ungriddedTableDef</link> : utID, [name, units]
         <link linkend="description">description</link>? :
             {description character data}
         EITHER
@@ -3601,7 +3670,7 @@ Key:
           <calloutlist>
             <callout arearefs="ug3dtd-note-1-co" id="ug3dtd-note-1">
               <para>Example courtesy of Mr. Geoff Brian<indexterm><primary>Brian,
-              Geoffrey</primary></indexterm>,
+              Geoffrey J.</primary></indexterm>,
               DSTO<indexterm><primary>DSTO</primary></indexterm></para>
             </callout>
             <callout arearefs="ug3dtd-note-2-co" id="ug3dtd-note-2">
@@ -5310,7 +5379,7 @@ Key:
     Missy Hill (UNISYS),                                                      <indexterm><primary>Hill, Melissa</primary></indexterm>
     Matt Jessick (L-3 Communications, Houston),                               <indexterm><primary>Jessick, Matthew V.</primary></indexterm>
     Hilary Keating (Fortburn Pty. Ltd.),                                      <indexterm><primary>Keating, Hilary</primary></indexterm>
-    Dennis Linse (SAIC),                                                      <indexterm><primary>Linse, Dennis J.</primary></indexterm> 
+    Dennis Linse (SAIC),                                                      <indexterm><primary>Linse, Dennis</primary></indexterm> 
     Bill Othon (NASA Johnson Space Center),                                   <indexterm><primary>Othon, William L.</primary></indexterm> 
     Mike Madden (NASA Langley Research Center),                               <indexterm><primary>Madden, Michael M.</primary></indexterm>
     Greg McCarthy (NASA Dryden Flight Research Center),                       <indexterm><primary>McCarthy, Thomas G.</primary></indexterm>
