@@ -13,7 +13,7 @@
       Reference</title>
     <titleabbrev>DAVE-ML 2</titleabbrev>
     <subtitle>Version 2.0</subtitle>
-    <releaseinfo>2010-12-01</releaseinfo>
+    <releaseinfo>2010-12-15</releaseinfo>
     <corpauthor>
       <ulink url="https://info.aiaa.org/tac/ASG/MSTC"> AIAA Modeling and
         Simulation Technical Committee </ulink>
@@ -2254,7 +2254,7 @@ Key:
 		value is determined. If present, this attribute implies a one-sided minimum value
 		limiter that is applied to the final value of the variable. If the minimum value is
 		greater than a sibling <sgmltag>maxValue</sgmltag> attribute the result is
-		undetermined.
+		undetermined. This attribute must be a string representing a constant numeric value.
 	      </para>
 	    </listitem>
 	  </varlistentry>
@@ -2273,7 +2273,8 @@ Key:
 		value is determined. If present, this attribute implies a one-sided maximum value
 		limiter that is applied to the final value of the variable. If the maximum value is
 		lesser than a sibling <sgmltag>minValue</sgmltag> attribute the result is
-		undetermined.
+		undetermined.  This attribute must be a string representing a constant numeric
+		value.
 	      </para>
 	    </listitem>
 	  </varlistentry>

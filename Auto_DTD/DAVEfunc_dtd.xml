@@ -15,7 +15,7 @@
                         Function Data Representation                   
                                                                 
                               Version: 2.0                            
-                            01 December 2010                                       
+                            15 December 2010                                       
                                                                 
     This DTD module is identified by these PUBLIC and SYSTEM       
     identifiers:                                                   
@@ -148,6 +148,10 @@
       within the specified bound(s). These attributes imply a one- or
       two-sided limiter function downstream of any specified
       calculation, input signal, or initial value.
+
+      Min and max attributes may only be fixed numeric values. To
+      provide variable limits, the modeler should employ the piecewise
+      MathML element in a calculation subelement.
     
     </descrip>
     <sequence>
