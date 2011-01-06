@@ -7,7 +7,7 @@
 # 030711 Bruce Jackson <mailto:e.b.jackson@nasa.gov>
 #
 
-export WEBSITE = /Users/bjax/Documents/WebSites/DAVE_Web_Site/DTDs/new
+export WEBSITE = ../Website/DTDs/new
 
 AUTO_DTD_DIR  = Auto_DTD
 HTML_DIR      = html
@@ -72,6 +72,7 @@ install: all
 	-@mkdir ${WEBSITE}/Ref
 	@cp -R html/* ${WEBSITE}/Ref
 	@cp ${PDF_DOC} ${WEBSITE}/DAVE-ML_ref.pdf
+	@cp DAVEfunc.dtd ${WEBSITE}
 
 clean:
 	@cd ${AUTO_DTD_DIR} && $(MAKE) clean

@@ -5,11 +5,9 @@
 # Creates both new .DTD and new DocBook reference section from .xml source file
 #
 # 030711 Bruce Jackson <mailto:e.b.jackson@nasa.gov>
+# 2011-01-06 Removed install target (and WEBSITE def)
 #
 
-ifndef WEBSITE
-  WEBSITE = /Users/bjax/Documents/WebSites/DAVE_Web_Site/DTDs/incoming
-endif
 
 SCHEMA_DIR =..
 TRANG_DIR  = ~/downloaded_sw/trang
@@ -37,13 +35,6 @@ $(SCHEMA_DIR)/DAVEfunc.dtd: DAVEfunc_auto.dtd
 DAVEfunc_ref_auto.xml: DAVEfunc_dtd.xml xml2db.xsl
 	@echo "Making DocBook appendix..."
 	@java -jar ${XALAN}/xalan.jar -in DAVEfunc_dtd.xml -xsl xml2db.xsl -out DAVEfunc_ref_auto.xml
-
-install: make
-	@echo "Copying new DTD to Web directory..."
-	@mkdir -p ${WEBSITE}
-	@cp DAVEfunc_auto.dtd ${WEBSITE}/DAVEfunc.dtd
-	@echo "Copying new Relax NG to nxml-mode directory..."
-	@cp DAVEfunc.rnc ${NXML-MODE}/DAVEfunc.rnc
 
 clean:
 	-rm DAVEfunc_auto.dtd
