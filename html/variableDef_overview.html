@@ -84,18 +84,18 @@ span.off     {  }
 	      <a id="d0e3117" class="indexterm"/>
               <code class="sgmltag-element">units</code>
             </span></dt><dd><p>
-		The units-of-measure for the signal, using the AIAA standard units convention <a href="biblio.html#AIAA10">[<span class="citation">AIAA10</span>]</a>.
+		The units-of-measure for the signal, using the AIAA standard units convention <a href="biblio.html#AIAA11">[<span class="citation">AIAA11</span>]</a>.
 	      </p></dd><dt><span class="term">
 	      <a id="d0e3136" class="indexterm"/>
               <code class="sgmltag-element">axisSystem</code>
             </span></dt><dd><p>
 		An optional indicator of the axis system (body, inertial, etc.) in which the signal
-		is measured. See <a href="biblio.html#AIAA10">[<span class="citation">AIAA10</span>]</a> or <a href="conventions.html" title="6.5. Additional DAVE-ML conventions">Section 6.5, “Conventions”</a> below for recommended practice for nomenclature.
+		is measured. See <a href="biblio.html#AIAA11">[<span class="citation">AIAA11</span>]</a> or <a href="conventions.html" title="6.5. Additional DAVE-ML conventions">Section 6.5, “Conventions”</a> below for recommended practice for nomenclature.
 	      </p></dd><dt><span class="term">
 	      <a id="d0e3157" class="indexterm"/>
               <code class="sgmltag-element">sign</code>
             </span></dt><dd><p>An optional indicator of which direction is considered positive (+RWD, +UP,
-              etc.). See <a href="biblio.html#AIAA10">[<span class="citation">AIAA10</span>]</a> or the section on
+              etc.). See <a href="biblio.html#AIAA11">[<span class="citation">AIAA11</span>]</a> or the section on
               <a href="conventions.html" title="6.5. Additional DAVE-ML conventions">Section 6.5, “Conventions”</a> below for recommended practice for abbreviations.</p></dd><dt><span class="term">
 	      <a id="d0e3178" class="indexterm"/>
               <code class="sgmltag-element">alias</code>
@@ -118,7 +118,7 @@ span.off     {  }
 		value is determined. If present, this attribute implies a one-sided minimum value
 		limiter that is applied to the final value of the variable. If the minimum value is
 		greater than a sibling <code class="sgmltag-element">maxValue</code> attribute the result is
-		undetermined.
+		undetermined. This attribute must be a string representing a constant numeric value.
 	      </p></div></dd><dt><span class="term">
 	      <a id="d0e3241" class="indexterm"/>
 	      <code class="sgmltag-element">maxValue</code>
@@ -127,7 +127,8 @@ span.off     {  }
 		value is determined. If present, this attribute implies a one-sided maximum value
 		limiter that is applied to the final value of the variable. If the maximum value is
 		lesser than a sibling <code class="sgmltag-element">minValue</code> attribute the result is
-		undetermined.
+		undetermined.  This attribute must be a string representing a constant numeric
+		value.
 	      </p></div></dd></dl></div><div class="variablelist"><p class="title"><b>
             <a href="variableDef.html" title="variableDef"><code class="sgmltag-element">variableDef</code></a> sub-elements: 
 	  </b></p><dl><dt><span class="term">
@@ -202,7 +203,7 @@ span.off     {  }
               <a href="isStdAIAA.html" title="isStdAIAA"><code class="sgmltag-element">isStdAIAA</code></a>
             </span></dt><dd><p>This optional element, if present, signifies that this variable is one of the
                 standard AIAA simulation variable names that are defined as Annex A to 
-		[<span class="citation"><a href="biblio.html#AIAA10">AIAA10</a></span>]. 
+		[<span class="citation"><a href="biblio.html#AIAA11">AIAA11</a></span>]. 
 		Such identification should make it easier for the importing process to
                 connect this variable (probably an input or output of the model) to the appropriate
                 variable to/from the user's simulation framework.</p></dd><dt><span class="term">
@@ -275,7 +276,7 @@ span.off     {  }
 	      </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="vd1-note-3"/><a href="#vd1-note-3-co"><img src="images/callouts/4.png" alt="4" border="0"/></a> </td><td valign="top" align="left"><p>The optional <code class="sgmltag-element">isStdAIAA</code> sub-element indicates this signal is
               one of the predefined standard variables that most simulation facilities define in
               their equations of motion code. The <code class="sgmltag-element">name</code> attribute should
-              correspond to the standard AIAA parameter name from Annex A of [<span class="citation"><a href="biblio.html#AIAA10">AIAA10</a></span>] or subsequent standards document</p></td></tr><tr><td width="5%" valign="top" align="left"><a id="vd1-note-4"/><a href="#vd1-note-4-co"><img src="images/callouts/5.png" alt="5" border="0"/></a> </td><td valign="top" align="left"><p>
+              correspond to the standard AIAA parameter name from Annex A of [<span class="citation"><a href="biblio.html#AIAA11">AIAA11</a></span>] or subsequent standards document</p></td></tr><tr><td width="5%" valign="top" align="left"><a id="vd1-note-4"/><a href="#vd1-note-4-co"><img src="images/callouts/5.png" alt="5" border="0"/></a> </td><td valign="top" align="left"><p>
 		The mandatory <code class="sgmltag-element">units</code> attribute describes the units of measure of
 		the variable. See <a href="uofm.html" title="6.5.6. Units-of-measure abbreviation">Section 6.5.6, “Units”</a> below for a recommended list of
 		units-of-measure abbreviations.
@@ -468,4 +469,4 @@ span.off     {  }
 		Note the specific URI that uniquely identifies this function; it is also the URL
 		(web address) of the documentation of the interpretation of the
 		<span class="emphasis"><em>atan2</em></span> function.
-	      </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="vd5-note-3"/><a href="#vd5-note-3-co"><img src="images/callouts/3.png" alt="3" border="0"/></a> </td><td valign="top" align="left"><p> BETA is the <code class="sgmltag-element">varID</code> of a previously defined variable. </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="vd5-note-4"/><a href="#vd5-note-4-co"><img src="images/callouts/4.png" alt="4" border="0"/></a> </td><td valign="top" align="left"><p> ALPHA is the <code class="sgmltag-element">varID</code> of a previously defined variable. </p></td></tr></table></div></div></div><br class="example-break"/></div><P xmlns="" class="CVSinfo">2010-12-01</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="fileHeader_overview.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="davefunc_overview.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="breakpointDef_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+	      </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="vd5-note-3"/><a href="#vd5-note-3-co"><img src="images/callouts/3.png" alt="3" border="0"/></a> </td><td valign="top" align="left"><p> BETA is the <code class="sgmltag-element">varID</code> of a previously defined variable. </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="vd5-note-4"/><a href="#vd5-note-4-co"><img src="images/callouts/4.png" alt="4" border="0"/></a> </td><td valign="top" align="left"><p> ALPHA is the <code class="sgmltag-element">varID</code> of a previously defined variable. </p></td></tr></table></div></div></div><br class="example-break"/></div><P xmlns="" class="CVSinfo">2011-01-06</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="fileHeader_overview.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="davefunc_overview.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="breakpointDef_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

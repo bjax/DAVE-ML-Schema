@@ -3,14 +3,14 @@
                    Dynamic Aerospace Vehicle Exchange DTD            
                         Function Data Representation                   
                                                                 
-                              Version: 2.0                            
-                            01 December 2010                                       
+                              Version: 2.0 Release Candidate 4                             
+                            6 January 2011                                       
                                                                 
     This DTD module is identified by these PUBLIC and SYSTEM       
     identifiers:                                                   
                                                                 
     PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" 
-    SYSTEM "http://daveml.org/DTDs/2p0/DAVEfunc.dtd"
+    SYSTEM "http://daveml.org/DTDs/2p0RC4/DAVEfunc.dtd"
                                                                 
     Developed by:
 
@@ -143,6 +143,10 @@
       within the specified bound(s). These attributes imply a one- or
       two-sided limiter function downstream of any specified
       calculation, input signal, or initial value.
+
+      Min and max attributes may only be fixed numeric values. To
+      provide variable limits, the modeler should employ the piecewise
+      MathML element in a calculation subelement.
     
     
      ================================================================= -->

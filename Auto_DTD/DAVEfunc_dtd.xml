@@ -14,14 +14,14 @@
                    Dynamic Aerospace Vehicle Exchange DTD            
                         Function Data Representation                   
                                                                 
-                              Version: 2.0                            
-                            15 December 2010                                       
+                              Version: 2.0 Release Candidate 4                             
+                            6 January 2011                                       
                                                                 
     This DTD module is identified by these PUBLIC and SYSTEM       
     identifiers:                                                   
                                                                 
     PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" 
-    SYSTEM "http://daveml.org/DTDs/2p0/DAVEfunc.dtd"
+    SYSTEM "http://daveml.org/DTDs/2p0RC4/DAVEfunc.dtd"
                                                                 
     Developed by:
 
@@ -198,10 +198,12 @@
       <attdef>An initial and possibly constant numeric value for the signal.</attdef>
     </attr>
     <attr name="minValue" type="cdata" default="implied">
-      <attdef>A minimum value the variable shall be limited to remain greater than or equal to.</attdef>
+      <attdef>A minimum value the variable shall be limited to remain
+      greater than or equal to.</attdef>
     </attr>
     <attr name="maxValue" type="cdata" default="implied">
-      <attdef>A maximum value the variable shall be limited to remain less than or equal to.</attdef>
+      <attdef>A maximum value the variable shall be limited to remain
+      less than or equal to.</attdef>
     </attr>
 
   </el>
@@ -275,9 +277,10 @@
     </attr>
     <attr name="gtID" type="id" default="required"> 
       <attdef>
-	An internal identifier for the table. As of DAVE-ML 2.0, it is required for all tables
-	(previously was required only if the table was to be be reused by another function or was
-	defined outside of a function.
+	An internal identifier for the table. As of DAVE-ML 2.0, it is
+	required for all tables (previously was required only if the
+	table was to be be reused by another function or was defined
+	outside of a function.
       </attdef>
     </attr>
     <attr name="units" type="cdata" default="implied">
