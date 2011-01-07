@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE DAVEfunc PUBLIC "-//AIAA/DTD for Flight Dynamic Models - Functions 2.0//EN" 
+                "file:/Users/ebjackso/Documents/Projects/DAVE/Schema/DAVEfunc.dtd">
+<DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
+    <fileHeader>
+        <author name="Bruce Jackson" org="NASA Langley Research Center" 
+            email="Bruce.Jackson@nasa.gov">
+        </author>
+        <creationDate date="2011-01-06"/>
+        <fileVersion>2011-01-06 (orig rev)</fileVersion>
+        <description>
+            
+            An example / test model for DAVE-ML toolsets.
+            
+            This file contains examples of a limited variable with 
+            various combinations of upper and lower limits.
+            
+        </description>
+    </fileHeader>
+    <variableDef name="input" varID="in" units="nd">
+        <description>
+            This constant value is an input to all the limited outputs.
+        </description>
+        <isInput/>
+    </variableDef>
+    <variableDef name="unlimited output" varID="out_noLim" units="nd">
+        <description>
+            This output is simply a passthru of the input without limits
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <times/>
+                    <cn>1.0</cn>
+                    <ci>in</ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="one-sided lower limited output" varID="out_LowLim" units="nd" minValue="-1.0">
+        <description>
+            This output has a minimum limit of -1.0
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <times/>
+                    <cn>1.0</cn>
+                    <ci>in</ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="one-sided upper limited output" varID="out_HighLim" units="nd" maxValue="+1.0">
+        <description>
+            This output has a maximum limit of +1.0
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <times/>
+                    <cn>1.0</cn>
+                    <ci>in</ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="double-sided limited output" varID="out_BothLim" units="nd" minValue="-1.0" maxValue="+1.0">
+        <description>
+            This output has both a minimum limit of -1.0
+            and a maximum limit of +1.0
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <times/>
+                    <cn>1.0</cn>
+                    <ci>in</ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <checkData>
+        <staticShot name="below lower limit">
+            <checkInputs>
+                <signal>
+                    <signalName>input</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-5.0</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>unlimited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>one-sided lower limited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-1.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>one-sided upper limited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>double-sided limited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-1.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+        <staticShot name="at lower limit">
+            <checkInputs>
+                <signal>
+                    <signalName>input</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-1.0</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>unlimited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-1.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>one-sided lower limited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-1.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>one-sided upper limited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-1.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>double-sided limited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-1.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+        <staticShot name="between limits">
+            <checkInputs>
+                <signal>
+                    <signalName>input</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.0</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>unlimited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>one-sided lower limited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>one-sided upper limited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>double-sided limited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+        <staticShot name="at upper limits">
+            <checkInputs>
+                <signal>
+                    <signalName>input</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+1.0</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>unlimited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+1.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>one-sided lower limited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+1.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>one-sided upper limited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+1.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>double-sided limited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+1.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+        <staticShot name="above upper limits">
+            <checkInputs>
+                <signal>
+                    <signalName>input</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+5.0</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>unlimited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>one-sided lower limited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>one-sided upper limited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+1.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>double-sided limited output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+1.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+
+    </checkData>
+    
+</DAVEfunc>
