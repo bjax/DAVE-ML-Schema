@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE DAVEfunc PUBLIC "-//AIAA/DTD for Flight Dynamic Models - Functions 2.0//EN" 
-                "file:/Users/ebjackso/Documents/Projects/DAVE/Schema/DAVEfunc.dtd">
+<!DOCTYPE DAVEfunc PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" 
+                "DAVEfunc.dtd">
 <DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
     <fileHeader>
         <author name="Bruce Jackson" org="NASA Langley Research Center" 
             email="Bruce.Jackson@nasa.gov">
         </author>
-        <creationDate date="2011-01-06"/>
-        <fileVersion>2011-01-06 (orig rev)</fileVersion>
+        <creationDate date="2011-01-07"/>
+        <fileVersion>2011-01-07 (initial rev)</fileVersion>
         <description>
             
             An example / test model for DAVE-ML toolsets.
