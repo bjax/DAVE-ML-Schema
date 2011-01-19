@@ -19,6 +19,8 @@ export XML_CATALOG_FILES:=./davefunc_catalog.xml
 
 VPATH         = $(EXAMPLES_DIR):$(F16_DIR):$(HL20_DIR)
 
+# Note file ends with .xml to generate local version that's been lint-picked
+
 MODELS = \
          F16_aero.xml                      \
          HL20_aero.xml                     \
@@ -33,6 +35,8 @@ MODELS = \
          uncertain_variable.xml            \
          uncertain_variable_asym.xml       \
          uncertain_variable_table.xml      \
+         limited_variableDef.xml           \
+         unary_and_binary_minus.xml        \
 
 make: $(MODELS)
 

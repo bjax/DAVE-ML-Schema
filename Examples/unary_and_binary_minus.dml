@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE DAVEfunc PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" 
+                "DAVEfunc.dtd">
+<DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
+    <fileHeader>
+        <author name="Bruce Jackson" org="NASA Langley Research Center" 
+            email="Bruce.Jackson@nasa.gov">
+        </author>
+        <creationDate date="2011-01-19"/>
+        <fileVersion>2011-01-19 (initial rev)</fileVersion>
+        <description>
+            
+            An example / test model for DAVE-ML toolsets.
+            
+            This file contains examples of calculations with both unary and binary MathML minus operations.
+            
+        </description>
+    </fileHeader>
+    <variableDef name="input1" varID="in1" units="nd">
+        <description>
+            This constant value is the negative of the first output and the minuend for the third output
+        </description>
+        <isInput/>
+    </variableDef>
+    <variableDef name="input2" varID="in2" units="nd">
+        <description>
+            This constant value is the negative of the second output and the subtrahend for the third output
+        </description>
+        <isInput/>
+    </variableDef>
+    <variableDef name="minus_input1" varID="out1" units="nd">
+        <description>
+            This output is the negative (unary minus) of the first input
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <minus/>
+                    <ci>in1</ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="minus_input2" varID="out2" units="nd">
+        <description>
+            This output is the negative (unary minus) of the second input
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <minus/>
+                    <ci>in2</ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="diff_1_minus_2" varID="diff" units="nd">
+        <description>
+            This output represents input 1 - input 2 (binary minus)
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <minus/>
+                    <ci>in1</ci>
+                    <ci>in2</ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <checkData>
+        <staticShot name="test set 1">
+            <checkInputs>
+                <signal>
+                    <signalName>input1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-5.0</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+5.0</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>minus_input1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>minus_input2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>diff_1_minus_2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-10.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+        <staticShot name="test set 2">
+            <checkInputs>
+                <signal>
+                    <signalName>input1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+5.0</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-5.0</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>minus_input1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>minus_input2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>diff_1_minus_2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+10.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+        <staticShot name="test set 3">
+            <checkInputs>
+                <signal>
+                    <signalName>input1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+5.0</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+5.0</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>minus_input1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>minus_input2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>diff_1_minus_2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+        <staticShot name="test set 4">
+            <checkInputs>
+                <signal>
+                    <signalName>input1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-5.0</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-5.0</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>minus_input1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>minus_input2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>diff_1_minus_2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+    </checkData>
+    
+</DAVEfunc>
