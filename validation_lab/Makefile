@@ -25,6 +25,7 @@ MODELS = \
          F16_aero.xml                      \
          HL20_aero.xml                     \
          aero_cm.xml                       \
+	 atmos_76.xml                      \
          alpha_beta_to_alphaT_phi.xml      \
          simple_aero.xml                   \
          simplest_aero.xml                 \
