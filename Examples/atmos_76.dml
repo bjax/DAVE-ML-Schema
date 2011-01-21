@@ -109,7 +109,7 @@
                     <apply>
                         <power/>
                         <apply>
-                            <sum/>
+                            <plus/>
                             <ci>t_amb_F</ci>
                             <ci>DEGR_AT_0_DEGF</ci>
                         </apply>                  <!-- t_amb_F + DEGR_AT_0_DEGF -->
@@ -129,7 +129,7 @@
         <calculation>
             <math>
                 <apply>
-                    <sum/>
+                    <plus/>
                     <cn>32.0</cn>
                     <apply>
                         <divide/>
