@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE DAVEfunc 
+          PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" 
+          "http://www.daveml.org/DTDs/2p0/DAVEfunc.dtd">
+<DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
+  <fileHeader>
+    <author name="Bruce Jackson" org="NASA Langley Research Center"
+            email="e.b.jackson@nasa.gov"/>
+    <creationDate date="2011-01-21"/>
+    <fileVersion>Initial version, 2011-01-21</fileVersion>		
+    <description>
+      Standard 1976 atmosphere.
+      Based on tables built for iOS app, "FlightMechanic", by Bruce Jackson dated 2010-08-07.
+    </description>
+
+    <reference refID="REF01" 
+	       author="NOASS, NASA, USAF Joint Publication" 
+	       title="US Standard Atmosphere, 1976"
+	       accession="" date="1976-01-01">
+        <description>
+            Data hand-entered from Table I: Geometric Altitude, Metric Units, p53ff
+        </description>
+    </reference>
+
+    <reference refID="REF02" 
+	       author="Shapiro, Ascher H." 
+	       title="The Dynamics and Thermodynamics of Compressible Flow, Volume I"
+	       accession="Ronald Press, New York" date="1953-01-01">
+        <description>
+            Used equation 3.6 on page 48 for relationship between temperature and speed-of-sound
+        </description>
+    </reference>
+  </fileHeader>
+    
+    <!-- input variables -->
+    
+    <variableDef name="GeometricAltitude_ft" varID="alt_ft" units="ft">
+        <isInput/>
+    </variableDef>
+    
+    <!-- local constants -->
+
+    <variableDef name="SeaLevelPressure_lbf_ft2" varID="SEA_LEVEL_PRESSURE_psf" units="lbf_ft2"
+        initialValue="2116.22">
+        <description>
+            Sea level pressure in lb/ft2
+        </description>
+    </variableDef>
+    
+    <variableDef name="dgRAt0dgF" varID="DEGR_AT_0_DEGF" units="dgR_dgF"
+        initialValue="459.67">
+        <description>
+            Bias value of deg Rankine at 0 deg Farenheit; needed to calculate speed of sound from temperature
+        </description>
+    </variableDef>
+    
+    <!-- intermediate variables -->
+
+    <variableDef name="GeometricAltitude_m" varID="Z_m" units="m" minValue="-1000" maxValue="85500">
+        <description>
+            Convert input altitude, in feet, to meters, for function independent value
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <times/>
+                    <ci>alt_ft</ci>
+                    <cn>0.3048</cn>
+                </apply>
+            </math>
+        </calculation>
+    </variableDef>
+    
+    <variableDef name="AmbientTemperature_dgC" varID="t_amb_C" units="">
+        <description>
+            Output from table is metric
+        </description>
+        <isOutput/>
+    </variableDef>
+    
+    <variableDef name="AmbientPressureRatioToSeaLevel" varID="p_p0" units="nd">
+        <description>
+            Output from table, but only used locally to calculate ambient pressure output
+        </description>
+    </variableDef>
+    
+    <!-- output variables -->
+
+    <variableDef name="RatioOfDensityToSeaLevel_nd" varID="sigma" units="nd">
+        <description>
+            Direct output from table without conversion
+        </description>
+        <isOutput/>
+    </variableDef>
+    
+    <variableDef name="SpeedOfSound_fps" varID="v_sound_fps" units="ft_s">
+        <description>
+            Calculated from ambient temperature using equation 3.6 from REF02
+            
+            C equivalent:
+            
+            *v_sound_fps = 49.02*pow(t_amb_F + DEGR_AT_0_DEGF,0.5);
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <times/>
+                    <cn>49.02</cn>
+                    <apply>
+                        <power/>
+                        <apply>
+                            <sum/>
+                            <ci>t_amb_F</ci>
+                            <ci>DEGR_AT_0_DEGF</ci>
+                        </apply>                  <!-- t_amb_F + DEGR_AT_0_DEGF -->
+                        <cn>0.5</cn>
+                    </apply>                  <!-- pow(t_amb_F + DEGR_AT_0_DEGF, 0.5) -->
+                </apply>                <!-- 49.02*pow(t_amb_F + DEGR_AT_0_DEGF, 0.5) -->
+            </math>
+        </calculation>
+        
+        <isOutput/>
+    </variableDef>
+    
+    <variableDef name="AmbientTemperature_dgF" varID="t_amb_F" units="dgF">
+        <description>
+            Convert table output, in deg C, to deg F
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <sum/>
+                    <cn>32.0</cn>
+                    <apply>
+                        <divide/>
+                        <apply>
+                            <times/>
+                            <ci>t_amb_C</ci>
+                            <cn>9.0</cn>
+                        </apply>             <!-- t_amb_C * 9.0 -->
+                        <cn>5.0</cn>
+                    </apply>                 <!-- t_amb_C * 9.0 / 5.0 -->
+                </apply>              <!-- 32.0 + t_amb_C * 9.0 / 5.0 -->
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    
+    <variableDef name="AmbientPressure_lbf_ft2" varID="p_amb_psf" units="lbf_ft2">
+        <description>
+            Converts the ambient pressure ratio found in the tables (p_p0) to English units
+            by multiplying by standard ambient sea level pressure (SEA_LEVEL_PRESSURE_psf)
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <times/>
+                    <ci>SEA_LEVEL_PRESSURE_psf</ci>
+                    <ci>p_p0</ci>
+                </apply>          <!-- SEA_LEVEL_PRESSURE_psf * p_p0 -->
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+
+    <!-- Only one breakpoint set: geometric altitude in meters -->
+
+    <breakpointDef bpID="Z_m_pts">
+      <description>
+        Geometric altitude, Z, breakpoint set in meters
+      </description>
+      <bpVals>
+	  -1000.0, -500.0, 0.0, 1000.0, 1500.0, 2000.0, 2500.0, 3000.0, 3500.0, 4000.0, 4500.0,
+	  5000.0, 5500.0, 6000.0, 6500.0, 7000.0, 7500.0, 8000.0, 8500.0, 9000.0, 9500.0, 10000.0,
+	  10500.0, 11000.0, 11100.0, 12000.0, 13000.0, 14000.0, 15000.0, 16000.0, 17000.0, 18000.0,
+	  19000.0, 20000.0, 20100.0, 21000.0, 22000.0, 23000.0, 24000.0, 25000.0, 26000.0, 27000.0,
+	  28000.0, 29000.0, 30000.0, 31000.0, 32000.0, 33000.0, 34000.0, 35000.0, 36000.0, 37000.0,
+	  38000.0, 39000.0, 40000.0, 41000.0, 42000.0, 43000.0, 44000.0, 45000.0, 46000.0, 47400.0,
+	  48000.0, 50000.0, 51000.0, 51500.0, 52000.0, 53000.0, 54000.0, 55000.0, 56000.0, 57000.0,
+	  58000.0, 59000.0, 60000.0, 61000.0, 62000.0, 63000.0, 64000.0, 65000.0, 66000.0, 67000.0,
+	  68000.0, 69000.0, 70000.0, 71000.0, 72000.0, 73000.0, 74000.0, 75000.0, 76000.0, 77000.0,
+	  78000.0, 79000.0, 80000.0, 81000.0, 82000.0, 83000.0, 84000.0, 85000.0, 85500.0
+      </bpVals>
+    </breakpointDef>
+
+    <!-- Function definition tables for temp, pressure ratio and density ratio -->
+    
+    <griddedTableDef gtID="T_dgC_table">
+        <description>
+            1976 atmosphere table I ambient temperatures in degrees C
+        </description>
+        <breakpointRefs>
+            <bpRef bpID="Z_m_pts"/>
+        </breakpointRefs>
+        <dataTable>
+	  21.501, 18.250, 15.000, 8.501, 5.252, 2.004, -1.244, -4.491, -7.737, -10.984, -14.229,
+	  -17.474, -20.719, -23.963, -27.207, -30.450, -33.693, -36.935, -40.176, -43.417, -46.658,
+	  -49.898, -53.137, -56.376, -56.500, -56.500, -56.500, -56.500, -56.500, -56.500, -56.500,
+	  -56.500, -56.500, -56.500, -56.463, -55.569, -54.576, -53.583, -52.590, -51.598, -50.606,
+	  -49.614, -48.623, -47.632, -46.641, -45.650, -44.660, -42.177, -39.407, -36.637, -33.686,
+	  -31.100, -28.332, -25.566, -22.800, -20.036, -17.272, -14.509, -11.747, -8.986, -6.225,
+	  -2.500, -2.500, -2.500, -2.500, -2.741, -4.119, -6.873, -9.626, -12.379, -15.131, -17.882,
+	  -20.632, -23.381, -26.129, -28.876, -31.623, -34.369, -37.114, -39.858, -42.601, -45.343,
+	  -48.085, -50.825, -53.565, -56.304, -58.887, -60.842, -62.797, -64.751, -66.704, -68.657,
+	  -70.609, -72.560, -74.511, -76.462, -78.411, -80.360, -82.309, -84.257, -85.230
+            
+        </dataTable>
+    </griddedTableDef>
+    
+    <griddedTableDef gtID="P_P0_table">
+        <description>
+            1976 atmosphere table I ambient pressure ratios (relative to sea level)
+        </description>
+        <breakpointRefs>
+            <bpRef bpID="Z_m_pts"/>
+        </breakpointRefs>
+        <dataTable>
+	  1.1244e+00, 1.0607e+00, 1.0000e+00, 8.8700e-01, 8.3453e-01, 7.8461e-01, 7.3715e-01,
+	  6.9204e-01, 6.4920e-01, 6.0854e-01, 5.6997e-01, 5.3341e-01, 4.9878e-01, 4.6600e-01,
+	  4.3499e-01, 4.0567e-01, 3.7798e-01, 3.5185e-01, 3.2720e-01, 3.0397e-01, 2.8210e-01,
+	  2.6153e-01, 2.4219e-01, 2.2403e-01, 2.2053e-01, 1.9145e-01, 1.6362e-01, 1.3985e-01,
+	  1.1953e-01, 1.0217e-01, 8.7340e-02, 7.4663e-02, 6.3829e-02, 5.4570e-02, 5.3721e-02,
+	  4.6671e-02, 3.9945e-02, 3.4215e-02, 2.9328e-02, 2.5158e-02, 2.1597e-02, 1.8553e-02,
+	  1.5950e-02, 1.3722e-02, 1.1813e-02, 1.0177e-02, 8.7743e-03, 7.5727e-03, 6.5473e-03,
+	  5.6708e-03, 4.9200e-03, 4.2758e-03, 3.7220e-03, 3.2452e-03, 2.8338e-03, 2.4784e-03,
+	  2.1709e-03, 1.9042e-03, 1.6728e-03, 1.4615e-03, 1.2962e-03, 1.0877e-03, 1.0095e-03,
+	  7.8735e-04, 6.9536e-04, 6.5349e-04, 6.1401e-04, 5.4156e-04, 4.7705e-04, 4.1969e-04,
+	  3.6873e-04, 3.2353e-04, 2.8348e-04, 2.4803e-04, 2.1671e-04, 1.8907e-04, 1.6470e-04,
+	  1.4325e-04, 1.2441e-04, 1.0786e-04, 9.3372e-05, 8.0688e-05, 6.9607e-05, 5.9942e-05,
+	  5.1526e-05, 4.4210e-05, 3.7861e-05, 3.2373e-05, 2.7642e-05, 2.3569e-05, 2.0067e-05,
+	  1.7060e-05, 1.4481e-05, 1.2274e-05, 1.0387e-05, 8.7761e-06, 7.4028e-06, 6.3421e-06,
+	  5.2410e-06, 4.3985e-06, 4.0269e-06
+        </dataTable>
+    </griddedTableDef>
+ 
+    <griddedTableDef gtID="sigma_table">
+        <description>
+            1976 atmosphere table I density ratios (relative to sea level)
+        </description>
+        <breakpointRefs>
+            <bpRef bpID="Z_m_pts"/>
+        </breakpointRefs>
+        <dataTable>
+	    1.0996e+00, 1.0489e+00, 1.0000e+00, 9.0748e-01, 8.6376e-01, 8.2168e-01, 7.8119e-01,
+	    7.4225e-01, 7.0482e-01, 6.6885e-01, 6.3432e-01, 6.0117e-01, 5.6936e-01, 5.3887e-01,
+	    5.0964e-01, 4.8165e-01, 4.5485e-01, 4.2921e-01, 4.0470e-01, 3.8128e-01, 3.5891e-01,
+	    3.3756e-01, 3.1720e-01, 2.9780e-01, 2.9332e-01, 2.5464e-01, 2.1763e-01, 1.8601e-01,
+	    1.5898e-01, 1.3589e-01, 1.1616e-01, 9.9304e-02, 8.4894e-02, 7.2580e-02, 7.1439e-02,
+	    6.1808e-02, 5.2661e-02, 4.4903e-02, 3.8317e-02, 3.2722e-02, 2.7965e-02, 2.3917e-02,
+	    2.0470e-02, 1.7533e-02, 1.5029e-02, 1.2891e-02, 1.1065e-02, 9.4474e-03, 8.0714e-03,
+	    6.9089e-03, 5.9248e-03, 5.0902e-03, 4.3809e-03, 3.7769e-03, 3.2618e-03, 2.8216e-03,
+	    2.4447e-03, 2.1216e-03, 1.8440e-03, 1.6051e-03, 1.3993e-03, 1.1581e-03, 1.0749e-03,
+	    8.3827e-04, 7.4033e-04, 6.9637e-04, 6.5765e-04, 5.8605e-04, 5.2164e-04, 4.6376e-04,
+	    4.1180e-04, 3.6521e-04, 3.2348e-04, 2.8615e-04, 2.5280e-04, 2.2303e-04, 1.9650e-04,
+	    1.7288e-04, 1.5188e-04, 1.3323e-04, 1.1670e-04, 1.0206e-04, 8.9118e-05, 7.7690e-05,
+	    6.7616e-05, 5.8747e-05, 5.0917e-05, 4.3938e-05, 3.7866e-05, 3.2589e-05, 2.8009e-05,
+	    2.4039e-05, 2.0603e-05, 1.7632e-05, 1.5068e-05, 1.2857e-05, 1.0954e-05, 9.3178e-06,
+	    7.9134e-06, 6.7099e-06, 6.1747e-06
+        </dataTable>
+    </griddedTableDef>
+    
+    <function name="T_dgC_function">
+        <description>
+            Table lookup for ambient temperature; returns ambient temperature in degrees C 
+            (in variable t_amb_C) based on input value of Z_m (geometric altitude, meters)
+            using the breakpoint values in Z_m_pts and the table defined in T_dgC_table.
+        </description>
+        <independentVarRef varID="Z_m"/>
+        <dependentVarRef varID="t_amb_C"/>
+        <functionDefn name="T_dgC_funcdef">
+            <griddedTableRef gtID="T_dgC_table"/>
+        </functionDefn>
+    </function>
+    
+    <function name="P_P0_function">
+        <description>
+            Table lookup for pressure ratio; returns ambient pressure normalized with SL pressure
+            (in variable p_p0) based on input value of Z_m (geometric altitude, meters)
+            using the breakpoint values in Z_m_pts and the table defined in P_P0_table.
+        </description>
+        <independentVarRef varID="Z_m"/>
+        <dependentVarRef varID="p_p0"/>
+        <functionDefn name="P_P0_funcdef">
+            <griddedTableRef gtID="P_P0_table"/>
+        </functionDefn>
+    </function>
+    
+    <function name="sigma_function">
+        <description>
+            Table lookup for density ratio; returns density normalized with SL density
+            (in variable sigma) based on input value of Z_m (geometric altitude, meters)
+            using the breakpoint values in Z_m_pts and the table defined in sigma_table.
+        </description>
+        <independentVarRef varID="Z_m"/>
+        <dependentVarRef varID="sigma"/>
+        <functionDefn name="sigma_funcdef">
+            <griddedTableRef gtID="sigma_table"/>
+        </functionDefn>
+    </function>
+    
+</DAVEfunc>
