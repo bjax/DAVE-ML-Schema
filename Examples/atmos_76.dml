@@ -7,7 +7,7 @@
     <author name="Bruce Jackson" org="NASA Langley Research Center"
             email="e.b.jackson@nasa.gov"/>
     <creationDate date="2011-01-21"/>
-    <fileVersion>Initial version, 2011-01-21</fileVersion>		
+    <fileVersion>Mod A, 2011-01-25</fileVersion>		
     <description>
       Standard 1976 atmosphere.
       Based on tables built for iOS app, "FlightMechanic", by Bruce Jackson dated 2010-08-07.
@@ -30,6 +30,18 @@
             Used equation 3.6 on page 48 for relationship between temperature and speed-of-sound
         </description>
     </reference>
+
+    <modificationRecord modID="A" date="2011-01-25">
+      <author name="Bruce Jackson" org="NASA Langley Research Center"
+	      email="bruce.jackson@nasa.gov">
+        <address>MS 132 NASA, Hampton, VA 23681</address>
+      </author>
+      <description>
+	Added xmlns="http://www.w3.org/1998/Math/MathML" to
+	&lt;math&gt; elements as required.
+      </description>
+    </modificationRecord>
+
   </fileHeader>
     
     <!-- input variables -->
@@ -61,7 +73,7 @@
             Convert input altitude, in feet, to meters, for function independent value
         </description>
         <calculation>
-            <math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
                 <apply>
                     <times/>
                     <ci>alt_ft</ci>
@@ -102,7 +114,7 @@
             *v_sound_fps = 49.02*pow(t_amb_F + DEGR_AT_0_DEGF,0.5);
         </description>
         <calculation>
-            <math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
                 <apply>
                     <times/>
                     <cn>49.02</cn>
@@ -127,7 +139,7 @@
             Convert table output, in deg C, to deg F
         </description>
         <calculation>
-            <math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
                 <apply>
                     <plus/>
                     <cn>32.0</cn>
@@ -152,7 +164,7 @@
             by multiplying by standard ambient sea level pressure (SEA_LEVEL_PRESSURE_psf)
         </description>
         <calculation>
-            <math>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
                 <apply>
                     <times/>
                     <ci>SEA_LEVEL_PRESSURE_psf</ci>
