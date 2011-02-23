@@ -580,7 +580,7 @@
     <purpose>Denotes a MathML expression</purpose>
     <descrip>
       The math element denotes MathML 2 content markup and should
-      include the attribute 'xmlns="http://www.w3.org/1998/Math/MathML'
+      include the attribute 'xmlns="http://www.w3.org/1998/Math/MathML"'
     </descrip>
     <attr name="xmlns" type="cdata" default="fixed" value="http://www.w3.org/1999/Math/MathML">
       <attdef>
