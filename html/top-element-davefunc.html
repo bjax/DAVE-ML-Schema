@@ -24,9 +24,9 @@ span.off     {  }
 	usually state variables of the simulation (such as Mach number or angle-of-attack). The
 	outputs from these interpolated tables are combined to represent forces and moments acting
 	on the vehicle due to aerodynamics. 
-      <a id="d0e2075" class="indexterm"/>
-      <a id="d0e2081" class="indexterm"/>
-      <a id="d0e2087" class="indexterm"/>
+      <a id="d0e615" class="indexterm"/>
+      <a id="d0e621" class="indexterm"/>
+      <a id="d0e627" class="indexterm"/>
       </p><p> It is possible, using <code class="sgmltag-element">DAVEfunc</code> and <acronym class="acronym">MathML-2</acronym>
         elements, to completely define an aerodynamic model without use of function tables (by
         mathematical combinations of input variables, such as a polynomial model) but this is not
@@ -34,7 +34,7 @@ span.off     {  }
       </p><p> 
 	A <a href="fileHeader_overview.html" title="6.2.1. The file header element"><code class="sgmltag-element">fileHeader</code></a> element is
 	included to give background and reference data for the represented model.
-	<a id="d0e2107" class="indexterm"/>
+	<a id="d0e647" class="indexterm"/>
       </p><p>
 	Variables, or more properly <span class="emphasis"><em>signals</em></span>, are used to route inputs and
 	calculations through the subsystem model into outputs. Each variable is defined with a <a href="variableDef_overview.html" title="6.2.2. The variable definition element"><code class="sgmltag-element">variableDef</code></a> element. Variables can
@@ -49,15 +49,15 @@ span.off     {  }
 	represent the current value of a function (the <code class="sgmltag-element">dependentVariableDef</code> in a
 	<a href="function_overview.html" title="6.2.6. The function definition element"><code class="sgmltag-element">function</code></a> definition) so the
 	output of functions can be used as inputs to other variables or functions.
-      <a id="d0e2138" class="indexterm"/>
-      <a id="d0e2144" class="indexterm"/>
-      <a id="d0e2148" class="indexterm"/>
+      <a id="d0e678" class="indexterm"/>
+      <a id="d0e684" class="indexterm"/>
+      <a id="d0e688" class="indexterm"/>
       </p><p>
 	Breakpoint definitions, captured in <a href="breakpointDef_overview.html" title="6.2.3. The breakpoint set definition element"><code class="sgmltag-element">breakpointDef</code></a> elements, consist
 	of a list of monotonically increasing floating-point values separated by commas or white
 	space. These sets are referenced by "gridded" function table definitions and may be
 	referenced by more than one <a href="function_overview.html" title="6.2.6. The function definition element"><code class="sgmltag-element">function</code></a> definition.
-      <a id="d0e2162" class="indexterm"/>
+      <a id="d0e702" class="indexterm"/>
       </p><p> 
 	Function table definitions, described by <a href="griddedTableDef_overview.html" title="6.2.4. The gridded table definition element"><code class="sgmltag-element">griddedTableDef</code></a> and <a href="ungriddedTableDef_overview.html" title="6.2.5. The ungridded table definition element"><code class="sgmltag-element">ungriddedTableDef</code></a> elements,
 	generally contain the bulk of data points in an aerodynamics model, and typically represent
@@ -68,9 +68,9 @@ span.off     {  }
 	each dimension's breakpoint, or "ungridded," meaning each data point has a specified
 	coordinate location in n-space. The same table can be reused in several functions, such as a
 	left- and right-aileron moment contribution.
-      <a id="d0e2178" class="indexterm"/>
-      <a id="d0e2184" class="indexterm"/>
-      <a id="d0e2190" class="indexterm"/>
+      <a id="d0e718" class="indexterm"/>
+      <a id="d0e724" class="indexterm"/>
+      <a id="d0e730" class="indexterm"/>
       </p><p> 
 	Function definitions (described by <a href="function_overview.html" title="6.2.6. The function definition element"><code class="sgmltag-element">function</code></a> elements) connect breakpoint
 	sets and data tables to define how an output signal (or dependent variable) should vary with
@@ -78,16 +78,16 @@ span.off     {  }
 	magnitudes, along with extrapolation requirements for out-of-range inputs, can be
 	defined. There is no limit to the number of independent variables, or function
 	dimensionality, of the function.
-      <a id="d0e2202" class="indexterm"/>
-      <a id="d0e2208" class="indexterm"/>
+      <a id="d0e742" class="indexterm"/>
+      <a id="d0e748" class="indexterm"/>
       </p><p>
 	Check-case data (described by a single <a href="checkData_overview.html" title="6.2.7. The checkData element"><code class="sgmltag-element">checkData</code></a> element) can be included
 	to provide information to automatically verify the proper implementation of the model by the
 	recipient. Multiple check-cases can (and should) be specified using multiple <a href="staticShot.html" title="staticShot"><code class="sgmltag-element">staticShot</code> test-case definitions</a>, as well as
 	optional internal signal values within the model to assist in debugging an instantiation of
 	the model by the recipient.
-      <a id="d0e2225" class="indexterm"/>
-      <a id="d0e2231" class="indexterm"/>
+      <a id="d0e765" class="indexterm"/>
+      <a id="d0e771" class="indexterm"/>
 
       </p><p>
         <a href="top-element-davefunc.html#daveml_file_excerpt_fig" title="Figure 1.  Excerpts from an example DAVE-ML file ">Figure 1</a> 
@@ -104,4 +104,4 @@ span.off     {  }
         </a> is to give the gridded table values or ungridded table values inside the <a href="function.html" title="function">
           <code class="sgmltag-element">function</code>
         </a> body, but refer to externally defined breakpoint sets. This allows reuse of the
-        breakpoint sets by other functions but keeps the table data private. </p></div><P xmlns="" class="CVSinfo">2011-01-06</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="top-element.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="top-element.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="davefunc_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+        breakpoint sets by other functions but keeps the table data private. </p></div><P xmlns="" class="CVSinfo">2011-03-25</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="top-element.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="top-element.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="davefunc_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

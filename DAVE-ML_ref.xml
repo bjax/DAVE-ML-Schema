@@ -12,8 +12,8 @@
     <title>Dynamic Aerospace Vehicle Exchange Markup Language (<acronym>DAVE-ML</acronym>)
       Reference</title>
     <titleabbrev>DAVE-ML 2</titleabbrev>
-    <subtitle>Version 2.0 (Release Candidate 4)</subtitle>
-    <releaseinfo>2011-01-06</releaseinfo>
+    <subtitle>Version 2.0</subtitle>
+    <releaseinfo>2011-03-25</releaseinfo>
     <corpauthor>
       <ulink url="https://info.aiaa.org/tac/ASG/MSTC"> AIAA Modeling and
         Simulation Technical Committee </ulink>
@@ -48,20 +48,20 @@
 	verification, and documentation.
       </para>
       <para>
-	This markup language represents the encoding format for BSR/AIAA S-119-201x Flight Dynamic
+	This markup language represents the encoding format for BSR/AIAA S-119-2011 Flight Dynamic
 	Model Exchange Standard <link linkend="AIAA11"><citation>AIAA11</citation></link>.
       </para>
-      <para>
-	This is a draft version of the reference manual for <acronym>DAVE-ML</acronym> syntax and
+      <para revisionflag="changed">
+	This is first release version of the reference manual for <acronym>DAVE-ML</acronym> syntax and
 	markup. <acronym>DAVE-ML</acronym> syntax is specified by the
 	<filename>DAVEfunc.dtd</filename> Document Type Definition (<acronym>DTD</acronym>) file;
 	the version number above refers to the version of the <filename>DAVEfunc.dtd.</filename>
       </para>
-      <para>
-	<acronym>DAVE-ML</acronym> is an open standard, being developed by an informal team of
-	American Institute of Aeronautics and Astronautics (<acronym>AIAA</acronym>) members.
-	Contact the author above for more information or comments regarding refinement of
-	<acronym>DAVE-ML</acronym>.
+      <para revisionflag="changed">
+	<acronym>DAVE-ML</acronym> is an open standard developed by the American Institute of
+	Aeronautics and Astronautics (<acronym>AIAA</acronym>) Modeling and Simulation Technical
+	Committee (<acronym>MSTC</acronym>).  Contact the author above for more information or
+	comments regarding refinement of <acronym>DAVE-ML</acronym>.
       </para>
     </abstract>
   </articleinfo>
@@ -71,13 +71,13 @@
   <sect1 id="changes">
     <title>Changes to this document</title>
     <titleabbrev>Changes</titleabbrev>
-    <para>
-      This section contains a list of changes during the development of the
+    <para revisionflag="changed">
+      This section contains a list of the changes since version 2.0 Release Candidate 4 of the
       <acronym>DAVE-ML</acronym> <acronym>DTD</acronym>.
     </para>
     <sect2 id="changes-20" revisionflag="added">
       <title>Changes since version 2.0RC4</title>
-      <titleabbrev>V2.0 release changes</titleabbrev>
+      <titleabbrev>V2.0 final release changes</titleabbrev>
       <para>
 	This section outlines changes to the DTD and this reference manual since version 2, release
 	candidate 4, was released in January 2011.
@@ -89,7 +89,7 @@
 
       <sect3 id="dtd-changes-20">
 	<title><acronym>DTD</acronym> structural changes since version 2.0RC4</title>
-	<titleabbrev>Version 2 Release DTD changes</titleabbrev>
+	<titleabbrev>Version 2 final release DTD changes</titleabbrev>
 	<para>
 	  <itemizedlist>
 	    <listitem>
@@ -101,918 +101,32 @@
 	</para>
       </sect3>
       <sect3 id="refman-changes-20">
-	<title>Non-structural <acronym>DTD</acronym> and reference manual changes since version 2.0RC3</title>
-	<titleabbrev>Version 2 Release non-DTD changes</titleabbrev>
+	<title>Non-structural <acronym>DTD</acronym> and reference manual changes since version 2.0RC4</title>
+	<titleabbrev>Version 2 final release non-DTD changes</titleabbrev>
 	<para>
 	  <itemizedlist>
 	    <listitem>
 	      <para>
 		Corrected the <link linkend="function_overview">function definition element
 		overview</link> BNF to reflect that <sgmltag>utID</sgmltag>, <sgmltag>gtID</sgmltag>
-		attributes are mandatory in table definitions (as of release candidate 4, but this
-		change was not in the original RC4 reference manual).
+		attributes are mandatory in table definitions (changed went into effect with release
+		candidate 4, but this change was not in the original RC4 reference manual).
+	      </para>
+	    </listitem>
+	    <listitem>
+	      <para>
+		Removed all of the change history except for the most recent version, as it was
+		getting rather longish and inappropriate for this initial release.
+	      </para>
+	    </listitem>
+	    <listitem>
+	      <para>
+		In several places, changed verbiage to indicate S-119 is no longer a draft document.
 	      </para>
 	    </listitem>
 	  </itemizedlist>
 	</para>
       </sect3>
-    </sect2>
-
-    <sect2 id="changes-20rc4">
-      <title>Changes since version 2.0RC3</title>
-      <titleabbrev>V2.0, RC4 changes</titleabbrev>
-      <para>
-	This section outlines changes to the DTD and this reference manual since version 2, release
-	candidate 3, was released in May 2010.
-      </para>
-      <para>
-	The changes are divided into <emphasis>structural</emphasis> changes to the DTD and
-	<emphasis>non-structural</emphasis> changes to the DTD and reference manual.
-      </para>
-
-      <sect3 id="dtd-changes-20rc4">
-	<title><acronym>DTD</acronym> structural changes since version 2.0RC3</title>
-	<titleabbrev>Version 2 Release Candidate 4 DTD changes</titleabbrev>
-	<para>
-	  <itemizedlist>
-	    <listitem>
-	      <para>
-		Made <sgmltag>gtID</sgmltag> and <sgmltag>utID</sgmltag> required attributes of
-		<link linkend="griddedTableDef"><sgmltag>griddedTableDef</sgmltag></link> and <link
-		linkend="ungriddedTableDef"><sgmltag>ungriddedTableDef</sgmltag></link> instead of
-		optional, to make it easier for parsers to deal with the table
-		definitions. Previously these attributes were only required of tables that were to
-		be reused by more than one function, but feedback from several tool implementers
-		made this change desirable.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Changed the definition of the <link
-		linkend="staticShot"><sgmltag>staticShot</sgmltag></link> element to allow zero or more
-		<sgmltag>checkInput</sgmltag> children. Previously at least one input had to be
-		specified in a checkcase, which didn't allow verification of constant-only models
-		with no inputs.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Added optional <sgmltag>minValue</sgmltag> and <sgmltag>maxValue</sgmltag>
-		attributes to the <link linkend="variableDef"><sgmltag>variableDef</sgmltag></link>
-		element so models can specify limits of acceptable ranges of values for inputs,
-		initial values, or calculation results. Also added a paragraph to the <link
-		linkend="independentVarRef"><sgmltag>independentVarRef</sgmltag></link> element
-		description to reinforce that these attributes are independent range constraints
-		that act in series with any subsequent <sgmltag>independentVarRef</sgmltag>'s
-		<sgmltag>min</sgmltag> or <sgmltag>max</sgmltag> range attributes.
-	      </para>
-	    </listitem>
-	  </itemizedlist>
-	</para>
-      </sect3>
-
-      <sect3 id="refman-changes-20rc4">
-	<title>Non-structural <acronym>DTD</acronym> and reference manual changes since version 2.0RC3</title>
-	<titleabbrev>Version 2 Release Candidate 4 non-DTD changes</titleabbrev>
-	<para>
-	  <itemizedlist>
-	    <listitem>
-	      <para>
-		Noted that any <link linkend="math"><sgmltag>math</sgmltag></link> elements should
-		include an <sgmltag>xmlns</sgmltag> attribute with the value of
-		<sgmltag>"http://www.w3.org/1998/Math/MathML"</sgmltag>. This is not a new
-		requirement but helps parsers recognize the MathML namespace. Added this attribute
-		to two examples that contained a <sgmltag>math</sgmltag> element.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Noted that the <link linkend="calculation"><sgmltag>calculation</sgmltag></link>
-		element must contain exactly one <sgmltag>math</sgmltag> subelement.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Added definition of the <link linkend="math"><sgmltag>math</sgmltag></link> MathML2 element.
-	      </para>
-	    </listitem>
-	  </itemizedlist>
-	</para>
-      </sect3>
-    </sect2>
-
-    <sect2 id="changes-20rc3">
-      <title>Changes since version 2.0RC2</title>
-      <titleabbrev>V2.0, RC3 changes</titleabbrev>
-      <para>
-	This section outlines changes to the DTD and this reference manual since version 2, release
-	candidate 2, was released in October 2008.
-      </para>
-      <para>
-	The changes are divided into <emphasis>structural</emphasis> changes to the DTD and
-	<emphasis>non-structural</emphasis> changes to the DTD and reference manual.
-      </para>
-
-      <sect3 id="dtd-changes-20rc3">
-	<title><acronym>DTD</acronym> structural changes since version 2.0RC2</title>
-	<titleabbrev>RC3 DTD changes</titleabbrev>
-	<para>
-	  <itemizedlist>
-	    <listitem>
-	      <para>
-		Corrected the DTD to require at least one <link
-		linkend="staticShot"><sgmltag>staticShot</sgmltag></link> child element of the <link
-		linkend="checkData"><sgmltag>checkData</sgmltag></link> element.
-	      </para>
-	    </listitem>
-	  </itemizedlist>
-	  <itemizedlist>
-	    <listitem>
-	      <para>
-		Changed the DTD logic for inclusion of provenance information for elements
-		<link linkend="griddedTableDef"><sgmltag>griddedTableDef</sgmltag></link>,
-		<link linkend="ungriddedTableDef"><sgmltag>ungriddedTableDef</sgmltag></link>,
-		<link linkend="function"><sgmltag>function</sgmltag></link>,
-		<link linkend="checkData"><sgmltag>checkData</sgmltag></link>, and
-		<link linkend="staticShot"><sgmltag>staticShot</sgmltag></link> from
-<programlisting>
-    ( provenance? | provenanceRef? )
-</programlisting>
-		to
-<programlisting>
-    ( provenance | provenanceRef )?
-</programlisting>
-
-		which is the more correct way to display an optional selection from two
-		choices. However, use of <sgmltag>provenance</sgmltag> or
-		<sgmltag>provenanceRef</sgmltag> is now deprecated for <sgmltag>checkData</sgmltag>
-		elements as described in the non-structural changes below; this change was made for
-		consistency with the other elements that have provenance information.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Added optional, mutually exclusive flag elements <link
-		linkend="isInput"><sgmltag>isInput</sgmltag></link>, <link
-		linkend="isControl"><sgmltag>isControl</sgmltag></link>, and <link
-		linkend="isDisturbance"><sgmltag>isDisturbance</sgmltag></link> to conform with the
-		latest draft of <link linkend="AIAA11"><citation>AIAA11</citation></link>. These
-		flags are intended to help clarify the role of all defined variables and to assist
-		in analyses such as linear model extraction.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Changed the Uniform Resource Identifier (URI) for the <emphasis>atan2</emphasis>
-		function definition to the daveml.org domain.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Changed SYSTEM ID to reflect new daveml.org domain; changed PUBLIC ID from NASA to
-		AIAA.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		In the <acronym>DTD</acronym>, the default DAVE-ML namespace definition was added to
-		the top-level <link linkend="DAVEfunc"><sgmltag>DAVEfunc</sgmltag></link> element to
-		observe a best-practice for <acronym>XML</acronym> <acronym>DTD</acronym>s, at the
-		suggestion of Dan Newman.<indexterm><primary>Newman, Daniel M.</primary></indexterm>
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		In the <acronym>DTD</acronym> and reference manual, changed the <link
-		linkend="bpVals"><sgmltag>bpVals</sgmltag></link> elements to allow white space
-		separation of values in addition to comma separation (which has always been the case
-		for the <link linkend="dataTable"><sgmltag>dataTable</sgmltag></link> 
-		element). Ditto for <link
-		linkend="dependentVarPts"><sgmltag>dependentVarPts</sgmltag></link> and <link
-		linkend=" independentVarPts"><sgmltag>independentVarPts</sgmltag></link>. 
-		This may cause a problem for some existing parsers.
-	      </para>
-	    </listitem>
-	  </itemizedlist>
-	</para>
-	<para>
-	  No other changes have been made to the DAVE-ML grammar since 2.0RC2, but this version of
-	  the <acronym>DTD</acronym> and reference manual include clean-up of a number of
-	  inconsistencies (found by Dennis Linse<indexterm><primary>Linse,
-	  Dennis</primary></indexterm> and Trey Arthur<indexterm><primary>Arthur, Jarvis A.,
-	  III</primary></indexterm>) between the reference manual and element descriptions, as noted
-	  below.
-	</para>
-      </sect3>
-
-      <sect3 id="refman-changes-20rc3">
-	<title>Non-structural <acronym>DTD</acronym> and reference manual changes since version 2.0RC2</title>
-	<titleabbrev>RC3 non-DTD changes</titleabbrev>
-	<para>
-	  <itemizedlist>
-	    <listitem>
-	      <para>
-		Corrected second ungridded table definition example and CLRUD0 function example;
-		reformatted page references from [xx] to (p. xx) in the PDF reference manual, thanks
-		to suggestions by Dennis Linse<indexterm><primary>Linse,
-		Dennis</primary></indexterm>.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Amplified and elaborated on possible values for <sgmltag>interpolate</sgmltag> and
-		<sgmltag>extrapolate</sgmltag> attributes for independent variables of function
-		definitions.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Added  an index to the reference manual.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Removed the sign convention list as this is now in the overlying AIAA draft
-		standard, S-119 <citation>AIAA11</citation>.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Added clarification that, while uncertainty can be applied in multiple places in the
-		model (including input, calculations, functions, and outputs), it is probably not a
-		good practice to do so.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Changed the non-dimensional signal units-of-measure indication from blank or ND to 'nd',
-		in accordance with the latest draft standard <citation>AIAA11</citation>; removed
-		plus sign from front of sign convention since it doesn't always apply and is
-		redundant to the definition.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Added references to earlier standards papers by B. Hildreth
-		<citation>Hildreth94</citation>, <citation>Hildreth98</citation>.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Cleaned up formatting in the element descriptions found in <xref
-		linkend="elementDescriptions"/>; corrected the grammar in the BNF descriptions of
-		the major elements within this text.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Added two sentences to the description of the calculation element, explaining how to
-		tie variables in the model to the MathML expression via the MathML content
-		identifier (<sgmltag>ci</sgmltag>) element. Thanks to Missy
-		Hill<indexterm><primary>Hill, Melissa</primary></indexterm> and Curtis
-		Zimmerman<indexterm><primary>Zimmerman, Curtis J.</primary></indexterm> for pointing
-		out the lack of explanation.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Changed email address for B. Hildreth; added persistent email at daveml.org; changed
-		default Uniform Resource Locator (URL) to daveml.org
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Changed the description of <link linkend="bounds"><sgmltag>bounds</sgmltag></link>
-		element in the <acronym>DTD</acronym> to remove out-of-date reference to
-		[un]griddedTable[Def|Ref] since this is no longer supported. In the reference
-		manual, removed a misleading second bounds element for the uniformPDF element case
-		and added notes to imply the presence of PCDATA (either one or two, depending on the
-		case). Thanks to Dan Newman for prompting this review and
-		change.<indexterm><primary>Newman, Daniel M.</primary></indexterm>
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Did more <acronym>DTD</acronym> clean-up to remove redundant 'optional' specifiers
-		on elements and attributes; made the 'internal identifier' descriptions consistent
-		throughout the <acronym>DTD</acronym> and reference manual; tweaked the style of the
-		reference pages in the reference manual; fixed poor grammar in the
-		<acronym>DTD</acronym>; replaced parentheses with brackets in the
-		<acronym>BNF</acronym> syntax in the reference manual for comments to avoid
-		confusion; reformatted the reference pages in the manual for readability; and added
-		references to W3C on-line documentation where necessary. Thanks to Dennis
-		Linse<indexterm><primary>Linse, Dennis</primary></indexterm> for encouraging the
-		correction of these long-standing inconsistencies and distractions.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Put editorial comments in BNF syntaxes in braces ({}) to avoid confusion with
-		parentheses, which are used to indicate a choice. Thanks to Dennis
-		Linse<indexterm><primary>Linse, Dennis</primary></indexterm> for the catch.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>In the <acronym>DTD</acronym>, a sentence was added to the description of the
-	      deprecated <link linkend="fileCreationDate"><sgmltag>fileCreationDate</sgmltag></link>
-	      element and a similar description was added to the deprecated <link
-	      linkend="functionCreationDate"><sgmltag>functionCreationDate</sgmltag></link> element
-	      mentioning that both of them have been deprecated in version 2.0. The clarification
-	      was made after near-simultaneous suggestions from both Trey Arthur
-	      <indexterm><primary>Arthur, Jarvis A., III</primary></indexterm>and Dan
-	      Newman.<indexterm><primary>Newman, Daniel M.</primary></indexterm></para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Added a paragraph about the <sgmltag>alias</sgmltag> attribute of the <link
-		linkend="variableDef"><sgmltag>variableDef</sgmltag></link> element; it's a valid
-		attribute but was missing an explanation. Thanks to Trey
-		Arthur<indexterm><primary>Arthur, Jarvis A., III</primary></indexterm> for catching
-		this long-standing omission.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Changed the definition of <emphasis>atan2</emphasis> so that the input arguments are
-		not limited to &#xB1;1 and are not referred to as 'sine' and 'cosine' to better
-		match ANSI C. Thanks to Dan Newman <indexterm><primary>Newman, Daniel
-		M.</primary></indexterm>for catching this inconsistency.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Corrected typographical errors in <link
-		linkend="fileHeader"><sgmltag>fileHeader</sgmltag></link>, <link
-		linkend="variableDef"><sgmltag>variableDef</sgmltag></link>, <link
-		linkend="griddedTableDef"><sgmltag>griddedTableDef</sgmltag></link>, <link
-		linkend="ungriddedTableDef"><sgmltag>ungriddedTableDef</sgmltag></link>, and <link
-		linkend="function"><sgmltag>function</sgmltag></link> element schematic overview
-		syntaxes in sections 6.2.1-6.2.6. Thanks to Dennis Linse<indexterm><primary>Linse,
-		Dennis</primary></indexterm> for catching these errors.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para> Added a sentence about the <link linkend="tol">
-	      <sgmltag>tol</sgmltag>
-	      </link> sub-element being an absolute difference to remove ambiguity over its
-	      interpretation. </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		In the reference manual syntax layout, moved the <link linkend="provenance">
-		<sgmltag>provenance</sgmltag></link> and <link linkend="provenanceRef">
-		<sgmltag>provenanceRef</sgmltag></link> sub-elements out of <link
-		linkend="checkData"><sgmltag>checkData</sgmltag></link> and into <link
-		linkend="staticShot"><sgmltag>staticShot</sgmltag></link> sub-elements since
-		<sgmltag>checkData</sgmltag>, a singleton place-holder, doesn't warrant a description
-		but each <sgmltag>staticShot</sgmltag> does.  <sgmltag>provenance</sgmltag> and
-		<sgmltag>provenanceRef</sgmltag> are still in the <acronym>DTD</acronym> for
-		<sgmltag>checkData</sgmltag> but only for backwards compatibility; their use in a
-		<sgmltag>checkData</sgmltag> element is deprecated and may be removed in a future
-		version. Thanks to Dennis Linse<indexterm><primary>Linse,
-		Dennis</primary></indexterm> for prompting this needed change.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para> Added a note to <link
-	      linkend="documentRef"><sgmltag>documentRef</sgmltag></link> <sgmltag>docID</sgmltag>
-	      attribute that it is deprecated. Thanks to Dennis Linse<indexterm><primary>Linse,
-	      Dennis</primary></indexterm> for catching this omission. </para>
-	    </listitem>
-	    <listitem>
-	      <para> 
-		Removed the redundant "optional" in the description of <link linkend="reference">
-		<sgmltag>reference</sgmltag></link> element's <sgmltag>xlink:href</sgmltag>
-		attribute. Added the constant value for attributes <sgmltag>xmlns:xlink</sgmltag>
-		and <sgmltag>xlink:type</sgmltag>.  Expanded the somewhat terse description of this
-		element. Thanks to Dennis Linse<indexterm><primary>Linse,
-		Dennis</primary></indexterm> for this correction and other helpful suggestions.
-	      </para>
-	    </listitem>
-
-	  </itemizedlist>
-	</para>
-      </sect3>
-    </sect2>
-
-    <sect2 id="changes-20rc2">
-      <title>Changes since version 2.0RC1</title>
-      <titleabbrev>V2.0, RC2 changes</titleabbrev>
-      <para>
-        <itemizedlist>
-
-          <listitem>
-            <para> 
-	      Tweaked examples and syntaxes to match the 2.0 RC 2 <acronym>DTD</acronym>. Cleaned up
-	      a couple of figures and incorporated several new reference citations. Added <link
-	      linkend="interpolation">interpolation</link> paragraph.
-	    </para>
-          </listitem>
-
-          <listitem>
-            <para>
-	      Deprecated <link linkend="signalID">
-                <sgmltag>signalID</sgmltag>
-              </link> used for internal signals in check-case data in favor of the more consistent
-                <link linkend="varID">
-                <sgmltag>varID</sgmltag> </link> (which meant the introduction of a formal
-                <sgmltag>varID</sgmltag> element) and made the specification of <link
-                linkend="signalUnits"><sgmltag>signalUnits</sgmltag> sub-element</link> mandatory
-                for input and output signals for consistency. Thanks to Dan Newman
-                <indexterm><primary>Newman, Daniel M.</primary></indexterm>for helping solidify the
-                thinking about this issue.<indexterm><primary
-                sortas="signalID">'signalID' element</primary>
-	      <secondary>deprecation</secondary>
-	    </indexterm>
-
-	    </para>
-          </listitem>
-
-          <listitem>
-            <para> 
-	      Changed examples in this text to use updated AIAA variable names to match a revised
-	      (but unpublished) draft standard of September 2008. Changed many 'examples' to
-	      'excerpts' to emphasize the missing portions of a valid DAVE-ML file. Corrected units
-	      in check-case examples to match the draft AIAA standard.
-	    </para>
-          </listitem>
-
-          <listitem>
-            <para> 
-	      Removed the <sgmltag>symmetric</sgmltag> attribute of the <link
-	      linkend="uniformPDF"><sgmltag>uniformPDF</sgmltag> sub-element</link>; this attribute
-	      was redundant as symmetric distribution is implied with a single <link
-	      linkend="bounds"><sgmltag>bounds</sgmltag> sub-element</link>, and asymmetric is
-	      implied by two <sgmltag>bounds</sgmltag> sub-elements. Kudos to Dan Newman
-	      <indexterm><primary>Newman, Daniel M.</primary></indexterm>and Dennis
-	      Linse<indexterm><primary>Linse, Dennis</primary></indexterm> for catching the
-	      inconsistent examples and for suggesting this convention.
-	    </para>
-          </listitem>
-
-          <listitem>
-            <para> 
-	      Corrected the <acronym>DTD</acronym> by reversing the definition of the
-	      <sgmltag>floor</sgmltag> and <sgmltag>ceiling</sgmltag> values of the
-	      <sgmltag>interpolate</sgmltag> attribute of the <link linkend="independentVarPts">
-	      <sgmltag>independentVarPts</sgmltag> </link> element; also corrected the correlated
-	      uncertainty example. Thanks to Dan Newman <indexterm><primary>Newman, Daniel
-	      M.</primary></indexterm>for catching both of these problems in 2.0 RC1.
-	    </para>
-          </listitem>
-
-          <listitem>
-            <para> 
-	      Corrected the <acronym>DTD</acronym> so that only one <link
-	      linkend="checkData"><sgmltag>checkData</sgmltag> element</link> is allowed (but it can
-	      have multiple different <link linkend="staticShot"><sgmltag>staticShot</sgmltag> test
-	      conditions</link>). Thanks to Dan and Dennis for reporting this inconsistency between
-	      the reference manual and the <acronym>DTD</acronym>.
-	    </para>
-          </listitem>
-
-          <listitem>
-            <para> 
-	      Added a <link linkend="description"><sgmltag>description</sgmltag> sub-element</link>
-	      to the <link linkend="staticShot"><sgmltag>staticShot</sgmltag> element</link> in
-	      response to a suggestion by Dennis Linse<indexterm><primary>Linse,
-	      Dennis</primary></indexterm>; and added a typical description to example listings.
-	    </para>
-          </listitem>
-
-          <listitem>
-            <para> 
-	      Added a section about namespaces and removed the hard link in the
-	      <acronym>DTD</acronym> that incorrectly set the namespace for the <link
-	      linkend="calculation"><sgmltag>calculation</sgmltag> element.</link>
-            </para>
-          </listitem>
-
-          <listitem>
-            <para> 
-	      Added new multi-purpose <link linkend="creationDate"><sgmltag>creationDate</sgmltag>
-              </link> element to replace the single-purpose <link linkend="fileCreationDate">
-                <sgmltag>fileCreationDate</sgmltag>
-              </link> and <link linkend="functionCreationDate">
-                <sgmltag>functionCreationDate</sgmltag> </link> elements, at the suggestion of
-                Dennis Linse<indexterm><primary>Linse, Dennis</primary></indexterm> of SAIC.
-	      <link linkend="fileCreationDate">
-                <sgmltag>fileCreationDate</sgmltag>
-              </link> and <link linkend="functionCreationDate">
-                <sgmltag>functionCreationDate</sgmltag>
-              </link> are now deprecated. 
-	    </para>
-          </listitem>
-
-          <listitem>
-            <para> Corrected descriptions of <link linkend="ungriddedTableDef">
-                <sgmltag>ungriddedTableDef</sgmltag>
-              </link> and <link linkend="griddedTableDef">
-                <sgmltag>griddedTableDef</sgmltag>
-              </link> to reflect the possible use of an internal <link linkend="function">
-                <sgmltag>function</sgmltag>
-              </link> element; previously the descriptions implied that these elements were only
-              specified external to functions and thus the <sgmltag>utID</sgmltag> and
-                <sgmltag>gtID</sgmltag> attributes, respectively, were required. Thanks to Dennis
-              Linse<indexterm><primary>Linse, Dennis</primary></indexterm> for the correction. </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Depicted <link linkend="provenanceRef"><sgmltag>provenanceRef</sgmltag></link> as an
-	      option to the <link linkend="provenance"><sgmltag>provenance</sgmltag></link>
-	      sub-element for <link linkend="griddedTableDef"><sgmltag>griddedTableDef</sgmltag>
-	      </link>, <link linkend="ungriddedTableDef"><sgmltag>ungriddedTableDef</sgmltag>
-	      </link>, and <link linkend="function"><sgmltag>function</sgmltag></link> elements in
-	      the narrative part of this manual (it was described correctly in the reference
-	      section). Also added both <link linkend="provenance">
-	      <sgmltag>provenance</sgmltag></link> and <link linkend="provenanceRef">
-	      <sgmltag>provenanceRef</sgmltag></link> as optional sub-elements of the <link
-	      linkend="variableDef"><sgmltag>variableDef</sgmltag></link> and <link
-	      linkend="checkData"><sgmltag>checkData</sgmltag></link> elements. Thanks to Dennis
-	      Linse<indexterm><primary>Linse, Dennis</primary></indexterm> for the correction.
-	    </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Added '[Deprecated]' to the description of <link linkend="griddedTable">
-	      <sgmltag>griddedTable</sgmltag></link>, <link linkend="ungriddedTable">
-	      <sgmltag>ungriddedTable</sgmltag></link>, and <link
-	      linkend="confidenceBound"><sgmltag>confidenceBound</sgmltag></link> elements for
-	      consistency; these were previously deprecated but not marked clearly in each element's
-	      'purpose' section. Thanks to Dennis Linse<indexterm><primary>Linse,
-	      Dennis</primary></indexterm> for the suggestion.
-	    </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Updated the acknowledgment paragraph of the <acronym>DTD</acronym>; significantly
-	      reformatted the .PDF version of this document, and added section numbers to all
-	      versions. 
-	    </para>
-          </listitem>
-
-        </itemizedlist>
-      </para>
-    </sect2>
-
-    <sect2 id="changes-20rc1">
-      <title>Changes since version 1.9b3</title>
-      <titleabbrev>V2.0, RC1 changes</titleabbrev>
-      <para>
-        <itemizedlist>
-          <listitem>
-            <para> Added <sgmltag>ceiling</sgmltag> and <sgmltag>floor</sgmltag> enumeration
-            selections to <sgmltag>interpolate</sgmltag> attribute of <link
-            linkend="independentVarPts"> <sgmltag>independentVarPts</sgmltag> </link> and <link
-            linkend="independentVarRef"> <sgmltag>independentVarRef</sgmltag> </link> elements at
-            the suggestions of Geoff Brian<indexterm><primary>Brian, Geoffrey J.</primary></indexterm>,
-            Giovanni Cignoni<indexterm><primary>Cignoni, Giovanni A.</primary></indexterm>, Randy
-            Brumbaugh<indexterm><primary>Brumbaugh, Randy</primary></indexterm>, and Dan
-            Newman.<indexterm><primary>Newman, Daniel M.</primary></indexterm> </para>
-          </listitem>
-          <listitem>
-            <para> Added five uncertainty examples. </para>
-          </listitem>
-          <listitem>
-            <para> Cleaned up all FIXME and BUG notes. </para>
-          </listitem>
-          <listitem>
-            <para> Corrected and expanded the labels on the DAVE-ML excerpt figure. </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-    </sect2>
-
-    <sect2 id="changes-19b3">
-      <title>Changes since version 1.9b2</title>
-      <titleabbrev>V1.9b3 changes</titleabbrev>
-      <para>
-        <itemizedlist>
-          <listitem>
-	    <para> 
-	      Corrected link to the DAVE-ML exchange test
-	      <citation><link linkend="Jackson04">Jackson04</link></citation> paper. 
-	    </para>
-          </listitem>
-          <listitem>
-            <para> Added <sgmltag>discrete</sgmltag> enumeration selection to
-                <sgmltag>interpolate</sgmltag> attribute of <link linkend="independentVarPts">
-                <sgmltag>independentVarPts</sgmltag>
-              </link> and <link linkend="independentVarRef">
-                <sgmltag>independentVarRef</sgmltag> </link> elements at the suggestion of Geoff
-                Brian<indexterm><primary>Brian, Geoffrey J.</primary></indexterm>, Australian Defence
-                Science and Technology Organisation
-                (<acronym>DSTO</acronym>)<indexterm><primary>DSTO</primary></indexterm>. </para>
-          </listitem>
-          <listitem>
-            <para>Added a section and a <link linkend="variableDef">
-                <sgmltag>variableDef</sgmltag>
-              </link>
-              <link linkend="variableDef_example_5">example</link> on extending the MathML-2
-              function set with <emphasis>atan2</emphasis>.</para>
-          </listitem>
-          <listitem>
-            <para>Removed all <sgmltag>xns</sgmltag> attributes from examples.</para>
-          </listitem>
-          <listitem>
-            <para>Emphasized that it is a good practice to provide
-                <sgmltag>variableDef</sgmltag>s in sorted sequence.</para>
-          </listitem>
-        </itemizedlist>
-      </para>
-    </sect2>
-
-    <sect2 id="changes-19b2">
-      <title>Changes since version 1.8b1</title>
-      <titleabbrev>V1.9b2 changes</titleabbrev>
-      <para>
-        <itemizedlist>
-          <listitem>
-            <para> 
-	      Added a <sgmltag>quadraticSpline</sgmltag> enumerated value to the
-	      <sgmltag>interpolate</sgmltag> attributes of the <link linkend="independentVarPts">
-	      <sgmltag>independentVarPts</sgmltag></link> and <link
-	      linkend="independentVarRef"><sgmltag>independentVarRef</sgmltag></link>
-	      elements (in response to a request from Geoff Brian<indexterm><primary>Brian, Geoffrey
-	      J.</primary></indexterm> of DSTO) and fixed a typographical
-	      error in <sgmltag>cubicSpline</sgmltag> attribute string. Added reference to <link
-	      linkend="wiki01">Wikipedia article</link> on <ulink
-	      url="http://en.wikipedia.org/wiki/Spline_interpolation">spline interpolation</ulink>.
-	    </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Added a <sgmltag>classification</sgmltag> attribute to the <link linkend="reference">
-	      <sgmltag>reference</sgmltag></link> element and added a
-	      <sgmltag>date</sgmltag> attribute to the <link linkend="modificationRecord">
-	      <sgmltag>modificationRecord</sgmltag></link> element, at the suggestion of
-	      Geoff Brian<indexterm><primary>Brian, Geoffrey J.</primary></indexterm> of DSTO.
-	    </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Added 2D and 3D ungridded table examples and figures and corrected a typographical
-	      error in the ungridded table definition syntax (thanks to Dr. Peter Grant of
-	      U. Toronto's UTIAS and Geoff Brian<indexterm><primary>Brian,
-	      Geoffrey J.</primary></indexterm> of DSTO).
-	    </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Reintroduced &lt;!ENTITY&gt; to include MathML-2 <acronym>DTD</acronym> (complete) in
-	      the body of this <acronym>DTD</acronym>. This entity definition quietly went away in
-	      version 1.6 due to a misunderstanding of the proper way to include external
-	      <acronym>DTD</acronym>s. It was reintroduced to assist with validating parsers.
-	    </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Added a <link linkend="description"><sgmltag>description</sgmltag> </link> sub-element
-	      to the <link linkend="provenance"> <sgmltag>provenance</sgmltag></link> element, so
-	      the provenance entry can contain more information about change justification documents
-	      and made <link linkend="provenance"><sgmltag>provenance</sgmltag></link> or <link
-	      linkend="provenanceRef"><sgmltag>provenanceRef</sgmltag></link> acceptable
-	      sub-elements to <link linkend="variableDef"><sgmltag>variableDef</sgmltag> </link> and
-	      <link linkend="checkData"><sgmltag>checkData</sgmltag></link> elements at the request
-	      of Geoff Brian<indexterm><primary>Brian, Geoffrey J.</primary></indexterm> of DSTO.
-	    </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-    </sect2>
-    <sect2 id="changes-18b1">
-      <title>Changes since version 1.7b1</title>
-      <titleabbrev>V1.8b1 changes</titleabbrev>
-      <para>
-        <itemizedlist>
-          <listitem>
-            <para> 
-	      Renamed <sgmltag>docID</sgmltag> attribute to <sgmltag>refID</sgmltag> in the <link
-	      linkend="modificationRecord"><sgmltag>modificationRecord</sgmltag></link> so
-	      the attribute name is consistent; the <sgmltag>docID</sgmltag> attribute is deprecated
-	      but remains in place for compatibility with older documents.
-	    </para>
-          </listitem>
-          <listitem>
-            <para> Added <link linkend="correlatesWith">
-                <sgmltag>correlatesWith</sgmltag>
-              </link> and <link linkend="correlation">
-                <sgmltag>correlation</sgmltag>
-              </link> sub-elements of <link linkend="uncertainty">
-                <sgmltag>uncertainty</sgmltag>
-              </link> element to allow for multiple-dimensioned linear correlation of uncertainty of
-              selected functions and variables. </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Added a new element, <link linkend="contactInfo">
-	      <sgmltag>contactInfo</sgmltag></link>, to replace the single <link
-	      linkend="address"><sgmltag>address</sgmltag></link> element. This format
-	      supports multiple ways to indicate how to contact the author of a document or
-	      reference.  <sgmltag>address</sgmltag> is deprecated but is retained for
-	      backwards compatibility. This element also replaces the <sgmltag>email</sgmltag> and
-	      <sgmltag>xns</sgmltag> attributes of <link linkend="author">
-	      <sgmltag>author</sgmltag></link>.
-	    <indexterm>
-	      <primary sortas="contactInfo">'contactInfo' element</primary>
-	      <secondary>discussion</secondary>
-	    </indexterm>
-	    <indexterm>
-	      <primary sortas="address">'address' element (deprecated)</primary>
-	      <secondary>deprecation</secondary>
-	    </indexterm>
-	    <indexterm>
-	      <primary sortas="xns">'xns' attribute (deprecated)</primary>
-	      <secondary>deprecation</secondary>
-	    </indexterm>
-	    </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Fixed a typographical error in <link linkend="ungriddedTableRef">
-	      <sgmltag>ungriddedTableRef</sgmltag></link> element: incorrect
-	      <sgmltag>gtID</sgmltag> attribute corrected to <sgmltag>utID</sgmltag>.
-	    </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Allowed multiple <link linkend="author"><sgmltag>author</sgmltag></link>
-	      elements wherever only one had been allowed before.
-	    </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Added a new tag, <link linkend="isStdAIAA"><sgmltag>isStdAIAA</sgmltag>
-	      </link>, to indicate that a <sgmltag>variableDef</sgmltag> refers to one of the
-	      standard AIAA variables.
-	    </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Removed <sgmltag>[un]griddedTable[Ref|Def]</sgmltag> sub-elements of the <link
-	      linkend="confidenceBound"><sgmltag>confidenceBound</sgmltag></link> element
-	      since this leads to circular logic. 
-	    </para>
-          </listitem>
-          <listitem>
-            <para> Changed SYSTEM ID to reflect new daveml.nasa.gov domain availability. </para>
-          </listitem>
-          <listitem>
-            <para> Removed true email from examples to protect privacy of individual
-            contributors. </para>
-          </listitem>
-          <listitem>
-            <para> Added a new attribute, <sgmltag>interpolate</sgmltag>, to the <link
-                linkend="independentVarPts">
-                <sgmltag>independentVarPts</sgmltag>
-              </link> element to indicate whether the table interpolation should be linear or cubic
-              spline in the given dimension [modified to include quadratic in version 1.9]. </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Added a new tag, <link linkend="isState"><sgmltag>isState</sgmltag></link>,
-	      to indicate that a <sgmltag>variableDef</sgmltag> refers to a state variable in the
-	      model.
-	    </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Added a new tag, <link linkend="isStateDeriv">
-	      <sgmltag>isStateDeriv</sgmltag></link>, to indicate that a <link
-	      linkend="variableDef"><sgmltag>variableDef</sgmltag></link> refers to a
-	      state derivative variable in the model. </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-    </sect2>
-    <sect2 id="changes-17b1">
-      <title>Changes since version 1.6b1</title>
-      <titleabbrev>V1.7b1 changes</titleabbrev>
-      <para> Added <link linkend="checkData">
-          <sgmltag>checkData</sgmltag>
-        </link> and associated elements. Added <link linkend="description">
-          <sgmltag>description</sgmltag>
-        </link> sub-element to <link linkend="reference">
-          <sgmltag>reference</sgmltag>
-        </link> element. </para>
-    </sect2>
-    <sect2 id="changes-16b1">
-      <title>Changes since version 1.5b3</title>
-      <titleabbrev>V1.6b1 changes</titleabbrev>
-      <para> 
-	Added an <link linkend="uncertainty"><sgmltag>uncertainty</sgmltag></link>
-	element. Emphasized MathML-2 content markup over presentation markup. Fixed several
-	grammatical and typographical errors and added figure 1. Added ISO 8601 (Dates and Times)
-	reference.
-      </para>
-    </sect2>
-    <sect2 id="changes-15b3">
-      <title>Changes since version 1.5b2</title>
-      <titleabbrev>V1.5b3 changes</titleabbrev>
-      <para>
-        <itemizedlist>
-          <listitem>
-            <para> 
-	      Added Bill Cleveland<indexterm><primary>Cleveland, William</primary></indexterm> (NASA
-	      Ames Research Center's SimLab) and Brent York<indexterm><primary>York,
-	      Brent</primary></indexterm> (NAVAIR's Manned Flight Simulator) to the acknowledgments
-	      section, to thank them for their pioneering initial trials of DAVE-ML.
-	    </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Added <link linkend="provenanceRef"><sgmltag>provenanceRef</sgmltag></link>
-	      element and changed all parents (specifically <link linkend="function">
-	      <sgmltag>function</sgmltag></link>, <link linkend="griddedTableDef">
-	      <sgmltag>griddedTableDef</sgmltag></link> and <link
-	      linkend="ungriddedTableDef"><sgmltag>ungriddedTableDef</sgmltag></link>
-	      elements) of <link linkend="provenance"><sgmltag>provenance</sgmltag></link>
-	      elements to enable them to use a <link linkend="provenanceRef">
-	      <sgmltag>provenanceRef</sgmltag></link> reference instead to eliminate
-	      duplicate <link linkend="provenance"><sgmltag>provenance</sgmltag></link>
-	      elements.
-	    </para>
-          </listitem>
-          <listitem>
-            <para>
-	      Realization dawned that there was little difference between <link
-	      linkend="griddedTable"><sgmltag>griddedTable</sgmltag></link>s and <link
-	      linkend="griddedTableDef"><sgmltag>griddedTableDef</sgmltag></link>s but that
-	      the latter was more flexible (ditto <link linkend="ungriddedTable">
-	      <sgmltag>ungriddedTable</sgmltag></link>s and <link
-	      linkend="ungriddedTableDef"><sgmltag>ungriddedTableDef</sgmltag></link>s). 
-	      By making the <sgmltag>gtID</sgmltag> and <sgmltag>utID</sgmltag>
-	      attributes 'implied' instead of 'required,' we can use the <sgmltag>Def</sgmltag>
-	      versions in both referenced-table and embedded-table <link linkend="function">
-	      <sgmltag>function</sgmltag></link>s. Thus the original <link
-	      linkend="griddedTable"><sgmltag>griddedTable</sgmltag></link> and <link
-	      linkend="ungriddedTable"><sgmltag>ungriddedTable</sgmltag></link> elements
-	      have been marked as 'deprecated.' They are still supported in this
-	      <acronym>DTD</acronym> for backwards compatibility but should be avoided in future
-	      use. The easiest way to modify older DAVE-ML models would be to rename all
-	      <sgmltag>griddedTable</sgmltag>s as
-	      <sgmltag>griddedTableDef</sgmltag>s. 
-	      <indexterm>
-		<primary sortas="griddedTable">'griddedTable' element (deprecated)</primary>
-		<secondary>deprecation</secondary>
-	      </indexterm>
-	      <indexterm>
-		<primary sortas="ungriddedTable">'ungriddedTable' element (deprecated)</primary>
-		<secondary>deprecation</secondary>
-	      </indexterm>
-	    </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-    </sect2>
-
-    <sect2 id="changes-15b2">
-      <title>Changes since version 1.5b</title>
-      <titleabbrev>V1.5b2 changes</titleabbrev>
-      <para>
-        <itemizedlist>
-          <listitem>
-            <para> 
-	      Fixed typographical errors pointed out by Bill Cleveland<indexterm><primary>Cleveland,
-	      William</primary></indexterm>.
-	    </para>
-          </listitem>
-          <listitem>
-            <para> Added <link linkend="fileVersion">
-                <sgmltag>fileVersion</sgmltag>
-              </link> element to <link linkend="fileHeader">
-                <sgmltag>fileHeader</sgmltag>
-              </link> element, so each version of a particular <sgmltag>DAVEfunc</sgmltag> model can
-              be uniquely identified. Format of the version identifier is undefined. </para>
-          </listitem>
-          <listitem>
-            <para> Added an <sgmltag>email</sgmltag> attribute to the <link linkend="author">
-                <sgmltag>author</sgmltag></link> element. The Extensible Name Service
-                (<ulink url="http://www.xns.org">xns</ulink>) standard does not appear to be
-                catching on as rapidly as hoped, so a static e-mail link will have to do for now, at
-                least until the replacement XRI technology is more widely adopted. </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Added a mandatory <sgmltag>varID</sgmltag> attribute to both <link
-	      linkend="independentVarPts"><sgmltag>independentVarPts</sgmltag></link> and
-	      <link linkend="dependentVarPts"><sgmltag>dependentVarPts</sgmltag></link> so
-	      these can be associated with an input and output signal name (<link
-	      linkend="variableDef"><sgmltag>variableDef</sgmltag></link>), respectively.
-	    </para>
-          </listitem>
-          <listitem>
-            <para> 
-	      Added an optional <link linkend="extraDocRef"><sgmltag>extraDocRef</sgmltag>
-	      </link> element to the <link linkend="modificationRecord">
-	      <sgmltag>modificationRecord</sgmltag></link> element so more than one
-	      document can be associated with each modification event. If only one document needs to
-	      be referenced, use of the optional refID in the <link linkend="modificationRecord">
-	      <sgmltag>modificationRecord</sgmltag></link> itself will suffice. 
-	    </para>
-          </listitem>
-        </itemizedlist>
-      </para>
     </sect2>
   </sect1>
 
@@ -1172,9 +286,9 @@
       in terms of inputs, with no past history (state) information required.
     </para>
      
-    <para>
-      DAVE-ML forms the encoding portion of the Flight Simulation Model Exchange Standard, BSR/AIAA
-      S-119-2010 (currently in draft form). More information is available at the S-119 web site
+    <para revisionflag="changed">
+      DAVE-ML forms the encoding portion of the Flight Dynamic Model Exchange Standard, BSR/AIAA
+      S-119-2011. More information is available at the S-119 web site
       <link linkend="AIAA11"><citation>AIAA11</citation></link>.
       <indexterm>
 	<primary>AIAA</primary>
@@ -1182,7 +296,7 @@
       </indexterm>
       <indexterm>
 	<primary>AIAA</primary>
-	<secondary>Draft Standard S-119</secondary>
+	<secondary>Standard S-119-2011</secondary>
       </indexterm>
       <indexterm>
 	<primary>AIAA</primary>
@@ -1230,16 +344,15 @@
 	</indexterm>
       </para>
 
-      <para>
-	The AIAA Modeling and Simulation Technical Committee has prepared a draft standard for the
+      <para revisionflag="changed">
+	The AIAA Modeling and Simulation Technical Committee has developed a standard for the
 	exchange of simulation modeling data. This includes a methodology for accomplishing the
 	gradual standardization of simulation model components, a mechanism for standardizing
-	variable names within math models, and proposed Hierarchical Data Format 5
-	(<acronym>HDF5</acronym>) <indexterm><primary>HDF5</primary></indexterm> as the data
-	format. This document is included as an Annex to the standard
-	<citation><link linkend="AIAA01">AIAA01</link></citation>, 
-	<citation><link linkend="AIAA03">AIAA03</link></citation>,
-	<citation><link linkend="AIAA11">AIAA11</link></citation>.
+	variable names within math models, as well as a convention for encoded
+	units-of-measure. This document is included as an Annex to the standard <citation><link
+	linkend="AIAA01">AIAA01</link></citation>, <citation><link
+	linkend="AIAA03">AIAA03</link></citation>, <citation><link
+	linkend="AIAA11">AIAA11</link></citation>.
 	<indexterm>
 	  <primary>AIAA</primary>
 	  <secondary>Modeling and Simulation Technical Committee</secondary>
@@ -2535,9 +1648,9 @@ Key:
 	  <?dbfo keep-together="auto"?>
           <title>An example of two <sgmltag>variableDef</sgmltag> elements defining
             input signals</title>
-          <para> 
+          <para revisionflag="changed"> 
 	    In this example<indexterm><primary sortas="variableDef">'variableDef'
-	    element</primary><secondary>example of</secondary></indexterm> , two input
+	    element</primary><secondary>example of</secondary></indexterm>, two input
 	    variables are defined: <varname>XMACH</varname> and <varname>DBFLL</varname>. These two
 	    variables are inputs to a table lookup function shown in <xref
 	    linkend="function_example_1"/> below. 
@@ -5252,9 +4365,9 @@ Key:
         <title>Common sign convention notation</title>
         <titleabbrev>Sign conventions</titleabbrev>
 
-	<para>
+	<para revisionflag="changed">
 	  A convention for indicating positive sign conventions for measurements is included in
-	  Annex A of the draft AIAA Flight Dynamics Model Exchange Standard <link
+	  Annex A of BSR/AIAA S-119-2011 Flight Dynamics Model Exchange Standard <link
 	  linkend="AIAA11"><citation>AIAA11</citation></link>. These acronyms, if applicable, should
 	  be used whenever possible to enhance communications.
 	  <indexterm><primary>sign convention</primary></indexterm>
@@ -5482,8 +4595,8 @@ Key:
     <bibliomixed id="AIAA11">
       <bibliomset relation="book"> : <corpauthor>American Institute of Aeronautics and
       Astronautics</corpauthor> : <title><ulink
-      url="http://info.aiaa.org/Standards/AS/DAVE">American National Standard: Flight Dynamics Model
-      Exchange Standard (Draft)</ulink></title>. <subtitle>BSR/AIAA S-119-201x</subtitle>
+      url="https://info.aiaa.org/Standards/AS/DAVE/default.aspx">American National Standard: Flight Dynamics Model
+      Exchange Standard</ulink></title>. <subtitle>BSR/AIAA S-119-2011</subtitle>
       </bibliomset>
     </bibliomixed>
 

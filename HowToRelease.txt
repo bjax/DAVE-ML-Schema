@@ -15,8 +15,8 @@ do {
   Update the <releaseinfo> of the ref manual with release date (now
   that we've left SVN behind).
 
-  In the trunk directory, 'make all' to generate a local copy of
-  updated PDF, HTML, Text and WordML - check for errors
+  Run 'make all' to generate a local copy of updated PDF, HTML, Text
+  and WordML - check for errors
 
   Poke through the updated reference manual to see if it's OK.
 

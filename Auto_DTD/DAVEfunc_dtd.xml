@@ -1,5 +1,4 @@
 <?xml version ="1.0" encoding="UTF-8"?>
-
 <!-- An attempt 030708 to encode the DAVEfunc.dtd as an XML file, which 
      could be used to both generate the .dtd as well as reference 
      documentation -->
@@ -14,14 +13,14 @@
                    Dynamic Aerospace Vehicle Exchange DTD            
                         Function Data Representation                   
                                                                 
-                              Version: 2.0 Release Candidate 4                             
-                            6 January 2011                                       
+                              Version: 2.0
+                              25 March 2011                                       
                                                                 
     This DTD module is identified by these PUBLIC and SYSTEM       
     identifiers:                                                   
                                                                 
     PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" 
-    SYSTEM "http://daveml.org/DTDs/2p0RC4/DAVEfunc.dtd"
+    SYSTEM "http://daveml.org/DTDs/2p0/DAVEfunc.dtd"
                                                                 
     Developed by:
 
