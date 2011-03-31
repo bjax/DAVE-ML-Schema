@@ -67,7 +67,6 @@ ${AUTO_DTD_REF} ${AUTO_DTD_DIR}/DAVEfunc_auto.dtd : ${AUTO_DTD_DOCS}
 
 install: all
 	-@mkdir ${WEBSITE}
-	@cd ${AUTO_DTD_DIR} && $(MAKE) install
 	@echo "Copying reference docs to Web directory..."
 	-@mkdir ${WEBSITE}/Ref
 	@cp -R html/* ${WEBSITE}/Ref
