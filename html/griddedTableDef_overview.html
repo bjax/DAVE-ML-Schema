@@ -20,7 +20,7 @@ span.off     {  }
 	  coordinates along each dimension are defined in separate <a href="breakpointDef.html" title="breakpointDef"><code class="sgmltag-element">breakpointDef</code></a> elements that are
 	  referenced within this element by <a href="bpRef.html" title="bpRef"><code class="sgmltag-element">bpRef</code></a>s,
 	  one for each dimension.
-	  <a id="d0e2642" class="indexterm"/>
+	  <a id="d0e2671" class="indexterm"/>
 	</p><p> 
 	  The data contained within the data table definition are a comma- or white space-separated
 	  set of floating-point values. This list of values represents a multi-dimensional array
@@ -60,27 +60,27 @@ span.off     {  }
         </pre><div class="variablelist"><p class="title"><b><a href="griddedTableDef.html" title="griddedTableDef">
               <code class="sgmltag-element">griddedTableDef</code>
             </a> attributes:</b></p><dl><dt><span class="term">
-	      <a id="d0e2731" class="indexterm"/>
+	      <a id="d0e2760" class="indexterm"/>
               <code class="sgmltag-element">gtID</code>
             </span></dt><dd><p>An internal reference that is unique within the file.</p></dd><dt><span class="term">
-	      <a id="d0e2746" class="indexterm"/>
+	      <a id="d0e2775" class="indexterm"/>
               <code class="sgmltag-element">name</code>
             </span></dt><dd><p>A UNICODE name for the table (may be the same string as
                 <code class="sgmltag-element">gtID</code>).</p></dd><dt><span class="term">
-	      <a id="d0e2764" class="indexterm"/>
+	      <a id="d0e2793" class="indexterm"/>
               <code class="sgmltag-element">units</code>
             </span></dt><dd><p> The units-of-measure of the table's output signal. See <a href="uofm.html" title="6.5.6. Units-of-measure abbreviation">Section 6.5.6, “Units”</a>
                 below. </p></dd></dl></div><div class="variablelist"><p class="title"><b><a href="griddedTableDef.html" title="griddedTableDef">
               <code class="sgmltag-element">griddedTableDef</code>
             </a> sub-elements:</b></p><dl><dt><span class="term">
-	      <a id="d0e2789" class="indexterm"/>
+	      <a id="d0e2818" class="indexterm"/>
               <a href="description.html" title="description">
                 <code class="sgmltag-element">description</code>
               </a>
             </span></dt><dd><p>The optional <a href="description.html" title="description">description</a> element allows the
                 author to describe the data contained within this
                 <code class="sgmltag-element">griddedTable</code>.</p></dd><dt><span class="term">
-	      <a id="d0e2813" class="indexterm"/>
+	      <a id="d0e2842" class="indexterm"/>
               <a href="provenance.html" title="provenance">
                 <code class="sgmltag-element">provenance</code>
               </a>
@@ -90,7 +90,7 @@ span.off     {  }
                   <code class="sgmltag-element">provenanceRef</code>
                 </a> reference can be made to a previously defined
                 <code class="sgmltag-element">provenance</code>.</p></dd><dt><span class="term">
-	      <a id="d0e2846" class="indexterm"/>
+	      <a id="d0e2875" class="indexterm"/>
               <a href="breakpointRefs.html" title="breakpointRefs">
                 <code class="sgmltag-element">breakpointRefs</code>
               </a>
@@ -100,7 +100,7 @@ span.off     {  }
                   independent coordinates associated with this function table are defined elsewhere
                   and only a reference is given here. The order of appearance of the <a href="bpRef.html" title="bpRef"><code class="sgmltag-element">bpRef</code></a>s is important; see the text
                   above. </p></dd><dt><span class="term">
-	      <a id="d0e2881" class="indexterm"/>
+	      <a id="d0e2910" class="indexterm"/>
               <a href="uncertainty.html" title="uncertainty">
                 <code class="sgmltag-element">uncertainty</code>
               </a>
@@ -109,7 +109,7 @@ span.off     {  }
 		<a href="statistics.html" title="6.4. Statistical information encoding">Section 6.4</a> for more information
 		about this element.
 	      </p></dd><dt><span class="term">
-	      <a id="d0e2901" class="indexterm"/>
+	      <a id="d0e2930" class="indexterm"/>
               <a href="dataTable.html" title="dataTable">
                 <code class="sgmltag-element">dataTable</code>
               </a>
@@ -122,7 +122,7 @@ span.off     {  }
 	      </p></dd></dl></div><div class="example"><a id="griddedTableDef_example"/><p class="title"><b>Example 8. 
 	    An excerpt showing an example of a <code class="sgmltag-element">griddedTableDef</code> element
 	  </b></p><div class="example-contents"><p> 
-	    This nonlinear function table<a id="d0e2925" class="indexterm"/> is used by a subsequent
+	    This nonlinear function table<a id="d0e2954" class="indexterm"/> is used by a subsequent
 	    <code class="sgmltag-element">function</code> in <a href="function_overview.html#function_example_1" title="Example 11. &#xA;&#x9;    An excerpt giving the example of a function which refers to a previously defined&#xA;&#x9;    griddedTableDef&#xA;&#x9;  ">Example 11</a> to specify an output value based on two input values:
 	    body flap deflection and Mach number. This table is defined outside of a <a href="function.html" title="function"><code class="sgmltag-element">function</code></a> element because this particular
 	    function table is used by two functions: one for the left-lower body flap and one for
@@ -179,4 +179,4 @@ span.off     {  }
                 body flap (<code class="varname">DBFL</code>) must precede the reference to the signal that
                 represents Mach number (<code class="varname">XMACH</code>). </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="gtd-note-6"/><a href="#gtd-note-6-co"><img src="images/callouts/6.png" alt="6" border="0"/></a> </td><td valign="top" align="left"><p>The points listed within the <code class="sgmltag-element">dataTable</code> element are given as
                 if the last <code class="sgmltag-element">bpRef</code> varies most rapidly. See the discussion
-                above.</p></td></tr><tr><td width="5%" valign="top" align="left"><a id="gtd-note-7"/><a href="#gtd-note-7-co"><img src="images/callouts/7.png" alt="7" border="0"/></a> </td><td valign="top" align="left"><p>Embedded comments are a good practice.</p></td></tr></table></div></div></div><br class="example-break"/></div><P xmlns="" class="CVSinfo">2011-03-25</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="breakpointDef_overview.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="davefunc_overview.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ungriddedTableDef_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+                above.</p></td></tr><tr><td width="5%" valign="top" align="left"><a id="gtd-note-7"/><a href="#gtd-note-7-co"><img src="images/callouts/7.png" alt="7" border="0"/></a> </td><td valign="top" align="left"><p>Embedded comments are a good practice.</p></td></tr></table></div></div></div><br class="example-break"/></div><P xmlns="" class="CVSinfo">2011-03-31</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="breakpointDef_overview.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="davefunc_overview.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ungriddedTableDef_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

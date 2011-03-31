@@ -13,24 +13,24 @@ span.deleted { text-decoration: line-through;
                background-color: #FF7F7F; }
 span.changed { background-color: #99ff99; }
 span.off     {  }
-</style><title>provenance</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="elementDescriptions.html" title="8.2. Element descriptions"/><link rel="prev" href="normalPDF.html" title="normalPDF"/><link rel="next" href="provenanceRef.html" title="provenanceRef"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="normalPDF.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="provenanceRef.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="elementRefs.html">Element references and descriptions</a></span> &gt; <span class="breadcrumb-link"><a href="elementDescriptions.html">Element descriptions</a></span> &gt; <span class="breadcrumb-node">provenance</span></div><div class="refentry" lang="en"><a id="provenance"/><div class="titlepage"/><a id="d0e10247" class="indexterm"/><div class="refnamediv"><h2><span class="refentrytitle">provenance</span></h2><p>provenance — Describes origin or history of the associated information</p></div><div class="refsect1" lang="en"><a id="d0e10260"/><h2>Content model</h2><pre class="synopsis">provenance :  [provID]
+</style><title>provenance</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="elementDescriptions.html" title="8.2. Element descriptions"/><link rel="prev" href="normalPDF.html" title="normalPDF"/><link rel="next" href="provenanceRef.html" title="provenanceRef"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="normalPDF.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="provenanceRef.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="elementRefs.html">Element references and descriptions</a></span> &gt; <span class="breadcrumb-link"><a href="elementDescriptions.html">Element descriptions</a></span> &gt; <span class="breadcrumb-node">provenance</span></div><div class="refentry" lang="en"><a id="provenance"/><div class="titlepage"/><a id="d0e10276" class="indexterm"/><div class="refnamediv"><h2><span class="refentrytitle">provenance</span></h2><p>provenance — Describes origin or history of the associated information</p></div><div class="refsect1" lang="en"><a id="d0e10289"/><h2>Content model</h2><pre class="synopsis">provenance :  [provID]
      <a href="author.html" title="author">author</a>+
      (<a href="creationDate.html" title="creationDate">creationDate</a> | <a href="functionCreationDate.html" title="functionCreationDate">functionCreationDate</a>)
      <a href="documentRef.html" title="documentRef">documentRef</a>*
      <a href="modificationRef.html" title="modificationRef">modificationRef</a>*
      <a href="description.html" title="description">description</a>?
-</pre></div><div class="refsect1" lang="en"><a id="d0e10283"/><h2>Attributes</h2><div class="variablelist"><dl><dt><span class="term">
+</pre></div><div class="refsect1" lang="en"><a id="d0e10312"/><h2>Attributes</h2><div class="variablelist"><dl><dt><span class="term">
 <code class="varname">provID</code>
 </span></dt><dd><p>(optional) 
 	This attribute allows the provenance information defined here
 	to be cited elsewhere.
-      <a id="d0e10296" class="indexterm"/>
-</p></dd></dl></div></div><div class="refsect1" lang="en"><a id="d0e10302"/><h2>Description</h2><p>
+      <a id="d0e10325" class="indexterm"/>
+</p></dd></dl></div></div><div class="refsect1" lang="en"><a id="d0e10331"/><h2>Description</h2><p>
 
       The provenance element describes the history or source of the
       model data and includes author, date, and zero or more
       references to documents and modification records.
-    </p></div><div class="refsect1" lang="en"><a id="d0e10307"/><h2>
+    </p></div><div class="refsect1" lang="en"><a id="d0e10336"/><h2>
 	Possible parents
       </h2><table class="simplelist" border="0" summary="Simple list"><tr><td>
 <a href="fileHeader.html" title="fileHeader">
@@ -60,36 +60,36 @@ span.off     {  }
 <a href="staticShot.html" title="staticShot">
 <code class="sgmltag-element">staticShot</code>
 </a>
-</td></tr></table></div><div class="refsect1" lang="en"><a id="d0e10367"/><h2>
+</td></tr></table></div><div class="refsect1" lang="en"><a id="d0e10396"/><h2>
 	Allowable children
       </h2><table class="simplelist" border="0" summary="Simple list"><tr><td>
-<a id="d0e10373" class="indexterm"/>
+<a id="d0e10402" class="indexterm"/>
 <a href="author.html" title="author">
 <code class="sgmltag-element">author</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e10387" class="indexterm"/>
+<a id="d0e10416" class="indexterm"/>
 <a href="creationDate.html" title="creationDate">
 <code class="sgmltag-element">creationDate</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e10401" class="indexterm"/>
+<a id="d0e10430" class="indexterm"/>
 <a href="functionCreationDate.html" title="functionCreationDate">
 <code class="sgmltag-element">functionCreationDate</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e10415" class="indexterm"/>
+<a id="d0e10444" class="indexterm"/>
 <a href="documentRef.html" title="documentRef">
 <code class="sgmltag-element">documentRef</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e10429" class="indexterm"/>
+<a id="d0e10458" class="indexterm"/>
 <a href="modificationRef.html" title="modificationRef">
 <code class="sgmltag-element">modificationRef</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e10443" class="indexterm"/>
+<a id="d0e10472" class="indexterm"/>
 <a href="description.html" title="description">
 <code class="sgmltag-element">description</code>
 </a>
-</td></tr></table></div></div><P xmlns="" class="CVSinfo">2011-03-25</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="normalPDF.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="elementDescriptions.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="provenanceRef.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+</td></tr></table></div></div><P xmlns="" class="CVSinfo">2011-03-31</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="normalPDF.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="elementDescriptions.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="provenanceRef.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

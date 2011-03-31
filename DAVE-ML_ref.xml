@@ -12,8 +12,8 @@
     <title>Dynamic Aerospace Vehicle Exchange Markup Language (<acronym>DAVE-ML</acronym>)
       Reference</title>
     <titleabbrev>DAVE-ML 2</titleabbrev>
-    <subtitle>Version 2.0</subtitle>
-    <releaseinfo>2011-03-25</releaseinfo>
+    <subtitle>Version 2.0.1</subtitle>
+    <releaseinfo>2011-03-31</releaseinfo>
     <corpauthor>
       <ulink url="https://info.aiaa.org/tac/ASG/MSTC"> AIAA Modeling and
         Simulation Technical Committee </ulink>
@@ -48,7 +48,7 @@
 	verification, and documentation.
       </para>
       <para>
-	This markup language represents the encoding format for BSR/AIAA S-119-2011 Flight Dynamic
+	This markup language represents the encoding format for ANSI/AIAA S-119-2011 Flight Dynamic
 	Model Exchange Standard <link linkend="AIAA11"><citation>AIAA11</citation></link>.
       </para>
       <para revisionflag="changed">
@@ -87,6 +87,34 @@
 	<emphasis>non-structural</emphasis> changes to the DTD and reference manual.
       </para>
 
+      <sect3 id="dtd-changes-201">
+	<title><acronym>DTD</acronym> structural changes since version 2.0</title>
+	<titleabbrev>Version 2.0.1 final release DTD changes</titleabbrev>
+	<para>
+	  <itemizedlist>
+	    <listitem>
+	      <para>
+		None. Changed comment in header to reflect end of formal development.
+	      </para>
+	    </listitem>
+	  </itemizedlist>
+	</para>
+      </sect3>
+      <sect3 id="refman-changes-201">
+	<title>Non-structural <acronym>DTD</acronym> and reference manual changes since version 2.0</title>
+	<titleabbrev>Version 2.0.1 final release non-DTD changes</titleabbrev>
+	<para>
+	  <itemizedlist>
+	    <listitem>
+	      <para>
+		Changed "BSR/AIAA" designation of the S-119 standard
+		to "ANSI/AIAA" to reflect released document
+		designation.
+	      </para>
+	    </listitem>
+	  </itemizedlist>
+	</para>
+      </sect3>
       <sect3 id="dtd-changes-20">
 	<title><acronym>DTD</acronym> structural changes since version 2.0RC4</title>
 	<titleabbrev>Version 2 final release DTD changes</titleabbrev>
@@ -287,7 +315,7 @@
     </para>
      
     <para revisionflag="changed">
-      DAVE-ML forms the encoding portion of the Flight Dynamic Model Exchange Standard, BSR/AIAA
+      DAVE-ML forms the encoding portion of the Flight Dynamic Model Exchange Standard, ANSI/AIAA
       S-119-2011. More information is available at the S-119 web site
       <link linkend="AIAA11"><citation>AIAA11</citation></link>.
       <indexterm>
@@ -4367,7 +4395,7 @@ Key:
 
 	<para revisionflag="changed">
 	  A convention for indicating positive sign conventions for measurements is included in
-	  Annex A of BSR/AIAA S-119-2011 Flight Dynamics Model Exchange Standard <link
+	  Annex A of ANSI/AIAA S-119-2011 Flight Dynamics Model Exchange Standard <link
 	  linkend="AIAA11"><citation>AIAA11</citation></link>. These acronyms, if applicable, should
 	  be used whenever possible to enhance communications.
 	  <indexterm><primary>sign convention</primary></indexterm>
@@ -4596,7 +4624,7 @@ Key:
       <bibliomset relation="book"> : <corpauthor>American Institute of Aeronautics and
       Astronautics</corpauthor> : <title><ulink
       url="https://info.aiaa.org/Standards/AS/DAVE/default.aspx">American National Standard: Flight Dynamics Model
-      Exchange Standard</ulink></title>. <subtitle>BSR/AIAA S-119-2011</subtitle>
+      Exchange Standard</ulink></title>. <subtitle>ANSI/AIAA S-119-2011</subtitle>
       </bibliomset>
     </bibliomixed>
 
