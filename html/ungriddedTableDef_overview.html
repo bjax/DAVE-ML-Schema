@@ -17,7 +17,7 @@ span.off     {  }
 	  The <a href="ungriddedTableDef.html" title="ungriddedTableDef"><code class="sgmltag-element">ungriddedTableDef</code></a> element
 	  defines a set of non-orthogonal data points, along with their independent values
 	  (coordinates), corresponding with the dependent value of an arbitrary function.
-	  <a id="d0e3073" class="indexterm"/>
+	  <a id="d0e3058" class="indexterm"/>
 	</p><p> A 'non-orthogonal' data set, as opposed to a gridded or 'orthogonal' data set, means
           that the independent values are not laid out in an orthogonal grid. This form must be used
           if the dependent coordinates in any table dimension cannot be expressed by a single
@@ -47,26 +47,26 @@ span.off     {  }
         </pre><div class="variablelist"><p class="title"><b><a href="ungriddedTableDef.html" title="ungriddedTableDef">
               <code class="sgmltag-element">ungriddedTableDef</code>
             </a> attributes:</b></p><dl><dt><span class="term">
-	      <a id="d0e3149" class="indexterm"/>
+	      <a id="d0e3134" class="indexterm"/>
               <code class="sgmltag-element">utID</code>
             </span></dt><dd><p>An internal reference that is unique within the file</p></dd><dt><span class="term">
-	      <a id="d0e3164" class="indexterm"/>
+	      <a id="d0e3149" class="indexterm"/>
               <code class="sgmltag-element">name</code>
             </span></dt><dd><p>An optional UNICODE name for the table (may be the same string as
                   <code class="sgmltag-element">utID</code>).</p></dd><dt><span class="term">
-	      <a id="d0e3182" class="indexterm"/>
+	      <a id="d0e3167" class="indexterm"/>
               <code class="sgmltag-element">units</code>
             </span></dt><dd><p>Optional units-of-measure for the table's output signal.</p></dd></dl></div><div class="variablelist"><p class="title"><b><a href="ungriddedTableDef.html" title="ungriddedTableDef">
               <code class="sgmltag-element">ungriddedTableDef</code>
             </a> sub-elements:</b></p><dl><dt><span class="term">
-	      <a id="d0e3205" class="indexterm"/>
+	      <a id="d0e3190" class="indexterm"/>
               <a href="description.html" title="description">
                 <code class="sgmltag-element">description</code>
               </a>
             </span></dt><dd><p>The optional <a href="description.html" title="description">description</a> element allows the
                 author to describe the data contained within this
                 <code class="sgmltag-element">ungriddedTable</code>.</p></dd><dt><span class="term">
-	      <a id="d0e3229" class="indexterm"/>
+	      <a id="d0e3214" class="indexterm"/>
               <a href="provenance.html" title="provenance">
                 <code class="sgmltag-element">provenance</code>
               </a>
@@ -75,14 +75,14 @@ span.off     {  }
                   <code class="sgmltag-element">ungriddedTable</code>. Alternatively, a <a href="provenanceRef.html" title="provenanceRef">
                   <code class="sgmltag-element">provenanceRef</code>
                 </a> reference can be made to a previously defined provenance.</p></dd><dt><span class="term">
-	      <a id="d0e3259" class="indexterm"/>
+	      <a id="d0e3244" class="indexterm"/>
               <a href="uncertainty.html" title="uncertainty">
                 <code class="sgmltag-element">uncertainty</code>
               </a>
             </span></dt><dd><p> This optional element, if present, describes the uncertainty of this parameter.
                 See the section on <a href="statistics.html" title="6.4. Statistical information encoding">Statistics</a> below for more
                 information about this element. </p></dd><dt><span class="term">
-	      <a id="d0e3280" class="indexterm"/>
+	      <a id="d0e3265" class="indexterm"/>
               <a href="dataPoint.html" title="dataPoint">
                 <code class="sgmltag-element">dataPoint</code>
               </a>
@@ -94,7 +94,7 @@ span.off     {  }
 	    An excerpt showing an <code class="sgmltag-element">ungriddedTableDef</code> element, encoding the data
 	    depicted in <a href="ungriddedTableDef_overview.html#twoD_ungriddedTable_figure" title="Figure 2.  The 2D lift function given in Example 9&#xA;          ">Figure 2</a>.
 	  </b></p><div class="example-contents"><p> 
-	    This 2D function table is an example<a id="d0e3306" class="indexterm"/> provided by Dr. Peter
+	    This 2D function table is an example<a id="d0e3291" class="indexterm"/> provided by Dr. Peter
 	    Grant of the University of Toronto. Such a table definition would be used in a
 	    subsequent <code class="sgmltag-element">function</code> to describe how an output variable would be
 	    defined based on two independent input variables. The function table does not indicate
@@ -150,7 +150,7 @@ span.off     {  }
 	    An excerpt from a sample aerodynamics model giving an example of a 3D
 	    <code class="sgmltag-element">ungriddedTableDef</code> element, encoding the data shown in <a href="ungriddedTableDef_overview.html#threeD_ungriddedTable_figure" title="Figure 3. The 3D function given in the previous example">Figure 3</a>.
 	  </b></p><div class="example-contents"><p> 
-	    In this example<a id="d0e3365" class="indexterm"/>, the dependent
+	    In this example<a id="d0e3350" class="indexterm"/>, the dependent
 	    coordinates all vary in each dimension.
 	  </p><pre class="programlisting">
      &lt;!--===================================--&gt;  <a id="ug3dtd-note-1-co" href="ungriddedTableDef_overview.html#ug3dtd-note-1"><img src="images/callouts/1.png" alt="1" border="0"/></a>
@@ -208,11 +208,11 @@ span.off     {  }
        &lt;dataPoint&gt; 4.0150716  9.6815531  -0.0630955 0.0252014&lt;/dataPoint&gt;
        &lt;dataPoint&gt; 4.1677953  9.8754433  5.1776223  0.0164312&lt;/dataPoint&gt;
      &lt;/ungriddedTableDef&gt;
-          </pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a id="ug3dtd-note-1"/><a href="#ug3dtd-note-1-co"><img src="images/callouts/1.png" alt="1" border="0"/></a> </td><td valign="top" align="left"><p>Example courtesy of Mr. Geoff Brian<a id="d0e3381" class="indexterm"/>,
-              DSTO<a id="d0e3385" class="indexterm"/></p></td></tr><tr><td width="5%" valign="top" align="left"><a id="ug3dtd-note-2"/><a href="#ug3dtd-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p> 
+          </pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a id="ug3dtd-note-1"/><a href="#ug3dtd-note-1-co"><img src="images/callouts/1.png" alt="1" border="0"/></a> </td><td valign="top" align="left"><p>Example courtesy of Mr. Geoff Brian<a id="d0e3366" class="indexterm"/>,
+              DSTO<a id="d0e3370" class="indexterm"/></p></td></tr><tr><td width="5%" valign="top" align="left"><a id="ug3dtd-note-2"/><a href="#ug3dtd-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p> 
 		In this example, columns are labeled with an <acronym class="acronym">XML</acronym>
 		comment for human readers. Actual association of each input
 		(alpha, beta and delta) and the single output (yawing
 		moment) to the respective input and output signals
 		is mechanized in any subsequent function definition(s).
-	      </p></td></tr></table></div></div></div><br class="example-break"/><div class="figure"><a id="threeD_ungriddedTable_figure"/><p class="title"><b>Figure 3. The 3D function given in the <a href="ungriddedTableDef_overview.html#threeD_ungriddedTableDef_example" title="Example 10.  An excerpt from a sample aerodynamics model giving an example of a 3D ungriddedTableDef element, encoding the data shown in Figure 3.">previous example</a></b></p><div class="figure-contents"><div><img src="figures/gb_3Dungridded.png" alt="The 3D function given in the previous example"/></div></div></div><br class="figure-break"/></div><P xmlns="" class="CVSinfo">2011-03-31</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="griddedTableDef_overview.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="davefunc_overview.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="function_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+	      </p></td></tr></table></div></div></div><br class="example-break"/><div class="figure"><a id="threeD_ungriddedTable_figure"/><p class="title"><b>Figure 3. The 3D function given in the <a href="ungriddedTableDef_overview.html#threeD_ungriddedTableDef_example" title="Example 10.  An excerpt from a sample aerodynamics model giving an example of a 3D ungriddedTableDef element, encoding the data shown in Figure 3.">previous example</a></b></p><div class="figure-contents"><div><img src="figures/gb_3Dungridded.png" alt="The 3D function given in the previous example"/></div></div></div><br class="figure-break"/></div><P xmlns="" class="CVSinfo">2011-07-12</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="griddedTableDef_overview.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="davefunc_overview.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="function_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

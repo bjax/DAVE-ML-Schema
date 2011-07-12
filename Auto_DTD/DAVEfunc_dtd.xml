@@ -13,8 +13,8 @@
                    Dynamic Aerospace Vehicle Exchange DTD            
                         Function Data Representation                   
                                                                 
-                              Version: 2.0.1
-                               31 March 2011                                       
+                              Version: 2.0.2
+                               12 July 2011                                       
                                                                 
     This DTD module is identified by these PUBLIC and SYSTEM       
     identifiers:                                                   
@@ -67,12 +67,6 @@
 
   </genlcomment>
   
-  <genlcomment>
-    Include the MathML2 DTD for any math markup
-  </genlcomment>
-  
-  <entityDef enID="mathml2"  public="-//W3C//DTD MathML 2.0//EN" system="http://www.w3.org/Math/DTD/mathml2/mathml2.dtd" name="mathml2"></entityDef>
-
   <elLevel>0</elLevel>
 
   <el>
@@ -1436,6 +1430,14 @@
     </descrip>
     <data/>
   </el>
+
+  <genlcomment>
+    Include the MathML2 DTD for any math markup
+  </genlcomment>
+  
+  <entityDef enID="mathml2"  public="-//W3C//DTD MathML 2.0//EN" 
+	     system="http://www.w3.org/Math/DTD/mathml2/mathml2.dtd" 
+	     name="mathml2"/>
 
 </dtd>
 

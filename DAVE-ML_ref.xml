@@ -12,8 +12,8 @@
     <title>Dynamic Aerospace Vehicle Exchange Markup Language (<acronym>DAVE-ML</acronym>)
       Reference</title>
     <titleabbrev>DAVE-ML 2</titleabbrev>
-    <subtitle>Version 2.0.1</subtitle>
-    <releaseinfo>2011-03-31</releaseinfo>
+    <subtitle>Version 2.0.2</subtitle>
+    <releaseinfo>2011-07-12</releaseinfo>
     <corpauthor>
       <ulink url="https://info.aiaa.org/tac/ASG/MSTC"> AIAA Modeling and
         Simulation Technical Committee </ulink>
@@ -51,13 +51,13 @@
 	This markup language represents the encoding format for ANSI/AIAA S-119-2011 Flight Dynamic
 	Model Exchange Standard <link linkend="AIAA11"><citation>AIAA11</citation></link>.
       </para>
-      <para revisionflag="changed">
+      <para>
 	This is first release version of the reference manual for <acronym>DAVE-ML</acronym> syntax and
 	markup. <acronym>DAVE-ML</acronym> syntax is specified by the
 	<filename>DAVEfunc.dtd</filename> Document Type Definition (<acronym>DTD</acronym>) file;
 	the version number above refers to the version of the <filename>DAVEfunc.dtd.</filename>
       </para>
-      <para revisionflag="changed">
+      <para>
 	<acronym>DAVE-ML</acronym> is an open standard developed by the American Institute of
 	Aeronautics and Astronautics (<acronym>AIAA</acronym>) Modeling and Simulation Technical
 	Committee (<acronym>MSTC</acronym>).  Contact the author above for more information or
@@ -71,22 +71,50 @@
   <sect1 id="changes">
     <title>Changes to this document</title>
     <titleabbrev>Changes</titleabbrev>
-    <para revisionflag="changed">
+    <para>
       This section contains a list of the changes since version 2.0 Release Candidate 4 of the
       <acronym>DAVE-ML</acronym> <acronym>DTD</acronym>.
     </para>
-    <sect2 id="changes-20" revisionflag="added">
-      <title>Changes since version 2.0RC4</title>
-      <titleabbrev>V2.0 final release changes</titleabbrev>
+    <sect2 id="changes-20">
+      <title>Changes since version 2.0</title>
+      <titleabbrev>Changes since V2.0 final release</titleabbrev>
       <para>
-	This section outlines changes to the DTD and this reference manual since version 2, release
-	candidate 4, was released in January 2011.
+	This section outlines changes to the DTD and this reference manual since version 2
+	was released in March 2011.
       </para>
       <para>
 	The changes are divided into <emphasis>structural</emphasis> changes to the DTD and
 	<emphasis>non-structural</emphasis> changes to the DTD and reference manual.
       </para>
 
+      <sect3 id="dtd-changes-202" revisionflag="added">
+	<title><acronym>DTD</acronym> structural changes since version 2.0.1</title>
+	<titleabbrev>Version 2.0.2 final release DTD changes</titleabbrev>
+	<para>
+	  <itemizedlist>
+	    <listitem>
+	      <para>
+		Moved the ENTITY declaration and inclusion of MathML2 DTD to end of file; this gives
+		the equivalent RELAX NG translation to define the correct default namespace for
+		DAVE-ML instead of MathML.
+	      </para>
+	    </listitem>
+	  </itemizedlist>
+	</para>
+      </sect3>
+      <sect3 id="refman-changes-202" revisionflag="added">
+	<title>Non-structural <acronym>DTD</acronym> and reference manual changes since version 2.0.1</title>
+	<titleabbrev>Version 2.0.2 final release non-DTD changes</titleabbrev>
+	<para>
+	  <itemizedlist>
+	    <listitem>
+	      <para>
+		None.
+	      </para>
+	    </listitem>
+	  </itemizedlist>
+	</para>
+      </sect3>
       <sect3 id="dtd-changes-201">
 	<title><acronym>DTD</acronym> structural changes since version 2.0</title>
 	<titleabbrev>Version 2.0.1 final release DTD changes</titleabbrev>
@@ -110,46 +138,6 @@
 		Changed "BSR/AIAA" designation of the S-119 standard
 		to "ANSI/AIAA" to reflect released document
 		designation.
-	      </para>
-	    </listitem>
-	  </itemizedlist>
-	</para>
-      </sect3>
-      <sect3 id="dtd-changes-20">
-	<title><acronym>DTD</acronym> structural changes since version 2.0RC4</title>
-	<titleabbrev>Version 2 final release DTD changes</titleabbrev>
-	<para>
-	  <itemizedlist>
-	    <listitem>
-	      <para>
-		None.
-	      </para>
-	    </listitem>
-	  </itemizedlist>
-	</para>
-      </sect3>
-      <sect3 id="refman-changes-20">
-	<title>Non-structural <acronym>DTD</acronym> and reference manual changes since version 2.0RC4</title>
-	<titleabbrev>Version 2 final release non-DTD changes</titleabbrev>
-	<para>
-	  <itemizedlist>
-	    <listitem>
-	      <para>
-		Corrected the <link linkend="function_overview">function definition element
-		overview</link> BNF to reflect that <sgmltag>utID</sgmltag>, <sgmltag>gtID</sgmltag>
-		attributes are mandatory in table definitions (changed went into effect with release
-		candidate 4, but this change was not in the original RC4 reference manual).
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		Removed all of the change history except for the most recent version, as it was
-		getting rather longish and inappropriate for this initial release.
-	      </para>
-	    </listitem>
-	    <listitem>
-	      <para>
-		In several places, changed verbiage to indicate S-119 is no longer a draft document.
 	      </para>
 	    </listitem>
 	  </itemizedlist>
@@ -314,7 +302,7 @@
       in terms of inputs, with no past history (state) information required.
     </para>
      
-    <para revisionflag="changed">
+    <para>
       DAVE-ML forms the encoding portion of the Flight Dynamic Model Exchange Standard, ANSI/AIAA
       S-119-2011. More information is available at the S-119 web site
       <link linkend="AIAA11"><citation>AIAA11</citation></link>.
@@ -372,7 +360,7 @@
 	</indexterm>
       </para>
 
-      <para revisionflag="changed">
+      <para>
 	The AIAA Modeling and Simulation Technical Committee has developed a standard for the
 	exchange of simulation modeling data. This includes a methodology for accomplishing the
 	gradual standardization of simulation model components, a mechanism for standardizing
@@ -1676,7 +1664,7 @@ Key:
 	  <?dbfo keep-together="auto"?>
           <title>An example of two <sgmltag>variableDef</sgmltag> elements defining
             input signals</title>
-          <para revisionflag="changed"> 
+          <para>
 	    In this example<indexterm><primary sortas="variableDef">'variableDef'
 	    element</primary><secondary>example of</secondary></indexterm>, two input
 	    variables are defined: <varname>XMACH</varname> and <varname>DBFLL</varname>. These two
@@ -2891,7 +2879,7 @@ Key:
 	  </indexterm>
 	</para>
 
-        <programlisting revisionflag="changed">
+        <programlisting>
     <link linkend="function">function</link> : name
         <link linkend="description">description</link>? :
             {text description of the function}
@@ -4393,7 +4381,7 @@ Key:
         <title>Common sign convention notation</title>
         <titleabbrev>Sign conventions</titleabbrev>
 
-	<para revisionflag="changed">
+	<para>
 	  A convention for indicating positive sign conventions for measurements is included in
 	  Annex A of ANSI/AIAA S-119-2011 Flight Dynamics Model Exchange Standard <link
 	  linkend="AIAA11"><citation>AIAA11</citation></link>. These acronyms, if applicable, should

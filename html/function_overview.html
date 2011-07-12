@@ -17,8 +17,8 @@ span.off     {  }
 	  The <a href="function.html" title="function"><code class="sgmltag-element">function</code></a> element connects
 	  breakpoint sets (for gridded tables), independent variables, and data tables (gridded or
 	  ungridded) to their respective output variable.
-	  <a id="d0e3413" class="indexterm"/>
-	</p><div xmlns="" class="changed"><pre xmlns="http://www.w3.org/1999/xhtml" class="programlisting">
+	  <a id="d0e3398" class="indexterm"/>
+	</p><pre class="programlisting">
     <a href="function.html" title="function">function</a> : name
         <a href="description.html" title="description">description</a>? :
             {text description of the function}
@@ -72,22 +72,22 @@ span.off     {  }
                         {coordinate/value sets as character data}
               )
         )
-        </pre></div><div class="variablelist"><p class="title"><b><a href="function.html" title="function">
+        </pre><div class="variablelist"><p class="title"><b><a href="function.html" title="function">
               <code class="sgmltag-element">function</code>
             </a> attributes:</b></p><dl><dt><span class="term">
-	      <a id="d0e3537" class="indexterm"/>
+	      <a id="d0e3522" class="indexterm"/>
               <code class="sgmltag-element">name</code>
             </span></dt><dd><p>A UNICODE name for the function.</p></dd></dl></div><div class="variablelist"><p class="title"><b><a href="function.html" title="function">
               <code class="sgmltag-element">function</code>
             </a> sub-elements:</b></p><dl><dt><span class="term">
-	      <a id="d0e3560" class="indexterm"/>
+	      <a id="d0e3545" class="indexterm"/>
               <a href="description.html" title="description">
                 <code class="sgmltag-element">description</code>
               </a>
             </span></dt><dd><p>The optional <a href="description.html" title="description">description</a> element allows the
                 author to describe the data contained within this
                 <code class="sgmltag-element">function</code>.</p></dd><dt><span class="term">
-	      <a id="d0e3584" class="indexterm"/>
+	      <a id="d0e3569" class="indexterm"/>
               <a href="provenance.html" title="provenance">
                 <code class="sgmltag-element">provenance</code>
               </a>
@@ -96,7 +96,7 @@ span.off     {  }
                   <code class="sgmltag-element">function</code>. Alternatively, a <a href="provenanceRef.html" title="provenanceRef">
                   <code class="sgmltag-element">provenanceRef</code>
                 </a> reference can be made to a previously defined provenance.</p></dd><dt><span class="term">
-	      <a id="d0e3614" class="indexterm"/>
+	      <a id="d0e3599" class="indexterm"/>
               <a href="independentVarPts.html" title="independentVarPts">
                 <code class="sgmltag-element">independentVarPts</code>
               </a>
@@ -118,7 +118,7 @@ span.off     {  }
 		performance of interpolation of various orders is left up to the processing
 		application.  See <a href="interpolation.html" title="6.3. Function interpolation/extrapolation">Section 6.3</a>.
 	      </p></dd><dt><span class="term">
-	      <a id="d0e3655" class="indexterm"/>
+	      <a id="d0e3640" class="indexterm"/>
               <a href="dependentVarPts.html" title="dependentVarPts">
                 <code class="sgmltag-element">dependentVarPts</code>
               </a>
@@ -128,7 +128,7 @@ span.off     {  }
               rapidly in this comma- or white space-separated list of floating-point output
               values. The mandatory <code class="sgmltag-element">varID</code> attribute is used to connect this
               table's output to an output variable. </p></dd><dt><span class="term">
-	      <a id="d0e3679" class="indexterm"/>
+	      <a id="d0e3664" class="indexterm"/>
               <a href="independentVarRef.html" title="independentVarRef">
                 <code class="sgmltag-element">independentVarRef</code>
               </a>
@@ -144,7 +144,7 @@ span.off     {  }
 		performance of interpolation of various orders is left up to the implementer. See
 		<a href="interpolation.html" title="6.3. Function interpolation/extrapolation">Section 6.3</a>.
 	      </p></dd><dt><span class="term">
-	      <a id="d0e3708" class="indexterm"/>
+	      <a id="d0e3693" class="indexterm"/>
               <a href="dependentVarRef.html" title="dependentVarRef">
                 <code class="sgmltag-element">dependentVarRef</code>
               </a>
@@ -152,19 +152,19 @@ span.off     {  }
 		A single <code class="sgmltag-element">dependentVarRef</code> must be specified to connect the output
 		of this function to a particular <code class="sgmltag-element">variableDef</code>.
 	      </p></dd><dt><span class="term">
-	      <a id="d0e3732" class="indexterm"/>
+	      <a id="d0e3717" class="indexterm"/>
               <a href="functionDefn.html" title="functionDefn">
                 <code class="sgmltag-element">functionDefn</code>
               </a>
             </span></dt><dd><p> This element identifies either a separately specified data table definition or
                 specifies a private table, either gridded or ungridded. </p></dd><dt><span class="term">
-	      <a id="d0e3750" class="indexterm"/>
+	      <a id="d0e3735" class="indexterm"/>
               <a href="griddedTableRef.html" title="griddedTableRef">
                 <code class="sgmltag-element">griddedTableRef</code>
               </a>
             </span></dt><dd><p>If not defining a simple function table, the author may use this element to
                 point to a separately specified <code class="sgmltag-element">griddedTableDef</code> element.</p></dd><dt><span class="term">
-	      <a id="d0e3771" class="indexterm"/>
+	      <a id="d0e3756" class="indexterm"/>
               <a href="ungriddedTableRef.html" title="ungriddedTableRef">
                 <code class="sgmltag-element">ungriddedTableRef</code>
               </a>
@@ -173,7 +173,7 @@ span.off     {  }
 	    An excerpt giving the example of a function which refers to a previously defined
 	    <code class="sgmltag-element">griddedTableDef</code>
 	  </b></p><div class="example-contents"><p>
-	    This example<a id="d0e3798" class="indexterm"/> ties the input variables
+	    This example<a id="d0e3783" class="indexterm"/> ties the input variables
 	    <code class="varname">DBFLL</code> and <code class="varname">XMACH</code> into output variable
 	    <code class="varname">CLBFLLO</code> through a function called <code class="varname">CLBFLO_fn</code>, which
 	    is represented by the linear interpolation of the gridded table previously defined by
@@ -204,7 +204,7 @@ span.off     {  }
                 variable for this function. <code class="varname">CLBFLL0</code> must have been declared
                 previously with a <code class="sgmltag-element">variableDef</code> element.</p></td></tr><tr><td width="5%" valign="top" align="left"><a id="fn1-note-3"/><a href="#fn1-note-3-co"><img src="images/callouts/3.png" alt="3" border="0"/></a> </td><td valign="top" align="left"><p>This is a reference to the previously declared
                   <code class="sgmltag-element">griddedTableDef</code>.</p></td></tr></table></div></div></div><br class="example-break"/><div class="example"><a id="function_example_2"/><p class="title"><b>Example 12. A <code class="sgmltag-element">function</code> with an internal table</b></p><div class="example-contents"><p> 
-	    In this example<a id="d0e3890" class="indexterm"/>, the
+	    In this example<a id="d0e3875" class="indexterm"/>, the
 	    function <code class="varname">CLRUD0</code> returns, in the variable <code class="varname">CLRUD0</code>,
 	    the value of function <code class="varname">CLRUD0_fn</code> represented by gridded
 	    <code class="varname">CLRUD0_table</code>. The inputs to the function are
@@ -268,7 +268,7 @@ span.off     {  }
 		The <code class="sgmltag-element">varID</code> attribute is used to link the output of this function
 		with a previously defined variable as given in <a href="variableDef_overview.html#variableDef_example_2" title="Example 3. A simple local variable definition example">Example 3</a>.
 	      </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="fn2-note-5"/><a href="#fn2-note-5-co"><img src="images/callouts/5.png" alt="5" border="0"/></a> </td><td valign="top" align="left"><p>This example has an embedded gridded table.</p></td></tr></table></div></div></div><br class="example-break"/><div class="example"><a id="function_example_3"/><p class="title"><b>Example 13. A simple 1D <code class="sgmltag-element">function</code></b></p><div class="example-contents"><p> 
-	    At the other end of the spectrum, a simple 1D nonlinear function<a id="d0e3971" class="indexterm"/> can be defined with no reuse, as shown below; however,
+	    At the other end of the spectrum, a simple 1D nonlinear function<a id="d0e3956" class="indexterm"/> can be defined with no reuse, as shown below; however,
 	    multiple-dimension functions are supported by adding additional
 	    <code class="sgmltag-element">independentVarPts</code> definitions.
 	  </p><pre class="programlisting">
@@ -281,4 +281,4 @@ span.off     {  }
   &lt;/dependentVarPts&gt;
 &lt;/function&gt;
           </pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a id="fn3-note-1"/><a href="#fn3-note-1-co"><img src="images/callouts/1.png" alt="1" border="0"/></a> </td><td valign="top" align="left"><p> Breakpoints in angle-of-attack are listed here. </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="fn3-note-2"/><a href="#fn3-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p> Values of <code class="varname">cl</code> are given, corresponding to the angle-of-attack
-                breakpoints given previously. </p></td></tr></table></div></div></div><br class="example-break"/></div><P xmlns="" class="CVSinfo">2011-03-31</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ungriddedTableDef_overview.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="davefunc_overview.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="checkData_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+                breakpoints given previously. </p></td></tr></table></div></div></div><br class="example-break"/></div><P xmlns="" class="CVSinfo">2011-07-12</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ungriddedTableDef_overview.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="davefunc_overview.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="checkData_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

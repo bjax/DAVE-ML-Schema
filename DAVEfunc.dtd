@@ -3,8 +3,8 @@
                    Dynamic Aerospace Vehicle Exchange DTD            
                         Function Data Representation                   
                                                                 
-                              Version: 2.0.1
-                               31 March 2011                                       
+                              Version: 2.0.2
+                               12 July 2011                                       
                                                                 
     This DTD module is identified by these PUBLIC and SYSTEM       
     identifiers:                                                   
@@ -59,16 +59,6 @@
 
   
      ================================================================= -->
-
-<!-- =================================================================
-
-    Include the MathML2 DTD for any math markup
-  
-     ================================================================= -->
-
-<!ENTITY % mathml2 PUBLIC "-//W3C//DTD MathML 2.0//EN"
-        "http://www.w3.org/Math/DTD/mathml2/mathml2.dtd">
-%mathml2;
 
 
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -1121,4 +1111,14 @@ Specifies the contents of the input vector for the given check case.
 
 <!ELEMENT tol (#PCDATA)>
 
+
+<!-- =================================================================
+
+    Include the MathML2 DTD for any math markup
+  
+     ================================================================= -->
+
+<!ENTITY % mathml2 PUBLIC "-//W3C//DTD MathML 2.0//EN"
+        "http://www.w3.org/Math/DTD/mathml2/mathml2.dtd">
+%mathml2;
 

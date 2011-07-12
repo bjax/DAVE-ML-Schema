@@ -18,15 +18,19 @@ NXML-MODE  = ~/downloaded_sw/nxml-mode/schema
 CLASSPATH  = $(TRANG_DIR):$(JING_DIR)/bin
 
 
-make: DAVEfunc_auto.dtd DAVEfunc_ref_auto.xml $(SCHEMA_DIR)/DAVEfunc.dtd
+make: DAVEfunc_auto.dtd DAVEfunc_ref_auto.xml $(SCHEMA_DIR)/DAVEfunc.dtd DAVEfunc.rnc
 
 DAVEfunc_auto.dtd: DAVEfunc_dtd.xml xml2dtd.xsl
 	@echo "Making .dtd file..."
 	@java -jar ${XALAN}/xalan.jar -in DAVEfunc_dtd.xml -xsl xml2dtd.xsl -out DAVEfunc_auto.dtd
 
+# some silliness here: trang wants to use same default namespace in both DAVEfunc.rnc and mathml2.rnc
+# which Emacs (for one) doesn't understand
 DAVEfunc.rnc: DAVEfunc_auto.dtd
-	@echo  "Making .rnc version..."
-	@java -cp $(CLASSPATH) -jar $(TRANG_DIR)/trang.jar DAVEfunc_auto.dtd DAVEfunc.rnc
+	@echo  "Making .rnc schema version..."
+	@java -jar $(TRANG_DIR)/trang.jar DAVEfunc_auto.dtd DAVEfunc.rnc
+	@sed "s|daveml.org/2010/DAVEML|www.w3.org/1998/Math/MathML|" mathml2.rnc > mathml2a.rnc
+	@mv mathml2a.rnc mathml2.rnc
 
 $(SCHEMA_DIR)/DAVEfunc.dtd: DAVEfunc_auto.dtd
 	@echo  "Copying $@ to schema directory..."

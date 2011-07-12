@@ -17,7 +17,7 @@ span.off     {  }
 	Shown below are schematic overviews of the various elements currently available in
 	<code class="sgmltag-element">DAVEfunc</code>. Each element is described in detail in <a href="elementRefs.html" title="8. Element references and descriptions">Section 8, “Element references and descriptions”</a> later in this document. The following key is used to describe the
 	elements and associated attributes.
-	<a id="d0e863" class="indexterm"/>
+	<a id="d0e848" class="indexterm"/>
       </p><pre class="programlisting">
 Key:
     elementname : mandatory_attributes, [optional_attributes]
@@ -39,13 +39,13 @@ Key:
         <a href="function_overview.html" title="6.2.6. The function definition element">function</a>*
         <a href="checkData_overview.html" title="6.2.7. The checkData element">checkData</a>?
       </pre><div class="variablelist"><p class="title"><b><code class="sgmltag-element">DAVEfunc</code> sub-elements:</b></p><dl><dt><span class="term">
-	    <a id="d0e910" class="indexterm"/>
+	    <a id="d0e895" class="indexterm"/>
             <a href="fileHeader_overview.html" title="6.2.1. The file header element">
               <code class="sgmltag-element">fileHeader</code>
             </a>
           </span></dt><dd><p> This mandatory element contains information about the origin and development of
               this model. </p></dd><dt><span class="term">
-	    <a id="d0e928" class="indexterm"/>
+	    <a id="d0e913" class="indexterm"/>
             <a href="variableDef_overview.html" title="6.2.2. The variable definition element">
               <code class="sgmltag-element">variableDef</code>
             </a>
@@ -66,9 +66,9 @@ Key:
 	      (<code class="sgmltag-element">dependentVar</code>) of a <code class="sgmltag-element">function</code> it can be assumed
 	      that dependence has been met, since function definitions appear later in the
 	      <code class="sgmltag-element">DAVEfunc</code> element.
-	    <a id="d0e972" class="indexterm"/>
+	    <a id="d0e957" class="indexterm"/>
 	    </p></dd><dt><span class="term">
-	    <a id="d0e981" class="indexterm"/>
+	    <a id="d0e966" class="indexterm"/>
             <a href="breakpointDef_overview.html" title="6.2.3. The breakpoint set definition element">
               <code class="sgmltag-element">breakpointDef</code>
             </a>
@@ -85,31 +85,31 @@ Key:
 	      <code class="sgmltag-element">function</code></a>s in a model can specify their tables internally
 	      with an embedded <a href="griddedTableDef.html" title="griddedTableDef"><code class="sgmltag-element">griddedTableDef</code>
 	      </a> element.
-	      <a id="d0e1028" class="indexterm"/>
-	      <a id="d0e1034" class="indexterm"/>
-	      <a id="d0e1040" class="indexterm"/>
-	      <a id="d0e1046" class="indexterm"/>
+	      <a id="d0e1013" class="indexterm"/>
+	      <a id="d0e1019" class="indexterm"/>
+	      <a id="d0e1025" class="indexterm"/>
+	      <a id="d0e1031" class="indexterm"/>
 	    </p><p> A gridded function table contains dependent values, or data points, corresponding
               to the value of a function at the intersection of one or more breakpoint sets (one for
               each dimension of the table). The independent values (coordinates or breakpoint sets)
               are not stored within the gridded table definition but are referenced by the parent
               function. This allows a function table to be supported by more than one set of
               breakpoint values (such as left- and right-aileron deflections). 
-	      <a id="d0e1054" class="indexterm"/>
+	      <a id="d0e1039" class="indexterm"/>
 	    </p></dd><dt><span class="term">
             <a href="ungriddedTableDef_overview.html" title="6.2.5. The ungridded table definition element">
               <code class="sgmltag-element">ungriddedTableDef</code>
             </a>
           </span></dt><dd><p> 
 	      A DAVEfunc model can contain zero, one, or more ungridded nonlinear function table
-	      definitions. <a id="d0e1072" class="indexterm"/><a id="d0e1077" class="indexterm"/>
+	      definitions. <a id="d0e1057" class="indexterm"/><a id="d0e1062" class="indexterm"/>
 	      Unlike a rectangularly gridded table, an ungridded table specifies data
 	      points as individual sets of independent and dependent values. Each table must be used
 	      by at least one but can be used by multiple <a href="function.html" title="function"><code class="sgmltag-element">function</code></a> definitions if necessary
 	      for efficiency. Alternatively, <code class="sgmltag-element">function</code>s can retain their tables
 	      internally with a ungriddedTable element without sharing the table values with other
 	      functions.
-	      <a id="d0e1090" class="indexterm"/>
+	      <a id="d0e1075" class="indexterm"/>
 	    </p><p> 
 	      Ungridded table values are specified as a single (unsorted) list of independent
 	      variable (input) values and associated dependent variable (output) values. While the
@@ -118,9 +118,9 @@ Key:
 	      share an ungridded table definition must have the same ordering of independent variables.
 	    </p><p>
 	      The method of interpolating the ungridded data is not specified. 
-	      <a id="d0e1104" class="indexterm"/>
+	      <a id="d0e1089" class="indexterm"/>
 	    </p></dd><dt><span class="term">
-	    <a id="d0e1113" class="indexterm"/>
+	    <a id="d0e1098" class="indexterm"/>
             <a href="function_overview.html" title="6.2.6. The function definition element">
               <code class="sgmltag-element">function</code>
             </a>
@@ -131,10 +131,10 @@ Key:
 	      definitions, as shown in <a href="top-element-davefunc.html#daveml_file_excerpt_fig" title="Figure 1.  Excerpts from an example DAVE-ML file ">Figure 1</a>. Functions also include provenance, or background history, of the function data
 	      such as wind tunnel test or other source information.
 	    </p></dd><dt><span class="term">
-	    <a id="d0e1137" class="indexterm"/>
+	    <a id="d0e1122" class="indexterm"/>
             <a href="checkData_overview.html" title="6.2.7. The checkData element">
               <code class="sgmltag-element">checkData</code>
             </a>
           </span></dt><dd><p> This optional element contains information allowing the model to be automatically
               verified after implementation by the receiving party. </p></dd></dl></div><p> An example of each of these sub-elements is given below. Complete descriptions of each
-        element in detail are found in <a href="elementRefs.html" title="8. Element references and descriptions">Section 8, “Element references and descriptions”</a>. </p></div><P xmlns="" class="CVSinfo">2011-03-31</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="top-element-davefunc.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="top-element.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="fileHeader_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+        element in detail are found in <a href="elementRefs.html" title="8. Element references and descriptions">Section 8, “Element references and descriptions”</a>. </p></div><P xmlns="" class="CVSinfo">2011-07-12</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="top-element-davefunc.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="top-element.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="fileHeader_overview.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

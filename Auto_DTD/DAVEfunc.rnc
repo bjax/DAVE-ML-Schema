@@ -1,0 +1,989 @@
+# =================================================================
+# 
+#                Dynamic Aerospace Vehicle Exchange DTD            
+#                     Function Data Representation                   
+# 
+#                           Version: 2.0.2
+#                            12 July 2011                                       
+# 
+# This DTD module is identified by these PUBLIC and SYSTEM       
+# identifiers:                                                   
+# 
+# PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" 
+# SYSTEM "http://daveml.org/DTDs/2p0/DAVEfunc.dtd"
+# 
+# Developed by:
+# 
+#   American Institute of Aeronautics and Astronautics (AIAA)
+#   Modeling & Simulation Technical Committee
+#   Simulation Modeling Standards Subcommittee
+# 
+# Contact information:
+# 
+#   E. Bruce Jackson <mailto:bruce.jackson@nasa.gov>
+#   Bruce L. Hildreth <mailto:bhildreth@jfti.com>                         
+#   Persistent DAVE-ML contact <mailto:info@daveml.org>
+#   <http://daveml.org>
+# 
+# Purpose: 
+# 
+#   Proposed standard for exchanging dynamic models of aerospace
+#   vehicles, including aero, engine, gear, inertia, and control
+#   models.
+# 
+#   This preliminary version defines static models typically
+#   associated with aerodynamic subsystem models, but can be used to
+#   describe any non-linear multi-dimensional function.
+# 
+# Status:                                                         
+#   Publicly released as an element of the ANSI/AIAA-S-119-2011 standard.
+# 
+# 
+#  =================================================================
+
+# =================================================================
+# 
+# 
+# Acknowledgments:                                                
+# 
+# The editors would like to acknowledge the contributions,
+# encouragement and helpful suggestions from Dennis Linse
+# (originally SAIC, now Vuelo Software Analysis), Jon Berndt (Jacobs
+# Sverdrup), Brent York (Indra), Bill Cleveland (NASA Ames), Geoff
+# Brian (Australia's DSTO), J. Dana McMinn (NASA Langley), Peter
+# Grant (UTIAS), Giovanni A. Cignoni (University of Pisa), Daniel
+# M. Newman (formerly Ball Aerospace, now Quantitative Aeronautics),
+# Hilary Keating (Fortburn Pty. Ltd.), Riley Rainey (SDS
+# International), Jeremy Furtek (Delphi Research) and Randy
+# Brumbaugh (Indigo Innovations).
+# 
+# 
+#  =================================================================
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# Level 0 Elements
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# =================================================================
+# 
+#  Root element is DAVEfunc, composed of a file header element
+#  followed by one or more variable definitions and zero or more
+#  breakpoint definitions, gridded or ungridded table definitions,
+#  and function elements.
+# 
+# =================================================================
+
+default namespace = "http://daveml.org/2010/DAVEML"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace xlink = "http://www.w3.org/1999/xlink"
+
+DAVEfunc =
+  element DAVEfunc {
+    attlist-DAVEfunc,
+    fileHeader,
+    variableDef+,
+    breakpointDef*,
+    griddedTableDef*,
+    ungriddedTableDef*,
+    function*,
+    checkData?
+  }
+attlist-DAVEfunc &= empty
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# Level 1 Elements
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# =================================================================
+# 
+#  The header element requires at least one author and a creation date;
+#  optional content includes version indicator, description,
+#  references, and modification records.
+# 
+# =================================================================
+fileHeader =
+  element fileHeader {
+    attlist-fileHeader,
+    author+,
+    (creationDate | fileCreationDate),
+    fileVersion?,
+    description?,
+    reference*,
+    modificationRecord*,
+    provenance*
+  }
+attlist-fileHeader &= attribute name { text }?
+# =================================================================
+# 
+#  variableDef elements provide wiring information (i.e., they
+#  identify the input and output signals used by these function
+#  blocks). They also provide MathML content markup to indicate any
+#  calculation required to arrive at the value of the variable,
+#  using other variables as inputs.  The variable definition can
+#  include statistical information regarding the uncertainty of the
+#  values which it might take on, when measured after any
+#  calculation is performed. Information about the reason for
+#  inclusion or change to this element can be included in an
+#  optional provenance sub-element.
+# 
+#  If either or both min or max attributes are specified, the
+#  implementer must limit the final value of the variable to remain
+#  within the specified bound(s). These attributes imply a one- or
+#  two-sided limiter function downstream of any specified
+#  calculation, input signal, or initial value.
+# 
+#  Min and max attributes may only be fixed numeric values. To
+#  provide variable limits, the modeler should employ the piecewise
+#  MathML element in a calculation subelement.
+# 
+# 
+# =================================================================
+variableDef =
+  element variableDef {
+    attlist-variableDef,
+    description?,
+    (provenance | provenanceRef)?,
+    calculation?,
+    (isInput | isControl | isDisturbance)?,
+    isState?,
+    isStateDeriv?,
+    isOutput?,
+    isStdAIAA?,
+    uncertainty?
+  }
+attlist-variableDef &=
+  attribute name { text },
+  attribute varID { xsd:ID },
+  attribute units { text },
+  attribute axisSystem { text }?,
+  attribute sign { text }?,
+  attribute alias { text }?,
+  attribute symbol { text }?,
+  attribute initialValue { text }?,
+  attribute minValue { text }?,
+  attribute maxValue { text }?
+variableRef = element variableRef { attlist-variableRef, empty }
+attlist-variableRef &= attribute varID { xsd:IDREF }
+# =================================================================
+# 
+#  A breakpointDef lists gridded table breakpoints.
+#  Since these are separate from function data they may be reused.
+# 
+# =================================================================
+breakpointDef =
+  element breakpointDef { attlist-breakpointDef, description?, bpVals }
+attlist-breakpointDef &=
+  attribute name { text }?,
+  attribute bpID { xsd:ID },
+  attribute units { text }?
+# =================================================================
+# 
+#  bpVals is a set of breakpoints (i.e., a set of independent
+#  variable values associated with one dimension of a gridded table
+#  of data). An example would be the Mach or angle-of-attack values
+#  that define the coordinates of each data point in a
+#  2D coefficient value table.
+# 
+# =================================================================
+bpVals = element bpVals { attlist-bpVals, text }
+attlist-bpVals &= empty
+# =================================================================
+# 
+#  A griddedTableDef contains points arranged in an orthogonal (but
+#  multi-dimensional) array, where the independent variables are
+#  defined by separate breakpoint vectors.  This table definition
+#  may be specified separately from the actual function
+#  declaration.
+# 
+# =================================================================
+griddedTableDef =
+  element griddedTableDef {
+    attlist-griddedTableDef,
+    description?,
+    (provenance | provenanceRef)?,
+    breakpointRefs,
+    uncertainty?,
+    dataTable
+  }
+attlist-griddedTableDef &=
+  attribute name { text }?,
+  attribute gtID { xsd:ID },
+  attribute units { text }?
+# =================================================================
+# 
+#  An ungriddedTableDef contains points that are not in an
+#  orthogonal grid pattern; thus, the independent variable
+#  coordinates are specified for each dependent variable value.
+#  This table definition may be specified separately from the
+#  actual function declaration.
+# 
+# =================================================================
+ungriddedTableDef =
+  element ungriddedTableDef {
+    attlist-ungriddedTableDef,
+    description?,
+    (provenance | provenanceRef)?,
+    uncertainty?,
+    dataPoint+
+  }
+attlist-ungriddedTableDef &=
+  attribute name { text }?,
+  attribute utID { xsd:ID },
+  attribute units { text }?
+# =================================================================
+# 
+#  Each function has optional description, optional provenance, and
+#  either a simple input/output table values or references to more
+#  complete (possible multiple) input, output, and function data
+#  elements.
+# 
+# =================================================================
+function =
+  element function {
+    attlist-function,
+    description?,
+    (provenance | provenanceRef)?,
+    ((independentVarPts+, dependentVarPts)
+     | (independentVarRef+, dependentVarRef, functionDefn))
+  }
+attlist-function &= attribute name { text }
+# =================================================================
+# 
+#  This top-level element is the place-holder for verification data
+#  of various forms for the encoded model. It will include static
+#  check cases, trim shots, and dynamic check case information.
+#  The provenance sub-element is now deprecated and has been moved
+#  to individual staticShots; it is allowed here for backwards
+#  compatibility. 
+# 
+# =================================================================
+checkData =
+  element checkData {
+    attlist-checkData, (provenance | provenanceRef)?, staticShot+
+  }
+attlist-checkData &= empty
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# Level 2 Elements
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# =================================================================
+# 
+#  author includes alternate means of identifying author using XNS
+#  or normal e-mail/address. The address sub-element is to be
+#  replaced with the more complete contactInfo sub-element.
+# 
+# =================================================================
+author = element author { attlist-author, (address* | contactInfo*) }
+attlist-author &=
+  attribute name { text },
+  attribute org { text },
+  attribute xns { text }?,
+  attribute email { text }?
+# =================================================================
+# 
+#  creationDate is simply a string with a date in it.  We
+#  follow ISO 8601 and use dates like "2004-01-02" to refer to
+#  January 2, 2004. 
+# 
+# =================================================================
+creationDate = element creationDate { attlist-creationDate, empty }
+attlist-creationDate &= attribute date { text }
+# =================================================================
+# 
+#  fileCreationDate is simply a string with a date in it.  We
+#  follow ISO 8601 and use dates like "2004-01-02" to refer to
+#  January 2, 2004. Its use is now deprecated in favor of the
+#  simpler creationDate.
+# 
+# =================================================================
+fileCreationDate =
+  element fileCreationDate { attlist-fileCreationDate, empty }
+attlist-fileCreationDate &= attribute date { text }
+# =================================================================
+# 
+#  This is a string describing, in some arbitrary text, the version
+#  identifier for this function description.
+# 
+# =================================================================
+fileVersion = element fileVersion { attlist-fileVersion, text }
+attlist-fileVersion &= empty
+# =================================================================
+# 
+#  The description element is a textual description of an
+#  entity. The full UNICODE character set is supported by XML but
+#  may not be available in all processing applications.
+# 
+# =================================================================
+description = element description { attlist-description, text }
+attlist-description &= empty
+# =================================================================
+# 
+#  The presence of the isOutput element indicates that this
+#  variable should be forced to be an output, even if it is used
+#  internally as an input elsewhere. Otherwise, the processing
+#  program may assume a signal defined with a calculation and used
+#  subsequently in the model is only an internal signal.
+# 
+# =================================================================
+isOutput = element isOutput { attlist-isOutput, empty }
+attlist-isOutput &= empty
+# =================================================================
+# 
+#  The presence of an isState element indicates that this variable
+#  is one of possibly multiple state variables in a dynamic model;
+#  this tells the processing entity that this is the output of an
+#  integrator (for continuous models) or a discretely updated state
+#  (for discrete models).
+# 
+# =================================================================
+isState = element isState { attlist-isState, empty }
+attlist-isState &= empty
+# =================================================================
+# 
+#  The presence of an isStateDeriv element indicates that this
+#  variable is one of possibly several state derivative variables
+#  in a dynamic model; this tells the processing entity that this
+#  is the output of an integrator (for continuous models only).
+# 
+# =================================================================
+isStateDeriv = element isStateDeriv { attlist-isStateDeriv, empty }
+attlist-isStateDeriv &= empty
+# =================================================================
+# 
+#  The presence of an isInput element indicates that this variable
+#  is an input signal to the model.
+# 
+# =================================================================
+isInput = element isInput { attlist-isInput, empty }
+attlist-isInput &= empty
+# =================================================================
+# 
+#  The presence of an isControl element indicates that this signal
+#  is a simulation control parameter used to vary the operation of
+#  the model, e.g. the time step size. Such parameters should be
+#  ignored when performing linear model extraction (for example)
+#  and should not significantly modify the dynamic behavior of the
+#  model.
+# 
+# =================================================================
+isControl = element isControl { attlist-isControl, empty }
+attlist-isControl &= empty
+# =================================================================
+# 
+#  The presence of an isDisturbance element indicates that this
+#  signal is an external disturbance input to the model and can be
+#  ignored when performing linear model extraction (for
+#  example). Such parameters should not significantly modify the
+#  nominal dynamic behavior of the model.
+# 
+# =================================================================
+isDisturbance = element isDisturbance { attlist-isDisturbance, empty }
+attlist-isDisturbance &= empty
+# =================================================================
+# 
+#  The presence of an isStdAIAA element indicates that this
+#  variable is one of the standard AIAA variable names
+#  which should be recognizable exterior to this module
+#  (e.g. AngleOfAttack_deg). This flag should assist importing tools in
+#  determining when an input or output should match a
+#  facility-provided signal name without requiring further
+#  information.
+# 
+# =================================================================
+isStdAIAA = element isStdAIAA { attlist-isStdAIAA, empty }
+attlist-isStdAIAA &= empty
+# =================================================================
+# 
+#  The calculation element wraps around MathML 2 content markup
+#  describing how the signal is calculated. The calculation may
+#  include both constants and variables; other variables are
+#  included by using their varID string in a MathML content
+#  identifier (ci) element. The calculation element must have one
+#  and only one subelement, and the subelement must be a 'math'
+#  element containing 'content' markup.
+# 
+# =================================================================
+calculation = element calculation { attlist-calculation, math }
+attlist-calculation &= empty
+# =================================================================
+# 
+#  This element gives identifying (citation) information to an
+#  external, possibly on-line, reference document, including a
+#  user-specified author, title, classification, accession number,
+#  date and URL.
+# 
+# =================================================================
+reference = element reference { attlist-reference, description? }
+attlist-reference &=
+  [ a:defaultValue = "simple" ] attribute xlink:type { "simple" }?,
+  attribute refID { xsd:ID },
+  attribute author { text },
+  attribute title { text },
+  attribute classification { text }?,
+  attribute accession { text }?,
+  attribute date { text },
+  attribute xlink:href { text }?
+# =================================================================
+# 
+#  A modificationRecord associates a single letter (such as
+#  modification "A") with modification author(s), address, and any
+#  optional external reference documents, in keeping with the AIAA
+#  draft standard.
+# 
+# =================================================================
+modificationRecord =
+  element modificationRecord {
+    attlist-modificationRecord, author+, description?, extraDocRef*
+  }
+attlist-modificationRecord &=
+  attribute modID { xsd:ID },
+  attribute date { text },
+  attribute refID { xsd:IDREF }?
+# =================================================================
+# 
+#  A single modification event may have more than one documented
+#  reference. This element can be used in place of the refID
+#  attribute in a modificationRecord to record more than one
+#  refIDs, pointing to the referenced document.
+# 
+# =================================================================
+extraDocRef = element extraDocRef { attlist-extraDocRef, empty }
+attlist-extraDocRef &= attribute refID { xsd:IDREF }
+# =================================================================
+# 
+#  The provenance element describes the history or source of the
+#  model data and includes author, date, and zero or more
+#  references to documents and modification records.
+# 
+# =================================================================
+provenance =
+  element provenance {
+    attlist-provenance,
+    author+,
+    (creationDate | functionCreationDate),
+    documentRef*,
+    modificationRef*,
+    description?
+  }
+attlist-provenance &= attribute provID { xsd:ID }?
+# =================================================================
+# 
+#  When the provenance of a set of several data is identical, the
+#  first provenance element should be given a provID and referenced by
+#  later provenanceRef elements.
+# 
+# =================================================================
+provenanceRef = element provenanceRef { attlist-provenanceRef, empty }
+attlist-provenanceRef &= attribute provID { xsd:IDREF }
+# =================================================================
+# 
+#  An independentVarPts element is a simple white space- or
+#  comma-separated list of breakpoints and contains a mandatory
+#  varID identifier as well as optional name, units, and sign
+#  convention attributes.
+# 
+#  An optional extrapolate attribute describes how to extrapolate
+#  the output value when the input value exceeds specified values
+#  (default is 'neither,' meaning the value of the table is held
+#  constant at the nearest defined value). An optional interpolate
+#  attribute indicates how to perform the interpolation within the
+#  table (supporting discrete, linear, cubic or quadratic
+#  splines). There are three different discrete options: 'discrete'
+#  means nearest-neighbor, with an exact mid-point value being
+#  rounded in the positive direction; 'ceiling' means the function
+#  takes on the value associated with the next (numerically) higher
+#  independent breakpoint as soon as the original value is exceeded;
+#  and 'floor' means the function holds the value associated with
+#  each breakpoint until the next (numerically) higher breakpoint
+#  value is reached by the independent argument. The default
+#  interpolation attribute value is 'linear.'
+# 
+#  This element is used for simple functions that do not share
+#  breakpoint or table values with other functions.
+# 
+# =================================================================
+independentVarPts =
+  element independentVarPts { attlist-independentVarPts, text }
+attlist-independentVarPts &=
+  attribute varID { xsd:IDREF },
+  attribute name { text }?,
+  attribute units { text }?,
+  attribute sign { text }?,
+  attribute extrapolate { "neither" | "min" | "max" | "both" }?,
+  attribute interpolate {
+    "discrete"
+    | "floor"
+    | "ceiling"
+    | "linear"
+    | "quadraticSpline"
+    | "cubicSpline"
+  }?
+# =================================================================
+# 
+#  A dependentVarPts element is a simple comma- or
+#  white space-delimited list of function values and contains a
+#  mandatory varID as well as optional name, units, and sign
+#  convention attributes. Data points are arranged as single
+#  vector with last-specified breakpoint values changing most
+#  frequently. Note that the number of dependent values must equal
+#  the product of the number of independent values for this simple,
+#  gridded, realization. This element is used for simple functions
+#  that do not share breakpoint or table values with other
+#  functions.
+# 
+# =================================================================
+dependentVarPts =
+  element dependentVarPts { attlist-dependentVarPts, text }
+attlist-dependentVarPts &=
+  attribute varID { xsd:IDREF },
+  attribute name { text }?,
+  attribute units { text }?,
+  attribute sign { text }?
+# =================================================================
+# 
+#  An independentVarRef more fully describes the input mapping of
+#  the function by pointing to a separate breakpoint definition
+#  element.
+# 
+#  An optional extrapolate attribute describes how to extrapolate
+#  the output value when the input value exceeds specified values
+#  (default is 'neither,' meaning the value of the table is held
+#  constant at the nearest defined value). An optional interpolate
+#  attribute indicates how to perform the interpolation within the
+#  table (supporting discrete, linear, cubic or quadratic
+#  splines). There are three different discrete options: 'discrete'
+#  means nearest-neighbor, with an exact mid-point value being
+#  rounded in the positive direction; 'floor' means the function
+#  takes on the value associated with the next (numerically) higher
+#  independent breakpoint as soon as original value is exceeded;
+#  and 'ceiling' means the function holds the value associated with
+#  each breakpoint until the next (numerically) higher breakpoint
+#  value is reached by the independent argument. The default
+#  interpolation attribute value is 'linear.'
+# 
+#  Note also that the option min and max attributes serve to limit
+#  the numeric range of the independent (function input) variable;
+#  these attributes are independent of and serve as additional
+#  range contraints with respect to any minValue or maxValue
+#  attribute associated with the independent variable itself.
+# 
+#  This element allows reuse of common breakpoint values for many
+#  tables but with possible differences in interpolation or
+#  extrapolation for each use.
+# 
+# =================================================================
+independentVarRef =
+  element independentVarRef { attlist-independentVarRef, empty }
+attlist-independentVarRef &=
+  attribute varID { xsd:IDREF },
+  attribute min { text }?,
+  attribute max { text }?,
+  attribute extrapolate { "neither" | "min" | "max" | "both" }?,
+  attribute interpolate {
+    "discrete"
+    | "floor"
+    | "ceiling"
+    | "linear"
+    | "quadraticSpline"
+    | "cubicSpline"
+  }?
+# =================================================================
+# 
+#  A dependentVarRef ties the output of a function to a signal name
+#  defined previously in a variable definition.
+# 
+# =================================================================
+dependentVarRef =
+  element dependentVarRef { attlist-dependentVarRef, empty }
+attlist-dependentVarRef &= attribute varID { xsd:IDREF }
+# =================================================================
+# 
+#  A functionDefn defines how function is represented in one of two
+#  possible ways: gridded (implies breakpoints) or ungridded (with
+#  explicit independent values for each point).
+# 
+# =================================================================
+functionDefn =
+  element functionDefn {
+    attlist-functionDefn,
+    (griddedTableRef
+     | griddedTableDef
+     | griddedTable
+     | ungriddedTableRef
+     | ungriddedTableDef
+     | ungriddedTable)
+  }
+attlist-functionDefn &= attribute name { text }?
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# Level 3 Elements
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+address = element address { attlist-address, text }
+attlist-address &= empty
+# =================================================================
+# 
+#  Used to provide contact information about an author. Use
+#  contactInfoType to differentiate what information is being
+#  conveyed and contactLocation to denote location of the address.
+# 
+# =================================================================
+contactInfo = element contactInfo { attlist-contactInfo, text }
+attlist-contactInfo &=
+  attribute contactInfoType {
+    "address" | "phone" | "fax" | "email" | "iname" | "web"
+  }?,
+  attribute contactLocation { "professional" | "personal" | "mobile" }?
+# =================================================================
+# 
+#  functionCreationDate is simply a string with a date in it.  We
+#  follow ISO 8601 and use dates like "2004-01-02" to refer to
+#  January 2, 2004. Its use is now deprecated in favor of the 
+#  simpler creationDate.
+# 
+# =================================================================
+functionCreationDate =
+  element functionCreationDate { attlist-functionCreationDate, empty }
+attlist-functionCreationDate &= attribute date { text }
+documentRef = element documentRef { attlist-documentRef, empty }
+attlist-documentRef &=
+  attribute docID { xsd:IDREF }?,
+  attribute refID { xsd:IDREF }
+modificationRef =
+  element modificationRef { attlist-modificationRef, empty }
+attlist-modificationRef &= attribute modID { xsd:IDREF }
+griddedTableRef =
+  element griddedTableRef { attlist-griddedTableRef, empty }
+attlist-griddedTableRef &= attribute gtID { xsd:IDREF }
+griddedTable =
+  element griddedTable {
+    attlist-griddedTable, breakpointRefs, confidenceBound?, dataTable
+  }
+attlist-griddedTable &= attribute name { text }?
+ungriddedTableRef =
+  element ungriddedTableRef { attlist-ungriddedTableRef, empty }
+attlist-ungriddedTableRef &= attribute utID { xsd:IDREF }
+ungriddedTable =
+  element ungriddedTable {
+    attlist-ungriddedTable, confidenceBound?, dataPoint+
+  }
+attlist-ungriddedTable &= attribute name { text }?
+# =================================================================
+# 
+#  Contains a description of the inputs and outputs, and possibly internal values, of a DAVE-ML
+#  model in a particular instant of time.
+# 
+# =================================================================
+staticShot =
+  element staticShot {
+    attlist-staticShot,
+    description?,
+    (provenance | provenanceRef)?,
+    checkInputs?,
+    internalValues?,
+    checkOutputs
+  }
+attlist-staticShot &=
+  attribute name { text },
+  attribute refID { xsd:IDREF }?
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# Level 4 Elements
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# =================================================================
+# 
+#  The breakpointRefs elements tie the independent variable names
+#  for the function to specific breakpoint values defined earlier.
+# 
+# =================================================================
+breakpointRefs =
+  element breakpointRefs { attlist-breakpointRefs, bpRef+ }
+attlist-breakpointRefs &= empty
+# =================================================================
+# 
+#  The confidenceBound element is used to declare the confidence
+#  interval associated with the data table. This is a place-holder
+#  and will be removed in a future version of DAVE-ML.
+# 
+# =================================================================
+confidenceBound =
+  element confidenceBound { attlist-confidenceBound, empty }
+attlist-confidenceBound &= attribute value { text }
+# =================================================================
+# 
+#  The uncertainty element is used in function and parameter
+#  definitions to describe statistical variance in the possible
+#  value of that function or parameter value. Only Gaussian
+#  (normal) or uniform distributions of continuous random variable
+#  distribution functions are supported.
+# 
+# =================================================================
+uncertainty =
+  element uncertainty { attlist-uncertainty, (normalPDF | uniformPDF) }
+attlist-uncertainty &=
+  attribute effect {
+    "additive" | "multiplicative" | "percentage" | "absolute"
+  }
+# =================================================================
+# 
+#  The dataTable element is used by gridded tables where the indep.
+#  variable values are implied by breakpoint sets. Thus, the data
+#  embedded between the dataTable element tags is expected to be
+#  sorted ASCII values of the gridded table, wherein the last
+#  independent variable listed in the function header varies most
+#  rapidly.
+# 
+#  The table data point values are specified as comma- or
+#  white space-separated values in conventional floating-point
+#  notation (0.93638E-06) in a single long sequence as if the table
+#  had been unraveled with the last-specified dimension changing
+#  most rapidly.  Line breaks are to be ignored. Comments may be
+#  embedded in the table to promote [human] readability, with
+#  appropriate escaping characters.
+# 
+#  A dataTable element can also be used in an uncertainty element
+#  to provide duplicate uncertainty bound values.
+# 
+# 
+# =================================================================
+dataTable = element dataTable { attlist-dataTable, text }
+attlist-dataTable &= empty
+# =================================================================
+# 
+#      The dataPoint element is used by ungridded tables to list the
+#      values of independent variables that are associated with each
+#      value of dependent variable. For example:
+# 
+# <dataPoint>                                                     
+#   0.1, -4.0, 0.2      <!- Mach, alpha, CL ->                    
+# </dataPoint>                                                    
+# <dataPoint>                                                     
+#   0.1,  0.0, 0.6      <!- Mach, alpha  CL ->                    
+# </dataPoint>                                                    
+# 
+#      Each data point may have associated with it a modification tag
+#      to document the genesis of that particular point.  No
+#      requirement on ordering of independent variables is implied.
+#      Since this is an ungridded table, the interpreting application is
+#      required to handle what may be unsorted data.
+# 
+#     =================================================================
+dataPoint = element dataPoint { attlist-dataPoint, text }
+attlist-dataPoint &= attribute modID { xsd:IDREF }?
+# =================================================================
+# Specifies the contents of the input vector for the given check case.
+#      =================================================================
+checkInputs = element checkInputs { attlist-checkInputs, signal+ }
+attlist-checkInputs &= empty
+# =================================================================
+# 
+#  Provides a set of all internal variable values to assist in debugging recalcitrant
+#  implementations of DAVE-ML import tools.
+# 
+# =================================================================
+internalValues =
+  element internalValues { attlist-internalValues, signal+ }
+attlist-internalValues &= empty
+# =================================================================
+# 
+#  Specifies the contents of the output vector for the given check
+#  case.
+# 
+# =================================================================
+checkOutputs = element checkOutputs { attlist-checkOutputs, signal+ }
+attlist-checkOutputs &= empty
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# Level 5 Elements
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# =================================================================
+# 
+#  The bpRef element provides references to a previously-defined
+#  breakpoint set so breakpoints can be defined separately from,
+#  and reused by, several data tables.
+# 
+# =================================================================
+bpRef = element bpRef { attlist-bpRef, empty }
+attlist-bpRef &= attribute bpID { xsd:IDREF }
+# =================================================================
+# 
+#  In a normally distributed random variable, a symmetrical
+#  distribution of given standard deviation is assumed about the
+#  nominal value (which is given elsewhere in the parent element).
+# 
+#  The correlatesWith sub-element references other functions or
+#  variables that have a linear correlation to the current
+#  parameter or function. The correlation sub-element specifies the
+#  correlation coefficient and references the other function or
+#  variable whose random value helps determine the value of this
+#  parameter.
+# 
+# =================================================================
+normalPDF =
+  element normalPDF {
+    attlist-normalPDF, bounds, correlatesWith*, correlation*
+  }
+attlist-normalPDF &= attribute numSigmas { text }
+# =================================================================
+# 
+#  In a uniformly distributed random variable, the value of the
+#  parameter has equal likelihood of assuming any value within the
+#  (possibly asymmetric, implied by specifying two) bounds, which
+#  must bracket the nominal value (which is given elsewhere in the
+#  parent element).
+# 
+# =================================================================
+uniformPDF = element uniformPDF { attlist-uniformPDF, bounds+ }
+attlist-uniformPDF &= empty
+# =================================================================
+# 
+#  This element contains some description of the statistical limits
+#  to the values the citing parameter element might take on. This
+#  can be in the form of a scalar value, a private dataTable, or a
+#  variableRef. In the more common instance, this element will
+#  either be a scalar constant value or a simple table whose
+#  dimensions must match the parent nominal function table and
+#  whose independent variables are identical to the nominal
+#  table. It is also possible that this limit be determined by an
+#  independent variable, either previously defined or defined
+#  in-line with this element. It does not make sense to have a
+#  dataTable cited if this bounds element is associated with
+#  anything other than an identically shaped function table.
+# 
+# =================================================================
+bounds =
+  element bounds {
+    attlist-bounds, (text | dataTable | variableDef | variableRef)*
+  }
+attlist-bounds &= empty
+# =================================================================
+# 
+#  When present, this element indicates the parent function or
+#  variable is correlated with the referenced other function or
+#  variable in a linear sense.  This alerts the application that
+#  the random number used to calculate this function's or variable's
+#  immediate value will be used to calculate another function's or
+#  variable's value.
+# 
+# =================================================================
+correlatesWith =
+  element correlatesWith { attlist-correlatesWith, empty }
+attlist-correlatesWith &= attribute varID { xsd:IDREF }
+# =================================================================
+# 
+#  When present, this element indicates the parent function or
+#  variable is correlated with the referenced other function or
+#  variable in a linear sense and gives the correlation
+#  coefficient for determining this function's random value based
+#  upon the correlating function(s)'s random value.
+# 
+# =================================================================
+correlation = element correlation { attlist-correlation, empty }
+attlist-correlation &=
+  attribute varID { xsd:IDREF },
+  attribute corrCoef { text }
+# =================================================================
+# 
+#  This element is used to document the name, ID, value, tolerance,
+#  and units of measure for check-cases. When used with checkInputs
+#  or checkOutputs, the signalName sub-element must be present
+#  (since check cases are viewed from "outside" the model); when
+#  used in an internalValues element, the varID sub-element should
+#  be used to identify the signal by its model-unique internal
+#  reference. When used in a checkOutputs vector, the tol element
+#  must be present. Tolerance is specified as a maximum absolute
+#  difference between the expected and actual value.
+# 
+#  The signalID sub-element is now deprecated in favor of the more
+#  consistent varID.
+# 
+# =================================================================
+signal =
+  element signal {
+    attlist-signal,
+    ((signalName, signalUnits) | (varID | signalID)),
+    signalValue,
+    tol?
+  }
+attlist-signal &= empty
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# Level 6 Elements
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# =================================================================
+# 
+#  Used inside a checkCase element to specify the input or output
+#  variable name
+# 
+# =================================================================
+signalName = element signalName { attlist-signalName, text }
+attlist-signalName &= empty
+# =================================================================
+# 
+#  Used to specify the input or output varID. Now deprecated; reuse
+#  of varID is best practice.
+# 
+# =================================================================
+signalID = element signalID { attlist-signalID, text }
+attlist-signalID &= empty
+# =================================================================
+# 
+#  Used to specify the input or output varID. Replaces earlier
+#  signalID element.
+# 
+# =================================================================
+varID = element varID { attlist-varID, text }
+attlist-varID &= empty
+# =================================================================
+# 
+#  Used inside a checkCase element to specify the units-of-measure
+#  for an input or output variable, for verification of proper
+#  implementation of a model.
+# 
+# =================================================================
+signalUnits = element signalUnits { attlist-signalUnits, text }
+attlist-signalUnits &= empty
+# =================================================================
+# 
+#  Used to give the current value of an internal signal or
+#  input/output variable, for verification of proper implementation
+#  of a model.
+# 
+# =================================================================
+signalValue = element signalValue { attlist-signalValue, text }
+attlist-signalValue &= empty
+# =================================================================
+# 
+#  This element specifies the allowable tolerance of error in an
+#  output value such that the model can be considered verified. It
+#  is assumed all uncertainty is removed in performing the model
+#  calculations. Tolerance is specified as a maximum absolute
+#  difference between the expected and actual value.
+# 
+# =================================================================
+tol = element tol { attlist-tol, text }
+attlist-tol &= empty
+# =================================================================
+# 
+# Include the MathML2 DTD for any math markup
+# 
+#  =================================================================
+include "mathml2.rnc"
+start = DAVEfunc
+any =
+  (element * {
+     attribute * { text }*,
+     any
+   }
+   | text)*

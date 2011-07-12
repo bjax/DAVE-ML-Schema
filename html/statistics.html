@@ -22,8 +22,8 @@ span.off     {  }
 	arguments to a function or calculation, to the output of a function itself, as well as to
 	any output signal.  Applying uncertainty at more than one location in a calculation change
 	is probably not a good practice, however.
-	<a id="d0e4495" class="indexterm"/>
-	<a id="d0e4501" class="indexterm"/>
+	<a id="d0e4480" class="indexterm"/>
+	<a id="d0e4486" class="indexterm"/>
       </p><p>
 	Details on providing the random values for uncertainties is left to the implementer.
       </p><p> Uncertainty in the value of a parameter or function is given in one of two ways,
@@ -61,21 +61,21 @@ span.off     {  }
       </pre><div class="variablelist"><p class="title"><b><a href="uncertainty.html" title="uncertainty">
             <code class="sgmltag-element">uncertainty</code>
           </a> attributes:</b></p><dl><dt><span class="term">
-	    <a id="d0e4584" class="indexterm"/>
+	    <a id="d0e4569" class="indexterm"/>
             <code class="sgmltag-element">effect</code>
           </span></dt><dd><p>Indicates, by choice of four enumerated values, how the uncertainty is modeled: as
               an additive, multiplicative, or percentage variation from the nominal value, or a
               specific number (absolute).</p></dd></dl></div><div class="variablelist"><p class="title"><b><a href="uncertainty.html" title="uncertainty">
             <code class="sgmltag-element">uncertainty</code>
           </a> sub-elements:</b></p><dl><dt><span class="term">
-	    <a id="d0e4607" class="indexterm"/>
+	    <a id="d0e4592" class="indexterm"/>
             <code class="sgmltag-element">normalPDF</code>
           </span></dt><dd><p> If present, the uncertainty in the parameter value has a probability distribution
               that is Gaussian (bell-shaped). A single parameter representing the additive
               (± some value), percentage (± some %) of variation from the
               nominal value in terms of 1, 2, 3, or more standard deviations (sigmas) is specified.
               Note:  multiplicative and absolute bounds do not make much sense. </p></dd><dt><span class="term">
-	    <a id="d0e4622" class="indexterm"/>
+	    <a id="d0e4607" class="indexterm"/>
             <code class="sgmltag-element">uniformPDF</code>
           </span></dt><dd><p> If present, the uncertainty in the parameter or function value has a uniform
               likelihood of taking on any value between symmetric or asymmetric boundaries, which
@@ -85,7 +85,7 @@ span.off     {  }
                 <code class="sgmltag-element">bounds</code>
               </a> sub-element may contain one or two values, in which case the boundaries are
               symmetric or asymmetric. </p></dd></dl></div><div class="example"><a id="uncertainty_example_1"/><p class="title"><b>Example 16. A variable with absolute uncertainty bounds</b></p><div class="example-contents"><p> 
-	  This example<a id="d0e4646" class="indexterm"/> shows how to specify that a constant parameter can take on a
+	  This example<a id="d0e4631" class="indexterm"/> shows how to specify that a constant parameter can take on a
 	  specified range of values with uniform probability distribution. The nominal value of the
 	  minimum drag coefficient is specified to be 0.005, but when performing parametric
 	  variations, it is allowed to take on values between 0.001 and 0.01.
@@ -113,7 +113,7 @@ span.off     {  }
         </pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a id="uncert1-note-1"/><a href="#uncert1-note-1-co"><img src="images/callouts/1.png" alt="1" border="0"/></a> </td><td valign="top" align="left"><p> We declare the parameter <code class="varname">CDo</code> as having a nominal value of
               0.005. </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="uncert1-note-2"/><a href="#uncert1-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p> When parametric variations are applied, the value of <code class="varname">CDo</code> can
               vary uniformly between 0.001 and 0.010. </p></td></tr></table></div></div></div><br class="example-break"/><div class="example"><a id="uncertainty_example_2"/><p class="title"><b>Example 17. 10% uncertainty applied to output variable with a uniform distribution</b></p><div class="example-contents"><p>
-	  This example<a id="d0e4679" class="indexterm"/> shows how to specify that a
+	  This example<a id="d0e4664" class="indexterm"/> shows how to specify that a
 	  variable has a 10% uniformly distributed uncertainty band. In this example, the output
 	  variable comes from a nonlinear 1D function and the uncertainty is applied to the output
 	  of the table.
@@ -165,7 +165,7 @@ span.off     {  }
               of ±10% uniform distribution. </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="uncert2-note-2"/><a href="#uncert2-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p> This function gives the nominal values of <code class="varname">Cm_u</code> as a
               1D function of angle-of-attack (alpha). </p></td></tr></table></div></div></div><br class="example-break"/><div class="example"><a id="uncertainty_example_3"/><p class="title"><b>Example 18. Asymmetric additive uncertainty applied to output variable with uniform
           distribution</b></p><div class="example-contents"><p> 
-	  This example<a id="d0e4712" class="indexterm"/> shows how to specify that a
+	  This example<a id="d0e4697" class="indexterm"/> shows how to specify that a
 	  variable has an asymmetric, uniformly distributed, additive uncertainty band. In this
 	  example, the output variable comes from a nonlinear 1D function and the uncertainty is
 	  applied to the output of the table.
@@ -220,7 +220,7 @@ span.off     {  }
               value which comes from the 1D <code class="varname">Cm_u</code> function table
               description). </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="uncert3-note-2"/><a href="#uncert3-note-2-co"><img src="images/callouts/2.png" alt="2" border="0"/></a> </td><td valign="top" align="left"><p> This function gives the nominal values of <code class="varname">Cm_u</code> as a
               1D function of angle-of-attack (alpha). </p></td></tr></table></div></div></div><br class="example-break"/><div class="example"><a id="uncertainty_example_4"/><p class="title"><b>Example 19. A 1D point-by-point, Gaussian distribution function</b></p><div class="example-contents"><p>
-	  In this example<a id="d0e4748" class="indexterm"/>, a Gaussian (normal) distribution function is applied
+	  In this example<a id="d0e4733" class="indexterm"/>, a Gaussian (normal) distribution function is applied
 	  to <span class="emphasis"><em>each</em></span> point in a 1D function table, with the 3-sigma value
 	  expressed as a multiplier of the nominal value.
 	</p><pre class="programlisting">
@@ -276,7 +276,7 @@ span.off     {  }
             </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="uncert4-note-4"/><a href="#uncert4-note-4-co"><img src="images/callouts/4.png" alt="4" border="0"/></a> </td><td valign="top" align="left"><p> This table defines the nominal values of the function; these values will be used
               if the random variable associated with the uncertainty of this function is zero or
               undefined by the application. </p></td></tr></table></div></div></div><br class="example-break"/><div class="example"><a id="uncertainty_example_5"/><p class="title"><b>Example 20. Two nonlinear functions with correlated uncertainty</b></p><div class="example-contents"><p>
-	  In this example<a id="d0e4794" class="indexterm"/>, uncertainty in pitching-moment coefficient varies in
+	  In this example<a id="d0e4779" class="indexterm"/>, uncertainty in pitching-moment coefficient varies in
 	  direct correlation with lift coefficient uncertainty.
 	</p><pre class="programlisting">
 &lt;DAVEfunc&gt;
@@ -346,4 +346,4 @@ span.off     {  }
 	      <code class="varname">Cm_u</code> can take on a 30% variation (3-sigma) with a Gaussian
 	      distribution.
 	    </p></td></tr><tr><td width="5%" valign="top" align="left"><a id="uncert5-note-4"/><a href="#uncert5-note-4-co"><img src="images/callouts/4.png" alt="4" border="0"/></a> </td><td valign="top" align="left"><p> This element indicates that the variation of pitching moment correlates directly
-              with the variation in lift coefficient. </p></td></tr></table></div></div></div><br class="example-break"/></div><P xmlns="" class="CVSinfo">2011-03-31</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="interpolation.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="top-element.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="conventions.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+              with the variation in lift coefficient. </p></td></tr></table></div></div></div><br class="example-break"/></div><P xmlns="" class="CVSinfo">2011-07-12</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="interpolation.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="top-element.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="conventions.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

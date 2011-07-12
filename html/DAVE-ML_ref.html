@@ -14,10 +14,10 @@ span.deleted { text-decoration: line-through;
 span.changed { background-color: #99ff99; }
 span.off     {  }
 </style><title>Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><meta name="description" content="The Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) is a text-based file format intended for encoding the principal elements of a flight simulation model for an aerospace vehicle. It is based on two other open standards: the Extensible Markup Language (XML) version 1.1 and the Mathematical Markup Language (MathML) version 2.0, both products of the World Wide Web Consortium. DAVE-ML defines additional grammar (markup elements) to provide a domain-specific language capable of aerospace flight dynamics modeling, verification, and documentation. This markup language represents the encoding format for ANSI/AIAA S-119-2011 Flight Dynamic Model Exchange Standard AIAA11. This is first release version of the reference manual for DAVE-ML syntax and markup. DAVE-ML syntax is specified by the DAVEfunc.dtd Document Type Definition (DTD) file; the version number above refers to the version of the DAVEfunc.dtd. DAVE-ML is an open standard developed by the American Institute of Aeronautics and Astronautics (AIAA) Modeling and Simulation Technical Committee (MSTC). Contact the author above for more information or comments regarding refinement of DAVE-ML."/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="next" href="changes.html" title="1. Changes to this document"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="changes.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-node">DAVE-ML 2</span></div><div class="article" lang="en"><div class="titlepage"><div><div><h1 class="title"><a id="d0e2"/>Dynamic Aerospace Vehicle Exchange Markup Language (<acronym class="acronym">DAVE-ML</acronym>)
-      Reference</h1></div><div><h3 class="subtitle"><i>Version 2.0.1</i></h3></div><div><h3 class="corpauthor">
+      Reference</h1></div><div><h3 class="subtitle"><i>Version 2.0.2</i></h3></div><div><h3 class="corpauthor">
       <a href="https://info.aiaa.org/tac/ASG/MSTC" target="_top"> AIAA Modeling and
         Simulation Technical Committee </a>
-    </h3></div><div><p class="releaseinfo">2011-03-31</p></div><div><div class="abstract"><p class="title"><b>Abstract</b></p><p>
+    </h3></div><div><p class="releaseinfo">2011-07-12</p></div><div><div class="abstract"><p class="title"><b>Abstract</b></p><p>
 	The Dynamic Aerospace Vehicle Exchange Markup Language (<acronym class="acronym">DAVE-ML</acronym>) is a
 	text-based file format intended for encoding the principal elements of a flight simulation
 	model for an aerospace vehicle. It is based on two other open standards: the Extensible
@@ -29,47 +29,47 @@ span.off     {  }
       </p><p>
 	This markup language represents the encoding format for ANSI/AIAA S-119-2011 Flight Dynamic
 	Model Exchange Standard <a href="biblio.html#AIAA11">[<span class="citation">AIAA11</span>]</a>.
-      </p><div xmlns="" class="changed"><p xmlns="http://www.w3.org/1999/xhtml">
+      </p><p>
 	This is first release version of the reference manual for <acronym class="acronym">DAVE-ML</acronym> syntax and
 	markup. <acronym class="acronym">DAVE-ML</acronym> syntax is specified by the
 	<code class="filename">DAVEfunc.dtd</code> Document Type Definition (<acronym class="acronym">DTD</acronym>) file;
 	the version number above refers to the version of the <code class="filename">DAVEfunc.dtd.</code>
-      </p></div><div xmlns="" class="changed"><p xmlns="http://www.w3.org/1999/xhtml">
+      </p><p>
 	<acronym class="acronym">DAVE-ML</acronym> is an open standard developed by the American Institute of
 	Aeronautics and Astronautics (<acronym class="acronym">AIAA</acronym>) Modeling and Simulation Technical
 	Committee (<acronym class="acronym">MSTC</acronym>).  Contact the author above for more information or
 	comments regarding refinement of <acronym class="acronym">DAVE-ML</acronym>.
-      </p></div></div></div></div><hr/></div><p class="ackno">
+      </p></div></div></div><hr/></div><p class="ackno">
     The editors would like to acknowledge the contributions, encouragement and helpful suggestions
     for steering the evolution of DAVE-ML from the following individuals:
 
-    Trey Arthur (NASA Langley Research Center),                               <a id="d0e12449" class="indexterm"/>
-    Jon Berndt (Jacobs Sverdrup),                                             <a id="d0e12453" class="indexterm"/>
-    Geoff Brian (Australian DSTO),                                            <a id="d0e12457" class="indexterm"/>
-    Randy Brumbaugh (Indigo Innovations),                                     <a id="d0e12461" class="indexterm"/>
-    Carey Buttrill (NASA Langley Research Center),                            <a id="d0e12465" class="indexterm"/>
-    Giovanni Cignoni (University of Pisa),                                    <a id="d0e12469" class="indexterm"/>
-    Bill Cleveland (NASA Ames Research Center),                               <a id="d0e12473" class="indexterm"/>
-    Zack Crues (NASA Johnson Space Center),                                   <a id="d0e12477" class="indexterm"/>
-    Rob Falck (NASA Glenn Research Center),                                   <a id="d0e12481" class="indexterm"/>
-    Jeremy Furtek (Delphi Research),                                          <a id="d0e12485" class="indexterm"/>
-    Peter Grant (UTIAS),                                                      <a id="d0e12489" class="indexterm"/> 
-    David Hasan (L-3 Communications, Houston),                                <a id="d0e12493" class="indexterm"/>
-    Bruce Hildreth (J.F. Taylor, Inc, Lexington Park),                        <a id="d0e12497" class="indexterm"/>
-    Missy Hill (UNISYS),                                                      <a id="d0e12501" class="indexterm"/>
-    Matt Jessick (L-3 Communications, Houston),                               <a id="d0e12505" class="indexterm"/>
-    Hilary Keating (Fortburn Pty. Ltd.),                                      <a id="d0e12509" class="indexterm"/>
-    Dennis Linse (SAIC),                                                      <a id="d0e12513" class="indexterm"/> 
-    Bill Othon (NASA Johnson Space Center),                                   <a id="d0e12517" class="indexterm"/> 
-    Mike Madden (NASA Langley Research Center),                               <a id="d0e12521" class="indexterm"/>
-    Greg McCarthy (NASA Dryden Flight Research Center),                       <a id="d0e12525" class="indexterm"/>
-    Dana McMinn (NASA Langley Research Center),                               <a id="d0e12529" class="indexterm"/>
-    Dan Murri (NASA Engineering and Safety Center, Hampton),                  <a id="d0e12533" class="indexterm"/>
-    Dan Newman (formerly Ball Aerospace, now Quantitative Aeronautics),       <a id="d0e12537" class="indexterm"/>
-    John Penn (L-3 Communications, Houston)                                    <a id="d0e12541" class="indexterm"/>
-    Riley Rainey (SDS International),                                         <a id="d0e12545" class="indexterm"/>
-    Mike Red (NASA Johnson Space Center),                                     <a id="d0e12549" class="indexterm"/>
-    Brent York (formerly NAVAIR, now Indra Systems, Inc.),                    <a id="d0e12553" class="indexterm"/>
+    Trey Arthur (NASA Langley Research Center),                               <a id="d0e12434" class="indexterm"/>
+    Jon Berndt (Jacobs Sverdrup),                                             <a id="d0e12438" class="indexterm"/>
+    Geoff Brian (Australian DSTO),                                            <a id="d0e12442" class="indexterm"/>
+    Randy Brumbaugh (Indigo Innovations),                                     <a id="d0e12446" class="indexterm"/>
+    Carey Buttrill (NASA Langley Research Center),                            <a id="d0e12450" class="indexterm"/>
+    Giovanni Cignoni (University of Pisa),                                    <a id="d0e12454" class="indexterm"/>
+    Bill Cleveland (NASA Ames Research Center),                               <a id="d0e12458" class="indexterm"/>
+    Zack Crues (NASA Johnson Space Center),                                   <a id="d0e12462" class="indexterm"/>
+    Rob Falck (NASA Glenn Research Center),                                   <a id="d0e12466" class="indexterm"/>
+    Jeremy Furtek (Delphi Research),                                          <a id="d0e12470" class="indexterm"/>
+    Peter Grant (UTIAS),                                                      <a id="d0e12474" class="indexterm"/> 
+    David Hasan (L-3 Communications, Houston),                                <a id="d0e12478" class="indexterm"/>
+    Bruce Hildreth (J.F. Taylor, Inc, Lexington Park),                        <a id="d0e12482" class="indexterm"/>
+    Missy Hill (UNISYS),                                                      <a id="d0e12486" class="indexterm"/>
+    Matt Jessick (L-3 Communications, Houston),                               <a id="d0e12490" class="indexterm"/>
+    Hilary Keating (Fortburn Pty. Ltd.),                                      <a id="d0e12494" class="indexterm"/>
+    Dennis Linse (SAIC),                                                      <a id="d0e12498" class="indexterm"/> 
+    Bill Othon (NASA Johnson Space Center),                                   <a id="d0e12502" class="indexterm"/> 
+    Mike Madden (NASA Langley Research Center),                               <a id="d0e12506" class="indexterm"/>
+    Greg McCarthy (NASA Dryden Flight Research Center),                       <a id="d0e12510" class="indexterm"/>
+    Dana McMinn (NASA Langley Research Center),                               <a id="d0e12514" class="indexterm"/>
+    Dan Murri (NASA Engineering and Safety Center, Hampton),                  <a id="d0e12518" class="indexterm"/>
+    Dan Newman (formerly Ball Aerospace, now Quantitative Aeronautics),       <a id="d0e12522" class="indexterm"/>
+    John Penn (L-3 Communications, Houston)                                    <a id="d0e12526" class="indexterm"/>
+    Riley Rainey (SDS International),                                         <a id="d0e12530" class="indexterm"/>
+    Mike Red (NASA Johnson Space Center),                                     <a id="d0e12534" class="indexterm"/>
+    Brent York (formerly NAVAIR, now Indra Systems, Inc.),                    <a id="d0e12538" class="indexterm"/>
       and
-    Curtis Zimmerman (NASA Marshall Space Flight Center).                     <a id="d0e12557" class="indexterm"/>
-  </p></div><P xmlns="" class="CVSinfo">2011-03-31</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="changes.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"> <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+    Curtis Zimmerman (NASA Marshall Space Flight Center).                     <a id="d0e12542" class="indexterm"/>
+  </p></div><P xmlns="" class="CVSinfo">2011-07-12</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="changes.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"> <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

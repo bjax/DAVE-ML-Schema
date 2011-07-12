@@ -13,7 +13,7 @@ span.deleted { text-decoration: line-through;
                background-color: #FF7F7F; }
 span.changed { background-color: #99ff99; }
 span.off     {  }
-</style><title>fileHeader</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="elementDescriptions.html" title="8.2. Element descriptions"/><link rel="prev" href="fileCreationDate.html" title="fileCreationDate"/><link rel="next" href="fileVersion.html" title="fileVersion"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="fileCreationDate.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="fileVersion.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="elementRefs.html">Element references and descriptions</a></span> &gt; <span class="breadcrumb-link"><a href="elementDescriptions.html">Element descriptions</a></span> &gt; <span class="breadcrumb-node">fileHeader</span></div><div class="refentry" lang="en"><a id="fileHeader"/><div class="titlepage"/><a id="d0e8046" class="indexterm"/><div class="refnamediv"><h2><span class="refentrytitle">fileHeader</span></h2><p>fileHeader — States source and purpose of file</p></div><div class="refsect1" lang="en"><a id="d0e8059"/><h2>Content model</h2><pre class="synopsis">fileHeader :  [name]
+</style><title>fileHeader</title><link rel="stylesheet" href="DAVE-ML_ref.css" type="text/css"/><meta name="generator" content="DocBook XSL Stylesheets V1.71.1"/><link rel="start" href="DAVE-ML_ref.html" title="Dynamic Aerospace Vehicle Exchange Markup Language (DAVE-ML) Reference"/><link rel="up" href="elementDescriptions.html" title="8.2. Element descriptions"/><link rel="prev" href="fileCreationDate.html" title="fileCreationDate"/><link rel="next" href="fileVersion.html" title="fileVersion"/></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><td width="20%" align="left"><a accesskey="p" href="fileCreationDate.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="fileVersion.html">Next</a></td></tr></table><hr/></div><div xmlns="" class="breadcrumbs"><span class="breadcrumb-link"><a href="DAVE-ML_ref.html">DAVE-ML 2</a></span> &gt; <span class="breadcrumb-link"><a href="elementRefs.html">Element references and descriptions</a></span> &gt; <span class="breadcrumb-link"><a href="elementDescriptions.html">Element descriptions</a></span> &gt; <span class="breadcrumb-node">fileHeader</span></div><div class="refentry" lang="en"><a id="fileHeader"/><div class="titlepage"/><a id="d0e8031" class="indexterm"/><div class="refnamediv"><h2><span class="refentrytitle">fileHeader</span></h2><p>fileHeader — States source and purpose of file</p></div><div class="refsect1" lang="en"><a id="d0e8044"/><h2>Content model</h2><pre class="synopsis">fileHeader :  [name]
      <a href="author.html" title="author">author</a>+
      (<a href="creationDate.html" title="creationDate">creationDate</a> | <a href="fileCreationDate.html" title="fileCreationDate">fileCreationDate</a>)
      <a href="fileVersion.html" title="fileVersion">fileVersion</a>?
@@ -21,60 +21,60 @@ span.off     {  }
      <a href="reference.html" title="reference">reference</a>*
      <a href="modificationRecord.html" title="modificationRecord">modificationRecord</a>*
      <a href="provenance.html" title="provenance">provenance</a>*
-</pre></div><div class="refsect1" lang="en"><a id="d0e8088"/><h2>Attributes</h2><div class="variablelist"><dl><dt><span class="term">
+</pre></div><div class="refsect1" lang="en"><a id="d0e8073"/><h2>Attributes</h2><div class="variablelist"><dl><dt><span class="term">
 <code class="varname">name</code>
-</span></dt><dd><p>(optional) The name of the file.<a id="d0e8101" class="indexterm"/>
-</p></dd></dl></div></div><div class="refsect1" lang="en"><a id="d0e8107"/><h2>Description</h2><p>
+</span></dt><dd><p>(optional) The name of the file.<a id="d0e8086" class="indexterm"/>
+</p></dd></dl></div></div><div class="refsect1" lang="en"><a id="d0e8092"/><h2>Description</h2><p>
 
       The header element requires at least one author and a creation date;
       optional content includes version indicator, description,
       references, and modification records.
-    </p></div><div class="refsect1" lang="en"><a id="d0e8112"/><h2>
+    </p></div><div class="refsect1" lang="en"><a id="d0e8097"/><h2>
 	Possible parents
       </h2><table class="simplelist" border="0" summary="Simple list"><tr><td>
 <a href="DAVEfunc.html" title="DAVEfunc">
 <code class="sgmltag-element">DAVEfunc</code>
 </a>
-</td></tr></table></div><div class="refsect1" lang="en"><a id="d0e8124"/><h2>
+</td></tr></table></div><div class="refsect1" lang="en"><a id="d0e8109"/><h2>
 	Allowable children
       </h2><table class="simplelist" border="0" summary="Simple list"><tr><td>
-<a id="d0e8130" class="indexterm"/>
+<a id="d0e8115" class="indexterm"/>
 <a href="author.html" title="author">
 <code class="sgmltag-element">author</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e8144" class="indexterm"/>
+<a id="d0e8129" class="indexterm"/>
 <a href="creationDate.html" title="creationDate">
 <code class="sgmltag-element">creationDate</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e8158" class="indexterm"/>
+<a id="d0e8143" class="indexterm"/>
 <a href="fileCreationDate.html" title="fileCreationDate">
 <code class="sgmltag-element">fileCreationDate</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e8172" class="indexterm"/>
+<a id="d0e8157" class="indexterm"/>
 <a href="fileVersion.html" title="fileVersion">
 <code class="sgmltag-element">fileVersion</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e8186" class="indexterm"/>
+<a id="d0e8171" class="indexterm"/>
 <a href="description.html" title="description">
 <code class="sgmltag-element">description</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e8200" class="indexterm"/>
+<a id="d0e8185" class="indexterm"/>
 <a href="reference.html" title="reference">
 <code class="sgmltag-element">reference</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e8214" class="indexterm"/>
+<a id="d0e8199" class="indexterm"/>
 <a href="modificationRecord.html" title="modificationRecord">
 <code class="sgmltag-element">modificationRecord</code>
 </a>
 </td></tr><tr><td>
-<a id="d0e8228" class="indexterm"/>
+<a id="d0e8213" class="indexterm"/>
 <a href="provenance.html" title="provenance">
 <code class="sgmltag-element">provenance</code>
 </a>
-</td></tr></table></div></div><P xmlns="" class="CVSinfo">2011-03-31</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="fileCreationDate.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="elementDescriptions.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="fileVersion.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+</td></tr></table></div></div><P xmlns="" class="CVSinfo">2011-07-12</P><div class="navfooter"><hr/><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="fileCreationDate.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="elementDescriptions.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="fileVersion.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="DAVE-ML_ref.html">Home</a> | <a accesskey="t" href="ar01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
