@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE DAVEfunc PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" 
+                "DAVEfunc.dtd">
+<DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
+    <fileHeader>
+        <author name="Bruce Jackson" org="NASA Langley Research Center" 
+            email="Bruce.Jackson@nasa.gov">
+        </author>
+        <creationDate date="2011-08-01"/>
+        <fileVersion>2011-08-01 (initial rev)</fileVersion>
+        <description>
+            
+            An example / test model for DAVE-ML toolsets.
+            
+            This file contains examples of three variables with
+            various combinations of min, max, ceil and floor operations
+            
+        </description>
+    </fileHeader>
+    <variableDef name="input1" varID="in1" units="nd">
+        <description>
+            This constant value is an input to all function outputs.
+        </description>
+        <isInput/>
+    </variableDef>
+    <variableDef name="input2" varID="in2" units="nd">
+        <description>
+            This constant value is an input to all function outputs.
+        </description>
+        <isInput/>
+    </variableDef>
+    <variableDef name="input3" varID="in3" units="nd">
+        <description>
+            This constant value is an input to all function outputs.
+        </description>
+        <isInput/>
+    </variableDef>
+    <variableDef name="min output" varID="out_min" units="nd">
+        <description>
+            This output is the minima of all inputs
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <min/>
+                    <ci>in1</ci>
+                    <ci>in2</ci>
+                    <ci>in3</ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="max output" varID="out_max" units="nd">
+        <description>
+            This output is the maxima of all inputs
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <max/>
+                    <ci>in1</ci>
+                    <ci>in2</ci>
+                    <ci>in3</ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="in1 ceil output" varID="out1_ceil" units="nd">
+        <description>
+            This output is the ceiling of input 1
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <ceiling/>
+                    <ci>in1</ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="in1 floor output" varID="out1_floor" units="nd">
+        <description>
+            This output is the ceiling of input 1
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <floor/>
+                    <ci>in1</ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="in2 ceil output" varID="out2_ceil" units="nd">
+        <description>
+            This output is the ceiling of input 2
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <ceiling/>
+                    <ci>in2</ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="in2 floor output" varID="out2_floor" units="nd">
+        <description>
+            This output is the ceiling of input 2
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <floor/>
+                    <ci>in2</ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="in3 ceil output" varID="out3_ceil" units="nd">
+        <description>
+            This output is the ceiling of input 3
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <ceiling/>
+                    <ci>in3</ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="in3 floor output" varID="out3_floor" units="nd">
+        <description>
+            This output is the ceiling of input 3
+        </description>
+        <calculation>
+            <math>
+                <apply>
+                    <floor/>
+                    <ci>in3</ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <checkData>
+        <staticShot name="single case">
+            <checkInputs>
+                <signal>
+                    <signalName>input1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-5.5</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.0</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input3</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+5.5</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>min output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-5.5</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>max output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>+5.5</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>in1 ceil output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>in1 floor output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-6.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>in2 ceil output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>in2 floor output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>in3 ceil output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>6.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>in3 floor output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+	    </checkOutputs>
+        </staticShot>
+
+    </checkData>
+    
+</DAVEfunc>
