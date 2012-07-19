@@ -1,0 +1,46 @@
+Supported MathML 2 operand subset:
+
+abs
+arccos
+arcsin
+arctan
+ceiling
+cos
+csymbol
+dividie
+eq
+floor
+geq
+gt
+leq
+lt
+max
+min
+minus
+neq
+piecewise
+plus
+power
+quotient
+sin
+tan
+times
+
+Ordered
+
+DAVE-ML groups variables and the associated calculations to determine
+them (if any) separately from breakpoint sets, gridded and ungridded
+tables, and function definitions, which are likewise grouped
+together. There is no guarantee or requirement that the variables are
+defined in execution order; in fact, it is very unlikely that the
+elements of DAVE-ML will appear in execution order. Thus, the
+implementor must sort these elements for proper operation; the means
+to do this sort are not specified but should be determinable from the
+embedded calculations (which indicate dependence of one variable on
+another) and the independentVarRefs and dependentVarRef of the
+function elements.
+
+Warnings on unresolved elements
+
+Inputs and outputs are usually identified, but older releases prior to 2.0RC2 did
+not explicitly identify inputs.
