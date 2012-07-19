@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE DAVEfunc PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" "DAVEfunc.dtd">
+<DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
+    <fileHeader>
+        <author name="Casey Denham" org="LARSS Intern, NASA Langley Research Center" email="cdenham@mit.edu, caseyleighanne@yahoo.com">
+        </author>
+        <creationDate date="2012-07-06"/>
+        <fileVersion>2012-07-06 (initial rev) </fileVersion>
+        <description>
+            An example / test model for DAVE-ML toolsets.
+            
+            This file contains examples of MATH-ML functions: plus, minus, times, divide, quotient, abs, power, max, min, as well as initial value
+            
+        </description>
+    </fileHeader>
+    <variableDef name="input" varID="in" units="nd">
+        <description>
+            This constant value is an input to all output functions.
+        </description>
+        <isInput/>
+    </variableDef>
+    <variableDef name="optional input" varID="optin" units="nd" initialValue="5.0">
+        <description>
+            This input has an intial value of 5.0.
+        </description>
+    </variableDef>
+    <variableDef name="simple output" varID="out_basic" units="nd">
+        <description>
+            This output is simply a passthru of the input without manipulation
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <times/>
+                    <cn> 1.0 </cn>
+                    <ci> in </ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="check input" varID="out_optin" units="nd">
+        <description>
+            This output is simply a passthru of the optional input to test the intial value
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <times/>
+                    <ci> optin </ci>
+                    <cn> 1.0 </cn>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="output addition" varID="out_add" units="nd">
+        <description>
+            This output is the input plus 5
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <plus/>
+                    <cn> 5 </cn>
+                    <ci> in </ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="output subtraction" varID="out_sub" units="nd">
+        <description>
+            This output is the input minus 5
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <minus/>
+                    <ci> in </ci>
+                    <cn> 5 </cn>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="output multiplication" varID="out_mult" units="nd">
+        <description>
+            This output is the input times 5
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <times/>
+                    <ci> in </ci>
+                    <cn> 5 </cn>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="output division" varID="out_div" units="nd">
+        <description>
+            This output is the input divided by 5
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <divide/>
+                    <ci> in </ci>
+                    <cn> 5 </cn>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="output quotient" varID="out_quot" units="nd">
+        <description>
+            This output is the quotient of the input divided by 5
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <quotient/>
+                    <ci> in </ci>
+                    <cn> 5 </cn>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="abs output" varID="out_abs" units="nd">
+        <description>
+            This output is the absolute value of the input
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <abs/>
+                    <ci> in </ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="output power" varID="out_pow" units="nd">
+        <description>
+            This output is the input raised to the 3rd power
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <power/>
+                    <ci> in </ci>
+                    <cn> 3 </cn>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="output max" varID="out_max" units="nd">
+        <description>
+            This output is the maximum value out of the input, -3, and 3
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <max/>
+                    <ci> in </ci>
+                    <cn> -3 </cn>
+                    <cn> 3 </cn>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="output min" varID="out_min" units="nd">
+        <description>
+            This output is the minimum value out of the input, -3, and 3
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <min/>
+                    <ci> in </ci>
+                    <cn> -3 </cn>
+                    <cn> 3 </cn>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <checkData>
+        <staticShot name="less than zero">
+            <checkInputs>
+                <signal>
+                    <signalName>input </signalName>
+                    <signalUnits> nd</signalUnits>
+                    <signalValue> -5.0 </signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>simple output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue> -5.0 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName>check input</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output addition </signalName>
+                    <signalUnits> nd</signalUnits>
+                    <signalValue> 0.0 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName> output subtraction </signalName>
+                    <signalUnits> nd</signalUnits>
+                    <signalValue> -10.0 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName> output multiplication </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue> -25.0 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName> output division </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue> -1.0 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName> output quotient </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue> -1.0 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName>abs output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output power</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-125.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output max</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>3.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output min</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+        <staticShot name="zero">
+            <checkInputs>
+                <signal>
+                    <signalName>input</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.0</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>simple output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue> 0 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName>check input</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output addition </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue> 5 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName> output subtraction </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue> -5 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName> output multiplication </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue> 0 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName> output division </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue> 0 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName> output quotient </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue> 0 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName>abs output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output power</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output max</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>3.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output min</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-3.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+        <staticShot name="greater than zero">
+            <checkInputs>
+                <signal>
+                    <signalName>input </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue> 6 </signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>simple output </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue> 6 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName>check input</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>5.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output addition </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue> 11 </signalValue>
+                    <tol> 0.00000001 </tol>
+                    </signal>
+                <signal>
+                    <signalName> output subtraction </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue> 1 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName> output multiplication </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue> 30 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName> output division </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue> 1.2 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName> output quotient </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue> 1.2 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName>abs output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>6.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output power</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>216.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output max</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>6.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output min</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-3.0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+    </checkData>
+</DAVEfunc>

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE DAVEfunc PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" "DAVEfunc.dtd">
+<DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
+    <fileHeader>
+        <author name="Casey Denham" org="LARSS Intern, NASA Langley Research Center" email="cdenham@mit.edu, caseyleighanne@yahoo.com">
+        </author>
+        <creationDate date="2012-07-09"/>
+        <fileVersion> 2012-07-09 (initial rev) </fileVersion>
+        <description>
+            An example / test model for DAVE-ML toolsets.
+            
+            This file contains examples of trig MATH-ML functions: sin, cos, tan, arcsin, arccos, arctan.
+        </description>
+    </fileHeader>
+    <variableDef name="input" varID="in" units="nd">
+        <description>
+            This constant value is an input to all output functions.
+        </description>
+        <isInput/>
+    </variableDef>
+    <variableDef name="simple output" varID="out_basic" units="nd">
+        <description>
+            This output is simply a passthru of the input without manipulation
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <times/>
+                    <cn> 1.0 </cn>
+                    <ci> in </ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="output sin" varID="out_sin" units="nd">
+        <description>
+            This output is the sine of the input
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <sin/>
+                    <ci> in </ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="output cos" varID="out_cos" units="nd">
+        <description>
+            This output is the cosine of the input
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <cos/>
+                    <ci> in </ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="output tan" varID="out_tan" units="nd">
+        <description>
+            This output is the tangent of the input
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <tan/>
+                    <ci> in </ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="output arcsin" varID="out_arcsin" units="nd">
+        <description>
+            This output is the arcsin of the input
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <arcsin/>
+                    <ci> in </ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="output arccos" varID="out_arccos" units="nd">
+        <description>
+            This output is the arccos of the input
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <arccos/>
+                    <ci> in </ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    <variableDef name="output arctan" varID="out_arctan" units="nd">
+        <description>
+            This output is the arctan of the input
+        </description>
+        <calculation>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <apply>
+                    <arctan/>
+                    <ci> in </ci>
+                </apply>
+            </math>
+        </calculation>
+        <isOutput/>
+    </variableDef>
+    
+    <checkData>
+        <staticShot name="less than zero">
+            <checkInputs>
+                <signal>
+                    <signalName>input</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-1</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>simple output </signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue> -1 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName>output sin </signalName>
+                    <signalUnits> nd </signalUnits>
+                    <signalValue>-0.841470984807897 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName>output cos</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.540302305868140 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName>output tan</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-1.55740772465490 </signalValue>
+                    <tol> 0.00000001 </tol>
+                </signal>
+                <signal>
+                    <signalName>output arcsin</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-1.57079632679490</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output arccos</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>3.14159265358979</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output arctan</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>-0.785398163397448</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+        <staticShot name="zero">
+            <checkInputs>
+                <signal>
+                    <signalName>input</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>simple output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output sin</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.00</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output cos</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1.00</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output tan</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.00</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output arcsin</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.00</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output arccos</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1.57079632679490</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output arctan</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.00</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+        <staticShot name="greater than zero">
+            <checkInputs>
+                <signal>
+                    <signalName>input</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>simple output</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output sin</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.841470984807897</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output cos</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.540302305868140</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output tan</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1.55740772465490</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output arcsin</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1.57079632679490</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output arccos</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.00</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+                <signal>
+                    <signalName>output arctan</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>0.785398163397448</signalValue>
+                    <tol>0.00000001</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+    </checkData>
+</DAVEfunc>
