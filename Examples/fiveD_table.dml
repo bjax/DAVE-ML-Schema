@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE DAVEfunc PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" "DAVEfunc.dtd">
+<DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
+    <fileHeader>
+        <author name="Casey Denham" org="LARSS Intern, NASA Langley Research Center" email="cdenham@mit.edu, caseyleighanne@yahoo.com">
+        </author>
+        <creationDate date="2013-06-05"/>
+        <fileVersion>2012-06-05 (initial rev) </fileVersion>
+        <description>
+            An example / test model for DAVE-ML toolsets.
+            
+            This file contains examples of five way tables encorporated into DAVE-ML
+            
+        </description>
+    </fileHeader>
+    <variableDef name="input 1" varID="in1" units="nd">
+        <description>
+            This value is an input to output functions
+        </description>
+        <isInput/>
+    </variableDef>
+    <variableDef name="input 2" varID="in2" units="nd">
+        <description>
+            This value is an input to output functions
+        </description>
+        <isInput/>
+    </variableDef>
+    <variableDef name="input 3" varID="in3" units="nd">
+        <description>
+            This value is an input to output functions
+        </description>
+        <isInput/>
+    </variableDef> 
+    <variableDef name="input 4" varID="in4" units="nd">
+        <description>
+            This value is an input to output functions
+        </description>
+        <isInput/>
+    </variableDef>
+    <variableDef name="input 5" varID="in5" units="nd">
+        <description>
+            This value is an input to output functions
+        </description>
+        <isInput/>
+    </variableDef>
+    <variableDef name="output 1" varID ="out1t" units="nd">
+        <description>
+            Table 1 output. Multidimensional gridded table, function of inputs 1-5
+        </description>
+        <isOutput/>
+    </variableDef>
+    
+    <breakpointDef name="input 1 breakpoints" bpID="IN1" units="nd">
+        <description> Input 1 breakpoints for data tables </description>
+        <bpVals> 1 1.5 </bpVals>
+    </breakpointDef>
+    <breakpointDef name="input 2 breakpoints" bpID="IN2" units="nd">
+        <description> Input 1 breakpoints for data tables </description>
+        <bpVals> 2 2.5 </bpVals>
+    </breakpointDef>
+    <breakpointDef name="input 3 breakpoints" bpID="IN3" units="nd">
+        <description> Input 1 breakpoints for data tables </description>
+        <bpVals> 3 3.5 </bpVals>
+    </breakpointDef>
+    <breakpointDef name="input 4 breakpoints" bpID="IN4" units="nd">
+        <description> Input 1 breakpoints for data tables </description>
+        <bpVals> 4 4.5 </bpVals>
+    </breakpointDef>
+    <breakpointDef name="input 5 breakpoints" bpID="IN5" units="nd">
+        <description> Input 1 breakpoints for data tables </description>
+        <bpVals> 5 5.5 </bpVals>
+    </breakpointDef>
+    
+    <function name="Output 1">
+        <description> Output 1 as a function of inputs 1-5 </description>
+        <independentVarRef varID="in1" min="1" max="1.5" extrapolate="neither"/>
+        <!-- Input 1 breakpoints -->
+        <independentVarRef varID="in2" min="2" max="2.5" extrapolate="neither"/>
+        <!-- Input 2 breakpoints -->
+        <independentVarRef varID="in3" min="3" max="3.5" extrapolate="neither"/>
+        <!-- Input 3 breakpoints -->
+        <independentVarRef varID="in4" min="4" max="4.5" extrapolate="neither"/>
+        <!-- Input 4 breakpoints -->
+        <independentVarRef varID="in5" min="5" max="5.5" extrapolate="neither"/>
+        <!-- Input 5 breakpoints -->
+        <dependentVarRef varID="out1t"/>
+        <functionDefn name="OUT1_fn">
+            <griddedTableDef name ="OUT1_table" gtID="OUT1_table_def">
+                <breakpointRefs>
+                    <bpRef bpID="IN5"/>
+                    <bpRef bpID="IN4"/>
+                    <bpRef bpID="IN3"/>
+                    <bpRef bpID="IN2"/>
+                    <bpRef bpID="IN1"/>
+                </breakpointRefs>
+                <dataTable>
+                    11111 11112
+                    11121 11122
+                    11211 11212
+                    11212 11222
+                    12111 12112
+                    12121 12122
+                    12211 12212
+                    12221 12222
+                    21111 21112
+                    21121 21122
+                    21211 21212
+                    21221 21222
+                    22111 22112
+                    22121 22122
+                    22211 22212
+                    22221 22222
+                </dataTable>
+            </griddedTableDef>
+        </functionDefn>
+    </function>
+    <!-- <checkData>
+       <staticShot name="first point">
+            <checkInputs>
+                <signal>
+                    <signalName> input 1 </signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName> input 2 </signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+                <signal>
+                    <signalName> input 3 </signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>3</signalValue>
+                </signal>
+                <signal>
+                    <signalName> input 4 </signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>4</signalValue>
+                </signal>
+                <signal>
+                    <signalName> input 5 </signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>5</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>output 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>11111</signalValue>
+                    <tol>1e-6</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+    </checkData> -->
+</DAVEfunc>
