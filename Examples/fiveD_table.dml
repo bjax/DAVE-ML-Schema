@@ -5,41 +5,53 @@
         <author name="Casey Denham" org="LARSS Intern, NASA Langley Research Center" email="cdenham@mit.edu, caseyleighanne@yahoo.com">
         </author>
         <creationDate date="2013-06-05"/>
-        <fileVersion>2012-06-05 (initial rev) </fileVersion>
+        <fileVersion>2013-07-29 (rev A) </fileVersion>
         <description>
             An example / test model for DAVE-ML toolsets.
             
             This file contains examples of five way tables encorporated into DAVE-ML
             
         </description>
+	<modificationRecord modID="A" date="2013-07-29">
+	  <author name="Bruce Jackson" org="Langley Research Center,
+					    NASA"
+		  email="bruce.jackson@nasa.gov"/>
+	  <description>
+	    Reversed order of inputs; add additional checkcases
+	  </description>
+	</modificationRecord>
     </fileHeader>
     <variableDef name="input 1" varID="in1" units="nd">
         <description>
-            This value is an input to output functions
+            This value controls the least-significant digit in the output
         </description>
         <isInput/>
     </variableDef>
     <variableDef name="input 2" varID="in2" units="nd">
         <description>
-            This value is an input to output functions
+            This value controls the second-least-significant digit
+	    of the output value
         </description>
         <isInput/>
     </variableDef>
     <variableDef name="input 3" varID="in3" units="nd">
         <description>
-            This value is an input to output functions
+            This value controls the middle significant digit of
+	    the output value
         </description>
         <isInput/>
     </variableDef> 
     <variableDef name="input 4" varID="in4" units="nd">
         <description>
-            This value is an input to output functions
+            This value controls the second-most significant digit of
+	    the output value
         </description>
         <isInput/>
     </variableDef>
     <variableDef name="input 5" varID="in5" units="nd">
         <description>
-            This value is an input to output functions
+            This value controls the most significant digit of the
+	    output value
         </description>
         <isInput/>
     </variableDef>
@@ -50,50 +62,37 @@
         <isOutput/>
     </variableDef>
     
-    <breakpointDef name="input 1 breakpoints" bpID="IN1" units="nd">
-        <description> Input 1 breakpoints for data tables </description>
-        <bpVals> 1 1.5 </bpVals>
-    </breakpointDef>
-    <breakpointDef name="input 2 breakpoints" bpID="IN2" units="nd">
-        <description> Input 1 breakpoints for data tables </description>
-        <bpVals> 2 2.5 </bpVals>
-    </breakpointDef>
-    <breakpointDef name="input 3 breakpoints" bpID="IN3" units="nd">
-        <description> Input 1 breakpoints for data tables </description>
-        <bpVals> 3 3.5 </bpVals>
-    </breakpointDef>
-    <breakpointDef name="input 4 breakpoints" bpID="IN4" units="nd">
-        <description> Input 1 breakpoints for data tables </description>
-        <bpVals> 4 4.5 </bpVals>
-    </breakpointDef>
-    <breakpointDef name="input 5 breakpoints" bpID="IN5" units="nd">
-        <description> Input 1 breakpoints for data tables </description>
-        <bpVals> 5 5.5 </bpVals>
+    <breakpointDef name="breakpoint set" bpID="BP" units="nd">
+        <description>Breakpoints for each digit of the data tables </description>
+        <bpVals>1 2</bpVals>
     </breakpointDef>
     
     <function name="Output 1">
-        <description> Output 1 as a function of inputs 1-5 </description>
-        <independentVarRef varID="in1" min="1" max="1.5" extrapolate="neither"/>
-        <!-- Input 1 breakpoints -->
-        <independentVarRef varID="in2" min="2" max="2.5" extrapolate="neither"/>
-        <!-- Input 2 breakpoints -->
-        <independentVarRef varID="in3" min="3" max="3.5" extrapolate="neither"/>
-        <!-- Input 3 breakpoints -->
-        <independentVarRef varID="in4" min="4" max="4.5" extrapolate="neither"/>
-        <!-- Input 4 breakpoints -->
-        <independentVarRef varID="in5" min="5" max="5.5" extrapolate="neither"/>
-        <!-- Input 5 breakpoints -->
+        <description>A five-way lookup table with 2^5 (32) points</description>
+        <independentVarRef varID="in5" min="1" max="2" extrapolate="neither"/>
+        <independentVarRef varID="in4" min="1" max="2" extrapolate="neither"/>
+        <independentVarRef varID="in3" min="1" max="2" extrapolate="neither"/>
+        <independentVarRef varID="in2" min="1" max="2" extrapolate="neither"/>
+        <independentVarRef varID="in1" min="1" max="2" extrapolate="neither"/>
         <dependentVarRef varID="out1t"/>
         <functionDefn name="OUT1_fn">
             <griddedTableDef name ="OUT1_table" gtID="OUT1_table_def">
                 <breakpointRefs>
-                    <bpRef bpID="IN5"/>
-                    <bpRef bpID="IN4"/>
-                    <bpRef bpID="IN3"/>
-                    <bpRef bpID="IN2"/>
-                    <bpRef bpID="IN1"/>
+                    <bpRef bpID="BP"/>
+                    <bpRef bpID="BP"/>
+                    <bpRef bpID="BP"/>
+                    <bpRef bpID="BP"/>
+                    <bpRef bpID="BP"/>
                 </breakpointRefs>
-                <dataTable>
+                <dataTable> 
+		  <!-- last digit, controlled by in1, changes most
+		       rapidly -->
+		  <!-- note that line breaks are not important; order
+		       of values is like an odometer where the first
+		       independent variable is the most significant
+		       (left-most) dimension and the last IV = least
+		       significant = changes most rapidly in table
+		       below -->
                     11111 11112
                     11121 11122
                     11211 11212
@@ -114,33 +113,33 @@
             </griddedTableDef>
         </functionDefn>
     </function>
-    <!-- <checkData>
-       <staticShot name="first point">
+    <checkData>
+       <staticShot name="nominal inputs (11111) ">
             <checkInputs>
                 <signal>
-                    <signalName> input 1 </signalName>
+                    <signalName>input 1</signalName>
                     <signalUnits>nd</signalUnits>
                     <signalValue>1</signalValue>
                 </signal>
                 <signal>
-                    <signalName> input 2 </signalName>
+                    <signalName>input 2</signalName>
                     <signalUnits>nd</signalUnits>
-                    <signalValue>2</signalValue>
+                    <signalValue>1</signalValue>
                 </signal>
                 <signal>
-                    <signalName> input 3 </signalName>
+                    <signalName>input 3</signalName>
                     <signalUnits>nd</signalUnits>
-                    <signalValue>3</signalValue>
+                    <signalValue>1</signalValue>
                 </signal>
                 <signal>
-                    <signalName> input 4 </signalName>
+                    <signalName>input 4</signalName>
                     <signalUnits>nd</signalUnits>
-                    <signalValue>4</signalValue>
+                    <signalValue>1</signalValue>
                 </signal>
                 <signal>
-                    <signalName> input 5 </signalName>
+                    <signalName>input 5</signalName>
                     <signalUnits>nd</signalUnits>
-                    <signalValue>5</signalValue>
+                    <signalValue>1</signalValue>
                 </signal>
             </checkInputs>
             <checkOutputs>
@@ -152,5 +151,301 @@
                 </signal>
             </checkOutputs>
         </staticShot>
-    </checkData> -->
+       <staticShot name="toggle least significant digit">
+            <checkInputs>
+                <signal>
+                    <signalName>input 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 3</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 4</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 5</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>output 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>11112</signalValue>
+                    <tol>1e-6</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+       <staticShot name="toggle second-least significant digit">
+            <checkInputs>
+                <signal>
+                    <signalName>input 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 3</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 4</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 5</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>output 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>11121</signalValue>
+                    <tol>1e-6</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+       <staticShot name="toggle mid-significant digit">
+            <checkInputs>
+                <signal>
+                    <signalName>input 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 3</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 4</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 5</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>output 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>11211</signalValue>
+                    <tol>1e-6</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+       <staticShot name="toggle second-most significant digit">
+            <checkInputs>
+                <signal>
+                    <signalName>input 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 3</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 4</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 5</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>output 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>12111</signalValue>
+                    <tol>1e-6</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+       <staticShot name="toggle most significant digit">
+            <checkInputs>
+                <signal>
+                    <signalName>input 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 3</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 4</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 5</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>output 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>21111</signalValue>
+                    <tol>1e-6</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+       <staticShot name="toggle odd digits">
+            <checkInputs>
+                <signal>
+                    <signalName>input 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 3</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 4</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 5</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>output 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>21212</signalValue>
+                    <tol>1e-6</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+       <staticShot name="toggle even digits">
+            <checkInputs>
+                <signal>
+                    <signalName>input 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 3</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 4</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 5</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>1</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>output 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>12121</signalValue>
+                    <tol>1e-6</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+       <staticShot name="toggle all digits">
+            <checkInputs>
+                <signal>
+                    <signalName>input 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 2</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 3</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 4</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+                <signal>
+                    <signalName>input 5</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>2</signalValue>
+                </signal>
+            </checkInputs>
+            <checkOutputs>
+                <signal>
+                    <signalName>output 1</signalName>
+                    <signalUnits>nd</signalUnits>
+                    <signalValue>22222</signalValue>
+                    <tol>1e-6</tol>
+                </signal>
+            </checkOutputs>
+        </staticShot>
+    </checkData>
 </DAVEfunc>
