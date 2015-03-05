@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE DAVEfunc PUBLIC "-//AIAA//DTD for Flight Dynamic Models - Functions 2.0//EN" "DAVEfunc.dtd">
+<DAVEfunc xmlns="http://daveml.org/2010/DAVEML">
+  <fileHeader>
+    <author name="Bruce Jackson" org="NASA Langley Research Center" email="bruce.jackson@nasa.gov"/>
+    <creationDate date="2015-03-05"/>
+    <fileVersion> Initial version </fileVersion>
+    <description>
+            An example / test model for DAVE-ML toolsets.
+
+            This file contains an example of switching logic to select
+            an output from several inputs, using logic and piecewise
+            operators:
+
+            out = val_1  if A &gt; MAX_A
+                = val_2  if A &lt;= MAX_A and B &lt;= 0.0
+                = val_3  if A &lt;= MAX_A and A &gt;= MIN_A and B &gt; 0.0
+                = val_4  otherwise
+
+            The following logic diagram is how this should work, where
+            MAX_A+ means a value larger than MAX_A, etc.:
+
+                        A            B    output
+                      -----   ---         ------
+                      MAX_A+   0           val_1
+                      MAX_A+   1           val_1
+                      MAX_A    0           val_2
+                      MAX_A    1           val_3
+                      MAX_A-   0           val_2
+                      MAX_A-   1           val_3
+                        0            0     val_2
+                        0            1     val_3
+                      MIN_A+   0           val_2
+                      MIN_A+   1           val_3
+                      MIN_A    0           val_4
+                      MIN_A    1           val_3
+                      MIN_A-   0           val_4
+                      MIN_A-   1           val_4
+
+    </description>
+  </fileHeader>
+  <variableDef name="val_1" varID="val_1" units="nd" initialValue="1">
+    <description>
+      This constant value is one of four possible output values
+    </description>
+  </variableDef>
+  <variableDef name="val_2" varID="val_2" units="nd" initialValue="2">
+    <description>
+      This constant value is one of four possible output values
+    </description>
+  </variableDef>
+  <variableDef name="val_3" varID="val_3" units="nd" initialValue="3">
+    <description>
+      This constant value is one of four possible output values
+    </description>
+  </variableDef>
+  <variableDef name="val_4" varID="val_4" units="nd" initialValue="4">
+    <description>
+      This constant value is one of four possible output values
+    </description>
+  </variableDef>
+  <variableDef name="input_A" varID="A" units="nd">
+    <description>
+      This input is switch value A
+    </description>
+    <isInput/>
+  </variableDef>
+  <variableDef name="input_B" varID="B" units="nd">
+    <description>
+      This input is switch value B
+    </description>
+    <isInput/>
+  </variableDef>
+  <variableDef name="min_A" varID="MIN_A" units="nd" initialValue="-1.0">
+    <description>
+      This constant value represents a selection limit (min_A)
+    </description>
+  </variableDef>
+  <variableDef name="max_A" varID="MAX_A" units="nd" initialValue="1.0">
+    <description>
+      This constant value represents a selection limit (max_A)
+    </description>
+  </variableDef>
+  <variableDef name="output" varID="out" units="nd">
+    <description>Output signal from selection tree</description>
+    <calculation>
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <apply>
+          <piecewise>
+            <piece>
+              <ci>val_1</ci>
+              <apply>
+                <gt/>
+                <ci>A</ci>
+                <ci>MAX_A</ci>
+              </apply>
+            </piece>
+            <piece>
+              <ci>val_2</ci>
+              <apply>
+                <and/>
+                <apply>
+                  <leq/>
+                  <ci>A</ci>
+                  <ci>MAX_A</ci>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci>B</ci>
+                  <cn>0.0</cn>
+                </apply>
+              </apply>
+            </piece>
+            <piece>
+              <ci>val_3</ci>
+              <apply>
+                <and/>
+                <apply>
+                  <leq/>
+                  <ci>A</ci>
+                  <ci>MAX_A</ci>
+                </apply>
+                <apply>
+                  <gt/>
+                  <ci>B</ci>
+                  <cn>0.0</cn>
+                </apply>
+                <apply>
+                  <geq/>
+                  <ci>A</ci>
+                  <ci>MIN_A</ci>
+                </apply>
+              </apply>
+            </piece>
+            <otherwise>
+              <ci>val_4</ci>
+            </otherwise>
+          </piecewise>
+        </apply>
+      </math>
+    </calculation>
+    <isOutput/>
+  </variableDef>
+  <checkData>
+    <staticShot name="A larger than MAX_A; B = 0">
+      <checkInputs>
+        <signal>
+          <signalName>input_A</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>2</signalValue>
+        </signal>
+        <signal>
+          <signalName>input_B</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>0</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <signalName>output</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue> 1 </signalValue>
+          <tol> 0.00000001 </tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="A larger than MAX_A; B > 0">
+      <checkInputs>
+        <signal>
+          <signalName>input_A</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>2</signalValue>
+        </signal>
+        <signal>
+          <signalName>input_B</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>1</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <signalName>output</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue> 1 </signalValue>
+          <tol> 0.00000001 </tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="A == MAX_A; B = 0">
+      <checkInputs>
+        <signal>
+          <signalName>input_A</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>1</signalValue>
+        </signal>
+        <signal>
+          <signalName>input_B</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>0</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <signalName>output</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue> 2 </signalValue>
+          <tol> 0.00000001 </tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="A == MAX_A; B > 0">
+      <checkInputs>
+        <signal>
+          <signalName>input_A</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>1</signalValue>
+        </signal>
+        <signal>
+          <signalName>input_B</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>1</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <signalName>output</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue> 3 </signalValue>
+          <tol> 0.00000001 </tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="A smaller than MAX_A; B = 0">
+      <checkInputs>
+        <signal>
+          <signalName>input_A</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>0.9</signalValue>
+        </signal>
+        <signal>
+          <signalName>input_B</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>0</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <signalName>output</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue> 2 </signalValue>
+          <tol> 0.00000001 </tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="A smaller than MAX_A; B > 0">
+      <checkInputs>
+        <signal>
+          <signalName>input_A</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>0.9</signalValue>
+        </signal>
+        <signal>
+          <signalName>input_B</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>2</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <signalName>output</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue> 3 </signalValue>
+          <tol> 0.00000001 </tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="A == 0; B = 0">
+      <checkInputs>
+        <signal>
+          <signalName>input_A</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>0</signalValue>
+        </signal>
+        <signal>
+          <signalName>input_B</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>0</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <signalName>output</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue> 2 </signalValue>
+          <tol> 0.00000001 </tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="A == 0; B > 0">
+      <checkInputs>
+        <signal>
+          <signalName>input_A</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>0</signalValue>
+        </signal>
+        <signal>
+          <signalName>input_B</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>1</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <signalName>output</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue> 3 </signalValue>
+          <tol> 0.00000001 </tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="A larger than MIN_A; B = 0">
+      <checkInputs>
+        <signal>
+          <signalName>input_A</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>-0.9</signalValue>
+        </signal>
+        <signal>
+          <signalName>input_B</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>0</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <signalName>output</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue> 2 </signalValue>
+          <tol> 0.00000001 </tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="A larger than MIN_A; B > 0">
+      <checkInputs>
+        <signal>
+          <signalName>input_A</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>-0.9</signalValue>
+        </signal>
+        <signal>
+          <signalName>input_B</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>1</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <signalName>output</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue> 3 </signalValue>
+          <tol> 0.00000001 </tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="A == MIN_A; B = 0">
+      <checkInputs>
+        <signal>
+          <signalName>input_A</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>-1.0</signalValue>
+        </signal>
+        <signal>
+          <signalName>input_B</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>0</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <signalName>output</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue> 2 </signalValue>
+          <tol> 0.00000001 </tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="A == MIN_A; B > 0">
+      <checkInputs>
+        <signal>
+          <signalName>input_A</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>-1.0</signalValue>
+        </signal>
+        <signal>
+          <signalName>input_B</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>1</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <signalName>output</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue> 3 </signalValue>
+          <tol> 0.00000001 </tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="A smaller than MIN_A; B = 0">
+      <checkInputs>
+        <signal>
+          <signalName>input_A</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>-2</signalValue>
+        </signal>
+        <signal>
+          <signalName>input_B</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>0</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <signalName>output</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue> 2 </signalValue>
+          <tol> 0.00000001 </tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+    <staticShot name="A smaller than MIN_A; B > 0">
+      <checkInputs>
+        <signal>
+          <signalName>input_A</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>-2.0</signalValue>
+        </signal>
+        <signal>
+          <signalName>input_B</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue>2</signalValue>
+        </signal>
+      </checkInputs>
+      <checkOutputs>
+        <signal>
+          <signalName>output</signalName>
+          <signalUnits>nd</signalUnits>
+          <signalValue> 4 </signalValue>
+          <tol> 0.00000001 </tol>
+        </signal>
+      </checkOutputs>
+    </staticShot>
+  </checkData>
+</DAVEfunc>
